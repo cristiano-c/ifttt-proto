@@ -186,8 +186,24 @@ iftttApp.controller('myRecipesController',  ['$scope', '$routeParams',
 iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
 
-        $scope.createAccountFunc = function()
+        $scope.createAccountFunc = function(user, email, pws1 )
         {
+
+            alert(user + " " + email + " " +  " " + pws1);
+            var loginDataSend =
+            {
+                "user": user,
+                "email": email,
+                "pws1": pws1
+            };
+            alert(loginDataSend.user);
+            $.ajax({
+                method: "post",
+                url: "/MyServlet",
+                data: loginDataSend,
+                dataType: "json",
+                success: console.log("la post ha avuto successo")
+            });
 
         }
 
