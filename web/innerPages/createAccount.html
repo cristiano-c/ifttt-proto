@@ -59,11 +59,31 @@
                     <label for="inputPassword">
                         <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span> Password
                     </label>
+                    <div class="controls">
+                        <input type="password" class="form-control" id="inputPassword" ng-model="pws1"
+                            name="pws1"
+                            placeholder="insert your password" required />
+                                <div role="alert">
+                                    <span  style="color: #cd0a0a" class="error" ng-show="submitted && form.pws1.$error.required">
+                                        Required!
+                                    </span>
+                                </div>
+                    </div>
 
-                    <input type="password" class="form-control" id="inputPassword" placeholder="insert your password" />
-                    <br>
-                    <input type="password" class="form-control" placeholder="retype password" />
+                    <div class="controls">
+                        <input type="password" class="form-control" ng-model="pws2"
+                           name="pws2"
+                           placeholder="retype password" required/>
+
+                             <div role="alert">
+                                <span  style="color: #cd0a0a" class="error" ng-show="submitted && form.pws2.$error.required">
+                                    Required!
+                                </span>
+                            </div>
+
+                    </div>
                 </div>
+
 
                 <hr>
 
