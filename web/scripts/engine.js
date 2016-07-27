@@ -186,24 +186,33 @@ iftttApp.controller('myRecipesController',  ['$scope', '$routeParams',
 iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
 
-        $scope.createAccountFunc = function(user, email, pws1 )
+        $scope.createAccountFunc = function(user, email, pws1, pws2)
         {
 
-            alert(user + " " + email + " " +  " " + pws1);
-            var loginDataSend =
-            {
-                "user": user,
-                "email": email,
-                "pws1": pws1
-            };
-            alert(loginDataSend.user);
-            $.ajax({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo")
-            });
+            if (angular.isDefined(email) && angular.isDefined(user) && angular.isDefined(pws1) && angular.isDefined(pws2)){
+                if(pws1==pws2)
+                {
+                    //alert(user + " " + email + " " + " " + pws1);
+                    var loginDataSend =
+                    {
+                        "user": user,
+                        "email": email,
+                        "pws1": pws1
+                    };
+                    //alert(loginDataSend.user);
+                    $.ajax
+                    ({
+                        method: "post",
+                        url: "/MyServlet",
+                        data: loginDataSend,
+                        dataType: "json",
+                        success: console.log("la post ha avuto successo")
+                    });
+
+                }
+
+            }
+
 
         }
 
