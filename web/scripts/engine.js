@@ -896,19 +896,22 @@ iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
 
         $scope.loginfunc = function(pass, email)
         {
-            var loginDataSend =
+            if (angular.isDefined(email) && angular.isDefined(pass))
             {
-                "password:": pass,
-                "email:": email
-            };
-            //alert(loginDataSend.pssword);
-            $.ajax({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo n4.1")
-            });
+                var loginDataSend =
+                {
+                    "password:": pass,
+                    "email:": email
+                };
+                //alert(loginDataSend.pssword);
+                $.ajax({
+                    method: "post",
+                    url: "/MyServlet",
+                    data: loginDataSend,
+                    dataType: "json",
+                    success: console.log("la post ha avuto successo ")
+                });
+            }
         }
 
     }]);
