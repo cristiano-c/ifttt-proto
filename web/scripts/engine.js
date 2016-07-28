@@ -136,6 +136,36 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'action1GcalendarController'
     });
 
+    $routeProvider.when('/choseTriggerTwitter', {
+        templateUrl: 'innerPages/twitterChannel/choseTrigger.html'
+    });
+
+    $routeProvider.when('/choseActionTwitter', {
+        templateUrl: 'innerPages/twitterChannel/choseAction.html'
+    });
+
+    $routeProvider.when('/Action1Twitter', {
+        templateUrl: 'innerPages/twitterChannel/twitter_Action1.html'
+    });
+
+
+    $routeProvider.when('/Action2Twitter', {
+        templateUrl: 'innerPages/twitterChannel/twitter_Action2.html'
+    });
+
+
+    $routeProvider.when('/Trigger1Twitter', {
+        templateUrl: 'innerPages/twitterChannel/twitter_Trigger1.html'
+    });
+
+
+    $routeProvider.when('/Trigger2Twitter', {
+        templateUrl: 'innerPages/twitterChannel/twitter_Trigger2.html'
+    });
+
+    $routeProvider.when('/SuccessTwitter', {
+        templateUrl: 'innerPages/twitterChannel/twitterSuccess.html'
+    });
 
 
 
