@@ -116,6 +116,16 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'customWeatherActionControllerTrigger4'
     });
 
+    $routeProvider.when('/choseTriggerGcalendar', {
+        templateUrl: 'innerPages/gcalendarChannel/choseTrigger.html'
+    });
+
+    $routeProvider.when('/Trigger1Gcalendar', {
+        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Trigger1.html'
+    });
+
+
+
 
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
