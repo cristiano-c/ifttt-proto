@@ -125,6 +125,10 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'Trigger1GcalendarController'
     });
 
+    $routeProvider.when('/actionGcalendar', {
+        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Action.html'
+    });
+
 
 
 
@@ -934,37 +938,45 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
         $scope.trigger1Gcalendar = function()
         {
+            //actionGcalendar
+
 
         };
 
-    $scope.checktitlevar = 'NO';
-    $scope.checkadvisetsunrisevar = 'NO';
-    $scope.checkplacevar = 'NO';
+        $scope.checkedtitle = true;
 
-    $scope.checktitlefunc = function(name)
-    {
-        if($scope.checktitlevar === "YES")
-            $scope.checktitlevar = 'NO';
-        else
-            $scope.checktitlevar = 'YES';
-            //console.log(name);
-    };
+        $scope.checktitlevar = 'NO';
+        $scope.checkadvisetsunrisevar = 'NO';
+        $scope.checkplacevar = 'NO';
 
-    $scope.checkadvisetsunsetfunc = function(name)
-    {
-        if($scope.checkadvisesunsetvar === "YES")
-            $scope.checkadvisesunsetvar = 'NO';
-        else
-            $scope.checkadvisesunsetvar = 'YES';
+        $scope.checktitlefunc = function(name)
+        {
+            if ($scope.checktitlevar === "YES")
+                $scope.checktitlevar = 'NO';
+            else
+                $scope.checktitlevar = 'YES';
             //console.log(name);
-    };
 
-    $scope.checkplacefunc = function(name)
-    {
-        if($scope.checkplacevar === "YES")
-            $scope.checkplacevar = 'NO';
-        else
-            $scope.checkplacevar = 'YES';
-            //console.log(name);
-    };
+
+        };
+
+        $scope.checkadvisetsunsetfunc = function(name)
+        {
+            if($scope.checkadvisesunsetvar === "YES")
+                $scope.checkadvisesunsetvar = 'NO';
+            else
+                $scope.checkadvisesunsetvar = 'YES';
+                //console.log(name);
+        };
+
+        $scope.checkplacefunc = function(name)
+        {
+            if($scope.checkplacevar === "YES")
+                $scope.checkplacevar = 'NO';
+            else
+                $scope.checkplacevar = 'YES';
+                //console.log(name);
+        };
+
+
 }]);

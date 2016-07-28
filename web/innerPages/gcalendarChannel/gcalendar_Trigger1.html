@@ -78,17 +78,12 @@
                             </div>
                         </div>
 
-
-
-
-
-
                         <div>
-                            <a  type="submit" class="btn btn-primary" href="#chooseChannel" >Back</a>
-                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary"  ng-click="submitted=true; trigger1Gcalendar()" >Next</a>
+                            <a  type="submit" class="btn btn-primary" href="#choseTriggerGcalendar" >Back</a>
+                            <a  href="#actionGcalendar" ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                                class="btn btn-primary"  ng-click="trigger1Gcalendar()" >Next</a>
                         </div>
-                        <label ng-if="(checkedtitle && checkedSubject && checkedplace) || submitted" class="animate-if" >
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place in order to continue
                         </label>
 
