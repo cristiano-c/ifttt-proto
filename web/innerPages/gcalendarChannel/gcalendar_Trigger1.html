@@ -25,7 +25,7 @@
                                 <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
-                                    ng-change="checktitlefunc(checktitlevar)"
+
                                 >
                             </label><br/>
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
@@ -45,7 +45,7 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
-                                        ng-change="checkedSubjectfunc(checkedSubjectvar)"
+
                                 >
                             </label><br/>
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
@@ -63,7 +63,7 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedplace"
-                                        ng-change="checkplacefunc(checkplacevar)"
+
                                 >
                             </label><br/>
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
@@ -80,14 +80,15 @@
 
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#choseTriggerGcalendar" >Back</a>
-                            <a  href="#actionGcalendar" ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary"  ng-click="trigger1Gcalendar()" >Next</a>
+                            <a  href="#actionGcalendar"  ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                                class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place in order to continue
                         </label>
 
                  <!--
+                 href="#actionGcalendar"
                         http://localhost:8080/index.jsp#/SubGMail
                         <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
                         <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>

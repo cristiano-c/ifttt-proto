@@ -936,15 +936,99 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
-        $scope.trigger1Gcalendar = function()
+        $scope.trigger1Gcalendar = function(gmailinput)
         {
-            //actionGcalendar
+            //alert("1");
+
+            /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
+                   0                        0                   0
+                   0                        0                   1
+                   0                        1                   0
+                   0                        1                   1
+                   1                        0                   0
+                   1                        0                   1
+                   1                        1                   0
+                   1                        1                   1
+
+             */
+
+            if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
+            {
+                var title;
+                var subject;
+                var place;
+
+
+                if (angular.isUndefined(gmailinput))
+                {
+                    title = "";
+                    subject = "";
+                    place = "";
+                    alert("zzz");
+                }
+                else
+                {
+                    alert("defined");
+
+                    if (angular.isDefined(gmailinput.title))
+                        title = gmailinput.title;
+                    else title = "";
+
+
+                    if (angular.isDefined(gmailinput.checkedSubject))
+                        subject = gmailinput.checkedSubject;
+                    else subject = "";
+
+
+                    if (angular.isDefined(gmailinput.checkedplace))
+                        place = gmailinput.checkedplace;
+                    else place = "";
+                }
+
+                var loginDataSend =
+                {
+
+                    "title:"  : title,
+                    "subject" : subject,
+                    "place"   : place
+
+                };
+                   
+                   $scope.sedingServer(loginDataSend);
+
+
+
+
+                //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
+
+                //var title ="w";
+
+            }
+
+
+
 
 
         };
 
-        $scope.checkedtitle = true;
 
+        $scope.sedingServer = function(loginDataSend)
+        {
+            $.ajax({
+                method: "post",
+                url: "/MyServlet",
+                data: loginDataSend,
+                dataType: "json",
+                success: console.log("la post ha avuto successo n 9")
+            });
+        };
+
+        $scope.checkedtitle = true;
+        $scope.checkedSubject= false;
+        $scope.checkedplace=false;
+
+        //Other solution
+        /*
         $scope.checktitlevar = 'NO';
         $scope.checkadvisetsunrisevar = 'NO';
         $scope.checkplacevar = 'NO';
@@ -977,6 +1061,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 $scope.checkplacevar = 'YES';
                 //console.log(name);
         };
+        */
 
 
 }]);
