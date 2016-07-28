@@ -938,6 +938,10 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            var title;
+            var subject;
+            var place;
+
             //alert("1");
 
             /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
@@ -951,6 +955,52 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                    1                        1                   1
 
              */
+            if (angular.isUndefined(gmailinput))
+            {
+                title = "NULL";
+                subject = "NULL";
+                place = "NULL";
+
+            }
+            else
+            {
+                if ($scope.checkedtitle === true) {
+                    if (angular.isUndefined(gmailinput.title)) title = "";
+                    else title = gmailinput.title;
+
+                }
+                else {
+                    title = "NULL";
+
+                }
+                if ($scope.checkedSubject === true) {
+                    if (angular.isUndefined(gmailinput.checkedSubject)) subject = "";
+                    else subject = gmailinput.checkedSubject;
+                }
+                else {
+                    subject = "NULL";
+                }
+                if ($scope.checkedplace === true) {
+                    if (angular.isUndefined(gmailinput.checkedplace)) place = "";
+                    else place = gmailinput.checkedplace;
+
+
+                }
+                else place = "NULL";
+
+
+
+            }
+            var loginDataSend =
+            {
+                "title": title,
+                "subject": subject,
+                "place": place
+
+            };
+            $scope.sedingServer(loginDataSend);
+
+            /*
 
             if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
             {
@@ -984,26 +1034,12 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                         place = gmailinput.checkedplace;
                     else place = "";
                 }
-
-                var loginDataSend =
-                {
-
-                    "title:"  : title,
-                    "subject" : subject,
-                    "place"   : place
-
-                };
-                   
-                   $scope.sedingServer(loginDataSend);
-
-
-
+                */
 
                 //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
-
                 //var title ="w";
 
-            }
+            //}
 
 
 
