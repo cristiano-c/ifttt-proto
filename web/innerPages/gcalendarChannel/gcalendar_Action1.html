@@ -97,19 +97,19 @@
 
                                 <label for="selectYear">Make a choice for year:</label>
                                 <select name="mySelect" id="selectYear"
-                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-disabled="!checkdata"
                                         ng-options="option.year  for option in yearVector.availableOptions track by option.id"
                                         ng-model="yearVector.selectedOption"></select>
                                 <br>
                                 <label for="selectMonth">Make a choice for mounth:</label>
                                 <select name="mySelect" id="selectMonth"
-                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-disabled="!checkdata"
                                         ng-options="option.month  for option in monthVector.availableOptions track by option.id"
                                         ng-model="monthVector.selectedOption"></select>
                                 <br>
                                 <label for="selectDay">Make a choice for day:</label>
                                 <select name="mySelect" id="selectDay"
-                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-disabled="!checkdata"
                                         ng-options="option.day  for option in dayVector.availableOptions track by option.id"
                                         ng-model="dayVector.selectedOption"></select>
 
@@ -129,7 +129,7 @@
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#Trigger1Gcalendar" >Back</a>
                             <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
-                                class="btn btn-primary"  ng-click="actiongcalendar()" >Summit</a>
+                                class="btn btn-primary"  ng-click="actiongcalendar(yearVector)" >Summit</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place or/and Data in order to continue

@@ -1341,8 +1341,10 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
 
-        $scope.actiongcalendar = function()
+        $scope.actiongcalendar = function(dateXYZ)
         {
+            alert("cia");
+            alert(dateXYZ);
 
         }
 
