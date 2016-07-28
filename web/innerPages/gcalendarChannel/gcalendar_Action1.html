@@ -6,8 +6,7 @@
 </head>
 <body>
 <div>
-    <br>
-    <br>
+
 
 
     <div class="row">
@@ -78,23 +77,40 @@
                             </div>
                         </div>
 
+<!---       ---------------------------------------------------------------------     -->
+
+                        <form name="weather">
+
+                            <b>Witch is the weather </b>  (Abilitation):
+                            <input
+                                    id="weatheridcheckbox"
+                                    type="checkbox"
+                                    ng-model="checkmodelcheckweather"
+
+                            >
+
+                            <!--
+                            <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
+                                   required>
+                                   -->
+                            <br>
+                            <form name="myForm">
+                                <label for="mySelect">Make a choice for mounth:</label>
+                                <select name="mySelect" id="mySelect"
+                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-options="option.name  for option in data.availableOptions track by option.id"
+                                        ng-model="data.selectedOption"></select>
+                            </form>
 
 
-                        <b>Witch is the thmax </b>  (Abilitation):
-                        <input
-                                id="thmaxidcheckbox"
-                                type="checkbox"
-                                ng-model="checkmodelcheckthmax"
-                        >
-                        <input id="thmaxidinput" ng-disabled="!checkmodelcheckthmax" type="number" name="input" ng-model="trigger1input.value1"
-                               min="-70" max="70" required>
-                        </label>
-                        <div role="alert">
-                        <span  style="color:#ac2925" class="error" ng-show="thmaxidcheckbox.input.$error.required  && checkmodelcheckthmax">
+                            <!---       ---------------------------------------------------------------------     -->
+
+                            </label>
+                            <div role="alert">
+                        <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
                             Required!</span>
-                            <span  style="color:#ac2925"  class="error" ng-show="thmaxidcheckbox.input.$error.number  && checkmodelcheckthmax">
-                            Not valid number!</span>
-                        </div>
+                            </div>
+                        </form>
 
 
 

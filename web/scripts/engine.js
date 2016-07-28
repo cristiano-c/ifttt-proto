@@ -1342,6 +1342,27 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
+        $scope.data =
+        {
+            availableOptions:
+                [
+                    {id: '1', name: 'January'},
+                    {id: '2', name: 'February'},
+                    {id: '3', name: 'March'},
+                    {id: '4', name: 'April'},
+                    {id: '5', name: 'May'},
+                    {id: '6', name: 'June'},
+                    {id: '7', name: 'July'},
+                    {id: '8', name: 'August'},
+                    {id: '9', name: 'September'},
+                    {id: '10', name: 'October'},
+                    {id: '11', name: 'November'},
+                    {id: '12', name: 'December'},
+
+                ],
+            selectedOption: {id: '1', name: 'January'} //This sets the default value of the select in the ui
+
+        }
 //action1GcalendarController
 
     }]);
