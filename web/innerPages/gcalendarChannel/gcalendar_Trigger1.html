@@ -17,39 +17,31 @@
                 </div>
                 <div class="col-md-4">
                     <p><h1>Choose your trigger</h1></p>
-                    <form id="gmail-form" role="form" name="form" ng-controller="GmailTriggerController" novalidate>
+                    <form id="gmail-form" role="form" name="form" ng-controller="Trigger1GcalendarController" novalidate>
 
                         <div class="form-group">
-                            <label>Email address:</label> <br>
-                            <label>Click me in order to active the email trigger:
+                            <label>Title:</label> <br>
+                            <label>Click me in order to active this trigger:
                                 <input
                                     type="checkbox"
-                                    ng-model="checkedEmail"
-                                    ng-change="checkemailfunc(checkemailvar)"
+                                    ng-model="checkedtitle"
+                                    ng-change="checktitlefunc(checktitlevar)"
                                 >
                             </label><br/>
-                            <input type="email"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
-                                   ng-model="gmailinput.email"
-                                   required="" name="uEmail"
+                            <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
+                                   ng-model="gmailinput.title"
+                                   required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{100 - gmailinput.email.length}} left </span>
-                            <div ng-show="form.$submitted || form.uEmail.$touched">
-                                <span ng-show="form.uEmail.$error.email"   style="color: #b81900">This is not a valid email</span>
-                            </div>
+                            <span>{{100 - gmailinput.title.length}} left </span>
                         </div>
-
-
-
-
-
 
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>The object:</label>
-                            <label>Click me in order to active the subject trigger:
+                            <label>Description:</label>
+                            <label>Click me in order to active the description trigger:
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
@@ -63,13 +55,41 @@
                             <span>{{500 - gmailinput.subjectReceive.length}} left </span>
                         </div>
 
+
+                        <!-- place -->
+                        <div class="form-group">
+                            <label>place:</label> <br>
+                            <label>Click me in order to active this trigger:
+                                <input
+                                        type="checkbox"
+                                        ng-model="checkedplace"
+                                        ng-change="checkplacefunc(checkplacevar)"
+                                >
+                            </label><br/>
+                            <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
+                                   ng-model="gmailinput.place"
+                                   required="" name="uplace"
+                                   maxlength="100"
+                                   ng-trim="false"
+                            >
+                            <span>{{100 - gmailinput.place.length}} left </span>
+                            <div ng-show="form.$submitted || form.uplace.$touched">
+                                <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
+                            </div>
+                        </div>
+
+
+
+
+
+
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#chooseChannel" >Back</a>
-                            <a  href="#gMailAction" ng-disabled="!checkedSubject && !checkedEmail" type="submit"
-                                class="btn btn-primary"  ng-click="triggerGmail(gmailinput)" >Next</a>
+                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                                class="btn btn-primary"  ng-click="submitted=true; trigger1Gcalendar()" >Next</a>
                         </div>
-                        <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
-                            You have to ability e.mail or/and subject in order to continue
+                        <label ng-if="(checkedtitle && checkedSubject && checkedplace) || submitted" class="animate-if" >
+                            You have to ability Title or/and Subject or/and Place in order to continue
                         </label>
 
                  <!--
@@ -85,7 +105,6 @@
             </div>
         </div>
     </div>
-
 
 </div>
 

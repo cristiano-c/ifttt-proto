@@ -121,7 +121,8 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
     $routeProvider.when('/Trigger1Gcalendar', {
-        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Trigger1.html'
+        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Trigger1.html',
+        controller: 'Trigger1GcalendarController'
     });
 
 
@@ -926,3 +927,44 @@ iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
 
     }]);
 
+
+iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
+    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+    {
+
+        $scope.trigger1Gcalendar = function()
+        {
+
+        };
+
+    $scope.checktitlevar = 'NO';
+    $scope.checkadvisetsunrisevar = 'NO';
+    $scope.checkplacevar = 'NO';
+
+    $scope.checktitlefunc = function(name)
+    {
+        if($scope.checktitlevar === "YES")
+            $scope.checktitlevar = 'NO';
+        else
+            $scope.checktitlevar = 'YES';
+            //console.log(name);
+    };
+
+    $scope.checkadvisetsunsetfunc = function(name)
+    {
+        if($scope.checkadvisesunsetvar === "YES")
+            $scope.checkadvisesunsetvar = 'NO';
+        else
+            $scope.checkadvisesunsetvar = 'YES';
+            //console.log(name);
+    };
+
+    $scope.checkplacefunc = function(name)
+    {
+        if($scope.checkplacevar === "YES")
+            $scope.checkplacevar = 'NO';
+        else
+            $scope.checkplacevar = 'YES';
+            //console.log(name);
+    };
+}]);
