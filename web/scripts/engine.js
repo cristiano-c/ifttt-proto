@@ -1343,8 +1343,8 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
         $scope.actiongcalendar = function(dateXYZ)
         {
-            alert("cia");
-            alert(dateXYZ);
+            alert("cias");
+            alert(dateXYZ.selectedOption);
 
         }
 
