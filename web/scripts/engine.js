@@ -131,8 +131,8 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
 
-    $routeProvider.when('/actionGcalendar', {
-        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Action.html'
+    $routeProvider.when('/action1Gcalendar', {
+        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Action1.html'
     });
 
 
