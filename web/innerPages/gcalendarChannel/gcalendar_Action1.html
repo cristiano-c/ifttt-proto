@@ -15,15 +15,15 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your trigger</h1></p>
+                    <p><h1>Choose your action</h1></p>
                     <form id="gmail-form" role="form" name="form" ng-controller="action1GcalendarController" novalidate>
 
                         <div class="form-group">
                             <label>Title:</label> <br>
-                            <label>Click me in order to active this trigger:
+                            <label>Click me in order to active this action:
                                 <input
-                                    type="checkbox"
-                                    ng-model="checkedtitle"
+                                        type="checkbox"
+                                        ng-model="checkedtitle"
 
                                 >
                             </label><br/>
@@ -40,7 +40,7 @@
                         <!--Subject e.mail -->
                         <div class="form-group">
                             <label>Description:</label>
-                            <label>Click me in order to active the description trigger:
+                            <label>Click me in order to active the description action:
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
@@ -58,7 +58,7 @@
                         <!-- place -->
                         <div class="form-group">
                             <label>place:</label> <br>
-                            <label>Click me in order to active this trigger:
+                            <label>Click me in order to active this action:
                                 <input
                                         type="checkbox"
                                         ng-model="checkedplace"
@@ -77,11 +77,11 @@
                             </div>
                         </div>
 
-<!---       ---------------------------------------------------------------------     -->
+                        <!---       ---------------------------------------------------------------------     -->
 
-                        <form name="weather">
 
-                            <b>Witch is the weather </b>  (Abilitation):
+
+                            <b> </b>  (Abilitation):
                             <input
                                     id="weatheridcheckbox"
                                     type="checkbox"
@@ -94,13 +94,25 @@
                                    required>
                                    -->
                             <br>
-                            <form name="myForm">
-                                <label for="mySelect">Make a choice for mounth:</label>
-                                <select name="mySelect" id="mySelect"
+
+                                <label for="selectYear">Make a choice for year:</label>
+                                <select name="mySelect" id="selectYear"
                                         ng-disabled="!checkmodelcheckweather"
-                                        ng-options="option.name  for option in data.availableOptions track by option.id"
-                                        ng-model="data.selectedOption"></select>
-                            </form>
+                                        ng-options="option.year  for option in yearVector.availableOptions track by option.id"
+                                        ng-model="yearVector.selectedOption"></select>
+                                <br>
+                                <label for="selectMonth">Make a choice for mounth:</label>
+                                <select name="mySelect" id="selectMonth"
+                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-options="option.month  for option in monthVector.availableOptions track by option.id"
+                                        ng-model="monthVector.selectedOption"></select>
+                                <br>
+                                <label for="selectDay">Make a choice for day:</label>
+                                <select name="mySelect" id="selectDay"
+                                        ng-disabled="!checkmodelcheckweather"
+                                        ng-options="option.day  for option in dayVector.availableOptions track by option.id"
+                                        ng-model="dayVector.selectedOption"></select>
+
 
 
                             <!---       ---------------------------------------------------------------------     -->
@@ -110,39 +122,25 @@
                         <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
                             Required!</span>
                             </div>
-                        </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
 
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#Trigger1Gcalendar" >Back</a>
-                            <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Summit</a>
+                            <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
+                                class="btn btn-primary"  ng-click="actiongcalendar()" >Summit</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place in order to continue
                         </label>
 
-                 <!--
-                 href="#actionGcalendar"
-                        http://localhost:8080/index.jsp#/SubGMail
-                        <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
-                        -->
+                        <!--
+                        href="#actionGcalendar"
+                               http://localhost:8080/index.jsp#/SubGMail
+                               <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
+                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                               -->
 
                     </form>
                 </div>
@@ -157,10 +155,17 @@
 
 <!--href="#SubGMailAction" -->
 
+<!-- example date
+<script>
+    angular.module('dateInputExample', [])
+            .controller('DateController', ['$scope', function($scope) {
+                $scope.example = {
+                    value: new Date(2013, 9, 22)
+                };
+            }]);
+</script>
 
-
-
-
+-->
 
 
 </body>
@@ -169,6 +174,16 @@ Example code
 <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
 <button ng-model="button" ng-disabled="checked">Button</button>
 -->
+
+
+<script>
+    angular.module('dateInputExample', [])
+            .controller('DateController', ['$scope', function($scope) {
+                $scope.example = {
+                    value: new Date(2013, 9, 22)
+                };
+            }]);
+</script>
 </html>
 
 
