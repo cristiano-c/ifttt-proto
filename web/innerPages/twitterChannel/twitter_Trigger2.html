@@ -17,14 +17,14 @@
                 </div>
                 <div class="col-md-4">
                     <p><h1>Choose your trigger</h1></p>
-                    <form id="gmail-form" role="form" name="form" ng-controller="Trigger1GcalendarController" novalidate>
+                    <form id="gmail-form" role="form" name="form" ng-controller="trigger1TwitterController" novalidate>
 
                         <div class="form-group">
                             <label>Title:</label> <br>
                             <label>Click me in order to active this trigger:
                                 <input
-                                    type="checkbox"
-                                    ng-model="checkedtitle"
+                                        type="checkbox"
+                                        ng-model="checkedtitle"
 
                                 >
                             </label><br/>
@@ -56,43 +56,22 @@
                         </div>
 
 
-                        <!-- place -->
-                        <div class="form-group">
-                            <label>place:</label> <br>
-                            <label>Click me in order to active this trigger:
-                                <input
-                                        type="checkbox"
-                                        ng-model="checkedplace"
-
-                                >
-                            </label><br/>
-                            <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
-                                   ng-model="gmailinput.place"
-                                   required="" name="uplace"
-                                   maxlength="100"
-                                   ng-trim="false"
-                            >
-                            <span>{{100 - gmailinput.place.length}} left </span>
-                            <div ng-show="form.$submitted || form.uplace.$touched">
-                                <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
-                            </div>
-                        </div>
 
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#choseTriggerTwitter" >Back</a>
-                            <a  href="#choseActionTwitter"  ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                            <a  href="#choseActionTwitter"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
                                 class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place in order to continue
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
+                            You have to ability Title or/and Subject in order to continue
                         </label>
 
-                 <!--
-                 href="#actionGcalendar"
-                        http://localhost:8080/index.jsp#/SubGMail
-                        <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
-                        -->
+                        <!--
+                        href="#actionGcalendar"
+                               http://localhost:8080/index.jsp#/SubGMail
+                               <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
+                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                               -->
 
                     </form>
                 </div>
@@ -108,13 +87,6 @@
 <!--href="#SubGMailAction" -->
 
 
-
-
-
-
-
-
-</body>
 <!--
 Example code
 <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>

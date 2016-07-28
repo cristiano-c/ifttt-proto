@@ -162,7 +162,9 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
 
     $routeProvider.when('/Trigger2Twitter', {
-        templateUrl: 'innerPages/twitterChannel/twitter_Trigger2.html'
+        templateUrl: 'innerPages/twitterChannel/twitter_Trigger2.html',
+        controller: 'trigger1TwitterController'
+
     });
 
     $routeProvider.when('/SuccessTwitter', {
