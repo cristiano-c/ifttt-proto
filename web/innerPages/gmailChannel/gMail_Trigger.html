@@ -5,17 +5,15 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    <br>
-    <br>
 
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                </div>
-                <div class="col-md-4">
+<div class="container" style="padding-top: 6%">
+
+    <div class="col-md-3">
+    </div>
+
+
+                <div class="col-md-6">
                     <p><h1>Choose your trigger</h1></p>
                     <form id="gmail-form" role="form" name="form" ng-controller="GmailTriggerController" novalidate>
 
@@ -44,8 +42,6 @@
 
 
 
-
-
                         <!--Subject e.mail -->
                         <div class="form-group">
                             <label>The object:</label>
@@ -58,15 +54,15 @@
                             </label><br/>
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
                                       ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
-                                      maxlength="500" ng-trim="false"
+                                      maxlength="100%" ng-trim="false"
                             ></textarea>
                             <span>{{500 - gmailinput.subjectReceive.length}} left </span>
                         </div>
 
                         <div>
-                            <a  type="submit" class="btn btn-primary" href="#chooseChannel" >Back</a>
+                            <a  type="submit" class="btn btn-danger pull-left" href="#chooseChannel" >Back</a>
                             <a  href="#gMailAction" ng-disabled="!checkedSubject && !checkedEmail" type="submit"
-                                class="btn btn-primary"  ng-click="triggerGmail(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right"  ng-click="triggerGmail(gmailinput)" >Next</a>
                         </div>
                         <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
                             You have to ability e.mail or/and subject in order to continue
@@ -80,14 +76,11 @@
 
                     </form>
                 </div>
-                <div class="col-md-4">
-                </div>
-            </div>
-        </div>
-    </div>
+
 
 
 </div>
+
 
 
 <!--href="#SubGMailAction" -->
