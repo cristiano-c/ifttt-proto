@@ -85,7 +85,7 @@
                             <input
                                     id="weatheridcheckbox"
                                     type="checkbox"
-                                    ng-model="checkmodelcheckweather"
+                                    ng-model="checkdata"
 
                             >
 
@@ -128,11 +128,11 @@
 
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#Trigger1Gcalendar" >Back</a>
-                            <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
+                            <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
                                 class="btn btn-primary"  ng-click="actiongcalendar()" >Summit</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place in order to continue
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
+                            You have to ability Title or/and Subject or/and Place or/and Data in order to continue
                         </label>
 
                         <!--

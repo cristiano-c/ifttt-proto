@@ -1433,6 +1433,11 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
         };
 
+        $scope.checkedtitle = true;
+        $scope.checkedSubject = false;
+        $scope.checkedplace = false;
+        $scope.checkdata = false;
+
 
 
 
