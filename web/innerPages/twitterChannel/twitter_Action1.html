@@ -6,7 +6,8 @@
 </head>
 <body>
 <div>
-
+    <br>
+    <br>
 
 
     <div class="row">
@@ -15,124 +16,36 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your action</h1></p>
-                    <form id="gmail-form" role="form" name="form" ng-controller="action1GcalendarController" novalidate>
+                    <p><h1>Choose your trigger</h1></p>
+                    <form id="gmail-form" role="form" name="form" ng-controller="action1TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
-                            <label>Click me in order to active this action:
+                            <label>Description:</label>
+                            <label>Click me in order to active the description trigger:
                                 <input
                                         type="checkbox"
                                         ng-model="checkedtitle"
 
                                 >
                             </label><br/>
-                            <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
-                                   ng-model="gmailinput.title"
-                                   required="" name="utitle"
-                                   maxlength="100"
-                                   ng-trim="false"
-                            >
-                            <span>{{100 - gmailinput.title.length}} left </span>
-                        </div>
-
-
-                        <!--Subject e.mail -->
-                        <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active the description action:
-                                <input
-                                        type="checkbox"
-                                        ng-model="checkedSubject"
-
-                                >
-                            </label><br/>
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
-                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
+                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedtitle"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
                             <span>{{500 - gmailinput.subjectReceive.length}} left </span>
                         </div>
 
 
-                        <!-- place -->
-                        <div class="form-group">
-                            <label>place:</label> <br>
-                            <label>Click me in order to active this action:
-                                <input
-                                        type="checkbox"
-                                        ng-model="checkedplace"
-
-                                >
-                            </label><br/>
-                            <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
-                                   ng-model="gmailinput.place"
-                                   required="" name="uplace"
-                                   maxlength="100"
-                                   ng-trim="false"
-                            >
-                            <span>{{100 - gmailinput.place.length}} left </span>
-                            <div ng-show="form.$submitted || form.uplace.$touched">
-                                <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
-                            </div>
-                        </div>
-
-                        <!---       ---------------------------------------------------------------------     -->
-
-
-
-                            <b> </b>  (Abilitation):
-                            <input
-                                    id="weatheridcheckbox"
-                                    type="checkbox"
-                                    ng-model="checkdata"
-
-                            >
-
-                            <!--
-                            <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
-                                   required>
-                                   -->
-                            <br>
-
-                                <label for="selectYear">Make a choice for year:</label>
-                                <select name="mySelect" id="selectYear"
-                                        ng-disabled="!checkdata"
-                                        ng-options="option.year  for option in yearVector.availableOptions track by option.id"
-                                        ng-model="yearVector.selectedOption"></select>
-                                <br>
-                                <label for="selectMonth">Make a choice for mounth:</label>
-                                <select name="mySelect" id="selectMonth"
-                                        ng-disabled="!checkdata"
-                                        ng-options="option.month  for option in monthVector.availableOptions track by option.id"
-                                        ng-model="monthVector.selectedOption"></select>
-                                <br>
-                                <label for="selectDay">Make a choice for day:</label>
-                                <select name="mySelect" id="selectDay"
-                                        ng-disabled="!checkdata"
-                                        ng-options="option.day  for option in dayVector.availableOptions track by option.id"
-                                        ng-model="dayVector.selectedOption"></select>
-
-
-
-                            <!---       ---------------------------------------------------------------------     -->
-
-                            </label>
-                            <div role="alert">
-                        <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
-                            Required!</span>
-                            </div>
-
 
 
 
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#choseActionTwitter" >Back</a>
-                            <a  href="#SuccessTwitter"  ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
-                                class="btn btn-primary"  ng-click="actiongcalendar(yearVector)" >Summit</a>
+                            <a  href="#SuccessTwitter"  ng-disabled="!checkedtitle" type="submit"
+                                class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place or/and Data in order to continue
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle" class="animate-if" >
+                            You have to ability Title in order to continue
                         </label>
 
                         <!--
@@ -155,35 +68,12 @@
 
 <!--href="#SubGMailAction" -->
 
-<!-- example date
-<script>
-    angular.module('dateInputExample', [])
-            .controller('DateController', ['$scope', function($scope) {
-                $scope.example = {
-                    value: new Date(2013, 9, 22)
-                };
-            }]);
-</script>
 
--->
-
-
-</body>
 <!--
 Example code
 <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
 <button ng-model="button" ng-disabled="checked">Button</button>
 -->
-
-
-<script>
-    angular.module('dateInputExample', [])
-            .controller('DateController', ['$scope', function($scope) {
-                $scope.example = {
-                    value: new Date(2013, 9, 22)
-                };
-            }]);
-</script>
 </html>
 
 
