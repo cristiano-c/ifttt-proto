@@ -957,32 +957,60 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
              */
             if (angular.isUndefined(gmailinput))
             {
-                title = "NULL";
-                subject = "NULL";
-                place = "NULL";
+                alert("non defined");
+                if ($scope.checkedtitle === true)
+                {
+                    title="";
+                }
+                else
+                {
+                    title = "NULL";
+                }
+                if ($scope.checkedSubject === true)
+                {
+                    subject="";
+                }
+                else
+                {
+                    subject = "NULL";
+                }
+                if ($scope.checkedplace === true)
+                {
+                    place="";
+                }
+                else place = "NULL";
 
             }
             else
             {
-                if ($scope.checkedtitle === true) {
+                if ($scope.checkedtitle === true)
+                {
                     if (angular.isUndefined(gmailinput.title)) title = "";
                     else title = gmailinput.title;
 
                 }
-                else {
+                else
+                {
                     title = "NULL";
 
                 }
-                if ($scope.checkedSubject === true) {
-                    if (angular.isUndefined(gmailinput.checkedSubject)) subject = "";
-                    else subject = gmailinput.checkedSubject;
+                if ($scope.checkedSubject === true)
+                {
+                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
+                    else subject = gmailinput.subjectReceive;
                 }
-                else {
+                else
+                {
                     subject = "NULL";
                 }
-                if ($scope.checkedplace === true) {
-                    if (angular.isUndefined(gmailinput.checkedplace)) place = "";
-                    else place = gmailinput.checkedplace;
+                if ($scope.checkedplace === true)
+                {
+                    if (angular.isUndefined(gmailinput.place)) place = "";
+                    else
+                    {
+                        place = gmailinput.place;
+                        //alert(gmailinput.place);
+                    }
 
 
                 }
