@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-md-4">
                     <p><h1>Choose your trigger</h1></p>
-                    <form id="gmail-form" role="form" name="form" ng-controller="Trigger1GcalendarController" novalidate>
+                    <form id="gmail-form" role="form" name="form" ng-controller="action1GcalendarController" novalidate>
 
                         <div class="form-group">
                             <label>Title:</label> <br>
@@ -78,6 +78,40 @@
                             </div>
                         </div>
 
+
+
+                        <b>Witch is the thmax </b>  (Abilitation):
+                        <input
+                                id="thmaxidcheckbox"
+                                type="checkbox"
+                                ng-model="checkmodelcheckthmax"
+                        >
+                        <input id="thmaxidinput" ng-disabled="!checkmodelcheckthmax" type="number" name="input" ng-model="trigger1input.value1"
+                               min="-70" max="70" required>
+                        </label>
+                        <div role="alert">
+                        <span  style="color:#ac2925" class="error" ng-show="thmaxidcheckbox.input.$error.required  && checkmodelcheckthmax">
+                            Required!</span>
+                            <span  style="color:#ac2925"  class="error" ng-show="thmaxidcheckbox.input.$error.number  && checkmodelcheckthmax">
+                            Not valid number!</span>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                         <div>
                             <a  type="submit" class="btn btn-primary" href="#Trigger1Gcalendar" >Back</a>
                             <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
@@ -106,7 +140,6 @@
 
 
 <!--href="#SubGMailAction" -->
-
 
 
 

@@ -132,7 +132,8 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
 
     $routeProvider.when('/action1Gcalendar', {
-        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Action1.html'
+        templateUrl: 'innerPages/gcalendarChannel/gcalendar_Action1.html',
+        controller: 'action1GcalendarController'
     });
 
 
@@ -1333,5 +1334,14 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
          };
          */
 
+
+    }]);
+
+
+iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
+    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+    {
+
+//action1GcalendarController
 
     }]);
