@@ -478,7 +478,7 @@ $(function(){
             //          1                                       1                                          1
 
 
-            url = "http://localhost:8080/#/gMailSucces";
+            url = "http://localhost:8080/#/allActions";
             window.location.replace(url);
 
         }

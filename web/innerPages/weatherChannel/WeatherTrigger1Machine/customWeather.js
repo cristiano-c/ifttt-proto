@@ -364,7 +364,7 @@ $(function(){
                             success: console.log("la post ha avuto successo")
                         });
 
-                        url = "http://localhost:8080/#/gMailSucces";
+                        url = "http://localhost:8080/#/allActions";
                         window.location.replace(url);
                         //or
                         //window.location(url);

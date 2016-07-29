@@ -177,6 +177,10 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         templateUrl: 'innerPages/triggers.html'
     });
 
+    $routeProvider.when('/allActions', {
+        templateUrl: 'innerPages/actions.html'
+    });
+
 
 
 
