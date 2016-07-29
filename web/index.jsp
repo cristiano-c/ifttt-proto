@@ -60,6 +60,9 @@
 
   <ng-view></ng-view>
 
+  <div style="padding-bottom: 6%">
+    <br>
+  </div>
 
 
 
@@ -96,9 +99,6 @@
 
 
 
-<div style="padding-bottom: 10%">
-<br>
-</div>
 
 
 
