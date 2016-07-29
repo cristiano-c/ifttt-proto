@@ -16,18 +16,17 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your trigger</h1></p>
+                    <p><h1>Calendar "event start" trigger</h1></p>
+                    <hr>
                     <form id="gmail-form" role="form" name="form" ng-controller="Trigger1GcalendarController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
-                            <label>Click me in order to active this trigger:
-                                <input
+                            <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
 
-                                >
-                            </label><br/>
+                            > <label>Title:</label> <br>
+
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
                                    ng-model="gmailinput.title"
                                    required="" name="utitle"
@@ -40,14 +39,12 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active the description trigger:
-                                <input
-                                        type="checkbox"
-                                        ng-model="checkedSubject"
+                            <input
+                                    type="checkbox"
+                                    ng-model="checkedSubject"
 
-                                >
-                            </label><br/>
+                            > <label>Description:</label>
+
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
                                       ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
@@ -58,14 +55,12 @@
 
                         <!-- place -->
                         <div class="form-group">
-                            <label>place:</label> <br>
-                            <label>Click me in order to active this trigger:
-                                <input
-                                        type="checkbox"
-                                        ng-model="checkedplace"
+                            <input
+                                    type="checkbox"
+                                    ng-model="checkedplace"
 
-                                >
-                            </label><br/>
+                            > <label>Location:</label> <br>
+
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
                                    ng-model="gmailinput.place"
                                    required="" name="uplace"
@@ -77,14 +72,14 @@
                                 <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
                             </div>
                         </div>
-
+<hr>
                         <div>
-                            <a  type="submit" class="btn btn-primary" href="#choseTriggerGcalendar" >Back</a>
+                            <a  type="submit" class="btn btn-danger" href="#choseTriggerGcalendar" >Back</a>
                             <a  href="#action1Gcalendar"  ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place in order to continue
+                            You have to activate at least one of Title, Subject and Location in order to continue
                         </label>
 
                  <!--
