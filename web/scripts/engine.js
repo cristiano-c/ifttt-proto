@@ -22,12 +22,12 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
     $routeProvider.when('/index/createIF', {
-        templateUrl: 'innerPages/if-creator.html',
+        templateUrl: 'innerPages/triggers.html',
         controller: 'ifCreatorController'
     });
 
     $routeProvider.when('/index/createDO', {
-        templateUrl: 'innerPages/do-creator.html',
+        templateUrl: 'innerPages/actions.html',
         controller: 'doCreatorController'
     });
 
