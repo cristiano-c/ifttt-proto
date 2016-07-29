@@ -173,6 +173,11 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         templateUrl: 'innerPages/twitterChannel/twitterSuccess.html'
     });
 
+    $routeProvider.when('/allTriggers', {
+        templateUrl: 'innerPages/triggers.html'
+    });
+
+
 
 
     $routeProvider.otherwise({redirectTo: '/home'});
