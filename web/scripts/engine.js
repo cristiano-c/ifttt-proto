@@ -1064,9 +1064,10 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
             }
             var loginDataSend =
             {
+                "eventAction": 0,
                 "title": title,
-                "subject": subject,
-                "place": place
+                "description": subject,
+                "location": place
 
             };
             $scope.sedingServer(loginDataSend);
@@ -1264,9 +1265,10 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
             }
             var loginDataSend =
             {
+                "eventAction": 1,
                 "title": title,
-                "subject": subject,
-                "place": place
+                "description": subject,
+                "location": place
 
             };
             $scope.sedingServer(loginDataSend);
@@ -1382,7 +1384,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
             alert("cias");
             alert(dateXYZ.selectedOption);
 
-        }
+        };
 
 
 
@@ -1578,8 +1580,9 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
             }
             var loginDataSend =
             {
-                "person": title,
-                "HASHTAG": subject
+                "type": 0,
+                "username_sender": title,
+                "hashtag_text": subject
                 //"place": place
 
             };
@@ -1781,8 +1784,9 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
             }
             var loginDataSend =
             {
-                "person": title,
-                "testo": subject
+                "type": 1,
+                "username_sender": title,
+                "hashtag_text": subject
                 //"place": place
 
             };

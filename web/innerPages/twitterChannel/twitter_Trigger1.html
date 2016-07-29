@@ -58,13 +58,15 @@
 
 
                         <div>
-                            <a  type="submit" class="btn btn-primary" href="#choseTriggerTwitter" >Back</a>
+                            <a  type="submit" class="btn btn-danger pull-left" href="#choseTriggerTwitter" >Cancel</a>
                             <a  href="#choseActionTwitter"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
-                                class="btn btn-primary"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
                         </label>
+
+
 
                  <!--
                  href="#actionGcalendar"
