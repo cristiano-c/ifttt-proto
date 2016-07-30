@@ -47,15 +47,16 @@ var timezone_customWeatherActionControllerTrigger1 = "";
 var ora_customWeatherActionControllerTrigger1 = "";
 
 /*  customWeatherActionControllerTrigger2 Tn 7 */
-
 var     idCity_customWeatherActionControllerTrigger2 = "";
 var     pweather_customWeatherActionControllerTrigger2 = "";
 var     pperiod_customWeatherActionControllerTrigger2 = "";
 var     pzone_customWeatherActionControllerTrigger2 = "";
 
-
-
-
+/* customWeatherActionControllerTrigger3  Tn 8 */
+var  idCity_customWeatherActionControllerTrigger3 = "";
+var  timezone_customWeatherActionControllerTrigger3 = "";
+var  sunset_customWeatherActionControllerTrigger3 = "";
+var  sunrise_customWeatherActionControllerTrigger3 = "";
 
 
 
