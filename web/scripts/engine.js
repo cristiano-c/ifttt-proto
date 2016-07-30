@@ -3,6 +3,33 @@
  */
 
 var iftttApp = angular.module('iftttApp', ['ngRoute']);
+var triggerChose = 0;
+var actionChose =  0;
+
+/*GmailTriggerController  n 1*/
+var sender_GmailTriggerController = "";
+var subject_GmailTriggerController = "";
+
+/* GmailActionController  n 1*/
+var sender_GmailActionController = "";
+var subject_GmailActionController = "";
+
+/* Trigger1GcalendarController n 2 */
+var title_Trigger1GcalendarController = "";
+var description_Trigger1GcalendarController = "";
+var place_Trigger1GcalendarController = "";
+
+/*Trigger2GcalendarController n 3 */
+var title_Trigger2GcalendarController = "";
+var description_Trigger2GcalendarController = "";
+var place_Trigger2GcalendarController = "";
+
+/*action1GcalendarController n 2 */ //--> si doveva finire
+
+
+
+
+
 
 iftttApp.config(['$routeProvider', function($routeProvider){
 
@@ -260,6 +287,7 @@ iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
                 if(pws1==pws2)
                 {
                     //alert(user + " " + email + " " + " " + pws1);
+
                     var loginDataSend =
                     {
                         "user": user,
@@ -296,11 +324,13 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
         $scope.triggerGmail = function(user)
         {
+            triggerChose=1;
 
             if (angular.isUndefined(user))
             {
                 //alert("Almost a field must be completed");
                 if($scope.checkemailvar === "YES"  &&  $scope.checkedSubjectvar === "YES") {
+                    /* X1
                     var loginDataSend =
                     {
                         "sender:": "",
@@ -314,8 +344,12 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.1")
                     });
+                    */
+                    sender_GmailTriggerController="";
+                    subject_GmailTriggerController="";
                 }
                 if($scope.checkemailvar === "NO"  &&  $scope.checkedSubjectvar === "YES") {
+                    /*x1
                     var loginDataSend =
                     {
                         "sender:": "null",
@@ -329,8 +363,12 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.2")
                     });
+                    */
+                    sender_GmailTriggerController="null";
+                    subject_GmailTriggerController="";
                 }
                 if($scope.checkemailvar === "YES"  &&  $scope.checkedSubjectvar === "NO") {
+                    /*x1
                     var loginDataSend =
                     {
                         "sender:": "",
@@ -344,6 +382,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.3")
                     });
+                    */
+                    sender_GmailTriggerController="";
+                    subject_GmailTriggerController="null";
+
                 }
 
 
@@ -360,6 +402,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     //Cosa fare se la stringa è vuota? Magari vuole l'email con il subject vuoto?
 
                     $scope.triggerGmailData = angular.copy(user);
+                    /* x1
                     var loginDataSend =
                     {
                         "sender:": $scope.triggerGmailData.email,
@@ -373,8 +416,11 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                         dataType: "json",
                         success: console.log("la post ha avuto successo n2")
                     });
+                    */
                     //return;
                     //alert("Two defined");
+                    sender_GmailTriggerController=$scope.triggerGmailData.email;
+                    subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
 
 
                 }
@@ -394,6 +440,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                 "subject:": $scope.triggerGmailData.subjectReceive
                             };
                             //alert(loginDataSend.pssword);
+                            /*
                             $.ajax({
                                 method: "post",
                                 url: "/MyServlet",
@@ -401,6 +448,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                 dataType: "json",
                                 success: console.log("la post ha avuto successo n3.1")
                             });
+                            */
+                            sender_GmailTriggerController="";
+                            subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
+
                         }
                         else
                         {
@@ -409,6 +460,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                 "sender:": "null",
                                 "subject:": $scope.triggerGmailData.subjectReceive
                             };
+                            /*
                             //alert(loginDataSend.pssword);
                             $.ajax({
                                 method: "post",
@@ -417,6 +469,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                 dataType: "json",
                                 success: console.log("la post ha avuto successo n3.2")
                             });
+                            */
+                            sender_GmailTriggerController="null";
+                            subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
+
 
                         }
                         //return;
@@ -438,6 +494,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     "sender:": $scope.triggerGmailData.email,
                                     "subject:": ""
                                 };
+                                /*
                                 //alert(loginDataSend.pssword);
                                 $.ajax({
                                     method: "post",
@@ -446,6 +503,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     dataType: "json",
                                     success: console.log("la post ha avuto successo n4.1")
                                 });
+                                */
+                                sender_GmailTriggerController=$scope.triggerGmailData.email;
+                                subject_GmailTriggerController="";
+
                             }
                             else
                             {
@@ -454,6 +515,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     "sender:": $scope.triggerGmailData.email,
                                     "subject:": "NULL"
                                 };
+                                /*
                                 //alert(loginDataSend.pssword);
                                 $.ajax({
                                     method: "post",
@@ -462,6 +524,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     dataType: "json",
                                     success: console.log("la post ha avuto successo n4.2")
                                 });
+                                */
+                                sender_GmailTriggerController=$scope.triggerGmailData.email;
+                                subject_GmailTriggerController="NULL";
+
 
                             }
 
@@ -475,7 +541,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 //$location.path(view);
             }
 
-        }
+        };
 
 
 
@@ -513,6 +579,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
         $scope.actionGmail = function(user)
         {
+            actionChose=1;
 
             if (angular.isUndefined(user))
             {
@@ -524,6 +591,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         "subject": ""
                     };
                     //alert(loginDataSend.pssword);
+                    /* x1
                     $.ajax({
                         method: "post",
                         url: "/MyServlet",
@@ -531,6 +599,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.1")
                     });
+                    */
+                    sender_GmailActionController = "";
+                    subject_GmailActionController = "";
+
                 }
                 if($scope.checkemailvar === "NO"  &&  $scope.checkedSubjectvar === "YES") {
                     var loginDataSend =
@@ -539,6 +611,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         "subject": ""
                     };
                     //alert(loginDataSend.pssword);
+                    /*
                     $.ajax({
                         method: "post",
                         url: "/MyServlet",
@@ -546,6 +619,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.2")
                     });
+                    */
+                    sender_GmailActionController = "null";
+                    subject_GmailActionController = "";
+
                 }
                 if($scope.checkemailvar === "YES"  &&  $scope.checkedSubjectvar === "NO") {
                     var loginDataSend =
@@ -553,6 +630,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         "sender:": "",
                         "subject": "null"
                     };
+                    /*
                     //alert(loginDataSend.pssword);
                     $.ajax({
                         method: "post",
@@ -561,6 +639,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         dataType: "json",
                         success: console.log("la post ha avuto successo n1.3")
                     });
+                    */
+                    sender_GmailActionController = "";
+                    subject_GmailActionController = "null";
+
                 }
 
 
@@ -582,6 +664,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         "sender:": $scope.triggerGmailData.email,
                         "subject": $scope.triggerGmailData.subjectReceive
                     };
+                    /*
                     //alert(loginDataSend.pssword);
                     $.ajax({
                         method: "post",
@@ -592,6 +675,9 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     });
                     //return;
                     //alert("Two defined");
+                    */
+                    sender_GmailActionController = $scope.triggerGmailData.email;
+                    subject_GmailActionController = $scope.triggerGmailData.subjectReceive;
 
 
                 }
@@ -611,6 +697,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                 "subject:": $scope.triggerGmailData.subjectReceive
                             };
                             //alert(loginDataSend.pssword);
+                            /*
                             $.ajax({
                                 method: "post",
                                 url: "/MyServlet",
@@ -618,6 +705,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                 dataType: "json",
                                 success: console.log("la post ha avuto successo n3.1")
                             });
+                            */
+                            sender_GmailActionController = "";
+                            subject_GmailActionController = $scope.triggerGmailData.subjectReceive;
+
                         }
                         else
                         {
@@ -627,6 +718,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                 "subject:": $scope.triggerGmailData.subjectReceive
                             };
                             //alert(loginDataSend.pssword);
+                            /*
                             $.ajax({
                                 method: "post",
                                 url: "/MyServlet",
@@ -634,6 +726,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                 dataType: "json",
                                 success: console.log("la post ha avuto successo n3.2")
                             });
+                            */
+                            sender_GmailActionController = "null";
+                            subject_GmailActionController = $scope.triggerGmailData.subjectReceive;
+
 
                         }
                         //return;
@@ -656,6 +752,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                     "subject:": ""
                                 };
                                 //alert(loginDataSend.pssword);
+                                /*
                                 $.ajax({
                                     method: "post",
                                     url: "/MyServlet",
@@ -663,6 +760,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                     dataType: "json",
                                     success: console.log("la post ha avuto successo n4.1")
                                 });
+                                */
+                                sender_GmailActionController = $scope.triggerGmailData.email;
+                                subject_GmailActionController = "";
+
                             }
                             else
                             {
@@ -672,6 +773,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                     "subject:": "NULL"
                                 };
                                 //alert(loginDataSend.pssword);
+                                /*
                                 $.ajax({
                                     method: "post",
                                     url: "/MyServlet",
@@ -679,6 +781,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                                     dataType: "json",
                                     success: console.log("la post ha avuto successo n4.2")
                                 });
+                                */
+                                sender_GmailActionController = $scope.triggerGmailData.email;
+                                subject_GmailActionController = "null";
+
 
                             }
 
@@ -692,7 +798,9 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 //$location.path(view);
             }
 
-        }
+            sendingToServerAll();
+
+        };
 
 
 
@@ -990,6 +1098,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            triggerChose = 2;
             var title;
             var subject;
             var place;
@@ -1071,6 +1180,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
 
             }
+            /*
             var loginDataSend =
             {
                 "eventAction": 0,
@@ -1080,6 +1190,11 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
             };
             $scope.sedingServer(loginDataSend);
+            */
+            title_Trigger1GcalendarController = title;
+            description_Trigger1GcalendarController = subject;
+            place_Trigger1GcalendarController = place;
+
 
             /*
 
@@ -1191,6 +1306,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            triggerChose = 3;
             var title;
             var subject;
             var place;
@@ -1272,6 +1388,12 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 
 
             }
+
+            title_Trigger2GcalendarController = title;
+            description_Trigger2GcalendarController = subject;
+            place_Trigger2GcalendarController = place;
+
+            /*
             var loginDataSend =
             {
                 "eventAction": 1,
@@ -1281,6 +1403,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 
             };
             $scope.sedingServer(loginDataSend);
+            /*
 
             /*
 
@@ -1390,8 +1513,9 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
         $scope.actiongcalendar = function(dateXYZ)
         {
-            alert("cias");
-            alert(dateXYZ.selectedOption);
+            //alert("cias");
+            //
+            // alert(dateXYZ.selectedOption);
 
         };
 
@@ -2306,3 +2430,57 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
 
     }]);
+function sendingToServerAll ()
+{
+    /*
+    var triggerChose = 0;
+    var actionChose =  0;
+
+    GmailTriggerController  n 1
+    var sender_GmailTriggerController = "";
+    var subject_GmailTriggerController = "";
+
+     GmailActionController  n 1
+    var sender_GmailActionController = "";
+    var subject_GmailActionController = "";
+
+    Trigger1GcalendarController n 2
+    var title_Trigger1GcalendarController = "";
+    var description_Trigger1GcalendarController = "";
+    var place_Trigger1GcalendarController = "";
+
+    Trigger2GcalendarController n 3
+    var title_Trigger2GcalendarController = "";
+    var description_Trigger2GcalendarController = "";
+    var place_Trigger2GcalendarController = "";
+     */
+
+    if(triggerChose==1 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+            "person": sender_GmailTriggerController,
+            "testo": subject_GmailTriggerController,
+            "place" : sender_GmailActionController,
+             "subject" : subject_GmailActionController
+
+        };
+        sedingServerAllRun(loginDataSend);
+
+
+    }
+
+
+
+};
+
+function sedingServerAllRun  (loginDataSend)
+{
+    $.ajax({
+        method: "post",
+        url: "/MyServlet",
+        data: loginDataSend,
+        dataType: "json",
+        success: console.log("la post ha avuto successo n 9")
+    });
+};
