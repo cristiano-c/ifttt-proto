@@ -6,25 +6,40 @@ var iftttApp = angular.module('iftttApp', ['ngRoute']);
 var triggerChose = 0;
 var actionChose =  0;
 
-/*GmailTriggerController  n 1*/
+/*GmailTriggerController  Tn 1*/
 var sender_GmailTriggerController = "";
 var subject_GmailTriggerController = "";
 
-/* GmailActionController  n 1*/
+/* GmailActionController  An 1*/
 var sender_GmailActionController = "";
 var subject_GmailActionController = "";
 
-/* Trigger1GcalendarController n 2 */
+/* Trigger1GcalendarController Tn 2 */
 var title_Trigger1GcalendarController = "";
 var description_Trigger1GcalendarController = "";
 var place_Trigger1GcalendarController = "";
 
-/*Trigger2GcalendarController n 3 */
+/*Trigger2GcalendarController Tn 3 */
 var title_Trigger2GcalendarController = "";
 var description_Trigger2GcalendarController = "";
 var place_Trigger2GcalendarController = "";
 
-/*action1GcalendarController n 2 */ //--> si doveva finire
+/*action1GcalendarController An 2 */ //--> si doveva finire
+
+/* action1TwitterController An 3 */
+var subject_action1TwitterController = "";
+
+/* action2TwitterController An 4 */
+var title_action2TwitterController = "";
+var subjec_action2TwitterController = "";
+
+/* trigger1TwitterController  Tn 4*/
+var username_sender_trigger1TwitterController ="";
+var hashtag_text_trigger1TwitterController = "";
+
+/* trigger2TwitterController Tn 5 */
+var username_sender_trigger2TwitterController = "";
+var  hashtag_text_trigger2TwitterController = "";
 
 
 
@@ -1630,6 +1645,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            triggerChose=4;
             var title;
             var subject;
             var place;
@@ -1719,7 +1735,10 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
                 //"place": place
 
             };
-            $scope.sedingServer(loginDataSend);
+            username_sender_trigger1TwitterController = title;
+            hashtag_text_trigger1TwitterController =  subject;
+
+            //$scope.sedingServer(loginDataSend);
 
             /*
 
@@ -1834,6 +1853,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            triggerChose=5;
             var title;
             var subject;
             var place;
@@ -1923,7 +1943,10 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
                 //"place": place
 
             };
-            $scope.sedingServer(loginDataSend);
+            username_sender_trigger2TwitterController = title;
+            hashtag_text_trigger2TwitterController = subject;
+
+            //$scope.sedingServer(loginDataSend);
 
             /*
 
@@ -2038,6 +2061,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+            actionChose = 3;
             var title;
             var subject;
             var place;
@@ -2126,7 +2150,8 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 //"place": place
 
             };
-            $scope.sedingServer(loginDataSend);
+            subject_action1TwitterController=subject;
+            //$scope.sedingServer(loginDataSend);
 
             /*
 
@@ -2239,6 +2264,8 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
         $scope.trigger1Gcalendar = function(gmailinput)
         {
+
+            actionChose = 4;
             var title;
             var subject;
             var place;
@@ -2327,7 +2354,10 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 //"place": place
 
             };
-            $scope.sedingServer(loginDataSend);
+            title_action2TwitterController = title;
+            subjec_action2TwitterController = subject;
+
+            //$scope.sedingServer(loginDataSend);
 
             /*
 
