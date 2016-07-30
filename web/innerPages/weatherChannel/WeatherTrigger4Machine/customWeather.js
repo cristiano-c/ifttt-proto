@@ -492,8 +492,14 @@ $(function(){
                 "thmin":  pthmin,
                 "period":  pperiod
 
-            }
+            };
+            idCity_customWeatherActionControllerTrigger4 = idCity;
+            ptimezone_customWeatherActionControllerTrigger4 = ptimezone;
+            pthmax_customWeatherActionControllerTrigger4 = pthmax;
+            pthmin_customWeatherActionControllerTrigger4 = pthmin;
+            period_customWeatherActionControllerTrigger4 = pperiod;
 
+            /*
             $.ajax({
                 method: "post",
                 url: "/MyServlet",
@@ -501,6 +507,7 @@ $(function(){
                 dataType: "json",
                 success: console.log("la post ha avuto successo")
             });
+            */
 
         }
         /*

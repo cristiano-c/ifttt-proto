@@ -58,6 +58,13 @@ var  timezone_customWeatherActionControllerTrigger3 = "";
 var  sunset_customWeatherActionControllerTrigger3 = "";
 var  sunrise_customWeatherActionControllerTrigger3 = "";
 
+/* customWeatherActionControllerTrigger4  Tn 9 */
+
+var idCity_customWeatherActionControllerTrigger4 = "";
+var ptimezone_customWeatherActionControllerTrigger4 ="";
+var pthmax_customWeatherActionControllerTrigger4 = "";
+var pthmin_customWeatherActionControllerTrigger4 ="";
+var period_customWeatherActionControllerTrigger4 = "";
 
 
 iftttApp.config(['$routeProvider', function($routeProvider){
