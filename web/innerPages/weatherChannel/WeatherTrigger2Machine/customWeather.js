@@ -258,6 +258,7 @@ $(function(){
 
     $("#but").on("click", function updateView(){
         //alert(idCity);
+        triggerChose = 7;
         if (idCity == '0')
         {
             //$scope.errorButton= "Almost a field must be completed";
@@ -396,6 +397,13 @@ $(function(){
         }
         function sendingToServer (pweather, pperiod, pzone )
         {
+            idCity_customWeatherActionControllerTrigger2 = idCity;
+            pweather_customWeatherActionControllerTrigger2 = pweather;
+            pperiod_customWeatherActionControllerTrigger2 = pperiod;
+            pzone_customWeatherActionControllerTrigger2 = pzone;
+
+
+            /*
             var loginDataSend =
             {
                 "sender":  idCity,
@@ -404,7 +412,6 @@ $(function(){
                 "timezone":  pzone
 
             }
-
             $.ajax({
                 method: "post",
                 url: "/MyServlet",
@@ -412,7 +419,7 @@ $(function(){
                 dataType: "json",
                 success: console.log("la post ha avuto successo")
             });
-
+            */
         }
         /*
          var loginDataSend =

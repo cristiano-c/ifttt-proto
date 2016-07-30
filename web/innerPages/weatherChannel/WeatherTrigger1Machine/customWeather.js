@@ -258,6 +258,7 @@ $(function(){
 
     $("#but").on("click", function updateView(){
         //alert(idCity);
+        triggerChose = 6;
         if (idCity == '0')
         {
             var bla = $('#exampleInput').val();
@@ -279,7 +280,12 @@ $(function(){
                     "ora": time
 
                 };
+                sender_customWeatherActionControllerTrigger1 =idCity;
+                timezone_customWeatherActionControllerTrigger1 = timezone;
+                ora_customWeatherActionControllerTrigger1 = time;
+
                 //alert(loginDataSend.pssword);
+                /* x1
                 $.ajax({
                     method: "post",
                     url: "/MyServlet",
@@ -287,6 +293,7 @@ $(function(){
                     dataType: "json",
                     success: console.log("la post ha avuto successo")
                 });
+                */
 
                     url = "http://localhost:8080/#/gMailSucces";
                 window.location.replace(url);
@@ -307,6 +314,11 @@ $(function(){
 
                     };
                     //alert(loginDataSend.pssword);
+                    sender_customWeatherActionControllerTrigger1 =idCity;
+                    timezone_customWeatherActionControllerTrigger1 = timezone;
+                    ora_customWeatherActionControllerTrigger1 = "null";
+
+                    /* x1
                     $.ajax({
                         method: "post",
                         url: "/MyServlet",
@@ -314,6 +326,7 @@ $(function(){
                         dataType: "json",
                         success: console.log("la post ha avuto successo")
                     });
+                    */
 
                     url = "http://localhost:8080/#/gMailSucces";
                     window.location.replace(url);
@@ -331,7 +344,12 @@ $(function(){
                             "ora": time
 
                         };
+                        sender_customWeatherActionControllerTrigger1 =idCity;
+                        timezone_customWeatherActionControllerTrigger1 = "null";
+                        ora_customWeatherActionControllerTrigger1 = time;
+
                         //alert(loginDataSend.pssword);
+                        /*
                         $.ajax({
                             method: "post",
                             url: "/MyServlet",
@@ -339,6 +357,7 @@ $(function(){
                             dataType: "json",
                             success: console.log("la post ha avuto successo")
                         });
+                        */
                         var temp = $("gMailSucces").val();
                         url = "http://localhost:8080/#/" + temp;
                         window.location.replace(url);
@@ -355,7 +374,13 @@ $(function(){
                             "ora": "null"
 
                         };
+
+                        sender_customWeatherActionControllerTrigger1 =idCity;
+                        timezone_customWeatherActionControllerTrigger1 = "null";
+                        ora_customWeatherActionControllerTrigger1 = "null";
+
                         //alert(loginDataSend.pssword);
+                        /* x1
                         $.ajax({
                             method: "post",
                             url: "/MyServlet",
@@ -363,6 +388,7 @@ $(function(){
                             dataType: "json",
                             success: console.log("la post ha avuto successo")
                         });
+                        */
 
                         url = "http://localhost:8080/#/allActions";
                         window.location.replace(url);

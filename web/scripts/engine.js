@@ -41,6 +41,19 @@ var hashtag_text_trigger1TwitterController = "";
 var username_sender_trigger2TwitterController = "";
 var  hashtag_text_trigger2TwitterController = "";
 
+/* customWeatherActionControllerTrigger1 Tn 6 */
+var sender_customWeatherActionControllerTrigger1 ="";
+var timezone_customWeatherActionControllerTrigger1 = "";
+var ora_customWeatherActionControllerTrigger1 = "";
+
+/*  customWeatherActionControllerTrigger2 Tn 7 */
+
+var     idCity_customWeatherActionControllerTrigger2 = "";
+var     pweather_customWeatherActionControllerTrigger2 = "";
+var     pperiod_customWeatherActionControllerTrigger2 = "";
+var     pzone_customWeatherActionControllerTrigger2 = "";
+
+
 
 
 
