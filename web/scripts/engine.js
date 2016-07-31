@@ -25,6 +25,13 @@ var description_Trigger2GcalendarController = "";
 var place_Trigger2GcalendarController = "";
 
 /*action1GcalendarController An 2 */ //--> si doveva finire
+var title_action1GcalendarController = "";
+var subjectReceive_action1GcalendarController = "";
+var place_action1GcalendarController = "";
+var  yearVector_action1GcalendarController = "";
+var monthVector_action1GcalendarController = "";
+var dayVector_action1GcalendarController = "";
+
 
 /* action1TwitterController An 3 */
 var subject_action1TwitterController = "";
@@ -1548,11 +1555,188 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
 
-        $scope.actiongcalendar = function(dateXYZ)
-        {
-            //alert("cias");
-            //
-            // alert(dateXYZ.selectedOption);
+        $scope.actiongcalendar = function( gcalendarinput,  yearVector, monthVector, dayVector) {
+            var title = "";
+            var subjectReceive = "";
+            var place = "";
+            var  yearVector = "";
+            var monthVector = "";
+            var dayVector = "";
+            var flag = "1";
+
+            actionChose =  2;
+
+
+            //idcheckedtitle        idcheckedSubject    idcheckedplace      weatheridcheckbox
+            //         0                                       0
+
+            if ($('#idcheckedtitle').is(":checked"))
+            {
+                if (angular.isDefined(gcalendarinput))
+                {
+                    if (angular.isDefined(gcalendarinput.title))
+                    {
+                        title = gcalendarinput.title;
+                    }
+                    else
+                    {
+
+                        title = "";
+                    }
+                }
+                else
+                {
+                    title = "";
+                }
+            }
+            else
+            {
+                title = "null";
+
+            }
+
+            if ($('#idcheckedSubject').is(":checked"))
+            {
+                if (angular.isDefined(gcalendarinput))
+                {
+                    if (angular.isDefined(gcalendarinput.subjectReceive))
+                    {
+                        subjectReceive = gcalendarinput.subjectReceive;
+                    }
+                    else
+                    {
+
+                        subjectReceive = "";
+                    }
+                }
+                else
+                {
+                    subjectReceive = "";
+                }
+            }
+            else
+            {
+                subjectReceive = "null";
+
+            }
+
+
+
+            if ($('#idcheckedplace').is(":checked"))
+            {
+                if (angular.isDefined(gcalendarinput))
+                {
+                    if (angular.isDefined(gcalendarinput.place))
+                    {
+                        place = gcalendarinput.place;
+                    }
+                    else
+                    {
+
+                        place = "";
+                    }
+                }
+                else
+                {
+                    place = "";
+                }
+            }
+            else
+            {
+                place = "null";
+
+            }
+
+
+
+
+            if ($('#weatheridcheckbox').is(":checked"))
+            {
+                    dayVector = $('#selectDay').val();
+                    yearVector =$('#selectYear').val();
+                    monthVector =$('#selectMonth').val();
+
+
+            }
+            else
+            {
+
+                yearVector = "null";
+                monthVector = "null";
+                dayVector = "null";
+                flag = "0";
+
+
+            }
+            //alert(dayVector);
+
+            title_action1GcalendarController = title;
+            subjectReceive_action1GcalendarController = subjectReceive;
+            place_action1GcalendarController = place;
+            yearVector_action1GcalendarController = dayVector;
+            monthVector_action1GcalendarController = monthVector;
+            dayVector_action1GcalendarController = yearVector;
+
+            if(flag=="1")
+            {
+                if(monthVector === "1" ||
+                    monthVector === "3"||
+                    monthVector === "5" ||
+                    monthVector === "7" ||
+                    monthVector === "8" ||
+                    monthVector === "10" ||
+                    monthVector === "12")
+                {
+                    if (dayVector > "0" && dayVector < "32");
+                    else
+                    {
+                        flag="3";
+                        alert ("Your date is not right plase verify the day");
+                    }
+                }
+                if(monthVector === "2" ||
+                    monthVector === "4"||
+                    monthVector === "6" ||
+                    monthVector === "9" ||
+                    monthVector === "11")
+                {
+                    if (dayVector > "0" && dayVector < "31");
+                    else
+                    {
+                        flag="3";
+                        alert ("Your date is not right plase verify the day");
+                    }
+
+                }
+                //Anni bisestili
+                if(yearVector === "2016" ||
+                    yearVector === "2020" ||
+                    yearVector === "2024" ||
+                    yearVector === "2028" ||
+                    yearVector === "2032" ||
+                    yearVector === "2036" ||
+                    yearVector === "2040" ||
+                    yearVector === "2044"
+                )
+                {
+                    if(monthVector === "2")
+                        if(dayVector>28)
+                        {
+                            flag = "3";
+                            alert("Thi is a leap year");
+                        }
+
+
+                }
+
+
+
+
+            }
+
+            if(flag!="3")
+
+            sendingToServerAll();
 
         };
 
@@ -1564,8 +1748,36 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
         {
             availableOptions:
                 [
-                    {id: '1', year: '2016'},
-                    {id: '2', year: '2017'}
+                    {id: '2016', year: '2016'},
+                    {id: '2017', year: '2017'},
+                    {id: '2018', year: '2018'},
+                    {id: '2019', year: '2019'},
+                    {id: '2020', year: '2020'},
+                    {id: '2021', year: '2021'},
+                    {id: '2022', year: '2022'},
+                    {id: '2023', year: '2023'},
+                    {id: '2024', year: '2024'},
+                    {id: '2025', year: '2025'},
+                    {id: '2026', year: '2026'},
+                    {id: '2027', year: '2027'},
+                    {id: '2028', year: '2028'},
+                    {id: '2029', year: '2029'},
+                    {id: '2030', year: '2030'},
+                    {id: '2031', year: '2031'},
+                    {id: '2032', year: '2032'},
+                    {id: '2033', year: '2033'},
+                    {id: '2034', year: '2034'},
+                    {id: '2035', year: '2035'},
+                    {id: '2036', year: '2036'},
+                    {id: '2037', year: '2037'},
+                    {id: '2038', year: '2038'},
+                    {id: '2039', year: '2039'},
+                    {id: '2040', year: '2040'},
+                    {id: '2041', year: '2041'},
+                    {id: '2042', year: '2042'},
+                    {id: '2043', year: '2043'},
+                    {id: '2044', year: '2044'},
+                    {id: '2045', year: '2045'}
 
                 ],
             selectedOption: {id: '1', year: '2016'}
@@ -2535,7 +2747,16 @@ function sendingToServerAll ()
         {
             //Tn 1
             "person": sender_GmailTriggerController,
-            "testo": subject_GmailTriggerController
+            "testo": subject_GmailTriggerController,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2595,7 +2816,16 @@ function sendingToServerAll ()
             //Tn 2
             "title" : title_Trigger1GcalendarController,
             "description" : description_Trigger1GcalendarController,
-            "place" : place_Trigger1GcalendarController
+            "place" : place_Trigger1GcalendarController,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
 
         };
@@ -2660,7 +2890,16 @@ function sendingToServerAll ()
             //Tn 3
             "title" : title_Trigger2GcalendarController,
             "description" : description_Trigger2GcalendarController,
-            "place" : place_Trigger2GcalendarController
+            "place" : place_Trigger2GcalendarController,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
 
         };
@@ -2719,13 +2958,23 @@ function sendingToServerAll ()
         };
         sedingServerAllRun(loginDataSend);
     }
-    if(triggerChose==4 && actionChose == 2)
+    if(triggerChose == 4 && actionChose == 2)
     {
+
         var loginDataSend =
         {
             //Tn 4
             "username" : username_sender_trigger1TwitterController,
-            "hashtag_text" : hashtag_text_trigger1TwitterController
+            "hashtag_text" : hashtag_text_trigger1TwitterController,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
 
         };
@@ -2786,7 +3035,16 @@ function sendingToServerAll ()
         {
             //Tn 5
             "username_sender" : username_sender_trigger2TwitterController,
-            "hashtag_text" : hashtag_text_trigger2TwitterController
+            "hashtag_text" : hashtag_text_trigger2TwitterController,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
 
         };
@@ -2847,7 +3105,16 @@ function sendingToServerAll ()
             //Tn 6
             "sender"  :  sender_customWeatherActionControllerTrigger1,
             "timezone" : timezone_customWeatherActionControllerTrigger1,
-            "ora" : ora_customWeatherActionControllerTrigger1
+            "ora" : ora_customWeatherActionControllerTrigger1,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2912,6 +3179,15 @@ function sendingToServerAll ()
             "pweather" :pweather_customWeatherActionControllerTrigger2,
             "pperiod" : pperiod_customWeatherActionControllerTrigger2,
             "pzone"   : pzone_customWeatherActionControllerTrigger2,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
 
         };
@@ -2979,7 +3255,16 @@ function sendingToServerAll ()
             "idCity" : idCity_customWeatherActionControllerTrigger3,
             "timezone": timezone_customWeatherActionControllerTrigger3,
             "sunset" : sunset_customWeatherActionControllerTrigger3,
-            "sunrise" :  sunrise_customWeatherActionControllerTrigger3
+            "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
+
+            //An 2
+            "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -3048,9 +3333,18 @@ function sendingToServerAll ()
             "ptimezone" : ptimezone_customWeatherActionControllerTrigger4,
             "pthmax" :  pthmax_customWeatherActionControllerTrigger4,
             "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
-            "period" :  period_customWeatherActionControllerTrigger4
+            "period" :  period_customWeatherActionControllerTrigger4,
 
-        };
+            //An 2
+           "title" : title_action1GcalendarController,
+            "subjectReceive" : subjectReceive_action1GcalendarController,
+            "place" : place_action1GcalendarController,
+            "dayVector" : yearVector_action1GcalendarController,
+            "monthVector" : monthVector_action1GcalendarController,
+            "yearVector" : dayVector_action1GcalendarController
+
+
+    };
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==9 && actionChose == 3)

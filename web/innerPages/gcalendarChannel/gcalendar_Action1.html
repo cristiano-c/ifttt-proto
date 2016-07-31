@@ -24,16 +24,17 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedtitle"
+                                        id="idcheckedtitle"
 
                                 >
                             </label><br/>
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
-                                   ng-model="gmailinput.title"
+                                   ng-model="gcalendarinput.title"
                                    required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{100 - gmailinput.title.length}} left </span>
+                            <span>{{100 - gcalendarinput.title.length}} left </span>
                         </div>
 
 
@@ -44,14 +45,15 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
+                                        id="idcheckedSubject"
 
                                 >
                             </label><br/>
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
-                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
+                                      ng-model="gcalendarinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
-                            <span>{{500 - gmailinput.subjectReceive.length}} left </span>
+                            <span>{{500 - gcalendarinput.subjectReceive.length}} left </span>
                         </div>
 
 
@@ -62,16 +64,17 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedplace"
+                                        id="idcheckedplace"
 
                                 >
                             </label><br/>
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
-                                   ng-model="gmailinput.place"
+                                   ng-model="gcalendarinput.place"
                                    required="" name="uplace"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{100 - gmailinput.place.length}} left </span>
+                            <span>{{100 - gcalendarinput.place.length}} left </span>
                             <div ng-show="form.$submitted || form.uplace.$touched">
                                 <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
                             </div>
@@ -129,7 +132,7 @@
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
                             <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
-                                class="btn btn-primary pull-right"  ng-click="actiongcalendar(yearVector)" >Summit</a>
+                                class="btn btn-primary pull-right"  ng-click="actiongcalendar(gcalendarinput,  yearVector, monthVector, dayVector)" >Summit</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place or/and Data in order to continue
@@ -139,7 +142,7 @@
                         href="#actionGcalendar"
                                http://localhost:8080/index.jsp#/SubGMail
                                <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gcalendarinput)">Next</a>
                                -->
 
                     </form>
@@ -151,6 +154,9 @@
     </div>
 
 </div>
+
+
+
 
 
 <!--href="#SubGMailAction" -->
