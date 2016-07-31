@@ -1735,8 +1735,14 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
             }
 
             if(flag!="3")
+            {
+                sendingToServerAll();
+                url = "http://localhost:8080/#/gMailSucces";
+                window.location.replace(url);
+            }
 
-            sendingToServerAll();
+
+
 
         };
 
@@ -1780,7 +1786,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                     {id: '2045', year: '2045'}
 
                 ],
-            selectedOption: {id: '1', year: '2016'}
+            selectedOption: {id: '2016', year: '2016'}
 
         };
 

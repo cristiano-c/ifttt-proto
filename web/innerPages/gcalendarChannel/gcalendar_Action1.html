@@ -89,6 +89,7 @@
                                     id="weatheridcheckbox"
                                     type="checkbox"
                                     ng-model="checkdata"
+                                    name="checkdataname"
 
                             >
 
@@ -131,7 +132,7 @@
 
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
-                            <a  href="#gMailSucces"  ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
+                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkdata" type="submit"
                                 class="btn btn-primary pull-right"  ng-click="actiongcalendar(gcalendarinput,  yearVector, monthVector, dayVector)" >Summit</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
@@ -183,12 +184,7 @@ Example code
 
 
 <script>
-    angular.module('dateInputExample', [])
-            .controller('DateController', ['$scope', function($scope) {
-                $scope.example = {
-                    value: new Date(2013, 9, 22)
-                };
-            }]);
+
 </script>
 </html>
 
