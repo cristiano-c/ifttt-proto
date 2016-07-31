@@ -2506,6 +2506,9 @@ function sendingToServerAll ()
     var place_Trigger2GcalendarController = "";
      */
 
+    //Tn 9
+    //An 4
+
     if(triggerChose==1 && actionChose == 1)
     {
         var loginDataSend =
@@ -2517,9 +2520,291 @@ function sendingToServerAll ()
 
         };
         sedingServerAllRun(loginDataSend);
-
-
     }
+    if(triggerChose==1 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==1 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==1 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==2 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==2 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==2 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==2 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==3 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==3 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==3 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==3 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==4 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==4 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==4 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==4 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==5 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==5 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==5 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==5 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==6 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==6 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==6 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==6 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==7 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==7 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==7 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==7 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==8 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==8 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==8 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==8 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==9 && actionChose == 1)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==9 && actionChose == 2)
+    {
+        var loginDataSend =
+        {
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==9 && actionChose == 3)
+    {
+        var loginDataSend =
+        {
+
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+    if(triggerChose==9 && actionChose == 4)
+    {
+        var loginDataSend =
+        {
+
+
+        };
+        sedingServerAllRun(loginDataSend);
+    }
+
+
 
 
 
