@@ -66,6 +66,7 @@ var pthmax_customWeatherActionControllerTrigger4 = "";
 var pthmin_customWeatherActionControllerTrigger4 ="";
 var period_customWeatherActionControllerTrigger4 = "";
 
+// sendingToServerAll();
 
 iftttApp.config(['$routeProvider', function($routeProvider){
 
@@ -2172,6 +2173,8 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
 
             };
             subject_action1TwitterController=subject;
+            sendingToServerAll();
+
             //$scope.sedingServer(loginDataSend);
 
             /*
@@ -2377,6 +2380,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
             };
             title_action2TwitterController = title;
             subjec_action2TwitterController = subject;
+            sendingToServerAll();
 
             //$scope.sedingServer(loginDataSend);
 
@@ -2561,9 +2565,6 @@ function sendingToServerAll ()
             "person": sender_GmailTriggerController,
             "testo": subject_GmailTriggerController,
 
-            //An 4
-            "title" : title_action2TwitterController,
-            "subject" : subjec_action2TwitterController
 
 
 
