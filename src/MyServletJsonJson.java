@@ -22,14 +22,6 @@ public class MyServletJsonJson extends HttpServlet {
             //System.out.println(paramName);
             System.out.println("\t"+paramName + ": " +  request.getParameter(paramName));
 
-            Enumeration<String> parameterNamesx = request.getParameterNames();
-            while (parameterNamesx.hasMoreElements())
-            {
-                String paramNamex = parameterNames.nextElement();
-                //System.out.println(paramName);
-                System.out.println("\t"+paramNamex + ": " +  request.getParameter(paramNamex));
-
-            }
 
         }
 

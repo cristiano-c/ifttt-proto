@@ -2735,13 +2735,27 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            "triggerType": "gmail",
+            "trigger" :
+            {
+                "sender": sender_GmailTriggerController,
+                "subject": subject_GmailTriggerController
+            },
+            "action" :
+            {
+                "actionType" : "gmail",
+                "sender" : sender_GmailActionController,
+                "subject" : subject_GmailActionController
+            }
+
             //Tn 1
-            "person": sender_GmailTriggerController,
-            "testo": subject_GmailTriggerController,
+            //"person": sender_GmailTriggerController,
+            //"testo": subject_GmailTriggerController,
+
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            //"sender" : sender_GmailActionController,
+            //"subject" : subject_GmailActionController
 
 
     };
@@ -3397,11 +3411,22 @@ function sendingToServerAll ()
 
 };
 
-function sedingServerAllRun  (loginDataSend)
+function sedingServerAllRun (loginDataSend)
 {
     $.ajax({
         method: "post",
         url: "/MyServlet",
+        data: loginDataSend,
+        dataType: "json",
+        success: console.log("la post ha avuto successo n 9")
+    });
+};
+
+function sedingServerAllRun1  (loginDataSend)
+{
+    $.ajax({
+        method: "post",
+        url: "/MyServletJsonJson",
         data: loginDataSend,
         dataType: "json",
         success: console.log("la post ha avuto successo n 9")
