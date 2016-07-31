@@ -2830,13 +2830,14 @@ function sendingToServerAll ()
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==2 && actionChose == 2)
+        // Fare una prova per credere O.o nel json non ci possono essere due campi uguali
     {
         var loginDataSend =
         {
             //Tn 2
-            "title" : title_Trigger1GcalendarController,
-            "description" : description_Trigger1GcalendarController,
-            "place" : place_Trigger1GcalendarController,
+            "title1" : title_Trigger1GcalendarController,
+            "description1" : description_Trigger1GcalendarController,
+            "place1" : place_Trigger1GcalendarController,
 
             //An 2
             "title" : title_action1GcalendarController,
@@ -2849,6 +2850,7 @@ function sendingToServerAll ()
 
 
         };
+        alert("ss");
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==2 && actionChose == 3)
