@@ -2513,18 +2513,27 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 1
             "person": sender_GmailTriggerController,
             "testo": subject_GmailTriggerController,
             "place" : sender_GmailActionController,
-             "subject" : subject_GmailActionController
+             "subject" : subject_GmailActionController,
 
-        };
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
+    };
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==1 && actionChose == 2)
     {
         var loginDataSend =
         {
+            //Tn 1
+            "person": sender_GmailTriggerController,
+            "testo": subject_GmailTriggerController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2533,6 +2542,13 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 1
+            "person": sender_GmailTriggerController,
+            "testo": subject_GmailTriggerController,
+
+            //An 3
+            "subject" : subject_action1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2541,6 +2557,15 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 1
+            "person": sender_GmailTriggerController,
+            "testo": subject_GmailTriggerController,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2549,6 +2574,16 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 2
+           "title" : title_Trigger1GcalendarController,
+            "description" : description_Trigger1GcalendarController,
+            "place" : place_Trigger1GcalendarController,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2557,6 +2592,11 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 2
+            "title" : title_Trigger1GcalendarController,
+            "description" : description_Trigger1GcalendarController,
+            "place" : place_Trigger1GcalendarController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2565,6 +2605,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 2
+            "title" : title_Trigger1GcalendarController,
+            "description" : description_Trigger1GcalendarController,
+            "place" : place_Trigger1GcalendarController,
+
+            //An 3
+            "subject" : subject_action1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2573,6 +2621,15 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 2
+            "title" : title_Trigger1GcalendarController,
+            "description" : description_Trigger1GcalendarController,
+            "place" : place_Trigger1GcalendarController,
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2581,6 +2638,16 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 3
+            "title" : title_Trigger2GcalendarController,
+            "description" : description_Trigger2GcalendarController,
+            "place" : place_Trigger2GcalendarController,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2589,6 +2656,11 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 3
+            "title" : title_Trigger2GcalendarController,
+            "description" : description_Trigger2GcalendarController,
+            "place" : place_Trigger2GcalendarController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2597,6 +2669,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 3
+            "title" : title_Trigger2GcalendarController,
+            "description" : description_Trigger2GcalendarController,
+            "place" : place_Trigger2GcalendarController,
+
+            //An 3
+            "subject" : subject_action1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2605,6 +2685,18 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 3
+            "title" : title_Trigger2GcalendarController,
+            "description" : description_Trigger2GcalendarController,
+            "place" : place_Trigger2GcalendarController,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2613,6 +2705,15 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 4
+            "username" : username_sender_trigger1TwitterController,
+            "hashtag_text" : hashtag_text_trigger1TwitterController,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2621,6 +2722,10 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 4
+            "username" : username_sender_trigger1TwitterController,
+            "hashtag_text" : hashtag_text_trigger1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2629,6 +2734,12 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 4
+            "username" : username_sender_trigger1TwitterController,
+            "hashtag_text" : hashtag_text_trigger1TwitterController,
+
+            //An 3
+            "subject" : subject_action1TwitterController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2637,14 +2748,33 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 4
+            "username" : username_sender_trigger1TwitterController,
+            "hashtag_text" : hashtag_text_trigger1TwitterController,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
 
         };
+
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==5 && actionChose == 1)
     {
         var loginDataSend =
         {
+            //Tn 5
+            "username_sender" : username_sender_trigger2TwitterController,
+            "hashtag_text" : hashtag_text_trigger2TwitterController,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2653,6 +2783,10 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 5
+            "username_sender" : username_sender_trigger2TwitterController,
+            "hashtag_text" : hashtag_text_trigger2TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2661,6 +2795,13 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 5
+            "username_sender" : username_sender_trigger2TwitterController,
+            "hashtag_text" : hashtag_text_trigger2TwitterController,
+
+            //An 3
+            "subject" : subject_action1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2669,6 +2810,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 5
+            "username_sender" : username_sender_trigger2TwitterController,
+           "hashtag_text" : hashtag_text_trigger2TwitterController,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2677,6 +2826,15 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 6
+            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "timezone" : timezone_customWeatherActionControllerTrigger1,
+            "ora" : ora_customWeatherActionControllerTrigger1,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2685,6 +2843,10 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 6
+            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "timezone" : timezone_customWeatherActionControllerTrigger1,
+            "ora" : ora_customWeatherActionControllerTrigger1
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2693,6 +2855,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 6
+            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "timezone" : timezone_customWeatherActionControllerTrigger1,
+            "ora" : ora_customWeatherActionControllerTrigger1,
+
+            //An 3
+            "subject" : subject_action1TwitterController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2701,6 +2871,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 6
+            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "timezone" : timezone_customWeatherActionControllerTrigger1,
+            "ora" : ora_customWeatherActionControllerTrigger1,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2709,6 +2887,17 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 7
+            "idCity" : idCity_customWeatherActionControllerTrigger2,
+            "pweather" :pweather_customWeatherActionControllerTrigger2,
+            "pperiod" : pperiod_customWeatherActionControllerTrigger2,
+            "pzone"   : pzone_customWeatherActionControllerTrigger2,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2717,6 +2906,12 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 7
+            "idCity" : idCity_customWeatherActionControllerTrigger2,
+            "pweather" :pweather_customWeatherActionControllerTrigger2,
+            "pperiod" : pperiod_customWeatherActionControllerTrigger2,
+            "pzone"   : pzone_customWeatherActionControllerTrigger2,
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2725,6 +2920,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 7
+            "idCity" : idCity_customWeatherActionControllerTrigger2,
+            "pweather" :pweather_customWeatherActionControllerTrigger2,
+            "pperiod" : pperiod_customWeatherActionControllerTrigger2,
+            "pzone"   : pzone_customWeatherActionControllerTrigger2,
+
+            //An 3
+            "subject" : subject_action1TwitterController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2733,6 +2936,18 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 7
+            "idCity" : idCity_customWeatherActionControllerTrigger2,
+            "pweather" :pweather_customWeatherActionControllerTrigger2,
+            "pperiod" : pperiod_customWeatherActionControllerTrigger2,
+            "pzone"   : pzone_customWeatherActionControllerTrigger2,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2741,6 +2956,16 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            // Tn 8
+            "idCity" : idCity_customWeatherActionControllerTrigger3,
+            "timezone": timezone_customWeatherActionControllerTrigger3,
+            "sunset" : sunset_customWeatherActionControllerTrigger3,
+            "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2749,6 +2974,11 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            // Tn 8
+            "idCity" : idCity_customWeatherActionControllerTrigger3,
+            "timezone": timezone_customWeatherActionControllerTrigger3,
+            "sunset" : sunset_customWeatherActionControllerTrigger3,
+            "sunrise" :  sunrise_customWeatherActionControllerTrigger3
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2757,6 +2987,14 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            // Tn 8
+            "idCity" : idCity_customWeatherActionControllerTrigger3,
+            "timezone": timezone_customWeatherActionControllerTrigger3,
+            "sunset" : sunset_customWeatherActionControllerTrigger3,
+            "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
+
+            //An 3
+            "subject" : subject_action1TwitterController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2765,6 +3003,18 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            // Tn 8
+            "idCity" : idCity_customWeatherActionControllerTrigger3,
+            "timezone": timezone_customWeatherActionControllerTrigger3,
+            "sunset" : sunset_customWeatherActionControllerTrigger3,
+             "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
+
+
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2773,6 +3023,17 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 9
+            "idCity" : idCity_customWeatherActionControllerTrigger4,
+            "ptimezone" : ptimezone_customWeatherActionControllerTrigger4,
+            "pthmax" :  pthmax_customWeatherActionControllerTrigger4,
+            "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
+            "period" :  period_customWeatherActionControllerTrigger4,
+
+            //An 1
+            "sender" : sender_GmailActionController,
+            "subject" : subject_GmailActionController
+
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2781,6 +3042,12 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 9
+            "idCity" : idCity_customWeatherActionControllerTrigger4,
+            "ptimezone" : ptimezone_customWeatherActionControllerTrigger4,
+            "pthmax" :  pthmax_customWeatherActionControllerTrigger4,
+            "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
+            "period" :  period_customWeatherActionControllerTrigger4
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2789,6 +3056,15 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 9
+            "idCity" : idCity_customWeatherActionControllerTrigger4,
+            "ptimezone" : ptimezone_customWeatherActionControllerTrigger4,
+            "pthmax" :  pthmax_customWeatherActionControllerTrigger4,
+            "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
+            "period" :  period_customWeatherActionControllerTrigger4,
+
+            //An 3
+            "subject" : subject_action1TwitterController
 
 
         };
@@ -2798,9 +3074,19 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
+            //Tn 9
+            "idCity" : idCity_customWeatherActionControllerTrigger4,
+            "ptimezone" : ptimezone_customWeatherActionControllerTrigger4,
+            "pthmax" :  pthmax_customWeatherActionControllerTrigger4,
+            "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
+             "period" :  period_customWeatherActionControllerTrigger4,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
 
 
-        };
+    };
         sedingServerAllRun(loginDataSend);
     }
 
