@@ -2520,8 +2520,6 @@ function sendingToServerAll ()
             //Tn 1
             "person": sender_GmailTriggerController,
             "testo": subject_GmailTriggerController,
-            "place" : sender_GmailActionController,
-             "subject" : subject_GmailActionController,
 
             //An 1
             "sender" : sender_GmailActionController,
@@ -2552,6 +2550,7 @@ function sendingToServerAll ()
 
             //An 3
             "subject" : subject_action1TwitterController
+
 
 
         };
@@ -2613,6 +2612,7 @@ function sendingToServerAll ()
 
             //An 3
             "subject" : subject_action1TwitterController
+
 
 
         };

@@ -265,6 +265,7 @@ $(function(){
         }
         else
         {
+            triggerChose=9;
             //Brute force resolution
             /*thmaxidcheckbox    thminidcheckbox   checktimeZonevar        DONE
                0                0               0                   *
