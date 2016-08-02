@@ -73,6 +73,10 @@ var pthmax_customWeatherActionControllerTrigger4 = "";
 var pthmin_customWeatherActionControllerTrigger4 ="";
 var period_customWeatherActionControllerTrigger4 = "";
 
+/* NAVIGATION */
+
+var navPages = [0,0,0,0,0,0];
+
 // sendingToServerAll();
 
 iftttApp.config(['$routeProvider', function($routeProvider){

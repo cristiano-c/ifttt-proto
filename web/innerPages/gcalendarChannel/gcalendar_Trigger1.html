@@ -102,6 +102,22 @@
 
 </div>
 
+</body>
+
+<script>
+
+    if(navPages[1] == 0){
+        url = "#createRecipe";
+        window.location.replace(url);
+    } else {
+        console.log("ok");
+    }
+
+    $('.btn_next2').click(function () {
+        navPages[1] = 1;
+    });
+
+</script>
 
 <!--href="#SubGMailAction" -->
 

@@ -30,7 +30,7 @@
                             This triggers will be activated when an event starts that can be monitored through the Title, Description and / or Location.
                         </p>
                         <p>
-                            <a class="btn" href="#Trigger1Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></a>
+                            <a class="btn btn_next2" href="#Trigger1Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></a>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -42,7 +42,7 @@
                             you can create another event with a specific date, title, desctipion and/or place.
                         </p>
                         <p>
-                            <a class="btn" href="#Trigger2Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#Trigger2Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                             Trigger activated when you receive an email monitored by Title, Description or Location.
                         </p>
                         <p>
-                            <a class="btn" href="#gMailTrigger">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#gMailTrigger">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
                             The weather of tomorrow: you can chose the location and the hour that you wish to monitor.
                         </p>
                         <p>
-                            <a class="btn" href="#WeatherTrigger1">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#WeatherTrigger1">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -105,7 +105,7 @@
                             Get notified when the current temperature changes and moves above or below a given threshold.
                         </p>
                         <p>
-                            <a class="btn" href="#WeatherTrigger4">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#WeatherTrigger4">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
@@ -119,7 +119,7 @@
                             You wish to know when the sun rises today? Or what time takes the sunset?
                         </p>
                         <p>
-                            <a class="btn" href="#WeatherTrigger3">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#WeatherTrigger3">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -130,7 +130,7 @@
                             Do you wish to follow a special weather condition?
                         </p>
                         <p>
-                            <a class="btn" href="#WeatherTrigger2">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#WeatherTrigger2">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
@@ -156,7 +156,7 @@
                             Get notified when someone post a tweet, filtered by Person or Hashtag.
                         </p>
                         <p>
-                            <a class="btn" href="#Trigger1Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#Trigger1Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -167,7 +167,7 @@
                             Get notified when someone send you a private message from a certain User or containing some Text.
                         </p>
                         <p>
-                            <a class="btn" href="#Trigger2Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#Trigger2Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
@@ -175,6 +175,23 @@
         </div>
 
 </div>
+
+<script>
+
+
+if(navPages[0] == 0){
+    url = "#createRecipe";
+    window.location.replace(url);
+} else {
+    console.log("ok");
+}
+
+$('.btn_next2').click(function () {
+    navPages[1] = 1;
+});
+
+
+</script>
 
 
 </body>
