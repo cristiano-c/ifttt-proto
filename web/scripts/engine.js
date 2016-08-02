@@ -2739,14 +2739,15 @@ function sendingToServerAll ()
             "trigger" :
             {
                 "sender": sender_GmailTriggerController,
-                "subject": subject_GmailTriggerController
+                "subject": subject_GmailTriggerController,
+                "action" :
+                {
+                    "actionType" : "gmail",
+                    "sender" : sender_GmailActionController,
+                    "subject" : subject_GmailActionController
+                }
             },
-            "action" :
-            {
-                "actionType" : "gmail",
-                "sender" : sender_GmailActionController,
-                "subject" : subject_GmailActionController
-            }
+
 
             //Tn 1
             //"person": sender_GmailTriggerController,
@@ -2846,11 +2847,8 @@ function sendingToServerAll ()
             "dayVector" : yearVector_action1GcalendarController,
             "monthVector" : monthVector_action1GcalendarController,
             "yearVector" : dayVector_action1GcalendarController
-
-
-
         };
-        alert("ss");
+        //alert("ss");
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==2 && actionChose == 3)
