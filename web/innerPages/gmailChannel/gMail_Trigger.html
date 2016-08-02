@@ -20,24 +20,26 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="GmailTriggerController" novalidate>
 
                         <div class="form-group">
-                            <label>Email address:</label> <br>
-                            <label>Click me in order to active the email trigger:
+                            <label>
                                 <input
                                     type="checkbox"
                                     ng-model="checkedEmail"
                                     ng-change="checkemailfunc(checkemailvar)"
                                 >
-                            </label><br/>
+                                <img src="../../innerPages/gmailChannel/user-question-mark.png" height="30" width="30"/> Sender:
+                                </label><br/>
                             <div ng-if="checkedEmail" class="animate-if">
                                 <input class="form-control"
                                    type="email"  ng-disabled="!checkedEmail"
-                                   id="email" placeholder="insert your email"
+                                   id="email" placeholder="Insert here the email of the sender that you want to watch"
                                    ng-model="gmailinput.email"
                                    required="" name="uEmail"
                                    maxlength="100"
                                    ng-trim="false"
                                 >
+                                <!--
                                 <span>{{100 - gmailinput.email.length}} left </span>
+                                -->
 
                             </div>
 
@@ -52,16 +54,16 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>The object:</label>
-                            <label>Click me in order to active the subject trigger:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
                                         ng-change="checkedSubjectfunc(checkedSubjectvar)"
                                 >
+                                <img src="../../innerPages/gmailChannel/email-text-search.png" height="30" width="30"/> Email content query:
                             </label><br/>
                             <div ng-if="checkedSubject" class="animate-if" >
-                            <textarea ng-if="checkedSubject" class="form-control  animate-if" rows="5" id="subjectReceive"  placeholder="insert the subject"
+                            <textarea ng-if="checkedSubject" class="form-control  animate-if" rows="5" id="subjectReceive"  placeholder="Insert here some text to filter the emails"
                                       ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="100%" ng-trim="false"
                             ></textarea>
@@ -69,14 +71,20 @@
                             </div>
                         </div>
 
+                        <hr>
+
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
                             <a  href="#createRecipeAction" ng-disabled="!checkedSubject && !checkedEmail" type="submit"
                                 class="btn btn-primary pull-right btn_next3"  ng-click="triggerGmail(gmailinput)" >Next</a>
                         </div>
-                        <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
-                            You have to ability e.mail or/and subject in order to continue
-                        </label>
+                        <div class="col-md-row" style="padding-top: 7%">
+                            <hr>
+                            <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
+                                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> At least one of the fields above is mandatory
+                            </label>
+                        </div>
+
 
                  <!--
                         http://localhost:8080/index.jsp#/SubGMail
