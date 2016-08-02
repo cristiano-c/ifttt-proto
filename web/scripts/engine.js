@@ -252,6 +252,10 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         templateUrl: 'innerPages/actions.html'
     });
 
+    $routeProvider.when('/createRecipeAction', {
+        templateUrl: 'innerPages/createRecipeAction.html'
+    });
+
 
 
 
