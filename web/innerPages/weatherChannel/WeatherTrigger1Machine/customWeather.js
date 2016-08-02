@@ -390,7 +390,7 @@ $(function(){
                         });
                         */
 
-                        url = "http://localhost:8080/#/allActions";
+                        url = "#createRecipeAction";
                         window.location.replace(url);
                         //or
                         //window.location(url);

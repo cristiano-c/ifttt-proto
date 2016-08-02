@@ -465,7 +465,7 @@ $(function(){
             //          1                                       1                                          1
 
 
-            url = "http://localhost:8080/#/allActions";
+            url = "#createRecipeAction";
             window.location.replace(url);
 
         }
