@@ -79,6 +79,10 @@ var navPages = [0,0,0,0,0,0];
 
 // sendingToServerAll();
 
+/* prova */
+
+var prova1 ="";
+
 iftttApp.config(['$routeProvider', function($routeProvider){
 
     $routeProvider.when('/', {
@@ -374,11 +378,16 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
         //Bug stringa null
 
-        $scope.triggerGmail = function(user)
+        $scope.gmailinput = [];
+        $scope.triggerGmail = function()
         {
             triggerChose=1;
+            alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
-            if (angular.isUndefined(user))
+
+
+
+            if (angular.isUndefined($scope.gmailinput))
             {
                 //alert("Almost a field must be completed");
                 if($scope.checkemailvar === "YES"  &&  $scope.checkedSubjectvar === "YES") {
@@ -449,11 +458,11 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                 //alert(user.email + "  " + user.subjectReceive);
 
-                if ((angular.isDefined( user.email) && angular.isDefined( user.subjectReceive)) )
+                if ((angular.isDefined( $scope.gmailinput.email) && angular.isDefined( $scope.gmailinput.subjectReceive)) )
                 {
                     //Cosa fare se la stringa è vuota? Magari vuole l'email con il subject vuoto?
 
-                    $scope.triggerGmailData = angular.copy(user);
+                    //$scope.triggerGmailData = angular.copy(user);
                     /* x1
                     var loginDataSend =
                     {
@@ -471,25 +480,25 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     */
                     //return;
                     //alert("Two defined");
-                    sender_GmailTriggerController=$scope.triggerGmailData.email;
-                    subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
+                    sender_GmailTriggerController=$scope.gmailinput.email;
+                    subject_GmailTriggerController=$scope.gmailinput.subjectReceive;
 
 
                 }
 
                 else
                 {
-                    if (angular.isDefined( user.subjectReceive))
+                    if (angular.isDefined( $scope.gmailinput.subjectReceive))
                     {
                         //Cosa fare se la stringa è vuota? Magari vuole l'email con il subject vuoto?
 
-                        $scope.triggerGmailData = angular.copy(user);
+                        //$scope.triggerGmailData = angular.copy(user);
                         if($scope.checkemailvar === "YES")
                         {
                             var loginDataSend =
                             {
                                 "sender:": "",
-                                "subject:": $scope.triggerGmailData.subjectReceive
+                                "subject:": $scope.gmailinput.subjectReceive
                             };
                             //alert(loginDataSend.pssword);
                             /*
@@ -502,7 +511,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                             });
                             */
                             sender_GmailTriggerController="";
-                            subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
+                            subject_GmailTriggerController=$scope.gmailinput.subjectReceive;
 
                         }
                         else
@@ -510,7 +519,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                             var loginDataSend =
                             {
                                 "sender:": "null",
-                                "subject:": $scope.triggerGmailData.subjectReceive
+                                "subject:": $scope.gmailinput.subjectReceive
                             };
                             /*
                             //alert(loginDataSend.pssword);
@@ -523,7 +532,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                             });
                             */
                             sender_GmailTriggerController="null";
-                            subject_GmailTriggerController=$scope.triggerGmailData.subjectReceive;
+                            subject_GmailTriggerController=$scope.gmailinput.subjectReceive;
 
 
                         }
@@ -534,16 +543,16 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     }
                     else
                     {
-                        if (angular.isDefined( user.email))
+                        if (angular.isDefined( $scope.gmailinput.email))
                         {
                             //Cosa fare se la stringa è vuota? Magari vuole l'email con il subject vuoto?
 
-                            $scope.triggerGmailData = angular.copy(user);
+                            //$scope.triggerGmailData = angular.copy(user);
                             if($scope.checkedSubjectvar === "YES")
                             {
                                 var loginDataSend =
                                 {
-                                    "sender:": $scope.triggerGmailData.email,
+                                    "sender:": $scope.gmailinput.email,
                                     "subject:": ""
                                 };
                                 /*
@@ -556,7 +565,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     success: console.log("la post ha avuto successo n4.1")
                                 });
                                 */
-                                sender_GmailTriggerController=$scope.triggerGmailData.email;
+                                sender_GmailTriggerController=$scope.gmailinput.email;
                                 subject_GmailTriggerController="";
 
                             }
@@ -564,7 +573,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                             {
                                 var loginDataSend =
                                 {
-                                    "sender:": $scope.triggerGmailData.email,
+                                    "sender:": $scope.gmailinput.email,
                                     "subject:": "NULL"
                                 };
                                 /*
@@ -577,7 +586,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                                     success: console.log("la post ha avuto successo n4.2")
                                 });
                                 */
-                                sender_GmailTriggerController=$scope.triggerGmailData.email;
+                                sender_GmailTriggerController=$scope.gmailinput.email;
                                 subject_GmailTriggerController="NULL";
 
 
@@ -593,13 +602,14 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 //$location.path(view);
             }
 
+
         };
 
 
         // $scope.checkedtitle = true;
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
-        $scope.checkemailvar = 'YES';
+        $scope.checkemailvar = 'NO';
         $scope.checkemailfunc = function(name)
         {
             if($scope.checkemailvar === "YES")
@@ -610,7 +620,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         };
 
 
-        $scope.checkedSubjectvar = 'YES';
+        $scope.checkedSubjectvar = 'NO';
         $scope.checkedSubjectfunc = function(checkedSubjectvar)
         {
             if($scope.checkedSubjectvar === "YES")
@@ -637,7 +647,6 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
             if (angular.isUndefined(user))
             {
-                //alert("Almost a field must be completed");
                 if($scope.checkemailvar === "YES"  &&  $scope.checkedSubjectvar === "YES") {
                     var loginDataSend =
                     {
