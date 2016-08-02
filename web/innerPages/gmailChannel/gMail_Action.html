@@ -68,7 +68,7 @@
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
                             <a  href="#gMailSucces" ng-disabled="!checkedSubject && !checkedEmail" type="submit"
-                                class="btn btn-primary pull-right"  ng-click="actionGmail(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right btn_next6"  ng-click="actionGmail(gmailinput)" >Next</a>
                         </div>
                         <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
                             You have to ability e.mail or/and subject in order to continue
@@ -107,6 +107,21 @@ Example code
 <label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
 <button ng-model="button" ng-disabled="checked">Button</button>
 -->
+
+<script>
+    if(navPages[4] == 0){
+        url = "javascript:history.back()";
+        window.location.replace(url);
+    } else {
+        console.log("ok");
+    }
+
+    $('.btn_next6').click(function () {
+        navPages[5] = 1;
+    });
+</script>
+
+
 </html>
 
 

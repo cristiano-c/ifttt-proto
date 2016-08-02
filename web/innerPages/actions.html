@@ -30,7 +30,7 @@
                         This will create a new event in response to te trigger you chose.
                     </p>
                     <p>
-                        <a class="btn" href="#action1Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></a>
+                        <a class="btn btn_next5" href="#action1Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></a>
                     </p>
                 </div>
             </div>
@@ -56,7 +56,7 @@
                         Send an email to an Address. Email content is coptional.
                     </p>
                     <p>
-                        <a class="btn" href="#gMailAction">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next5" href="#gMailAction">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
                 </div>
             </div>
@@ -82,7 +82,7 @@
                         Post a new tweet with the specified Text.
                     </p>
                     <p>
-                        <a class="btn" href="#Action1Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next5" href="#Action1Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
                 </div>
                 <div class="col-md-6">
@@ -93,7 +93,7 @@
                         Send a new private message to a certain User with some Text.
                     </p>
                     <p>
-                        <a class="btn" href="#Action2Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next5" href="#Action2Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
                 </div>
             </div>
@@ -103,4 +103,18 @@
 </div>
 
 </body>
+
+<script>
+    if(navPages[3] == 0){
+        url = "javascript:history.back()";
+        window.location.replace(url);
+    } else {
+        console.log("ok");
+    }
+
+    $('.btn_next5').click(function () {
+        navPages[4] = 1;
+    });
+</script>
+
 </html>

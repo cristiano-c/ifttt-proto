@@ -101,7 +101,7 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'ifCreatorController'
     });
 
-    $routeProvider.when('/index/createDO', {
+    $routeProvider.when('/createDO', {
         templateUrl: 'innerPages/actions.html',
         controller: 'doCreatorController'
     });

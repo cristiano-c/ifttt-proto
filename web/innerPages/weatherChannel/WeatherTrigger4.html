@@ -180,15 +180,25 @@
                     value: 12
                 };
             }]);
-</script>
 
-<script>
     angular.module('timeExample', [])
             .controller('DateController', ['$scope', function($scope) {
                 $scope.example = {
                     value: new Date(1970, 0, 1, 14, 57, 0)
                 };
             }]);
+
+    if(navPages[1] == 0){
+        url = "#createIF";
+        window.location.replace(url);
+    } else {
+        console.log("ok");
+    }
+
+    $('.btn_next3').click(function () {
+        navPages[2] = 1;
+    });
+
 </script>
 
 

@@ -60,7 +60,7 @@
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
                             <a  href="#SuccessTwitter"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
-                                class="btn btn-primary pull-right"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right btn_next6"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
@@ -84,7 +84,20 @@
     </div>
 
 </div>
+</body>
 
+<script>
+    if(navPages[4] == 0){
+        url = "javascript:history.back()";
+        window.location.replace(url);
+    } else {
+        console.log("ok");
+    }
+
+    $('.btn_next6').click(function () {
+        navPages[5] = 1;
+    });
+</script>
 
 <!--href="#SubGMailAction" -->
 
