@@ -28,13 +28,19 @@
                                     ng-change="checkemailfunc(checkemailvar)"
                                 >
                             </label><br/>
-                            <input type="email"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
+                            <div ng-if="checkedEmail" class="animate-if">
+                                <input class="form-control"
+                                   type="email"  ng-disabled="!checkedEmail"
+                                   id="email" placeholder="insert your email"
                                    ng-model="gmailinput.email"
                                    required="" name="uEmail"
                                    maxlength="100"
                                    ng-trim="false"
-                            >
-                            <span>{{100 - gmailinput.email.length}} left </span>
+                                >
+                                <span>{{100 - gmailinput.email.length}} left </span>
+
+                            </div>
+
                             <div ng-show="form.$submitted || form.uEmail.$touched">
                                 <span ng-show="form.uEmail.$error.email"   style="color: #b81900">This is not a valid email</span>
                             </div>
@@ -54,11 +60,13 @@
                                         ng-change="checkedSubjectfunc(checkedSubjectvar)"
                                 >
                             </label><br/>
-                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
+                            <div ng-if="checkedSubject" class="animate-if" >
+                            <textarea ng-if="checkedSubject" class="form-control  animate-if" rows="5" id="subjectReceive"  placeholder="insert the subject"
                                       ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="100%" ng-trim="false"
                             ></textarea>
                             <span>{{500 - gmailinput.subjectReceive.length}} left </span>
+                            </div>
                         </div>
 
                         <div>

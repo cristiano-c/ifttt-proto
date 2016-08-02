@@ -596,9 +596,10 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         };
 
 
-
-
-        $scope.checkemailvar = 'NO';
+        // $scope.checkedtitle = true;
+        $scope.checkedEmail = false;
+        $scope.checkedSubject = false;
+        $scope.checkemailvar = 'YES';
         $scope.checkemailfunc = function(name)
         {
             if($scope.checkemailvar === "YES")
@@ -609,7 +610,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         };
 
 
-        $scope.checkedSubjectvar = 'NO';
+        $scope.checkedSubjectvar = 'YES';
         $scope.checkedSubjectfunc = function(checkedSubjectvar)
         {
             if($scope.checkedSubjectvar === "YES")
@@ -618,6 +619,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 $scope.checkedSubjectvar = 'YES';
             //console.log(name);
         };
+
 
 
 
