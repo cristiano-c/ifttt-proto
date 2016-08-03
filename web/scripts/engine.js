@@ -2532,13 +2532,22 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
-        $scope.trigger1Gcalendar = function(gmailinput)
+        $scope.action2TwitterInput = [];
+        $scope.action2Twitterfunc = function()
         {
 
             actionChose = 4;
             var title;
             var subject;
             var place;
+
+            if($scope.checkedtitle == false &&  $scope.checkedSubject== false)
+            {
+
+            }
+            else
+            {
+
 
             //alert("1");
 
@@ -2553,7 +2562,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
              1                        1                   1
 
              */
-            if (angular.isUndefined(gmailinput))
+            if (angular.isUndefined($scope.action2TwitterInput))
             {
                 //alert("non defined");
                 if ($scope.checkedtitle === true)
@@ -2583,8 +2592,8 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
             {
                 if ($scope.checkedtitle === true)
                 {
-                    if (angular.isUndefined(gmailinput.title)) title = "";
-                    else title = gmailinput.title;
+                    if (angular.isUndefined($scope.action2TwitterInput.title)) title = "";
+                    else title = $scope.action2TwitterInput.title;
 
                 }
                 else
@@ -2594,8 +2603,8 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 }
                 if ($scope.checkedSubject === true)
                 {
-                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
-                    else subject = gmailinput.subjectReceive;
+                    if (angular.isUndefined($scope.action2TwitterInput.subjectReceive)) subject = "";
+                    else subject = $scope.action2TwitterInput.subjectReceive;
                 }
                 else
                 {
@@ -2603,10 +2612,10 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 }
                 if ($scope.checkedplace === true)
                 {
-                    if (angular.isUndefined(gmailinput.place)) place = "";
+                    if (angular.isUndefined($scope.action2TwitterInput.place)) place = "";
                     else
                     {
-                        place = gmailinput.place;
+                        place = $scope.action2TwitterInput.place;
                         //alert(gmailinput.place);
                     }
 
@@ -2627,6 +2636,12 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
             title_action2TwitterController = title;
             subjec_action2TwitterController = subject;
             sendingToServerAll();
+
+
+            // href="#SuccessTwitter"
+            url = "http://localhost:8080/#/SuccessTwitter";
+            window.location.replace(url);
+
 
             //$scope.sedingServer(loginDataSend);
 
@@ -2671,7 +2686,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
             //}
 
-
+            }
 
 
 
@@ -2690,7 +2705,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
         };
 
         $scope.checkedtitle = false;
-        $scope.checkedSubject= true;
+        $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
         //Other solution
