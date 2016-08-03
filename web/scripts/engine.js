@@ -1419,12 +1419,19 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
-        $scope.trigger1Gcalendar = function(gmailinput)
-        {
+        $scope.trigger2GcalendarVar = [];
+        $scope.trigger2Gcalendar = function() {
             triggerChose = 3;
             var title;
             var subject;
             var place;
+
+            if( $scope.checkedtitle == false && $scope.checkedSubject == false && $scope.checkedplace == false)
+            {
+            }
+            else
+            {
+
 
             //alert("1");
 
@@ -1439,67 +1446,53 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
              1                        1                   1
 
              */
-            if (angular.isUndefined(gmailinput))
-            {
-                alert("non defined");
-                if ($scope.checkedtitle === true)
-                {
-                    title="";
+            if (angular.isUndefined($scope.trigger2GcalendarVar)) {
+                //alert("non defined");
+                if ($scope.checkedtitle === true) {
+                    title = "";
                 }
-                else
-                {
+                else {
                     title = "NULL";
                 }
-                if ($scope.checkedSubject === true)
-                {
-                    subject="";
+                if ($scope.checkedSubject === true) {
+                    subject = "";
                 }
-                else
-                {
+                else {
                     subject = "NULL";
                 }
-                if ($scope.checkedplace === true)
-                {
-                    place="";
+                if ($scope.checkedplace === true) {
+                    place = "";
                 }
                 else place = "NULL";
 
             }
-            else
-            {
-                if ($scope.checkedtitle === true)
-                {
-                    if (angular.isUndefined(gmailinput.title)) title = "";
-                    else title = gmailinput.title;
+            else {
+                if ($scope.checkedtitle === true) {
+                    if (angular.isUndefined($scope.trigger2GcalendarVar.title)) title = "";
+                    else title = $scope.trigger2GcalendarVar.title;
 
                 }
-                else
-                {
+                else {
                     title = "NULL";
 
                 }
-                if ($scope.checkedSubject === true)
-                {
-                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
-                    else subject = gmailinput.subjectReceive;
+                if ($scope.checkedSubject === true) {
+                    if (angular.isUndefined($scope.trigger2GcalendarVar.subjectReceive)) subject = "";
+                    else subject = $scope.trigger2GcalendarVar.subjectReceive;
                 }
-                else
-                {
+                else {
                     subject = "NULL";
                 }
-                if ($scope.checkedplace === true)
-                {
-                    if (angular.isUndefined(gmailinput.place)) place = "";
-                    else
-                    {
-                        place = gmailinput.place;
-                        //alert(gmailinput.place);
+                if ($scope.checkedplace === true) {
+                    if (angular.isUndefined($scope.trigger2GcalendarVar.place)) place = "";
+                    else {
+                        place = $scope.trigger2GcalendarVar.place;
+                        //alert($scope.trigger2GcalendarVar.place);
                     }
 
 
                 }
                 else place = "NULL";
-
 
 
             }
@@ -1509,18 +1502,18 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
             place_Trigger2GcalendarController = place;
 
             /*
-            var loginDataSend =
-            {
-                "eventAction": 1,
-                "title": title,
-                "description": subject,
-                "location": place
+             var loginDataSend =
+             {
+             "eventAction": 1,
+             "title": title,
+             "description": subject,
+             "location": place
 
-            };
-            $scope.sedingServer(loginDataSend);
-            /*
+             };
+             $scope.sedingServer(loginDataSend);
+             /*
 
-            /*
+             /*
 
              if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
              {
@@ -1561,8 +1554,10 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
 
             //}
 
-
-
+            //href="#createRecipeAction"
+                url = "http://localhost:8080/#/createRecipeAction";
+                window.location.replace(url);
+        }
 
 
         };
@@ -1579,7 +1574,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
             });
         };
 
-        $scope.checkedtitle = true;
+        $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
