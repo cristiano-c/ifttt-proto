@@ -11,35 +11,38 @@
 <body ng-controller="customWeatherActionControllerTrigger2">
 
 
-<div class="container" style="padding-top: 6%">
+    <div class="container" style="padding-top: 6%">
 
 
-    <div class="row">
-        <div class="col-md-3"></div>
-        <div class="col-md-6">
+        <div class="row">
+            <div class="col-md-3">
 
-       <span align="center">
-        <h2 class="">Chose the location that you wish to monitor</h2>
-           <hr>
-       </span>
-
-            <div id="search-bar">
-
-                <div class="input-group">
-                <span class="input-group-addon ">
-                    <div class="hidden-xs">Search for your city :
-                    </div>
-                </span>
-
-                    <input id="search-input" type="search" class="form-control" placeholder="Enter location...">
-                    <span class="input-group-btn">
-                <button class="btn btn-default" type="button">Search!</button>
-                </span>
-                </div>
             </div>
+            <div class="col-md-6">
+
+                <span align="center">
+                    <h2 class="">Chose the location that you wish to monitor</h2>
+                    <hr>
+                </span>
+
+                <div id="search-bar">
+                    <div class="input-group">
+                        <span class="input-group-addon ">
+                            <div class="hidden-xs">Search for your city :
+
+                            </div>
+                        </span>
+
+                        <input id="search-input" type="search" class="form-control" placeholder="Enter location...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">Search!</button>
+                        </span>
+                    </div>
+
+                </div>
 
 
-            <div id="temper">
+                    <!-- <div id="temper"> -->
                 <div id="temp-board">
                     <div id="temp-inner">
 
@@ -79,6 +82,7 @@
                     <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
                            required>
                            -->
+                    <div  ng-if="checkmodelcheckweather" class="animate-if">
                         <form name="myForm">
                         <label for="mySelect">Make a choice:</label>
                         <select name="mySelect" id="mySelect"
@@ -88,13 +92,13 @@
                         </form>
 
 
-                    </label>
-                    <div role="alert">
-                        <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
-                            Required!</span>
-                    </div>
-                </form>
+                        </label>
+                        <div role="alert">
+                            <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
+                                Required!</span>
+                            </div>
 
+                </div>
 
 
                 <form name="periodform">
@@ -107,17 +111,18 @@
                             ng-model="checkmodelcheckperiod"
 
                     >
+                        <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
-
-                    <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
+                        <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
                            min="0" max="700" required>
-                    </label>
+
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="periodform.input.$error.required && checkmodelcheckperiod">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="periodform.input.$error.number && checkmodelcheckperiod">
                             Not valid number!</span>
                     </div>
+                        </div>
                 </form>
 
 
@@ -135,15 +140,19 @@
                                 ng-model="checktimeZone"
 
                         >
+                    </label>
+                        <div  ng-if="checktimeZone" class="animate-if">
+
                         <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
                                min="-12" max="12" required>
-                    </label>
+
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="timeZone.input.$error.number  && checktimeZone">
                             Not valid number!</span>
                     </div>
+                        </div>
 
                 </form>
                 <!--   -->
@@ -153,14 +162,13 @@
                 <a  type="submit" class="btn btn-danger pull-left"   href="#allTriggers" >Cancel</a>
                 <button id="but" type="submit"  class="btn btn-primary pull-right btn_next3">Submit</button>
 
-            </div>
 
+
+            <div class="col-md-3">
+      </div>
+                    
         </div>
-        <div class="col-md-3"></div>
     </div>
-
-
-
 </div>
 
 <!-- Script di page -->
