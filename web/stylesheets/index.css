@@ -9,3 +9,7 @@
 .navbar-fixed-top, .navbar-fixed-bottom {
     position: fixed;
 }
+
+.popover{
+    max-width: 11%; /* Max Width of the popover (depending on the container!) */
+}

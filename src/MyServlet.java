@@ -23,6 +23,12 @@ public class MyServlet extends HttpServlet {
             System.out.println("\t"+paramName + ": " +  request.getParameter(paramName));
         }
 
+        String text = "IFTTTPOLITOEXAMPLERESPONSE";
+
+        response.setContentType("text/plain");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(text);
+
     }
 
 

@@ -47,10 +47,10 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <img data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/>
-            <img data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
-            <img data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google" src="./images/logos/google-logged-in.png" height="30" width="30"/>
-            <img data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
+            <img id="twitterLogoON" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/>
+            <img id="twitterLogoOFF" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
+            <img id="googleLogoON" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)" src="./images/logos/google-logged-in.png" height="30" width="30"/>
+            <img id="googleLogoOFF" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
             <input type="text" class="form-control" placeholder="username">
             <input type="password" class="form-control" placeholder="password">
           </div>
@@ -194,31 +194,79 @@
 
     $(document).ready(function(){
 
+      $('#googleLogoON').hide();
+      $('#googleLogoOFF').show();
+      $('#twitterLogoON').hide();
+      $('#twitterLogoOFF').show();
+
 
       $('[data-toggle="popover"]').popover();
 
       $("#google-auth-btn").click(function(e){
 
+        var googleCredentials = {
+          email: $('#inputEmailGoogle').val(),
+          password: $('#inputPasswordGoogle').val()
+        };
+
         $.ajax({
 
           url: "/MyServlet",
           type: "POST",
-          data: $(this).serialize(),
+          data: googleCredentials,
 
           success: function(data){
-            alert(data);
-            //  chatWith('9','name');
+            //alert(data);
             $('#loginGoogleModal').modal('hide');
+
+            $('#googleLogoON').show();
+            $('#googleLogoOFF').hide();
+
             googleLogged = true;
           },
-
-          error: function(){
-            alert("login error");
+          error: function(data){
+            //alert(JSON.stringify(data));
             $('#loginGoogleModal').modal('hide');
             googleLogged = false;
+
+            $('#googleLogoON').hide();
+            $('#googleLogoOFF').show();
+
           }
+        });
 
+      });
 
+      // When clicked logout
+      $("#googleLogoON").click(function(e){
+
+        var requestLogout = {
+          // ATTENZIONE: Recuperare la username!
+          email: $('#inputEmailGoogle').val(),
+          requestLogout: true
+        };
+
+        $.ajax({
+
+          url: "/MyServlet",
+          type: "POST",
+          data: requestLogout,
+
+          success: function(data){
+            //alert(data);
+            $('#googleLogoON').hide();
+            $('#googleLogoOFF').show();
+
+            googleLogged = false;
+          },
+          error: function(data){
+            //alert(JSON.stringify(data));
+            googleLogged = true;
+
+            $('#googleLogoON').show();
+            $('#googleLogoOFF').hide();
+
+          }
         });
 
       });
