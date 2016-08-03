@@ -20,7 +20,7 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="trigger1TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
+                            <label>Sender:</label> <br>
                             <label>Click me in order to active this trigger:
                                 <input
                                     type="checkbox"
@@ -28,13 +28,15 @@
 
                                 >
                             </label><br/>
+                            <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
-                                   ng-model="gmailinput.title"
+                                   ng-model="triggerTwitterInput.title"
                                    required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
                             >
                             <span>{{100 - gmailinput.title.length}} left </span>
+                                </div>
                         </div>
 
 
@@ -48,19 +50,23 @@
 
                                 >
                             </label><br/>
-                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
-                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
+                            <div  ng-if="checkedSubject" class="animate-if">
+
+                            <input  class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
+                                      ng-model="triggerTwitterInput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
-                            ></textarea>
-                            <span>{{500 - gmailinput.subjectReceive.length}} left </span>
+                                        type="title"
+                            >
+                            <span>{{100 - gmailinput.subjectReceive.length}} left </span>
+                        </div>
                         </div>
 
 
 
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
-                            <a  href="#createRecipeAction"  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                            <a    ng-disabled="!checkedtitle && !checkedSubject" type="submit"
+                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar()" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
