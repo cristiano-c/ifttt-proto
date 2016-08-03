@@ -1635,7 +1635,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
             actionChose =  2;
 
-            if ($scope.checkedtitle == true &&
+            if ($scope.checkedtitle == false &&
                 $scope.checkedSubject == false &&
                 $scope.checkedplace == false    &&
                 $scope.checkdata == false)
