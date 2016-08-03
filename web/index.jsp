@@ -61,9 +61,85 @@
   </nav>
 
 
-
   <ng-view></ng-view>
 
+  <!-- MODAL FORM GOOGLE -- BEGIN -->
+  <div class="modal fade" id="loginGoogleModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h2 class="modal-title"><img src="./images/logos/google-logged-in.png" height="30" width="30"/> Login with Google</h2>
+        </div>
+
+        <div class="modal-body">
+          <!-- The form is placed inside the body of modal -->
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="inputEmailGoogle" class="col-sm-3 control-label">Google mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="inputEmailGoogle" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPasswordGoogle" class="col-sm-3 control-label">Password <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPasswordGoogle" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL FORM GOOGLE -- END -->
+
+  <!-- MODAL FORM GOOGLE -- BEGIN -->
+  <div class="modal fade" id="loginTwitterModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h2 class="modal-title"><img src="./images/logos/twitter-logged-in.png" height="34" width="34"/> Login with Twitter</h2>
+        </div>
+
+        <div class="modal-body">
+          <!-- The form is placed inside the body of modal -->
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label for="inputEmailTwitter" class="col-sm-3 control-label">Google mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+              <div class="col-sm-9">
+                <input type="email" class="form-control" id="inputEmailTwitter" placeholder="Email">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPasswordTwitter" class="col-sm-3 control-label">Password <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></label>
+              <div class="col-sm-9">
+                <input type="password" class="form-control" id="inputPasswordTwitter" placeholder="Password">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="submit" class="btn btn-default">Sign in</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- MODAL FORM GOOGLE -- END -->
+
+  <!-- extra space bottom page -->
   <div style="padding-bottom: 6%">
     <br>
   </div>
@@ -72,6 +148,7 @@
 
 
 
+  <!-- BOTTOM NAVBAR -- BEGIN -->
   <nav class="navbar navbar-inverse navbar-fixed-bottom navbar-default center">
     <div class="container">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -100,6 +177,7 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
   </nav>
+  <!-- BOTTOM NAVBAR -- END -->
 
 
 
