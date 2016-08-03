@@ -383,6 +383,14 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         {
             triggerChose=1;
             //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
+          if($scope.checkedEmail == false && $scope.checkedSubject == false)
+          {
+
+          }
+          else
+          {
+
+
 
 
 
@@ -601,6 +609,13 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 //alert("You have  completed the form");
                 //$location.path(view);
             }
+              //href="#createRecipeAction"
+              url = "http://localhost:8080/#/createRecipeAction";
+              window.location.replace(url);
+          
+          }
+
+
 
 
         };
