@@ -1227,7 +1227,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                    1                        1                   1
 
              */
-            if (angular.isUndefined(gmailinput))
+            if (angular.isUndefined($scope.trigger1GcalendarVar))
             {
                 //alert("non defined");
                 if ($scope.checkedtitle === true)
@@ -1257,8 +1257,8 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
             {
                 if ($scope.checkedtitle === true)
                 {
-                    if (angular.isUndefined(gmailinput.title)) title = "";
-                    else title = gmailinput.title;
+                    if (angular.isUndefined($scope.trigger1GcalendarVar.title)) title = "";
+                    else title = $scope.trigger1GcalendarVar.title;
 
                 }
                 else
@@ -1268,8 +1268,8 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 }
                 if ($scope.checkedSubject === true)
                 {
-                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
-                    else subject = gmailinput.subjectReceive;
+                    if (angular.isUndefined($scope.trigger1GcalendarVar.subjectReceive)) subject = "";
+                    else subject = $scope.trigger1GcalendarVar.subjectReceive;
                 }
                 else
                 {
@@ -1277,10 +1277,10 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 }
                 if ($scope.checkedplace === true)
                 {
-                    if (angular.isUndefined(gmailinput.place)) place = "";
+                    if (angular.isUndefined($scope.trigger1GcalendarVar.place)) place = "";
                     else
                     {
-                        place = gmailinput.place;
+                        place = $scope.trigger1GcalendarVar.place;
                         //alert(gmailinput.place);
                     }
 

@@ -28,12 +28,12 @@
                             > <label>Title:</label> <br>
                             <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
-                                   ng-model="gmailinput.title"
+                                   ng-model="trigger1GcalendarVar.title"
                                    required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{100 - gmailinput.title.length}} left </span>
+                            <span>{{100 - trigger1GcalendarVar.title.length}} left </span>
                                 </div>
                         </div>
 
@@ -48,10 +48,10 @@
 
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
-                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
+                                      ng-model="trigger1GcalendarVar.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
-                            <span>{{500 - gmailinput.subjectReceive.length}} left </span>
+                            <span>{{500 - trigger1GcalendarVar.subjectReceive.length}} left </span>
                                 </div>
                         </div>
 
@@ -67,12 +67,12 @@
                             <div  ng-if="checkedplace" class="animate-if">
 
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
-                                   ng-model="gmailinput.place"
+                                   ng-model="trigger1GcalendarVar.place"
                                    required="" name="uplace"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{100 - gmailinput.place.length}} left </span>
+                            <span>{{100 - trigger1GcalendarVar.place.length}} left </span>
                             <div ng-show="form.$submitted || form.uplace.$touched">
                                 <span ng-show="form.uplace.$error.place"   style="color: #b81900">This is not a valid place</span>
                             </div>
@@ -85,7 +85,7 @@
                             <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
 
                             <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar(trigger1GcalendarVar)" >Next</a>
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
                             You have to activate at least one of Title, Subject and Location in order to continue
@@ -95,7 +95,7 @@
                  href="#actionGcalendar"
                         http://localhost:8080/index.jsp#/SubGMail
                         <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(trigger1GcalendarVar)">Next</a>
                         -->
 
                     </form>
