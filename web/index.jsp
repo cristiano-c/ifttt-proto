@@ -91,7 +91,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button id="google-auth-btn" type="submit" class="btn btn-default">Sign in</button>
               </div>
             </div>
           </form>
@@ -188,9 +188,45 @@
   </body>
 
   <script>
+
+    var googleLogged = false;
+    var twitterLogged = false;
+
     $(document).ready(function(){
+
+
       $('[data-toggle="popover"]').popover();
+
+      $("#google-auth-btn").click(function(e){
+
+        $.ajax({
+
+          url: "/MyServlet",
+          type: "POST",
+          data: $(this).serialize(),
+
+          success: function(data){
+            alert(data);
+            //  chatWith('9','name');
+            $('#loginGoogleModal').modal('hide');
+            googleLogged = true;
+          },
+
+          error: function(){
+            alert("login error");
+            $('#loginGoogleModal').modal('hide');
+            googleLogged = false;
+          }
+
+
+        });
+
+      });
+
+
     });
+
+
   </script>
 
 </html>

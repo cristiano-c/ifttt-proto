@@ -270,8 +270,11 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
-iftttApp.controller('indexController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window',
+    function ($scope, $rootscope, $window, $routeParams, $http, $resource) {
+    $scope.googleLogged = $window.googleLogged;
+        $scope.twitterLogged = $window.twitterLogged;
+
         $scope.loadHome = function()
         {
             alert("weak");
