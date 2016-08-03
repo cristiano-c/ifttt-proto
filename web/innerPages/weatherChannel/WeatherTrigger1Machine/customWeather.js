@@ -295,8 +295,10 @@ $(function(){
                 });
                 */
 
-                    url = "http://localhost:8080/#/gMailSucces";
+
+                url = "http://localhost:8080/#/createRecipeAction";
                 window.location.replace(url);
+
                 //or
                 //window.location(url);
 
@@ -328,7 +330,7 @@ $(function(){
                     });
                     */
 
-                    url = "http://localhost:8080/#/gMailSucces";
+                    url = "http://localhost:8080/#/createRecipeAction";
                     window.location.replace(url);
                     //or
                     //window.location(url);
@@ -358,7 +360,7 @@ $(function(){
                             success: console.log("la post ha avuto successo")
                         });
                         */
-                        var temp = $("gMailSucces").val();
+                        var temp = $("createRecipeAction").val();
                         url = "http://localhost:8080/#/" + temp;
                         window.location.replace(url);
                         //or
@@ -390,7 +392,12 @@ $(function(){
                         });
                         */
 
+
+                        /*
                         url = "#createRecipeAction";
+                        window.location.replace(url);
+                        */
+                        url = "http://localhost:8080/#/createRecipeAction";
                         window.location.replace(url);
                         //or
                         //window.location(url);
