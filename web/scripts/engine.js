@@ -1196,12 +1196,23 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
-        $scope.trigger1Gcalendar = function(gmailinput)
+        $scope.trigger1GcalendarVar = [];
+        $scope.trigger1Gcalendar = function()
         {
             triggerChose = 2;
             var title;
             var subject;
             var place;
+
+            if( $scope.checkedtitle == false &&   $scope.checkedtitle == false && $scope.checkedplace==false)
+            {
+
+            }
+            else
+            {
+
+
+
 
             //alert("1");
 
@@ -1337,6 +1348,10 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
             //}
 
+           // href="#createRecipeAction"
+            url = "http://localhost:8080/#/createRecipeAction";
+            window.location.replace(url);
+            }
 
 
 
@@ -1355,7 +1370,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
             });
         };
 
-        $scope.checkedtitle = true;
+        $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
