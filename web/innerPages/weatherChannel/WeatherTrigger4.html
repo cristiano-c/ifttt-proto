@@ -69,15 +69,17 @@
                         type="checkbox"
                         ng-model="checkmodelcheckthmax"
                 >
+                    <div  ng-if="checkmodelcheckthmax" class="animate-if">
                 <input id="thmaxidinput" ng-disabled="!checkmodelcheckthmax" type="number" name="input" ng-model="trigger1input.value1"
                        min="-70" max="70" required>
-                </label>
+
                 <div role="alert">
-                        <span  style="color:#ac2925" class="error" ng-show="thmaxidcheckbox.input.$error.required  && checkmodelcheckthmax">
+                        <span  style="color:#ac2925" class="error" ng-show="thmax.input.$error.required  && checkmodelcheckthmax">
                             Required!</span>
-                    <span  style="color:#ac2925"  class="error" ng-show="thmaxidcheckbox.input.$error.number  && checkmodelcheckthmax">
+                    <span  style="color:#ac2925"  class="error" ng-show="thmax.input.$error.number  && checkmodelcheckthmax">
                             Not valid number!</span>
                 </div>
+                    </div>
                 </form>
 
                 <form name="thmin">
@@ -91,16 +93,17 @@
 
                 >
 
-
+                    <div  ng-if="checkmodelcheckthmin" class="animate-if">
                 <input id="thminidinput" ng-disabled="!checkmodelcheckthmin" type="number" name="input" ng-model="trigger1input.value2"
                        min="-70" max="70" required>
-                </label>
+
                 <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="thmin.input.$error.required && checkmodelcheckthmin">
                             Required!</span>
                     <span  style="color:#ac2925"  class="error" ng-show="thmin.input.$error.number && checkmodelcheckthmin">
                             Not valid number!</span>
                 </div>
+                        </div>
                 </form>
 
 
@@ -116,16 +119,18 @@
 
                     >
 
+                    <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
                     <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
                            min="0" max="700" required>
-                    </label>
+
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="periodform.input.$error.required && checkmodelcheckperiod">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="periodform.input.$error.number && checkmodelcheckperiod">
                             Not valid number!</span>
                     </div>
+                        </div>
                 </form>
 
 
@@ -143,15 +148,20 @@
                             ng-model="checktimeZone"
 
                     >
+                    </label>
+                    <div  ng-if="checktimeZone" class="animate-if">
+
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
                            min="-12" max="12" required>
-                </label>
+
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="timeZone.input.$error.number  && checktimeZone">
                             Not valid number!</span>
                     </div>
+
+            </div>
 
                 </form>
                 <!--   -->
