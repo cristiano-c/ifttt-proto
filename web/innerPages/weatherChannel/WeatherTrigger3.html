@@ -94,14 +94,17 @@
                             ng-model="checktimeZone"
                             ng-change="checktimeZonefunc(checktimeZonevar)"
                     >
+                </label>
+                    <div  ng-if="checktimeZone" class="animate-if">
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
                            min="-12" max="12" required>
-                </label>
+
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="timeZone.input.$error.number  && checktimeZone">
                             Not valid number!</span>
+                    </div>
                     </div>
 
                 </form>
