@@ -2109,8 +2109,9 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
 iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
+        $scope.trigger2TwitterInput = [];
 
-        $scope.trigger1Gcalendar = function(gmailinput)
+        $scope.trigger1Gcalendar = function()
         {
             triggerChose=5;
             var title;
@@ -2118,138 +2119,134 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
             var place;
 
             //alert("1");
-
-            /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
-             0                        0                   0
-             0                        0                   1
-             0                        1                   0
-             0                        1                   1
-             1                        0                   0
-             1                        0                   1
-             1                        1                   0
-             1                        1                   1
-
-             */
-            if (angular.isUndefined(gmailinput))
+            if  ($scope.checkedtitle == false &&  $scope.checkedSubject == false)
             {
-                //alert("non defined");
-                if ($scope.checkedtitle === true)
-                {
-                    title="";
-                }
-                else
-                {
-                    title = "NULL";
-                }
-                if ($scope.checkedSubject === true)
-                {
-                    subject="";
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    place="";
-                }
-                else place = "NULL";
 
             }
-            else
-            {
-                if ($scope.checkedtitle === true)
-                {
-                    if (angular.isUndefined(gmailinput.title)) title = "";
-                    else title = gmailinput.title;
+            else {
 
-                }
-                else
-                {
-                    title = "NULL";
 
-                }
-                if ($scope.checkedSubject === true)
-                {
-                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
-                    else subject = gmailinput.subjectReceive;
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    if (angular.isUndefined(gmailinput.place)) place = "";
-                    else
-                    {
-                        place = gmailinput.place;
-                        //alert(gmailinput.place);
+                /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
+                 0                        0                   0
+                 0                        0                   1
+                 0                        1                   0
+                 0                        1                   1
+                 1                        0                   0
+                 1                        0                   1
+                 1                        1                   0
+                 1                        1                   1
+
+                 */
+                if (angular.isUndefined($scope.trigger2TwitterInput)) {
+                    //alert("non defined");
+                    if ($scope.checkedtitle === true) {
+                        title = "";
                     }
+                    else {
+                        title = "NULL";
+                    }
+                    if ($scope.checkedSubject === true) {
+                        subject = "";
+                    }
+                    else {
+                        subject = "NULL";
+                    }
+                    if ($scope.checkedplace === true) {
+                        place = "";
+                    }
+                    else place = "NULL";
+
+                }
+                else {
+                    if ($scope.checkedtitle === true) {
+                        if (angular.isUndefined($scope.trigger2TwitterInput.title)) title = "";
+                        else title = $scope.trigger2TwitterInput.title;
+
+                    }
+                    else {
+                        title = "NULL";
+
+                    }
+                    if ($scope.checkedSubject === true) {
+                        if (angular.isUndefined($scope.trigger2TwitterInput.subjectReceive)) subject = "";
+                        else subject = $scope.trigger2TwitterInput.subjectReceive;
+                    }
+                    else {
+                        subject = "NULL";
+                    }
+                    if ($scope.checkedplace === true) {
+                        if (angular.isUndefined($scope.trigger2TwitterInput.place)) place = "";
+                        else {
+                            place = $scope.trigger2TwitterInput.place;
+                            //alert(gmailinput.place);
+                        }
+
+
+                    }
+                    else place = "NULL";
 
 
                 }
-                else place = "NULL";
+                var loginDataSend =
+                {
+                    "type": 1,
+                    "username_sender": title,
+                    "hashtag_text": subject
+                    //"place": place
 
+                };
+                username_sender_trigger2TwitterController = title;
+                hashtag_text_trigger2TwitterController = subject;
+
+                //$scope.sedingServer(loginDataSend);
+
+                /*
+
+                 if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
+                 {
+                 var title;
+                 var subject;
+                 var place;
+
+
+                 if (angular.isUndefined(gmailinput))
+                 {
+                 title = "";
+                 subject = "";
+                 place = "";
+                 alert("zzz");
+                 }
+                 else
+                 {
+                 alert("defined");
+
+                 if (angular.isDefined(gmailinput.title))
+                 title = gmailinput.title;
+                 else title = "";
+
+
+                 if (angular.isDefined(gmailinput.checkedSubject))
+                 subject = gmailinput.checkedSubject;
+                 else subject = "";
+
+
+                 if (angular.isDefined(gmailinput.checkedplace))
+                 place = gmailinput.checkedplace;
+                 else place = "";
+                 }
+                 */
+
+                //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
+                //var title ="w";
+
+                //}
+
+                //href="#createRecipeAction"
+                url = "http://localhost:8080/#/createRecipeAction";
+                window.location.replace(url);
 
 
             }
-            var loginDataSend =
-            {
-                "type": 1,
-                "username_sender": title,
-                "hashtag_text": subject
-                //"place": place
-
-            };
-            username_sender_trigger2TwitterController = title;
-            hashtag_text_trigger2TwitterController = subject;
-
-            //$scope.sedingServer(loginDataSend);
-
-            /*
-
-             if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
-             {
-             var title;
-             var subject;
-             var place;
-
-
-             if (angular.isUndefined(gmailinput))
-             {
-             title = "";
-             subject = "";
-             place = "";
-             alert("zzz");
-             }
-             else
-             {
-             alert("defined");
-
-             if (angular.isDefined(gmailinput.title))
-             title = gmailinput.title;
-             else title = "";
-
-
-             if (angular.isDefined(gmailinput.checkedSubject))
-             subject = gmailinput.checkedSubject;
-             else subject = "";
-
-
-             if (angular.isDefined(gmailinput.checkedplace))
-             place = gmailinput.checkedplace;
-             else place = "";
-             }
-             */
-
-            //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
-            //var title ="w";
-
-            //}
-
-
-
 
 
         };
@@ -2266,7 +2263,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
             });
         };
 
-        $scope.checkedtitle = true;
+        $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
@@ -2318,12 +2315,20 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
 
-        $scope.trigger1Gcalendar = function(gmailinput)
+        $scope.action1TwitterInput = [];
+        $scope.twitterAction2 = function()
         {
             actionChose = 3;
             var title;
             var subject;
             var place;
+
+            if ( $scope.checkedSubject== false) {
+
+            }
+            else
+            {
+
 
             //alert("1");
 
@@ -2338,7 +2343,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
              1                        1                   1
 
              */
-            if (angular.isUndefined(gmailinput))
+            if (angular.isUndefined($scope.action1TwitterInput))
             {
                 //alert("non defined");
                 if ($scope.checkedtitle === true)
@@ -2368,8 +2373,8 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
             {
                 if ($scope.checkedtitle === true)
                 {
-                    if (angular.isUndefined(gmailinput.title)) title = "";
-                    else title = gmailinput.title;
+                    if (angular.isUndefined($scope.action1TwitterInput.title)) title = "";
+                    else title = $scope.action1TwitterInput.title;
 
                 }
                 else
@@ -2379,8 +2384,8 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 }
                 if ($scope.checkedSubject === true)
                 {
-                    if (angular.isUndefined(gmailinput.subjectReceive)) subject = "";
-                    else subject = gmailinput.subjectReceive;
+                    if (angular.isUndefined($scope.action1TwitterInput.subjectReceive)) subject = "";
+                    else subject = $scope.action1TwitterInput.subjectReceive;
                 }
                 else
                 {
@@ -2388,10 +2393,10 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 }
                 if ($scope.checkedplace === true)
                 {
-                    if (angular.isUndefined(gmailinput.place)) place = "";
+                    if (angular.isUndefined($scope.action1TwitterInput.place)) place = "";
                     else
                     {
-                        place = gmailinput.place;
+                        place = $scope.action1TwitterInput.place;
                         //alert(gmailinput.place);
                     }
 
@@ -2411,6 +2416,10 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
             };
             subject_action1TwitterController=subject;
             sendingToServerAll();
+
+                //href="#SuccessTwitter"
+                url = "http://localhost:8080/#/SuccessTwitter";
+                window.location.replace(url);
 
             //$scope.sedingServer(loginDataSend);
 
@@ -2457,7 +2466,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
 
 
 
-
+        }
 
         };
 
@@ -2474,7 +2483,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
         };
 
         $scope.checkedtitle = false;
-        $scope.checkedSubject= true;
+        $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
         //Other solution

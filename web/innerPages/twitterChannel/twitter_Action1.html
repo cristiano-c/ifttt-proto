@@ -28,11 +28,13 @@
 
                                 >
                             </label><br/>
+                            <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
-                                      ng-model="gmailinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
+                                      ng-model="action1TwitterInput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
-                            <span>{{500 - gmailinput.subjectReceive.length}} left </span>
+                            <span>{{500 - action1TwitterInput.subjectReceive.length}} left </span>
+                                </div>
                         </div>
 
 
@@ -41,8 +43,8 @@
 
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
-                            <a  href="#SuccessTwitter"  ng-disabled="!checkedSubject" type="submit"
-                                class="btn btn-primary pull-right btn_next6" ng-click="trigger1Gcalendar(gmailinput)" >Next</a>
+                            <a    ng-disabled="!checkedSubject" type="submit"
+                                class="btn btn-primary pull-right btn_next6" ng-click="twitterAction2()" >Next</a>
 
 
 
@@ -55,7 +57,7 @@
                         href="#actionGcalendar"
                                http://localhost:8080/index.jsp#/SubGMail
                                <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(action1TwitterInput)">Next</a>
                                -->
 
                     </form>
