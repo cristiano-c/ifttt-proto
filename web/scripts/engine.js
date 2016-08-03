@@ -382,7 +382,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         $scope.triggerGmail = function()
         {
             triggerChose=1;
-            alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
+            //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
 
 
