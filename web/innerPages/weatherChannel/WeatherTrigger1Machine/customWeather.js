@@ -1,4 +1,5 @@
-$(function(){
+$(function()
+{
     var result;
     var foreresult;
     var temperature;
@@ -9,6 +10,12 @@ $(function(){
     var forejsonurl;
     var deg;
     var idCity=0;
+    /* Per i checking  */
+    var flagTimezoneCheck = "1";
+    var flagTimeCheck = "1";
+
+
+
     var getToDate=function(time){
         var date = new Date(time*1000);
         var day=date.getDate();
@@ -256,7 +263,8 @@ $(function(){
     });
 
 
-    $("#but").on("click", function updateView(){
+    $("#but").on("click", function updateView()
+    {
         //alert(idCity);
         triggerChose = 6;
         if (idCity == '0')
@@ -269,7 +277,8 @@ $(function(){
         {
             var timezone = $('#timezoneid').val();
             var time = $('#timehourid').val() + ":" +  $('#timeminuteid').val();
-            var zonechech = $('#checktimeZonevar:checkbox:checked').val();
+
+            //var zonechech = $('#checktimeZonevar:checkbox:checked').val();
             if ($('#checktimeZonevar').is(":checked") &&  $('#checktime').is(":checked"))
             {
 
@@ -296,8 +305,8 @@ $(function(){
                 */
 
 
-                url = "http://localhost:8080/#/createRecipeAction";
-                window.location.replace(url);
+                //url = "http://localhost:8080/#/createRecipeAction";
+                //window.location.replace(url);
 
                 //or
                 //window.location(url);
@@ -330,8 +339,8 @@ $(function(){
                     });
                     */
 
-                    url = "http://localhost:8080/#/createRecipeAction";
-                    window.location.replace(url);
+                    //url = "http://localhost:8080/#/createRecipeAction";
+                    //window.location.replace(url);
                     //or
                     //window.location(url);
                 }
@@ -360,8 +369,8 @@ $(function(){
                             success: console.log("la post ha avuto successo")
                         });
                         */
-                        var temp = $("createRecipeAction").val();
-                        url = "http://localhost:8080/#/" + temp;
+                        //var temp = $("createRecipeAction").val();
+                        //url = "http://localhost:8080/#/" + temp;
                         window.location.replace(url);
                         //or
                         //window.location(url);
@@ -397,8 +406,8 @@ $(function(){
                         url = "#createRecipeAction";
                         window.location.replace(url);
                         */
-                        url = "http://localhost:8080/#/createRecipeAction";
-                        window.location.replace(url);
+                        //url = "http://localhost:8080/#/createRecipeAction";
+                        //window.location.replace(url);
                         //or
                         //window.location(url);
                     }
@@ -406,30 +415,162 @@ $(function(){
 
             }
 
-            /*
-            var loginDataSend =
+            /*Check value*/
+            if ($('#checktimeZonevar').is(":checked"))
+                timezoneCheck(timezone,  flagTimezoneCheck);
+           if($('#checktime').is(":checked"))
+               timeCheck(flagTimeCheck);
+            if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
-                "sender:": idCity,
-                "timezone" : timezone,
-                "ora": time
+                var url = "http://localhost:8080/#/createRecipeAction";
+                window.location.replace(url);
+            }
+            else
+            {
+                var url = "http://localhost:8080/#/WeatherTrigger1";
+                window.location.replace(url);
 
-            };
-            //alert(loginDataSend.pssword);
-            $.ajax({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo")
-            });
-            */
+            }
+            //alert( flagTimezoneCheck  + "X" +   flagTimeCheck );
         }
 
 
-    })
+    });
+
+
+
+    function  timezoneCheck  (timezone)
+    {
+
+        if (timezone == "0" ||
+            timezone == "1" ||
+            timezone == "2" ||
+            timezone == "3" ||
+            timezone == "4" ||
+            timezone == "5" ||
+            timezone == "6" ||
+            timezone == "7" ||
+            timezone == "8" ||
+            timezone == "9" ||
+            timezone == "10" ||
+            timezone == "11" ||
+            timezone == "12" ||
+            timezone == "-1" ||
+            timezone == "-2" ||
+            timezone == "-3" ||
+            timezone == "-4" ||
+            timezone == "-5" ||
+            timezone == "-6" ||
+            timezone == "-7" ||
+            timezone == "-8" ||
+            timezone == "-9" ||
+            timezone == "-10" ||
+            timezone == "-11" ||
+            timezone == "-12")
+            flagTimezoneCheck = "1";
+        else
+            flagTimezoneCheck ="0";
+
+    };
+
+
+
+    function timeCheck ()
+    {
+        var hvar = $('#timehourid').val();
+        var mvar = $('#timeminuteid').val();
+
+        if ((hvar == "0" ||
+            hvar == "1" ||
+            hvar == "2" ||
+            hvar == "3" ||
+            hvar == "4" ||
+            hvar == "5" ||
+            hvar == "6" ||
+            hvar == "7" ||
+            hvar == "8" ||
+            hvar == "9" ||
+            hvar == "10" ||
+            hvar == "11" ||
+            hvar == "12" ||
+            hvar == "13" ||
+            hvar == "14" ||
+            hvar == "15" ||
+            hvar == "16" ||
+            hvar == "17" ||
+            hvar == "18" ||
+            hvar == "19" ||
+            hvar == "20" ||
+            hvar == "21" ||
+            hvar == "22" ||
+            hvar == "23" ) &&
+            (mvar == "1" ||
+                mvar == "2" ||
+                mvar == "3" ||
+                mvar == "4" ||
+                mvar == "5" ||
+                mvar == "6" ||
+                mvar == "7" ||
+                mvar == "8" ||
+                mvar == "9" ||
+                mvar == "10" ||
+                mvar == "11" ||
+                mvar == "12" ||
+                mvar == "13" ||
+                mvar == "14" ||
+                mvar == "15" ||
+                mvar == "16" ||
+                mvar == "17" ||
+                mvar == "18" ||
+                mvar == "19" ||
+                mvar == "21" ||
+                mvar == "22" ||
+                mvar == "23" ||
+                mvar == "24" ||
+                mvar == "25" ||
+                mvar == "26" ||
+                mvar == "27" ||
+                mvar == "28" ||
+                mvar == "29" ||
+                mvar == "30" ||
+                mvar == "31" ||
+                mvar == "32" ||
+                mvar == "33" ||
+                mvar == "34" ||
+                mvar == "35" ||
+                mvar == "36" ||
+                mvar == "37" ||
+                mvar == "38" ||
+                mvar == "39" ||
+                mvar == "41" ||
+                mvar == "42" ||
+                mvar == "43" ||
+                mvar == "44" ||
+                mvar == "45" ||
+                mvar == "46" ||
+                mvar == "47" ||
+                mvar == "48" ||
+                mvar == "49" ||
+                mvar == "50" ||
+                mvar == "51" ||
+                mvar == "52" ||
+                mvar == "53" ||
+                mvar == "54" ||
+                mvar == "55" ||
+                mvar == "56" ||
+                mvar == "57" ||
+                mvar == "58" ||
+                mvar == "59" )
+        )
+            flagTimeCheck ="1";
+        else
+            flagTimeCheck ="0";
+
+    }
 
 
 
 
 
-})
+
+});
