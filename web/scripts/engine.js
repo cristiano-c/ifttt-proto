@@ -1874,7 +1874,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
-       
+
 
 
     }]);
