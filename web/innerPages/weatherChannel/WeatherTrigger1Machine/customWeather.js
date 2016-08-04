@@ -370,7 +370,7 @@ $(function()
             }
 
         }
-        alert(flagTimezoneCheck  + "X" +  flagTimeCheck);
+        //alert(flagTimezoneCheck  + "X" +  flagTimeCheck);
 
 
     });
