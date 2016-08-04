@@ -366,6 +366,20 @@ $(function()
             {
                 var url = "/#/WeatherTrigger1";
                 window.location.replace(url);
+                //Alert sull'errore commesso:
+                if(flagTimezoneCheck == "0" && flagTimeCheck == "0")
+                {
+                    alert("Your inputs are not right");
+                }
+                else
+                {
+                    if (flagTimeCheck == "0")
+                    {
+                        alert("The time is not right");
+                    }
+                    else
+                        alert("The timezone input is not right");
+                }
 
             }
 
@@ -504,7 +518,9 @@ $(function()
         )
             flagTimeCheck ="1";
         else
-            flagTimeCheck ="0";
+        {
+            flagTimeCheck = "0";
+        }
 
     }
 
