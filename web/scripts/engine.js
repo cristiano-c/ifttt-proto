@@ -1204,7 +1204,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
             var subject;
             var place;
 
-            if( $scope.checkedtitle == false &&   $scope.checkedtitle == false && $scope.checkedplace==false)
+            if( $scope.checkedtitle == false &&   $scope.checkedSubject == false && $scope.checkedplace==false)
             {
 
             }
