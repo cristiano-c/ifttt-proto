@@ -253,7 +253,9 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
     $routeProvider.when('/allTriggers', {
-        templateUrl: 'innerPages/triggers.html'
+        templateUrl: 'innerPages/triggers.html',
+        ontroller: 'allTriggersController'
+
     });
 
     $routeProvider.when('/allActions', {
@@ -272,16 +274,117 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
 iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window',
     function ($scope, $rootscope, $window, $routeParams, $http, $resource) {
-    $scope.googleLogged = $window.googleLogged;
-        $scope.twitterLogged = $window.twitterLogged;
+        $scope.googleLogoOFFAngular=true
+
+        $scope.loginOnGoogle = function()
+        {
+            alert("hello");
+            var googleCredentials =
+            {
+                email: $('#inputEmailGoogle').val(),
+                password: $('#inputPasswordGoogle').val()
+            };
+            //$('#googleLogoON').show();
+            //$('#googleLogoOFF').hide();
+            $scope.googleLogoONAngular=true;
+            $scope.googleLogoOFFAngular=false;
+
+            $.ajax({
+
+                url: "/MyServlet",
+                type: "POST",
+                data: googleCredentials
+            });
+
+
+        };
+           /*
+            $scope.googleLogged = $window.googleLogged;
+                $scope.twitterLogged = $window.twitterLogged;
+
+                $scope.loadHome = function()
+                {
+                    alert("weak");
+                    console.log("homeController: loaded");
+                }
+                */
+
+    }]);
+
+//allTriggersController
+iftttApp.controller('allTriggersController',  ['$scope', '$routeParams',
+    function ($scope, $rootscope, $routeParams, $http, $resource) {
+
+        $scope.loginOnGoogle = function()
+        {
+            alert("hello");
+            var googleCredentials =
+            {
+                email: $('#inputEmailGoogle').val(),
+                password: $('#inputPasswordGoogle').val()
+            };
+            $('#googleLogoON').show();
+            $('#googleLogoOFF').hide();
+
+            $.ajax({
+
+                url: "/MyServlet",
+                type: "POST",
+                data: googleCredentials
+            });
+
+
+            /*
+
+            success: function(data){
+            //alert(data);
+            $('#loginGoogleModal').modal('hide');
+            $("#notificationsWrapper").notify(
+                "Logged with Google",
+                {
+                    className: 'success',
+                    position: 'bottom right'
+                }
+            );
+            $('#googleLogoON').show();
+            $('#googleLogoOFF').hide();
+
+            googleLogged = true;
+            //console.log(googleLogged);
+        },
+        error: function(data)
+        {
+            //alert(JSON.stringify(data));
+            $('#loginGoogleModal').modal('hide');
+            googleLogged = false;
+            $("#notificationsWrapper").notify(
+                "Failed to login with Google",
+                {
+                    className: 'error',
+                    position: 'bottom right'
+                }
+            );
+            $('#googleLogoON').hide();
+            $('#googleLogoOFF').show();
+            console.log(googleLogged);
+        }
+        */
+
+
+
+
+        };
+
 
         $scope.loadHome = function()
         {
-            alert("weak");
+            alert("ss");
             console.log("homeController: loaded");
         }
 
     }]);
+
+
 
 iftttApp.controller('homeController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
@@ -2773,6 +2876,8 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
 
     }]);
+
+
 function sendingToServerAll ()
 {
     /*
