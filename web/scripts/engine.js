@@ -154,13 +154,13 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
     $routeProvider.when('/gMailTrigger', {
         templateUrl: 'innerPages/gmailChannel/gMail_Trigger.html',
-        controller: 'GmailTriggerController'
+        controller: 'GmailTriggerController' //o.k.
     });
 
 
     $routeProvider.when('/gMailAction', {
         templateUrl: 'innerPages/gmailChannel/gMail_Action.html',
-        controller: 'GmailActionController'
+        controller: 'GmailActionController' //o.k.
     });
 
     $routeProvider.when('/gMailSucces', {
@@ -621,6 +621,22 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 window.location.replace(url);
 
             }
+            //Test done o.k.
+            /*
+            var loginDataSend =
+            {
+                l1:  sender_GmailTriggerController,
+                l2: subject_GmailTriggerController
+            }
+            $.ajax
+            ({
+                method: "post",
+                url: "/MyServlet",
+                data: loginDataSend,
+                dataType: "json",
+                success: console.log("la post ha avuto successo")
+            });
+            */
         };
 
         // $scope.checkedtitle = true;
@@ -700,6 +716,22 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     var url = "#gMailAction";
                     window.location.replace(url);
             }
+
+            /*
+            var loginDataSend =
+            {
+                l3:  sender_GmailActionController,
+                l4: subject_GmailActionController
+            }
+            $.ajax
+            ({
+                method: "post",
+                url: "/MyServlet",
+                data: loginDataSend,
+                dataType: "json",
+                success: console.log("la post ha avuto successo")
+            });
+            */
 
         };
         $scope.checkedEmail = false;
@@ -1008,7 +1040,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 if ($scope.checkedSubject == true) {
                     if (angular.isDefined($scope.trigger1GcalendarVar)) {
                         if (angular.isDefined($scope.trigger1GcalendarVar.subjectReceive)) {
-                            title = $scope.trigger1GcalendarVar.subjectReceive;
+                            subject = $scope.trigger1GcalendarVar.subjectReceive;
                         }
                         else {
                             subject = "";
@@ -1055,6 +1087,22 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 window.location.replace(url);
 
             }
+            /*
+            var loginDataSend =
+            {
+                title : title_Trigger1GcalendarController,
+                description: description_Trigger1GcalendarController,
+                place: place_Trigger1GcalendarController
+            }
+            $.ajax
+            ({
+                method: "post",
+                url: "/MyServlet",
+                data: loginDataSend,
+                dataType: "json",
+                success: console.log("la post ha avuto successo")
+            });
+            */
 
         };
 
@@ -1209,7 +1257,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
             //}
 
             //href="#createRecipeAction"
-                url = "http://localhost:8080/#/createRecipeAction";
+                url = "#createRecipeAction";
                 window.location.replace(url);
         }
 
@@ -2537,7 +2585,7 @@ function sendingToServerAll ()
         };
         sedingServerAllRun(loginDataSend);
     }
-    if(triggerChose==2 && actionChose == 1)
+    if(triggerChose == 2 && actionChose == 1)
     {
         var loginDataSend =
         {
@@ -2601,6 +2649,7 @@ function sendingToServerAll ()
             "title" : title_Trigger1GcalendarController,
             "description" : description_Trigger1GcalendarController,
             "place" : place_Trigger1GcalendarController,
+
             //An 4
             "title" : title_action2TwitterController,
             "subject" : subjec_action2TwitterController
