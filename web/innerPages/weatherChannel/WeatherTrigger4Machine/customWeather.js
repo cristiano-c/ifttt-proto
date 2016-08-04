@@ -9,6 +9,14 @@ $(function(){
     var forejsonurl;
     var deg;
     var idCity=0;
+    /* Per i checking  */
+    var flagThmaxCheck = "1";
+    var flagThminCheck = "1";
+    var flagPeriodCheck = "1";
+    var flagTimeZoneCheck = "1";
+
+
+
     var getToDate=function(time){
         var date = new Date(time*1000);
         var day=date.getDate();
@@ -258,6 +266,12 @@ $(function(){
 
     $("#but").on("click", function updateView(){
         //alert(idCity);
+        flagThmaxCheck = "1";
+        flagThminCheck = "1";
+        flagPeriodCheck = "1";
+        flagTimeZoneCheck = "1";
+
+
         if (idCity == '0')
         {
             //$scope.errorButton= "Almost a field must be completed";
@@ -478,11 +492,93 @@ $(function(){
 
             //          1                                       1                                          1
 
+            /*
+            var flagThmaxCheck = "1";
+            var flagThminCheck = "1";
+            var flagPeriodCheck = "1";
+            var flagTimeZoneCheck = "1";
+            */
 
-            url = "#createRecipeAction";
-            window.location.replace(url);
+            if($('#thmaxidcheckbox').is(":checked"))
+                flagThmaxCheckfunc();
+            if($('#thminidcheckbox').is(":checked"))
+                flagThminCheckfunc();
+            if ($('#checktimeZonevar').is(":checked"))
+                flagPeriodCheckfunc();
+            if ($('#periodidcheckbox').is(":checked"))
+                flagTimeZoneCheckfunc();
+
+            if(flagThmaxCheck == 0 ||  flagThminCheck == 0 || flagPeriodCheck == 0  || flagTimeZoneCheck == 0 )
+            {
+                alert("Please check your input because is/are not right");
+            }
+            else
+            {
+                url = "#createRecipeAction";
+                window.location.replace(url);
+
+            }
+
+
 
         }
+
+        function flagThmaxCheckfunc ()
+        {
+            var i=0;
+            flagThmaxCheck = "0";
+            for (i=-70; i<71; i++)
+            {
+                if(pthmax_customWeatherActionControllerTrigger4 == i.toString())
+                    flagThmaxCheck = "1";
+
+            }
+
+        }
+
+        function flagThminCheckfunc ()
+        {
+
+            var i=0;
+            flagThminCheck = "0";
+            for (i=-70; i<71; i++)
+            {
+                if(pthmin_customWeatherActionControllerTrigger4 == i.toString())
+                    flagThminCheck = "1";
+
+            }
+
+        }
+
+        function flagPeriodCheckfunc ()
+        {
+            var i=0;
+            flagPeriodCheck = "0";
+            for (i=0; i<701; i++)
+            {
+                if(period_customWeatherActionControllerTrigger4 == i.toString())
+                    flagPeriodCheck = "1";
+
+            }
+
+
+        }
+
+        function flagTimeZoneCheckfunc ()
+        {
+
+            var i=0;
+            flagTimeZoneCheck = "0";
+            for (i=-12; i<13; i++)
+            {
+                if(ptimezone_customWeatherActionControllerTrigger4 == i.toString())
+                    flagTimeZoneCheck = "1";
+
+            }
+
+        }
+
+
         function sendingToServer (ptimezone, pthmax, pthmin , pperiod )
         {
             var loginDataSend =
