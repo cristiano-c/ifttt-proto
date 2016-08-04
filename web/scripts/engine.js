@@ -1154,7 +1154,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
                 if ($scope.checkedSubject == true) {
                     if (angular.isDefined($scope.trigger2GcalendarVar)) {
                         if (angular.isDefined($scope.trigger2GcalendarVar.subject)) {
-                            title = $scope.trigger2GcalendarVar.subject;
+                            subject = $scope.trigger2GcalendarVar.subject;
                         }
                         else {
                             subject = "";
@@ -1174,7 +1174,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
                 if ($scope.checkedplace == true) {
                     if (angular.isDefined($scope.trigger2GcalendarVar)) {
                         if (angular.isDefined($scope.trigger2GcalendarVar.place)) {
-                            title = $scope.trigger2GcalendarVar.place;
+                            place = $scope.trigger2GcalendarVar.place;
                         }
                         else {
                             place = "";
@@ -1256,96 +1256,101 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
             actionChose =  2;
 
-            if ($scope.checkedtitle == false &&
-                $scope.checkedSubject == false &&
-                $scope.checkedplace == false    &&
-                $scope.checkdata == false)
+            if ($scope.checkedtitle == true ||
+                $scope.checkedSubject == true ||
+                $scope.checkedplace == true    ||
+                $scope.checkdata == true)
             {
 
-            }
-            else {
 
-
-
-                //idcheckedtitle        idcheckedSubject    idcheckedplace      weatheridcheckbox
-                //         0                                       0
-
-                if ($('#idcheckedtitle').is(":checked")) {
+                if ($scope.checkedtitle == true) {
                     if (angular.isDefined($scope.gcalendarinput)) {
                         if (angular.isDefined($scope.gcalendarinput.title)) {
                             title = $scope.gcalendarinput.title;
                         }
                         else {
-
                             title = "";
                         }
                     }
                     else {
                         title = "";
                     }
+
                 }
                 else {
                     title = "null";
-
                 }
 
-                if ($('#idcheckedSubject').is(":checked")) {
+                //Second variable
+                if ($scope.checkedSubject == true) {
                     if (angular.isDefined($scope.gcalendarinput)) {
                         if (angular.isDefined($scope.gcalendarinput.subjectReceive)) {
                             subjectReceive = $scope.gcalendarinput.subjectReceive;
                         }
                         else {
-
                             subjectReceive = "";
                         }
                     }
                     else {
                         subjectReceive = "";
                     }
+
                 }
                 else {
                     subjectReceive = "null";
-
                 }
 
-
-                if ($('#idcheckedplace').is(":checked")) {
+                //Third variable
+                if ($scope.checkedplace == true) {
                     if (angular.isDefined($scope.gcalendarinput)) {
                         if (angular.isDefined($scope.gcalendarinput.place)) {
-                            place = $scope.gcalendarinput.place;
+                            subjectReceive = $scope.gcalendarinput.place;
                         }
                         else {
-
                             place = "";
                         }
                     }
                     else {
                         place = "";
                     }
+
                 }
                 else {
                     place = "null";
-
                 }
 
 
-                if ($('#weatheridcheckbox').is(":checked")) {
-                    dayVector = $('#selectDay').val();
-                    yearVector = $('#selectYear').val();
-                    monthVector = $('#selectMonth').val();
+                //Fourth variable
+                if ($scope.checkdata == true)
+                {
+                    if (angular.isDefined($scope.gcalendarinput))
+                    {
+                        dayVector = $('#selectDay').val();
+                        yearVector = $('#selectYear').val();
+                        monthVector = $('#selectMonth').val();
+                    }
+
+                        else
+                        {
+                            place = "null";
+                            dayVector = "null";
+                            yearVector = "null";
+                            monthVector = "null";
+                            flag=0;
+                        }
+
 
 
                 }
                 else {
-
+                    place = "null";
+                    dayVector = "null";
                     yearVector = "null";
                     monthVector = "null";
-                    dayVector = "null";
-                    flag = "0";
-
-
+                    flag=0;
                 }
-                //alert(dayVector);
+
+
 
                 title_action1GcalendarController = title;
                 subjectReceive_action1GcalendarController = subjectReceive;
@@ -1354,7 +1359,10 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                 monthVector_action1GcalendarController = monthVector;
                 dayVector_action1GcalendarController = yearVector;
 
-                if (flag == "1") {
+
+
+                if (flag == "1")
+                {
                     if (monthVector === "1" ||
                         monthVector === "3" ||
                         monthVector === "5" ||
@@ -1372,9 +1380,11 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                         monthVector === "4" ||
                         monthVector === "6" ||
                         monthVector === "9" ||
-                        monthVector === "11") {
+                        monthVector === "11")
+                    {
                         if (dayVector > "0" && dayVector < "31");
-                        else {
+                        else
+                        {
                             flag = "3";
                             alert("Your date is not right plase verify the day");
                         }
@@ -1399,6 +1409,11 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                     }
 
+                    if(monthVector == "2" && dayVector >29 && flag != "3")
+                    {
+                        alert("Febrary has not " + dayVector + " days, please check" );
+                        flag = "3";
+                    }
 
                 }
 
@@ -1407,6 +1422,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                     url = "http://localhost:8080/#/gMailSucces";
                     window.location.replace(url);
                 }
+
             }
 
 
