@@ -563,7 +563,8 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         $scope.gmailinput = [];
         $scope.triggerGmail = function()
         {
-            
+            var sender = "";
+            var subject = "";
             triggerChose=1;
             //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
@@ -575,40 +576,42 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                 if ($scope.checkedEmail == true) {
                     if (angular.isDefined($scope.gmailinput)) {
                         if (angular.isDefined($scope.gmailinput.email)) {
-                            sender_GmailTriggerController = $scope.gmailinput.email;
+                            sender = $scope.gmailinput.email;
                         }
                         else {
-                            sender_GmailTriggerController = "";
+                            sender = "";
                         }
                     }
                     else {
-                        sender_GmailTriggerController = "";
+                        sender = "";
                     }
 
                 }
                 else {
-                    sender_GmailTriggerController = "null";
+                    sender = "null";
                 }
 
                 //Second variable
                 if ($scope.checkedSubject == true) {
                     if (angular.isDefined($scope.gmailinput)) {
                         if (angular.isDefined($scope.gmailinput.subjectReceive)) {
-                            subject_GmailTriggerController = $scope.gmailinput.subjectReceive;
+                            subject = $scope.gmailinput.subjectReceive;
                         }
                         else {
-                            subject_GmailTriggerController = "";
+                            subject = "";
                         }
                     }
                     else {
-                        subject_GmailTriggerController = "";
+                        subject = "";
                     }
 
                 }
                 else {
-                    subject_GmailTriggerController = "null";
+                    subject = "null";
                 }
 
+                sender_GmailTriggerController = sender;
+                subject_GmailTriggerController =  subject;
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }
