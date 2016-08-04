@@ -310,6 +310,47 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 // called asynchronously if an error occurs
                 // or server returns response with an error status.
             });
+
+            $scope.logoutGoogle = function () {
+                var requestLogout = {
+                    requestLogout: 'Google'
+                };
+
+                $http({
+                    method: 'POST',
+                    url: '/MyServlet',
+                    data: requestLogout
+                }).then(function success(response) {
+                    $('#loginGoogleModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Logged out with Google",
+                        {
+                            className: 'warning',
+                            position: 'bottom right'
+                        }
+                    );
+                    $scope.googleLogged = false;
+                    console.log($scope.googleLogged);
+                    alert("success: "+$scope.googleLogged);
+                    // this callback will be called asynchronously
+                    // when the response is available
+                }, function error(response) {
+                    $('#loginGoogleModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Disconnect to Google failed",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                    $scope.googleLogged = true;
+                    console.log($scope.googleLogged);
+                    alert("error: "+$scope.googleLogged);
+                    // called asynchronously if an error occurs
+                    // or server returns response with an error status.
+                });
+
+            };
             /*
             $.ajax({
 

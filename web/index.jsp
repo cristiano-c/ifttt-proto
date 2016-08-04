@@ -50,7 +50,7 @@
           <div class="form-group">
             <img id="twitterLogoON" ng-if="twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/>
             <img id="twitterLogoOFF" ng-if="!twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
-            <img id="googleLogoON" ng-if="googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)" src="./images/logos/google-logged-in.png" height="30" width="30"/>
+            <a href="" ng-click="logoutGoogle()"><img id="googleLogoON" ng-if="googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
             <img id="googleLogoOFF" ng-if="!googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
             <input type="text" class="form-control" placeholder="username">
             <input type="password" class="form-control" placeholder="password">
