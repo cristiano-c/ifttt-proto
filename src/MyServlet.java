@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Enumeration;
 
 /**
@@ -13,7 +14,7 @@ import java.util.Enumeration;
 public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         //System.out.println("(MyServlet): received a POST");
-        System.out.println("servlet: ho ricevuto una post");
+        System.out.println("servlet: ho ricevuto una post ->" + request.getParameterNames());
 
         Enumeration<String> parameterNames = request.getParameterNames();
         while (parameterNames.hasMoreElements())
@@ -23,8 +24,9 @@ public class MyServlet extends HttpServlet {
             System.out.println("\t"+paramName + ": " +  request.getParameter(paramName));
         }
 
-        String text = "IFTTTPOLITOEXAMPLERESPONSE";
+        System.out.println(request.getParameter("googleCredentials"));
 
+        String text = "som text";
         response.setContentType("text/plain");
         response.setCharacterEncoding("UTF-8");
         response.getWriter().write(text);
