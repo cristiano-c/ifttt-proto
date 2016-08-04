@@ -409,7 +409,7 @@ $(function(){
                 weathercheckfunc();
             if($('#periodidcheckbox').is(":checked"))
                 periodidcheckfunc();
-            if ($('#checktimeZonevar').is(":checked"));
+            if ($('#checktimeZonevar').is(":checked"))
                 timezoneCheck();
 
             //alert(flagWeatherCheck + "X" + flagPeriodCheck );
