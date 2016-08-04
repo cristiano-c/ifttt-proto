@@ -267,6 +267,9 @@ $(function()
     {
         //alert(idCity);
         triggerChose = 6;
+        flagTimezoneCheck = "1";
+        flagTimeCheck = "1";
+
         if (idCity == '0')
         {
 
@@ -275,7 +278,10 @@ $(function()
         else
         {
             var timezone = $('#timezoneid').val();
-            var time = $('#timehourid').val() + ":" +  $('#timeminuteid').val();
+            var htime = $('#timehourid').val();
+            var mtime =  +  $('#timeminuteid').val();
+            //var time = $('#timehourid').val() + ":" +  $('#timeminuteid').val();
+            var time = htime + ":" + mtime;
             if ($('#checktimeZonevar').is(":checked") &&  $('#checktime').is(":checked"))
             {
 
@@ -346,9 +352,11 @@ $(function()
 
             /*Check value*/
             if ($('#checktimeZonevar').is(":checked"))
-                timezoneCheck(timezone,  flagTimezoneCheck);
+                timezoneCheck(timezone);
            if($('#checktime').is(":checked"))
-               timeCheck(flagTimeCheck);
+           {
+               timeCheck(htime, mtime);
+           }
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
                 var url = "/#/createRecipeAction";
@@ -362,6 +370,7 @@ $(function()
             }
 
         }
+        alert(flagTimezoneCheck  + "X" +  flagTimeCheck);
 
 
     });
@@ -404,10 +413,10 @@ $(function()
 
 
 
-    function timeCheck ()
+    function timeCheck (hvar, mvar)
     {
-        var hvar = $('#timehourid').val();
-        var mvar = $('#timeminuteid').val();
+        //alert(hvar + "SXS" + mvar);
+
 
         if ((hvar == "0" ||
             hvar == "1" ||
@@ -433,7 +442,9 @@ $(function()
             hvar == "21" ||
             hvar == "22" ||
             hvar == "23" ) &&
-            (mvar == "1" ||
+            (
+                mvar ==  "0" ||
+                mvar == "1" ||
                 mvar == "2" ||
                 mvar == "3" ||
                 mvar == "4" ||
