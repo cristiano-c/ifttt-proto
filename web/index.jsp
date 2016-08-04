@@ -64,6 +64,8 @@
 
   <div id="notificationsWrapper" style="margin: auto"></div>
 
+  {{"googleLogged: "+googleLogged}}
+
   <ng-view></ng-view>
 
   <!-- MODAL FORM GOOGLE -- BEGIN -->
@@ -104,7 +106,7 @@
   </div>
   <!-- MODAL FORM GOOGLE -- END -->
 
-  <!-- MODAL FORM GOOGLE -- BEGIN -->
+  <!-- MODAL FORM TWITTER -- BEGIN -->
   <div class="modal fade" id="loginTwitterModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -119,7 +121,7 @@
           <!-- The form is placed inside the body of modal -->
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmailTwitter" class="col-sm-3 control-label">Google mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+              <label for="inputEmailTwitter" class="col-sm-3 control-label">User email <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
               <div class="col-sm-9">
                 <input type="email" class="form-control" id="inputEmailTwitter" placeholder="Email">
               </div>
@@ -132,7 +134,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-9">
-                <button type="submit" class="btn btn-default">Sign in</button>
+                <button id="twitter-auth-btn" type="submit" class="btn btn-default">Sign in</button>
               </div>
             </div>
           </form>
@@ -140,7 +142,7 @@
       </div>
     </div>
   </div>
-  <!-- MODAL FORM GOOGLE -- END -->
+  <!-- MODAL FORM TWITTER -- END -->
 
   <!-- extra space bottom page -->
   <div style="padding-bottom: 6%">
@@ -205,6 +207,9 @@
 
       $('[data-toggle="popover"]').popover();
 
+      /*
+       *  GOOGLE AUTHENTICATION FUNCTIONS
+       */
       $("#google-auth-btn").click(function(e){
 
         var googleCredentials = {
@@ -232,6 +237,7 @@
             $('#googleLogoOFF').hide();
 
             googleLogged = true;
+            console.log(googleLogged);
           },
           error: function(data){
             //alert(JSON.stringify(data));
@@ -246,13 +252,11 @@
             );
             $('#googleLogoON').hide();
             $('#googleLogoOFF').show();
-
+            console.log(googleLogged);
           }
         });
 
       });
-
-      // When clicked logout
       $("#googleLogoON").click(function(e){
 
         var requestLogout = {
@@ -290,6 +294,93 @@
 
       });
 
+      /*
+       *  TWITTER AUTHENTICATION FUNCTIONS
+       */
+      $("#twitter-auth-btn").click(function(e){
+
+        var twitterCredentials = {
+          email: $('#inputEmailtwitter').val(),
+          password: $('#inputPasswordtwitter').val()
+        };
+
+        $.ajax({
+
+          url: "/MyServlet",
+          type: "POST",
+          data: twitterCredentials,
+
+          success: function(data){
+            //alert(data);
+            $('#loginTwitterModal').modal('hide');
+            $("#notificationsWrapper").notify(
+                    "Logged with Twitter",
+                    {
+                      className: 'success',
+                      position: 'bottom right'
+                    }
+            );
+            $('#twitterLogoON').show();
+            $('#twitterLogoOFF').hide();
+
+            twitterLogged = true;
+          },
+          error: function(data){
+            //alert(JSON.stringify(data));
+            $('#loginTwitterModal').modal('hide');
+            twitterLogged = false;
+            $("#notificationsWrapper").notify(
+                    "Failed to login with Twitter",
+                    {
+                      className: 'error',
+                      position: 'bottom right'
+                    }
+            );
+            $('#twitterLogoON').hide();
+            $('#twitterLogoOFF').show();
+
+          }
+        });
+
+      });
+      $("#twitterLogoON").click(function(e){
+
+        var requestLogout = {
+          requestLogout: 'Twitter'
+        };
+
+        $.ajax({
+
+          url: "/MyServlet",
+          type: "POST",
+          data: requestLogout,
+
+          success: function(data){
+            //alert(data);
+            $('#twitterLogoON').hide();
+            $('#twitterLogoOFF').show();
+            $("#notificationsWrapper").notify(
+                    "Logged out with Twitter",
+                    {
+                      className: 'warning',
+                      position: 'bottom right'
+                    }
+            );
+            twitterLogged = false;
+          },
+          error: function(data){
+            //alert(JSON.stringify(data));
+            twitterLogged = true;
+
+            $('#twitterLogoON').show();
+            $('#twitterLogoOFF').hide();
+
+          }
+        });
+
+      });
+
+      console.log(googleLogged);
 
     });
 
