@@ -9,6 +9,8 @@ $(function(){
     var forejsonurl;
     var deg;
     var idCity=0;
+    /* Per i checking  */
+    var flagTimezoneCheck = "1";
     var getToDate=function(time){
         var date = new Date(time*1000);
         var day=date.getDate();
@@ -258,6 +260,7 @@ $(function(){
 
     $("#but").on("click", function updateView(){
         //alert(idCity);
+        flagTimezoneCheck = "1";
         triggerChose=8;
         if (idCity == '0')
         {
@@ -461,14 +464,64 @@ $(function(){
 
 
             }
+            if($('#checktimeZonevar').is(":checked"))
+                timezoneCheck();
+            if(flagTimezoneCheck == 1)
+            {
+                url = "#createRecipeAction";
+                window.location.replace(url);
+            }
+            else
+            {
+                url = "#WeatherTrigger3";
+                window.location.replace(url);
+                alert("The input of the time zone is not right");
 
-            //          1                                       1                                          1
+            }
 
 
-            url = "#createRecipeAction";
-            window.location.replace(url);
+
 
         }
+
+
+
+        function  timezoneCheck  ()
+        {
+
+            if (timezone_customWeatherActionControllerTrigger3 == "0" ||
+                timezone_customWeatherActionControllerTrigger3 == "1" ||
+                timezone_customWeatherActionControllerTrigger3 == "2" ||
+                timezone_customWeatherActionControllerTrigger3 == "3" ||
+                timezone_customWeatherActionControllerTrigger3 == "4" ||
+                timezone_customWeatherActionControllerTrigger3 == "5" ||
+                timezone_customWeatherActionControllerTrigger3 == "6" ||
+                timezone_customWeatherActionControllerTrigger3 == "7" ||
+                timezone_customWeatherActionControllerTrigger3 == "8" ||
+                timezone_customWeatherActionControllerTrigger3 == "9" ||
+                timezone_customWeatherActionControllerTrigger3 == "10" ||
+                timezone_customWeatherActionControllerTrigger3 == "11" ||
+                timezone_customWeatherActionControllerTrigger3 == "12" ||
+                timezone_customWeatherActionControllerTrigger3 == "-1" ||
+                timezone_customWeatherActionControllerTrigger3 == "-2" ||
+                timezone_customWeatherActionControllerTrigger3 == "-3" ||
+                timezone_customWeatherActionControllerTrigger3 == "-4" ||
+                timezone_customWeatherActionControllerTrigger3 == "-5" ||
+                timezone_customWeatherActionControllerTrigger3 == "-6" ||
+                timezone_customWeatherActionControllerTrigger3 == "-7" ||
+                timezone_customWeatherActionControllerTrigger3 == "-8" ||
+                timezone_customWeatherActionControllerTrigger3 == "-9" ||
+                timezone_customWeatherActionControllerTrigger3 == "-10" ||
+                timezone_customWeatherActionControllerTrigger3 == "-11" ||
+                timezone_customWeatherActionControllerTrigger3 == "-12")
+                flagTimezoneCheck = "1";
+            else
+                flagTimezoneCheck ="0";
+
+        };
+
+
+
         function sendingToServer (loginDataSend)
         {
             $.ajax({
