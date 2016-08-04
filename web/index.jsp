@@ -13,6 +13,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/notifyjs/dist/notify.js"></script>
 
 
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
@@ -60,6 +61,8 @@
     </div><!-- /.container-fluid -->
   </nav>
 
+
+  <div id="notificationsWrapper" style="margin: auto"></div>
 
   <ng-view></ng-view>
 
@@ -218,7 +221,13 @@
           success: function(data){
             //alert(data);
             $('#loginGoogleModal').modal('hide');
-
+            $("#notificationsWrapper").notify(
+                    "Logged with Google",
+                    {
+                      className: 'success',
+                      position: 'bottom right'
+                    }
+            );
             $('#googleLogoON').show();
             $('#googleLogoOFF').hide();
 
@@ -228,7 +237,13 @@
             //alert(JSON.stringify(data));
             $('#loginGoogleModal').modal('hide');
             googleLogged = false;
-
+            $("#notificationsWrapper").notify(
+                    "Failed to login with Google",
+                    {
+                      className: 'error',
+                      position: 'bottom right'
+                    }
+            );
             $('#googleLogoON').hide();
             $('#googleLogoOFF').show();
 
@@ -241,9 +256,7 @@
       $("#googleLogoON").click(function(e){
 
         var requestLogout = {
-          // ATTENZIONE: Recuperare la username!
-          email: $('#inputEmailGoogle').val(),
-          requestLogout: true
+          requestLogout: 'Google'
         };
 
         $.ajax({
@@ -256,7 +269,13 @@
             //alert(data);
             $('#googleLogoON').hide();
             $('#googleLogoOFF').show();
-
+            $("#notificationsWrapper").notify(
+                    "Logged out with Google",
+                    {
+                      className: 'warning',
+                      position: 'bottom right'
+                    }
+            );
             googleLogged = false;
           },
           error: function(data){
