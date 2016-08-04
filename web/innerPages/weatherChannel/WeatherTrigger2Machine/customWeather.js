@@ -9,6 +9,13 @@ $(function(){
     var forejsonurl;
     var deg;
     var idCity=0;
+
+    /* Per i checking  */
+    var flagWeatherCheck = "1";
+    var flagPeriodCheck = "1";
+    var flagZoneCheck = "1";
+
+
     var getToDate=function(time){
         var date = new Date(time*1000);
         var day=date.getDate();
@@ -258,6 +265,9 @@ $(function(){
 
     $("#but").on("click", function updateView(){
         //alert(idCity);
+        flagWeatherCheck = "1";
+        flagPeriodCheck = "1";
+        flagZoneCheck = "1";
         triggerChose = 7;
         if (idCity == '0')
         {
@@ -388,13 +398,104 @@ $(function(){
 
             }
 
-            //          1                                       1                                          1
+            /*
+             flagWeatherCheck = "1";
+             flagPeriodCheck = "1";
+             flagZoneCheck = "1";
 
+             */
 
-            url = "#createRecipeAction";
-            window.location.replace(url);
+            if ($('#weatheridcheckbox').is(":checked"))
+                weathercheckfunc();
+            if($('#periodidcheckbox').is(":checked"))
+                periodidcheckfunc();
+            if ($('#checktimeZonevar').is(":checked"));
+                timezoneCheck();
+
+            //alert(flagWeatherCheck + "X" + flagPeriodCheck );
+
+                if(flagWeatherCheck == 0 ||  flagPeriodCheck == 0 || flagZoneCheck == 0)
+                {
+                    url = "#WeatherTrigger2";
+                    window.location.replace(url);
+                }
+                else
+                {
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+
+                }
 
         }
+
+
+
+        function  timezoneCheck  ()
+        {
+
+            if (pzone_customWeatherActionControllerTrigger2 == "0" ||
+                pzone_customWeatherActionControllerTrigger2 == "1" ||
+                pzone_customWeatherActionControllerTrigger2 == "2" ||
+                pzone_customWeatherActionControllerTrigger2 == "3" ||
+                pzone_customWeatherActionControllerTrigger2 == "4" ||
+                pzone_customWeatherActionControllerTrigger2 == "5" ||
+                pzone_customWeatherActionControllerTrigger2 == "6" ||
+                pzone_customWeatherActionControllerTrigger2 == "7" ||
+                pzone_customWeatherActionControllerTrigger2 == "8" ||
+                pzone_customWeatherActionControllerTrigger2 == "9" ||
+                pzone_customWeatherActionControllerTrigger2 == "10" ||
+                pzone_customWeatherActionControllerTrigger2 == "11" ||
+                pzone_customWeatherActionControllerTrigger2 == "12" ||
+                pzone_customWeatherActionControllerTrigger2 == "-1" ||
+                pzone_customWeatherActionControllerTrigger2 == "-2" ||
+                pzone_customWeatherActionControllerTrigger2 == "-3" ||
+                pzone_customWeatherActionControllerTrigger2 == "-4" ||
+                pzone_customWeatherActionControllerTrigger2 == "-5" ||
+                pzone_customWeatherActionControllerTrigger2 == "-6" ||
+                pzone_customWeatherActionControllerTrigger2 == "-7" ||
+                pzone_customWeatherActionControllerTrigger2 == "-8" ||
+                pzone_customWeatherActionControllerTrigger2 == "-9" ||
+                pzone_customWeatherActionControllerTrigger2 == "-10" ||
+                pzone_customWeatherActionControllerTrigger2 == "-11" ||
+                pzone_customWeatherActionControllerTrigger2 == "-12")
+                flagZoneCheck = "1";
+            else
+                flagZoneCheck ="0";
+
+        };
+
+        function  weathercheckfunc  ()
+        {
+
+            if (pweather_customWeatherActionControllerTrigger2 == "200" ||
+                pweather_customWeatherActionControllerTrigger2 == "300" ||
+                pweather_customWeatherActionControllerTrigger2 == "500"
+            )
+                flagWeatherCheck = "1";
+            else
+                flagWeatherCheck ="0";
+
+        };
+
+
+        function  periodidcheckfunc  ()
+        {
+            var i=0;
+            flagPeriodCheck = "0";
+            for (i=0; i<701; i++)
+            {
+                if(pperiod_customWeatherActionControllerTrigger2 == i.toString())
+                    flagPeriodCheck = "1";
+
+            }
+
+        };
+
+
+
+
+
+
         function sendingToServer (pweather, pperiod, pzone )
         {
             idCity_customWeatherActionControllerTrigger2 = idCity;
@@ -403,35 +504,8 @@ $(function(){
             pzone_customWeatherActionControllerTrigger2 = pzone;
 
 
-            /*
-            var loginDataSend =
-            {
-                "sender":  idCity,
-                "tempo": pweather,
-                "period":   pperiod,
-                "timezone":  pzone
-
-            }
-            $.ajax({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo")
-            });
-            */
         }
-        /*
-         var loginDataSend =
-         {
-         "sender:":  idCity,
-         "timezone": "null",
-         "sunset":   "null",
-         "sunrise":  "null"
 
-         }
-         sendingToServer(loginDataSend);
-         */
 
 
     })
