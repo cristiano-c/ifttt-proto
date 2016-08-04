@@ -1723,161 +1723,48 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
     {
 
         $scope.action1TwitterInput = [];
-        $scope.twitterAction2 = function()
+        $scope.twitterAction1func = function()
         {
             actionChose = 3;
-            var title;
+
             var subject;
-            var place;
 
-            if ( $scope.checkedSubject== false) {
 
-            }
-            else
+            if ( $scope.checkedSubject == true )
             {
 
-
-            //alert("1");
-
-            /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
-             0                        0                   0
-             0                        0                   1
-             0                        1                   0
-             0                        1                   1
-             1                        0                   0
-             1                        0                   1
-             1                        1                   0
-             1                        1                   1
-
-             */
-            if (angular.isUndefined($scope.action1TwitterInput))
-            {
-                //alert("non defined");
-                if ($scope.checkedtitle === true)
-                {
-                    title="";
-                }
-                else
-                {
-                    title = "NULL";
-                }
-                if ($scope.checkedSubject === true)
-                {
-                    subject="";
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    place="";
-                }
-                else place = "NULL";
-
-            }
-            else
-            {
-                if ($scope.checkedtitle === true)
-                {
-                    if (angular.isUndefined($scope.action1TwitterInput.title)) title = "";
-                    else title = $scope.action1TwitterInput.title;
-
-                }
-                else
-                {
-                    title = "NULL";
-
-                }
-                if ($scope.checkedSubject === true)
-                {
-                    if (angular.isUndefined($scope.action1TwitterInput.subjectReceive)) subject = "";
-                    else subject = $scope.action1TwitterInput.subjectReceive;
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    if (angular.isUndefined($scope.action1TwitterInput.place)) place = "";
-                    else
-                    {
-                        place = $scope.action1TwitterInput.place;
-                        //alert(gmailinput.place);
+                if ($scope.checkedSubject == true) {
+                    if (angular.isDefined($scope.action1TwitterInput)) {
+                        if (angular.isDefined($scope.action1TwitterInput.subjectReceive)) {
+                            subject = $scope.action1TwitterInput.subjectReceive;
+                        }
+                        else {
+                            subject = "";
+                        }
+                    }
+                    else {
+                        subject = "";
                     }
 
-
                 }
-                else place = "NULL";
+                else {
+                    subject = "null";
+                }
 
 
-
-            }
-            var loginDataSend =
-            {
-                //"testo": title,
-                "testo": subject
-                //"place": place
-
-            };
-            subject_action1TwitterController=subject;
-            sendingToServerAll();
-
+                subject_action1TwitterController = subject;
+                sendingToServerAll();
                 //href="#SuccessTwitter"
-                url = "http://localhost:8080/#/SuccessTwitter";
+                var url = "#SuccessTwitter";
                 window.location.replace(url);
-
-            //$scope.sedingServer(loginDataSend);
-
-            /*
-
-             if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
-             {
-             var title;
-             var subject;
-             var place;
-
-
-             if (angular.isUndefined(gmailinput))
-             {
-             title = "";
-             subject = "";
-             place = "";
-             alert("zzz");
-             }
-             else
-             {
-             alert("defined");
-
-             if (angular.isDefined(gmailinput.title))
-             title = gmailinput.title;
-             else title = "";
-
-
-             if (angular.isDefined(gmailinput.checkedSubject))
-             subject = gmailinput.checkedSubject;
-             else subject = "";
-
-
-             if (angular.isDefined(gmailinput.checkedplace))
-             place = gmailinput.checkedplace;
-             else place = "";
-             }
-             */
-
-            //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
-            //var title ="w";
-
-            //}
+            }
 
 
 
-        }
 
         };
 
-
+        /*
         $scope.sedingServer = function(loginDataSend)
         {
             $.ajax({
@@ -1888,46 +1775,14 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 success: console.log("la post ha avuto successo n 9")
             });
         };
+        */
 
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
-        //Other solution
-        /*
-         $scope.checktitlevar = 'NO';
-         $scope.checkadvisetsunrisevar = 'NO';
-         $scope.checkplacevar = 'NO';
-
-         $scope.checktitlefunc = function(name)
-         {
-         if ($scope.checktitlevar === "YES")
-         $scope.checktitlevar = 'NO';
-         else
-         $scope.checktitlevar = 'YES';
-         //console.log(name);
 
 
-         };
-
-         $scope.checkadvisetsunsetfunc = function(name)
-         {
-         if($scope.checkadvisesunsetvar === "YES")
-         $scope.checkadvisesunsetvar = 'NO';
-         else
-         $scope.checkadvisesunsetvar = 'YES';
-         //console.log(name);
-         };
-
-         $scope.checkplacefunc = function(name)
-         {
-         if($scope.checkplacevar === "YES")
-         $scope.checkplacevar = 'NO';
-         else
-         $scope.checkplacevar = 'YES';
-         //console.log(name);
-         };
-         */
 
 
     }]);
