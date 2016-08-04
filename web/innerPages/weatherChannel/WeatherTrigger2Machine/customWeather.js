@@ -418,6 +418,7 @@ $(function(){
                 {
                     url = "#WeatherTrigger2";
                     window.location.replace(url);
+                    alert("Your input is not right");
                 }
                 else
                 {
@@ -425,6 +426,7 @@ $(function(){
                     window.location.replace(url);
 
                 }
+
 
         }
 
