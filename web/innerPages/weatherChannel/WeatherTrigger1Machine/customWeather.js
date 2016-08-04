@@ -371,7 +371,7 @@ $(function()
                         */
                         //var temp = $("createRecipeAction").val();
                         //url = "http://localhost:8080/#/" + temp;
-                        window.location.replace(url);
+                        //window.location.replace(url);
                         //or
                         //window.location(url);
 
