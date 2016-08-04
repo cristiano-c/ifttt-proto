@@ -25,10 +25,11 @@
                             <label>Email address:</label> <br>
                             <label>Click me in order to active the email action:
                                 <input
+                                        id="checkedEmailid"
                                         type="checkbox"
                                         ng-model="checkedEmail"
-                                        ng-change="checkemailfunc()"
                                 >
+                                <!-- ng-change="checkemailfunc()" -->
                             </label><br/>
                             <div ng-if="checkedEmail" class="animate-if">
                             <input type="email"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
@@ -55,11 +56,13 @@
                             <label>The object:</label>
                             <label>Click me in order to active the subject action:
                                 <input
+                                        id="checkedSubjectId"
                                         type="checkbox"
                                         ng-model="checkedSubject"
-                                        ng-change="checkedSubjectfunc()"
+
                                 >
                             </label><br/>
+                            <!--  ng-change="checkedSubjectfunc()" -->
                             <div ng-if="checkedSubject" class="animate-if">
 
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
