@@ -242,38 +242,117 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
 
-    $routeProvider.when('/Trigger2Twitter', {
-        templateUrl: 'innerPages/twitterChannel/twitter_Trigger2.html',
-        controller: 'trigger2TwitterController'
+   $routeProvider.when('/Trigger2Twitter', {
+       templateUrl: 'innerPages/twitterChannel/twitter_Trigger2.html',
+       controller: 'trigger2TwitterController'
 
-    });
+   });
 
-    $routeProvider.when('/SuccessTwitter', {
-        templateUrl: 'innerPages/twitterChannel/twitterSuccess.html'
-    });
+   $routeProvider.when('/SuccessTwitter', {
+       templateUrl: 'innerPages/twitterChannel/twitterSuccess.html'
+   });
 
-    $routeProvider.when('/allTriggers', {
-        templateUrl: 'innerPages/triggers.html'
-    });
+   $routeProvider.when('/allTriggers', {
+       templateUrl: 'innerPages/triggers.html'
+   });
 
-    $routeProvider.when('/allActions', {
-        templateUrl: 'innerPages/actions.html'
-    });
+   $routeProvider.when('/allActions', {
+       templateUrl: 'innerPages/actions.html'
+   });
 
-    $routeProvider.when('/createRecipeAction', {
-        templateUrl: 'innerPages/createRecipeAction.html'
-    });
-
-
-
+   $routeProvider.when('/createRecipeAction', {
+       templateUrl: 'innerPages/createRecipeAction.html'
+   });
 
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
-iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window',
-    function ($scope, $rootscope, $window, $routeParams, $http, $resource) {
-    $scope.googleLogged = $window.googleLogged;
-        $scope.twitterLogged = $window.twitterLogged;
+iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http, $rootscope, $resource) {
+        $scope.googleLogged = false;
+        $scope.twitterLogged = false;
+
+        $scope.requestGoogleAuth = function() {
+            var googleCredentials = {
+                email: $('#inputEmailGoogle').val(),
+                password: $('#inputPasswordGoogle').val()
+            };
+            $http({
+                method: 'POST',
+                url: '/MyServlet',
+                data: googleCredentials
+            }).then(function success(response) {
+                $('#loginGoogleModal').modal('hide');
+                $("#notificationsWrapper").notify(
+                    "Logged with Google",
+                    {
+                        className: 'success',
+                        position: 'bottom right'
+                    }
+                );
+                $scope.googleLogged = true;
+                console.log($scope.googleLogged);
+                alert("success: "+$scope.googleLogged);
+                // this callback will be called asynchronously
+                // when the response is available
+            }, function error(response) {
+                $('#loginGoogleModal').modal('hide');
+                $("#notificationsWrapper").notify(
+                    "Failed to login with Google",
+                    {
+                        className: 'error',
+                        position: 'bottom right'
+                    }
+                );
+                $scope.googleLogged = false;
+                console.log($scope.googleLogged);
+                alert("error: "+$scope.googleLogged);
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+            });
+            /*
+            $.ajax({
+
+                url: "/MyServlet",
+                type: "POST",
+                data: googleCredentials,
+
+                success: function(data){
+                    alert("success");
+                    $('#loginGoogleModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Logged with Google",
+                        {
+                            className: 'success',
+                            position: 'bottom right'
+                        }
+                    );
+                    $('#googleLogoON').show();
+                    $('#googleLogoOFF').hide();
+
+                    $scope.googleLogged = true;
+                    console.log($scope.googleLogged);
+                    alert("after sign: "+$scope.googleLogged);
+                },
+                error: function(data){
+                    alert("error");
+                    $('#loginGoogleModal').modal('hide');
+                    $scope.googleLogged = false;
+                    $("#notificationsWrapper").notify(
+                        "Failed to login with Google",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                    $('#googleLogoON').hide();
+                    $('#googleLogoOFF').show();
+                    console.log(googleLogged);
+                }
+            });
+            */
+            alert("after sign: "+$scope.googleLogged);
+        };
 
         $scope.loadHome = function()
         {
@@ -303,13 +382,23 @@ iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
 
     }]);
 
-iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window',
+    function ($scope, $rootscope, $window, $routeParams, $http, $resource) {
 
-        $scope.loadHome = function()
-        {
-            console.log("createRecipeController: loaded");
-        }
+    $scope.NGgoogleLogged = false;
+
+    // A
+        $scope.$watch(
+            function () {
+                console.log("angular: "+$window.googleLogged);
+                return $window.googleLogged
+            }, function(n,o){
+                console.log("changed ",n);
+            },
+            true
+        );
+
+    // B
 
     }]);
 
