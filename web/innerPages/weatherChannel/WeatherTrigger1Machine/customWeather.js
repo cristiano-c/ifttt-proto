@@ -269,16 +269,13 @@ $(function()
         triggerChose = 6;
         if (idCity == '0')
         {
-            var bla = $('#exampleInput').val();
-            //$scope.errorButton= "Almost a field must be completed";
+
             alert("You have not found you ciry");
         }
         else
         {
             var timezone = $('#timezoneid').val();
             var time = $('#timehourid').val() + ":" +  $('#timeminuteid').val();
-
-            //var zonechech = $('#checktimeZonevar:checkbox:checked').val();
             if ($('#checktimeZonevar').is(":checked") &&  $('#checktime').is(":checked"))
             {
 
@@ -293,23 +290,6 @@ $(function()
                 timezone_customWeatherActionControllerTrigger1 = timezone;
                 ora_customWeatherActionControllerTrigger1 = time;
 
-                //alert(loginDataSend.pssword);
-                /* x1
-                $.ajax({
-                    method: "post",
-                    url: "/MyServlet",
-                    data: loginDataSend,
-                    dataType: "json",
-                    success: console.log("la post ha avuto successo")
-                });
-                */
-
-
-                //url = "http://localhost:8080/#/createRecipeAction";
-                //window.location.replace(url);
-
-                //or
-                //window.location(url);
 
             }
             else
@@ -329,20 +309,6 @@ $(function()
                     timezone_customWeatherActionControllerTrigger1 = timezone;
                     ora_customWeatherActionControllerTrigger1 = "null";
 
-                    /* x1
-                    $.ajax({
-                        method: "post",
-                        url: "/MyServlet",
-                        data: loginDataSend,
-                        dataType: "json",
-                        success: console.log("la post ha avuto successo")
-                    });
-                    */
-
-                    //url = "http://localhost:8080/#/createRecipeAction";
-                    //window.location.replace(url);
-                    //or
-                    //window.location(url);
                 }
                 else
                 {
@@ -359,22 +325,6 @@ $(function()
                         timezone_customWeatherActionControllerTrigger1 = "null";
                         ora_customWeatherActionControllerTrigger1 = time;
 
-                        //alert(loginDataSend.pssword);
-                        /*
-                        $.ajax({
-                            method: "post",
-                            url: "/MyServlet",
-                            data: loginDataSend,
-                            dataType: "json",
-                            success: console.log("la post ha avuto successo")
-                        });
-                        */
-                        //var temp = $("createRecipeAction").val();
-                        //url = "http://localhost:8080/#/" + temp;
-                        //window.location.replace(url);
-                        //or
-                        //window.location(url);
-
                     }
                     else
                     {
@@ -389,27 +339,6 @@ $(function()
                         sender_customWeatherActionControllerTrigger1 =idCity;
                         timezone_customWeatherActionControllerTrigger1 = "null";
                         ora_customWeatherActionControllerTrigger1 = "null";
-
-                        //alert(loginDataSend.pssword);
-                        /* x1
-                        $.ajax({
-                            method: "post",
-                            url: "/MyServlet",
-                            data: loginDataSend,
-                            dataType: "json",
-                            success: console.log("la post ha avuto successo")
-                        });
-                        */
-
-
-                        /*
-                        url = "#createRecipeAction";
-                        window.location.replace(url);
-                        */
-                        //url = "http://localhost:8080/#/createRecipeAction";
-                        //window.location.replace(url);
-                        //or
-                        //window.location(url);
                     }
                 }
 
@@ -422,16 +351,16 @@ $(function()
                timeCheck(flagTimeCheck);
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
-                var url = "http://localhost:8080/#/createRecipeAction";
+                var url = "/#/createRecipeAction";
                 window.location.replace(url);
             }
             else
             {
-                var url = "http://localhost:8080/#/WeatherTrigger1";
+                var url = "/#/WeatherTrigger1";
                 window.location.replace(url);
 
             }
-            //alert( flagTimezoneCheck  + "X" +   flagTimeCheck );
+
         }
 
 
