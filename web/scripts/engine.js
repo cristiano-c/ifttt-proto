@@ -554,7 +554,7 @@ iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
 
 
 
-//Controller Update
+//Update
 iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
 
@@ -563,63 +563,61 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         $scope.gmailinput = [];
         $scope.triggerGmail = function()
         {
+            
             triggerChose=1;
             //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
             sender_GmailTriggerController="";
             subject_GmailTriggerController="";
 
-            //Firt variable
-            if ($scope.checkedEmail == true)
-            {
-                if (angular.isDefined($scope.gmailinput))
-                {
-                    if (angular.isDefined($scope.gmailinput.email))
-                    {
-                        sender_GmailTriggerController =  $scope.gmailinput.email;
+            if($scope.checkedEmail == true || $scope.checkedSubject == true) {
+                //Firt variable
+                if ($scope.checkedEmail == true) {
+                    if (angular.isDefined($scope.gmailinput)) {
+                        if (angular.isDefined($scope.gmailinput.email)) {
+                            sender_GmailTriggerController = $scope.gmailinput.email;
+                        }
+                        else {
+                            sender_GmailTriggerController = "";
+                        }
                     }
-                    else
-                    {
-                        sender_GmailTriggerController ="";
+                    else {
+                        sender_GmailTriggerController = "";
                     }
+
                 }
-                else
-                {
-                    sender_GmailTriggerController ="";
+                else {
+                    sender_GmailTriggerController = "null";
                 }
 
+                //Second variable
+                if ($scope.checkedSubject == true) {
+                    if (angular.isDefined($scope.gmailinput)) {
+                        if (angular.isDefined($scope.gmailinput.subjectReceive)) {
+                            subject_GmailTriggerController = $scope.gmailinput.subjectReceive;
+                        }
+                        else {
+                            subject_GmailTriggerController = "";
+                        }
+                    }
+                    else {
+                        subject_GmailTriggerController = "";
+                    }
+
+                }
+                else {
+                    subject_GmailTriggerController = "null";
+                }
+
+                url = "#createRecipeAction";
+                window.location.replace(url);
             }
             else
             {
-                sender_GmailTriggerController ="null";
-            }
-
-            //Second variable
-            if ($scope.checkedSubject == true)
-            {
-                if (angular.isDefined($scope.gmailinput))
-                {
-                    if (angular.isDefined($scope.gmailinput.subjectReceive))
-                    {
-                        subject_GmailTriggerController =  $scope.gmailinput.subjectReceive;
-                    }
-                    else
-                    {
-                        subject_GmailTriggerController ="";
-                    }
-                }
-                else
-                {
-                    subject_GmailTriggerController ="";
-                }
+                url = "#gMailTrigger";
+                window.location.replace(url);
 
             }
-            else
-            {
-                subject_GmailTriggerController ="null";
-            }
-
-            url = "#createRecipeAction";
         };
 
         // $scope.checkedtitle = true;
@@ -637,68 +635,69 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         $scope.gmailActionvar = [];
         $scope.actionGmail = function()
         {
+            var sender ="";
+            var subject = "";
             actionChose=1;
              sender_GmailActionController = "";
              subject_GmailActionController = "";
 
+            if($scope.checkedEmail == true || $scope.checkedSubject == true) {
 
-            if ($scope.checkedEmail == true)
-            {
-                if (angular.isDefined($scope.gmailActionvar))
+                if ($scope.checkedEmail == true) {
+                    if (angular.isDefined($scope.gmailActionvar)) {
+                        if (angular.isDefined($scope.gmailActionvar.email)) {
+                            sender = $scope.gmailActionvar.email;
+                        }
+                        else {
+                            sender = "";
+                        }
+                    }
+                    else {
+                        sender = "";
+                    }
+
+                }
+                else {
+                    sender = "null";
+                }
+
+                if ($scope.checkedSubject == true)
                 {
-                    if (angular.isDefined($scope.gmailActionvar.email))
+                    if (angular.isDefined($scope.gmailActionvar))
                     {
-                        sender_GmailActionController =  $scope.gmailActionvar.email;
+                        if (angular.isDefined($scope.gmailActionvar.subjectReceive))
+                        {
+                            subject = $scope.gmailActionvar.subjectReceive;
+                        }
+                        else
+                        {
+                            subject = "";
+                        }
                     }
                     else
                     {
-                        sender_GmailActionController ="";
+                        subject  = "";
                     }
+
                 }
                 else
                 {
-                    sender_GmailActionController ="";
+                    subject = "null";
                 }
 
+
+                sender_GmailActionController = sender;
+                subject_GmailActionController = subject;
+                sendingToServerAll();
+                var url = "#gMailSucces";
+                window.location.replace(url);
             }
             else
             {
-                sender_GmailActionController ="null";
+                    var url = "#gMailAction";
+                    window.location.replace(url);
             }
 
-
-
-            if ( $scope.checkedSubject == true)
-            {
-                if (angular.isDefined($scope.gmailActionvar))
-                {
-                    if (angular.isDefined($scope.gmailActionvar.subjectReceive))
-                    {
-                        subject_GmailActionController =  $scope.gmailActionvar.subjectReceive;
-                    }
-                    else
-                    {
-                        subject_GmailActionController ="";
-                    }
-                }
-                else
-                {
-                    subject_GmailActionController ="";
-                }
-
-            }
-            else
-            {
-                subject_GmailActionController ="null";
-            }
-
-            //alert(sender_GmailActionController  +  subject_GmailActionController );
-            sendingToServerAll();
-            // href="#gMailSucces"
-            var url = "#gMailSucces";
-            window.location.replace(url);
-            //url = "http://localhost:8080/#/gMailSucces";
-            // window.location.replace(url);
         };
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
@@ -968,6 +967,7 @@ iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
     }]);
 
 
+//Update
 iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location)
     {
@@ -980,211 +980,86 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
             var subject;
             var place;
 
-            if( $scope.checkedtitle == false &&   $scope.checkedSubject == false && $scope.checkedplace==false)
-            {
 
-            }
-            else
-            {
+            if($scope.checkedtitle == true ||  $scope.checkedSubject == true ||  $scope.checkedplace == true) {
 
-
-
-
-            //alert("1");
-
-            /*$scope.checkedtitle  $scope.checkedSubject   $scope.checkedplace
-                   0                        0                   0
-                   0                        0                   1
-                   0                        1                   0
-                   0                        1                   1
-                   1                        0                   0
-                   1                        0                   1
-                   1                        1                   0
-                   1                        1                   1
-
-             */
-            if (angular.isUndefined($scope.trigger1GcalendarVar))
-            {
-                //alert("non defined");
-                if ($scope.checkedtitle === true)
-                {
-                    title="";
+                //First variable
+                if ($scope.checkedtitle == true) {
+                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar.title)) {
+                            title = $scope.trigger1GcalendarVar.title;
+                        }
+                        else {
+                            title = "";
+                        }
+                    }
+                    else {
+                        title = "";
+                    }
                 }
-                else
-                {
-                    title = "NULL";
+                else {
+                    title = "null";
                 }
-                if ($scope.checkedSubject === true)
-                {
-                    subject="";
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    place="";
-                }
-                else place = "NULL";
 
-            }
-            else
-            {
-                if ($scope.checkedtitle === true)
-                {
-                    if (angular.isUndefined($scope.trigger1GcalendarVar.title)) title = "";
-                    else title = $scope.trigger1GcalendarVar.title;
-
-                }
-                else
-                {
-                    title = "NULL";
-
-                }
-                if ($scope.checkedSubject === true)
-                {
-                    if (angular.isUndefined($scope.trigger1GcalendarVar.subjectReceive)) subject = "";
-                    else subject = $scope.trigger1GcalendarVar.subjectReceive;
-                }
-                else
-                {
-                    subject = "NULL";
-                }
-                if ($scope.checkedplace === true)
-                {
-                    if (angular.isUndefined($scope.trigger1GcalendarVar.place)) place = "";
-                    else
-                    {
-                        place = $scope.trigger1GcalendarVar.place;
-                        //alert(gmailinput.place);
+                //Second variable
+                if ($scope.checkedSubject == true) {
+                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar.subjectReceive)) {
+                            title = $scope.trigger1GcalendarVar.subjectReceive;
+                        }
+                        else {
+                            subject = "";
+                        }
+                    }
+                    else {
+                        subject = "";
                     }
 
+                }
+                else {
+                    subject = "null";
+                }
+
+                //Third variable
+                if ($scope.checkedplace == true) {
+                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar.place)) {
+                            title = $scope.trigger1GcalendarVar.place;
+                        }
+                        else {
+                            place = "";
+                        }
+                    }
+                    else {
+                        place = "";
+                    }
 
                 }
-                else place = "NULL";
+                else {
+                    place = "null";
+                }
 
+                title_Trigger1GcalendarController = title;
+                description_Trigger1GcalendarController = subject;
+                place_Trigger1GcalendarController = place;
 
+                url = "#createRecipeAction";
+                window.location.replace(url);
+            }
+            else
+            {
+                url = "#Trigger1Gcalendar";
+                window.location.replace(url);
 
             }
-            /*
-            var loginDataSend =
-            {
-                "eventAction": 0,
-                "title": title,
-                "description": subject,
-                "location": place
-
-            };
-            $scope.sedingServer(loginDataSend);
-            */
-            title_Trigger1GcalendarController = title;
-            description_Trigger1GcalendarController = subject;
-            place_Trigger1GcalendarController = place;
-
-
-            /*
-
-            if($scope.checkedtitle === true &&  $scope.checkedSubject === true  && $scope.checkedplace === true)
-            {
-                var title;
-                var subject;
-                var place;
-
-
-                if (angular.isUndefined(gmailinput))
-                {
-                    title = "";
-                    subject = "";
-                    place = "";
-                    alert("zzz");
-                }
-                else
-                {
-                    alert("defined");
-
-                    if (angular.isDefined(gmailinput.title))
-                        title = gmailinput.title;
-                    else title = "";
-
-
-                    if (angular.isDefined(gmailinput.checkedSubject))
-                        subject = gmailinput.checkedSubject;
-                    else subject = "";
-
-
-                    if (angular.isDefined(gmailinput.checkedplace))
-                        place = gmailinput.checkedplace;
-                    else place = "";
-                }
-                */
-
-                //alert(gmailinput.title  + "  " + gmailinput.subjectReceive + " " + gmailinput.place);
-                //var title ="w";
-
-            //}
-
-           // href="#createRecipeAction"
-            url = "http://localhost:8080/#/createRecipeAction";
-            window.location.replace(url);
-            }
-
-
-
 
         };
 
-
-        $scope.sedingServer = function(loginDataSend)
-        {
-            $.ajax({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo n 9")
-            });
-        };
 
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
 
-        //Other solution
-        /*
-        $scope.checktitlevar = 'NO';
-        $scope.checkadvisetsunrisevar = 'NO';
-        $scope.checkplacevar = 'NO';
-
-        $scope.checktitlefunc = function(name)
-        {
-            if ($scope.checktitlevar === "YES")
-                $scope.checktitlevar = 'NO';
-            else
-                $scope.checktitlevar = 'YES';
-            //console.log(name);
-
-
-        };
-
-        $scope.checkadvisetsunsetfunc = function(name)
-        {
-            if($scope.checkadvisesunsetvar === "YES")
-                $scope.checkadvisesunsetvar = 'NO';
-            else
-                $scope.checkadvisesunsetvar = 'YES';
-                //console.log(name);
-        };
-
-        $scope.checkplacefunc = function(name)
-        {
-            if($scope.checkplacevar === "YES")
-                $scope.checkplacevar = 'NO';
-            else
-                $scope.checkplacevar = 'YES';
-                //console.log(name);
-        };
-        */
 
 
 }]);
