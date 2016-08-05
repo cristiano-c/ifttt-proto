@@ -281,12 +281,19 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$http', '$rootScope',
     function ($scope, $routeParams, $window, $http, $rootscope) {
 
-    var triggerPath;
+    var nextPath;
 
+        /*
+         * Queste due variabili indicano lo stato di connessione dell'utente ai servizi
+         */
+        $scope.iftttLogged = false;
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
 
 
+        /*
+         * Funzione che gestisce il click per gestire l'autenticazione a Google
+         */
         $scope.requestGoogleAuth = function() {
 
             var googleCredentials = {
@@ -339,6 +346,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         };
 
+        /*
+         * Funzione che gestisce il click per gestire la disconnessione da Google
+         */
         $scope.logoutGoogle = function () {
             var requestLogout = {
                 requestLogout: 'google'
@@ -384,6 +394,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         };
 
+        /*
+         * Funzione che gestisce il click per gestire l'autenticazione a Twitter
+         */
         $scope.requestTwitterAuth = function() {
 
             var twitterCredentials = {
@@ -412,8 +425,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         }
                     );
                     twitterLogin = "1";
-                    //alert("#"+triggerPath);
-                    url = "#"+triggerPath;
+                    //alert("#"+nextPath);
+                    url = "#"+nextPath;
                     window.location.replace(url);
                 } else {
                     $("#notificationsWrapper").notify(
@@ -440,6 +453,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         };
 
+        /*
+         * Funzione che gestisce il click per gestire la disconnessione da Twitter
+         */
         $scope.logoutTwitter = function () {
             var requestLogout = {
                 requestLogout: 'twitter'
@@ -493,9 +509,12 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         };
 
+        /*
+         * Funzione che gestisce il click per gestire il corretto routing delle pagine
+         */
         $scope.routeListener = function (nextRoute) {
-            triggerPath = nextRoute;
-            console.log("routeListener(nextRoute): "+triggerPath);
+            nextPath = nextRoute;
+            console.log("routeListener(nextRoute): "+nextPath);
         }
 
 
