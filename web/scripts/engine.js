@@ -350,7 +350,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
          */
         $scope.logoutIFTTT = function () {
             var requestLogout = {
-                requestLogout: 'google'
+                requestLogout: 'iftttpolito'
             };
 
             $http({
@@ -360,9 +360,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             }).then(function success(response) {
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
-                    $scope.googleLogged = false;
+                    $scope.iftttLogged = false;
                     $("#notificationsWrapper").notify(
-                        "Logged out from Google",
+                        "Logged out from IFTTT Polito",
                         {
                             className: 'warning',
                             position: 'bottom right'
@@ -378,17 +378,17 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     );
                 }
 
-                console.log($scope.googleLogged);
+                console.log($scope.iftttLogged);
             }, function error(response) {
-                $('#loginGoogleModal').modal('hide');
+                $('#loginIFTTTModal').modal('hide');
                 $("#notificationsWrapper").notify(
-                    "Disconnect to Google failed",
+                    "Disconnect to IFTTT Polito failed",
                     {
                         className: 'error',
                         position: 'bottom right'
                     }
                 );
-                console.log($scope.googleLogged);
+                console.log($scope.iftttLogged);
             });
 
         };
