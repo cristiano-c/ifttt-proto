@@ -65,6 +65,8 @@
   <div id="notificationsWrapper" style="margin: auto"></div>
 
   {{"googleLogged: "+ googleLogged}}
+  <br>
+  {{"twitterLogged: "+ twitterLogged}}
 
   <ng-view></ng-view>
 
