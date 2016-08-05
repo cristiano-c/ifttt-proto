@@ -277,86 +277,34 @@ $(function()
         }
         else
         {
+            /*
+             sender_customWeatherActionControllerTrigger1 =idCity;
+             timezone_customWeatherActionControllerTrigger1 = "null";
+             ora_customWeatherActionControllerTrigger1 = "null";
+             */
             var timezone = $('#timezoneid').val();
             var htime = $('#timehourid').val();
-            var mtime =  +  $('#timeminuteid').val();
+            var mtime = $('#timeminuteid').val();
             //var time = $('#timehourid').val() + ":" +  $('#timeminuteid').val();
             var time = htime + ":" + mtime;
-            if ($('#checktimeZonevar').is(":checked") &&  $('#checktime').is(":checked"))
-            {
 
-                var loginDataSend =
-                {
-                    "sender:": idCity,
-                    "timezone" : timezone,
-                    "ora": time
-
-                };
-                sender_customWeatherActionControllerTrigger1 =idCity;
-                timezone_customWeatherActionControllerTrigger1 = timezone;
-                ora_customWeatherActionControllerTrigger1 = time;
-
-
-            }
-            else
-            {
-                if ($('#checktimeZonevar').is(":checked"))
-                {
-
-                    var loginDataSend =
-                    {
-                        "sender:": idCity,
-                        "timezone" : timezone,
-                        "ora": "null"
-
-                    };
-                    //alert(loginDataSend.pssword);
-                    sender_customWeatherActionControllerTrigger1 =idCity;
-                    timezone_customWeatherActionControllerTrigger1 = timezone;
-                    ora_customWeatherActionControllerTrigger1 = "null";
-
-                }
-                else
-                {
-                    if ($('#checktime').is(":checked"))
-                    {
-                        var loginDataSend =
-                        {
-                            "sender:": idCity,
-                            "timezone" : "null",
-                            "ora": time
-
-                        };
-                        sender_customWeatherActionControllerTrigger1 =idCity;
-                        timezone_customWeatherActionControllerTrigger1 = "null";
-                        ora_customWeatherActionControllerTrigger1 = time;
-
-                    }
-                    else
-                    {
-                        var loginDataSend =
-                        {
-                            "sender:": idCity,
-                            "timezone" : "null",
-                            "ora": "null"
-
-                        };
-
-                        sender_customWeatherActionControllerTrigger1 =idCity;
-                        timezone_customWeatherActionControllerTrigger1 = "null";
-                        ora_customWeatherActionControllerTrigger1 = "null";
-                    }
-                }
-
-            }
 
             /*Check value*/
             if ($('#checktimeZonevar').is(":checked"))
+            {
                 timezoneCheck(timezone);
+                timezone_customWeatherActionControllerTrigger1 = timezone;
+
+            }
+            else timezone_customWeatherActionControllerTrigger1 = "NULL";
            if($('#checktime').is(":checked"))
            {
                timeCheck(htime, mtime);
+               ora_customWeatherActionControllerTrigger1 = time;
+
            }
+           else ora_customWeatherActionControllerTrigger1 = "NULL";
+
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
                 var url = "/#/createRecipeAction";
@@ -364,8 +312,8 @@ $(function()
             }
             else
             {
-                var url = "/#/WeatherTrigger1";
-                window.location.replace(url);
+                //var url = "/#/WeatherTrigger1";
+                //window.location.replace(url);
                 //Alert sull'errore commesso:
                 if(flagTimezoneCheck == "0" && flagTimeCheck == "0")
                 {

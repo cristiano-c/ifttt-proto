@@ -1343,7 +1343,6 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                         else
                         {
-                            place = "null";
                             dayVector = "null";
                             yearVector = "null";
                             monthVector = "null";
@@ -1354,7 +1353,6 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                 }
                 else {
-                    place = "null";
                     dayVector = "null";
                     yearVector = "null";
                     monthVector = "null";
