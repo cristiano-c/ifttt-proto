@@ -31,7 +31,7 @@
                                 </label><br/>
                             <div ng-if="checkedEmail" class="animate-if">
                                 <input class="form-control"
-                                   type="email"  ng-disabled="!checkedEmail"
+                                   type="title"  ng-disabled="!checkedEmail"
                                    id="email" placeholder="Insert here the email of the sender that you want to watch"
                                    ng-model="gmailinput.email"
                                    required="" name="uEmail"
@@ -41,12 +41,16 @@
                                 <!--
                                 <span>{{100 - gmailinput.email.length}} left </span>
                                 -->
-
+                                <span style="color: #0f0f0f" >{{"email is: "+ flagEmail}}</span>
                             </div>
 
+
+                            <!--
                             <div ng-show="form.$submitted || form.uEmail.$touched">
                                 <span ng-show="form.uEmail.$error.email"   style="color: #b81900">This is not a valid email</span>
                             </div>
+                            -->
+
                         </div>
 
 

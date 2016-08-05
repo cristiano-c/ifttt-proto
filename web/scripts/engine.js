@@ -579,11 +579,13 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
         //Bug stringa null
 
+        $scope.flagEmail="email is empty";
         $scope.gmailinput = [];
         $scope.triggerGmail = function()
         {
             var sender = "";
             var subject = "";
+            var flag = "1";
             triggerChose=1;
             //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
@@ -596,13 +598,24 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     if (angular.isDefined($scope.gmailinput)) {
                         if (angular.isDefined($scope.gmailinput.email)) {
                             sender = $scope.gmailinput.email;
+                            if (validateEmail(sender));
+                            else
+                            {
+                                $scope.flagEmail="not valid";
+                                flag = "0";
+                            }
+
+
+
                         }
                         else {
                             sender = "";
+                            $scope.flagEmail="is empty";
                         }
                     }
                     else {
                         sender = "";
+                        $scope.flagEmail="is empty";
                     }
 
                 }
@@ -629,10 +642,13 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     subject = "null";
                 }
 
-                sender_GmailTriggerController = sender;
-                subject_GmailTriggerController =  subject;
-                url = "#createRecipeAction";
-                window.location.replace(url);
+                if(flag=="1")
+                {
+                    sender_GmailTriggerController = sender;
+                    subject_GmailTriggerController = subject;
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
             }
             else
             {
@@ -661,6 +677,12 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         // $scope.checkedtitle = true;
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
+
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
 
     }]);
 
