@@ -26,7 +26,7 @@ public class MyServlet extends HttpServlet {
 
         System.out.println(request.getParameter("googleCredentials"));
 
-        String jsonObject = "{\"authentication\":\"true\"}";
+        String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\"}";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(jsonObject);

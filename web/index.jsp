@@ -48,7 +48,7 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <img id="twitterLogoON" ng-if="twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/>
+            <a href="" ng-click="logoutTwitter()"><img id="twitterLogoON" ng-if="twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
             <img id="twitterLogoOFF" ng-if="!twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
             <a href="" ng-click="logoutGoogle()"><img id="googleLogoON" ng-if="googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
             <img id="googleLogoOFF" ng-if="!googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
@@ -114,14 +114,14 @@
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h2 class="modal-title"><img src="./images/logos/twitter-logged-in.png" height="34" width="34"/> Login with Twitter</h2>
+          <h2 class="modal-title"><img src="./images/logos/twitter-logged-in.png" height="30" width="30"/> Login with Twitter</h2>
         </div>
 
         <div class="modal-body">
           <!-- The form is placed inside the body of modal -->
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmailTwitter" class="col-sm-3 control-label">User email <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+              <label for="inputEmailGoogle" class="col-sm-3 control-label">Twitter mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
               <div class="col-sm-9">
                 <input type="email" class="form-control" id="inputEmailTwitter" placeholder="Email">
               </div>
@@ -134,7 +134,7 @@
             </div>
             <div class="form-group">
               <div class="col-sm-offset-3 col-sm-9">
-                <button id="twitter-auth-btn" type="submit" class="btn btn-default">Sign in</button>
+                <button id="twitter-auth-btn" type="submit" class="btn btn-default" ng-click="requestTwitterAuth()">Sign in</button>
               </div>
             </div>
           </form>

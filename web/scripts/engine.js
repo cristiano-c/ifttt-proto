@@ -276,16 +276,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.requestGoogleAuth = function() {
 
             var googleCredentials = {
+                serviceRequested: "google",
                 email: $('#inputEmailGoogle').val(),
                 password: $('#inputPasswordGoogle').val()
             };
-            /*
-            $http({
-                method: 'post',
-                url: '/MyServlet',
-                data: googleCredentials
-            });
-            */
+
             console.log(JSON.stringify(googleCredentials));
             $http({
                 url: '/MyServlet',
@@ -294,8 +289,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                alert(JSON.stringify(response.data.authentication) + "locale" + response.data.authentication.localeCompare("true"));
-                if(response.data.authentication.localeCompare("true")==0){
+                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                if(response.data.authenticated.localeCompare("true")==0){
                     $scope.googleLogged = true;
                     $('#loginGoogleModal').modal('hide');
                     $("#notificationsWrapper").notify(
@@ -332,7 +327,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         $scope.logoutGoogle = function () {
             var requestLogout = {
-                requestLogout: 'Google'
+                requestLogout: 'google'
             };
 
             $http({
@@ -340,19 +335,27 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 url: '/MyServlet',
                 data: requestLogout
             }).then(function success(response) {
-                $('#loginGoogleModal').modal('hide');
-                $("#notificationsWrapper").notify(
-                    "Logged out with Google",
-                    {
-                        className: 'warning',
-                        position: 'bottom right'
-                    }
-                );
-                $scope.googleLogged = false;
+                console.log(response.data.disconnected);
+                if(response.data.disconnected.localeCompare("true")==0){
+                    $scope.googleLogged = false;
+                    $("#notificationsWrapper").notify(
+                        "Logged out from Google",
+                        {
+                            className: 'warning',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Some problem occurred, please retry",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
+
                 console.log($scope.googleLogged);
-                alert("success: "+$scope.googleLogged);
-                // this callback will be called asynchronously
-                // when the response is available
             }, function error(response) {
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
@@ -362,60 +365,66 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         position: 'bottom right'
                     }
                 );
-                $scope.googleLogged = true;
                 console.log($scope.googleLogged);
-                alert("error: "+$scope.googleLogged);
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
             });
 
         };
 
         $scope.requestTwitterAuth = function() {
-            var googleCredentials = {
-                email: $('#inputEmailGoogle').val(),
-                password: $('#inputPasswordGoogle').val()
+
+            var twitterCredentials = {
+                serviceRequested: "twitter",
+                email: $('#inputEmailTwitter').val(),
+                password: $('#inputPasswordTwitter').val()
             };
+
+            console.log(JSON.stringify(twitterCredentials));
             $http({
-                method: 'POST',
                 url: '/MyServlet',
-                data: googleCredentials
+                method: "POST",
+                data: JSON.stringify(twitterCredentials),
+                dataType: 'application/json'
+                //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                $('#loginGoogleModal').modal('hide');
-                $("#notificationsWrapper").notify(
-                    "Logged with Google",
-                    {
-                        className: 'success',
-                        position: 'bottom right'
-                    }
-                );
-                $scope.googleLogged = true;
-                console.log($scope.googleLogged);
-                alert("success: "+$scope.googleLogged);
-                // this callback will be called asynchronously
-                // when the response is available
+                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                if(response.data.authenticated.localeCompare("true")==0){
+                    $scope.twitterLogged = true;
+                    $('#loginTwitterModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Logged with Twitter",
+                        {
+                            className: 'success',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Authentication in Twitter failed",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
+                console.log($scope.twitterLogged);
             }, function error(response) {
-                $('#loginGoogleModal').modal('hide');
+                $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
-                    "Failed to login with Google",
+                    "Server error, retry",
                     {
                         className: 'error',
                         position: 'bottom right'
                     }
                 );
-                $scope.googleLogged = false;
-                console.log($scope.googleLogged);
-                alert("error: "+$scope.googleLogged);
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
+                $scope.twitterLogged = false;
+                console.log($scope.twitterLogged);
             });
 
-            alert("after sign: "+$scope.googleLogged);
         };
 
         $scope.logoutTwitter = function () {
             var requestLogout = {
-                requestLogout: 'Google'
+                requestLogout: 'twitter'
             };
 
             $http({
@@ -423,42 +432,41 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 url: '/MyServlet',
                 data: requestLogout
             }).then(function success(response) {
-                $('#loginGoogleModal').modal('hide');
-                $("#notificationsWrapper").notify(
-                    "Logged out with Google",
-                    {
-                        className: 'warning',
-                        position: 'bottom right'
-                    }
-                );
-                $scope.googleLogged = false;
-                console.log($scope.googleLogged);
-                alert("success: "+$scope.googleLogged);
-                // this callback will be called asynchronously
-                // when the response is available
+                console.log(response.data.disconnected);
+                if(response.data.disconnected.localeCompare("true")==0){
+                    $scope.twitterLogged = false;
+                    $("#notificationsWrapper").notify(
+                        "Logged out from Twitter",
+                        {
+                            className: 'warning',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Some problem occurred, please retry",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
+
+                console.log($scope.twitterLogged);
             }, function error(response) {
-                $('#loginGoogleModal').modal('hide');
+                $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
-                    "Disconnect to Google failed",
+                    "Disconnect to Twitter failed",
                     {
                         className: 'error',
                         position: 'bottom right'
                     }
                 );
-                $scope.googleLogged = true;
-                console.log($scope.googleLogged);
-                alert("error: "+$scope.googleLogged);
-                // called asynchronously if an error occurs
-                // or server returns response with an error status.
+                console.log($scope.twitterLogged);
             });
 
         };
 
-        $scope.loadHome = function()
-        {
-            alert("weak");
-            console.log("homeController: loaded");
-        }
 
     }]);
 
@@ -1343,6 +1351,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                         else
                         {
+                            place = "null";
                             dayVector = "null";
                             yearVector = "null";
                             monthVector = "null";
@@ -1353,6 +1362,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                 }
                 else {
+                    place = "null";
                     dayVector = "null";
                     yearVector = "null";
                     monthVector = "null";
