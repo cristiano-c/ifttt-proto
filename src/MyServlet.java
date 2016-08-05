@@ -26,10 +26,11 @@ public class MyServlet extends HttpServlet {
 
         System.out.println(request.getParameter("googleCredentials"));
 
-        String text = "som text";
-        response.setContentType("text/plain");
-        response.setCharacterEncoding("UTF-8");
-        response.getWriter().write(text);
+        String jsonObject = "{\"authentication\":\"true\"}";
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        out.print(jsonObject);
+        out.flush();
 
     }
 

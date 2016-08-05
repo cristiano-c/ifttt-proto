@@ -287,27 +287,38 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             });
             */
             console.log(JSON.stringify(googleCredentials));
-            /*$http({
-             url: '/MyServlet',
-             method: "POST",
-             data: JSON.stringify(googleCredentials),
-             headers: {'Content-Type': 'application/json'}
-             })*/
-            $http.post("/MyServlet", JSON.stringify(googleCredentials)).then(function success(response) {
-                $('#loginGoogleModal').modal('hide');
-                $("#notificationsWrapper").notify(
-                    "Logged with Google",
-                    {
-                        className: 'success',
-                        position: 'bottom right'
-                    }
-                );
-                $scope.googleLogged = true;
+            $http({
+                url: '/MyServlet',
+                method: "POST",
+                data: JSON.stringify(googleCredentials),
+                dataType: 'application/json'
+                //headers: {'Content-Type': 'application/json'}
+            }).then(function success(response) {
+                alert(JSON.stringify(response.data.authentication) + "locale" + response.data.authentication.localeCompare("true"));
+                if(response.data.authentication.localeCompare("true")==0){
+                    $scope.googleLogged = true;
+                    $('#loginGoogleModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Logged with Google",
+                        {
+                            className: 'success',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Authentication in Google failed",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
                 console.log($scope.googleLogged);
             }, function error(response) {
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
-                    "Failed to login with Google",
+                    "Server error, retry",
                     {
                         className: 'error',
                         position: 'bottom right'
