@@ -416,8 +416,8 @@ $(function(){
 
                 if(flagWeatherCheck == 0 ||  flagPeriodCheck == 0 || flagZoneCheck == 0)
                 {
-                    url = "#WeatherTrigger2";
-                    window.location.replace(url);
+                    //url = "#WeatherTrigger2";
+                    //window.location.replace(url);
                     alert("Your input is not right");
                 }
                 else
