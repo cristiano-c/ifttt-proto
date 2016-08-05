@@ -269,6 +269,9 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
 iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$http', '$rootScope',
     function ($scope, $routeParams, $window, $http, $rootscope) {
+
+    var triggerPath;
+
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
 
@@ -397,8 +400,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
-                    alert("#"+$scope.triggerPath);
-                    url = "#"+$scope.triggerPath;
+                    alert("#"+triggerPath);
+                    url = "#"+triggerPath;
                     window.location.replace(url);
                 } else {
                     $("#notificationsWrapper").notify(
@@ -420,7 +423,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.twitterLogged = false;
-                console.log($scope.twitterLogged);
+                console.log(""+$scope.twitterLogged);
             });
 
         };
@@ -471,9 +474,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         };
 
         $scope.routeListener = function (nextRoute) {
-            $scope.triggerPath = nextRoute;
-            alert(nextRoute);
+            triggerPath = nextRoute;
+            console.log("routeListener(nextRoute): "+triggerPath);
         }
+
+
 
     }]);
 
@@ -700,12 +705,13 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         //Bug stringa null
 
         $scope.gmailActionvar = [];
-        var flag = "1";
+
         $scope.flagEmail = "e.mail is empty";
         $scope.actionGmail = function()
         {
             var sender ="";
             var subject = "";
+            var flag = "1";
             actionChose=1;
              sender_GmailActionController = "";
              subject_GmailActionController = "";
