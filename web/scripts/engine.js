@@ -625,33 +625,23 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
 
     }]);
-
-
 iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
 
         if (flagTriggerDone == "1")
         {
-            console.log("Warning you must compile before the action form");
+            alert("Warning you must compile before the action form");
             var url = "#createRecipeAction";
             window.location.replace(url);
         }
-        if (count==6)
-        {
-            count++;
-        }
+        if (count==7) count=0;
         else
         {
-            if(count<6)
-            {
-                url = "#createDO";
-                window.location.replace(url);
-            }
-
+            url = "#createDO";
+            window.location.replace(url);
         }
 
     }]);
-
 
 
 iftttApp.controller('homeController',  ['$scope', '$routeParams',
@@ -952,7 +942,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 {
 
                     flagTriggerDone = "0";
-                    count=0;
+                    count=7;
 
                     sender_GmailActionController = sender;
                     subject_GmailActionController = subject;
@@ -1677,7 +1667,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                 if (flag != "3") {
                     flagTriggerDone = "0";
-                    count=0;
+                    count=7;
                     sendingToServerAll();
                     url = "#gMailSucces";
                     window.location.replace(url);
@@ -2015,7 +2005,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 }
 
                 flagTriggerDone = "0";
-                count=0;
+                count=7;
 
                 subject_action1TwitterController = subject;
                 sendingToServerAll();
@@ -2117,7 +2107,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 subjec_action2TwitterController = subject;
                 sendingToServerAll();
                 flagTriggerDone = "0";
-                count=0;
+                count=7;
                 // href="#SuccessTwitter"
                 url = "#SuccessTwitter";
                 window.location.replace(url);
