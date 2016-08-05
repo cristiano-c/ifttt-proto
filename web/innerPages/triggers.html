@@ -159,12 +159,11 @@
                         <p>
                             Get notified when someone post a tweet, filtered by Person or Hashtag.
                         </p>
-                        <p class="text-center">
-                            <button class="btn btn-default" ng-if="!twitterLogged" data-toggle="modal" data-target="#loginTwitterModal">Login Twitter TEMPORANEO NOT LOGGED</button>
-                            <button class="btn btn-default" ng-if="twitterLogged" >Login Twitter TEMPORANEO YET LOGGED</button>
+                        <p>
+                            <a class="btn btn_next2" ng-if="!twitterLogged" data-toggle="modal" data-target="#loginTwitterModal">Login in Twitter <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                         <p>
-                            <a class="btn btn_next2" href="#Trigger1Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" href="#Trigger1Twitter" ng-if="twitterLogged" ng-click="routeListener(Trigger1Twitter)">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                     <div class="col-md-6">
@@ -175,7 +174,10 @@
                             Get notified when someone send you a private message from a certain User or containing some Text.
                         </p>
                         <p>
-                            <a class="btn btn_next2" href="#Trigger2Twitter">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn btn_next2" ng-if="!twitterLogged" data-toggle="modal" data-target="#loginTwitterModal">Login in Twitter <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        </p>
+                        <p>
+                            <a class="btn btn_next2" href="#Trigger2Twitter" ng-if="twitterLogged" ng-click="routeListener('Trigger1Twitter)">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>

@@ -397,6 +397,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
+                    alert("#"+$scope.triggerPath);
+                    url = "#"+$scope.triggerPath;
+                    window.location.replace(url);
                 } else {
                     $("#notificationsWrapper").notify(
                         "Authentication in Twitter failed",
@@ -467,6 +470,10 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
         };
 
+        $scope.routeListener = function (nextRoute) {
+            $scope.triggerPath = nextRoute;
+            alert(nextRoute);
+        }
 
     }]);
 
