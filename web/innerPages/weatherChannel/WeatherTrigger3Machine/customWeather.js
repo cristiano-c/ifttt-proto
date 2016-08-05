@@ -468,6 +468,7 @@ $(function(){
                 timezoneCheck();
             if(flagTimezoneCheck == 1)
             {
+                flagTriggerDone = "1";
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }

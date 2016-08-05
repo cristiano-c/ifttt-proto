@@ -105,16 +105,21 @@
 </body>
 
 <script>
-    if(navPages[3] == 0){
-        url = "javascript:history.back()";
-        window.location.replace(url);
-    } else {
-        console.log("ok");
+    if (count==4)
+    {
+        count++;
+    }
+    else
+    {
+        if(count<4)
+        {
+            url = "#createRecipeAction";
+            window.location.replace(url);
+        }
+
     }
 
-    $('.btn_next5').click(function () {
-        navPages[4] = 1;
-    });
+
 </script>
 
 </html>

@@ -38,16 +38,22 @@
 </body>
 
 <script>
-    if(navPages[2] == 0){
-        url = "javascript:history.back()";
-        window.location.replace(url);
-    } else {
-        console.log("ok");
+    if (count==3)
+    {
+        count++;
+    }
+    else
+    {
+        if(count<3)
+        {
+            url="#allTriggers";
+            window.location.replace(url);
+        }
+
     }
 
-    $('.btn_next4').click(function () {
-        navPages[3] = 1;
-    });
+
+
 </script>
 
 </html>

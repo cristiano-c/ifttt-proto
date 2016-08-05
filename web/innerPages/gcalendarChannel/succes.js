@@ -11,6 +11,8 @@ var rightX = mid + 2;
 var rightY = mid - 3;
 var animationSpeed = 20;
 
+
+
 var ctx = document.getElementsByTagName('canvas')[0].getContext('2d');
 ctx.lineWidth = width;
 ctx.strokeStyle = 'rgba(0, 150, 0, 1)';

@@ -143,7 +143,7 @@
                                 class="btn btn-primary pull-right btn_next6"
                                  ng-click="actiongcalendar(gcalendarinput,  yearVector, monthVector, dayVector)" >Summit</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata" class="animate-if" >
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata && !checkedplace" class="animate-if" >
                             You have to ability Title or/and Subject or/and Place or/and Data in order to continue
                         </label>
 
@@ -193,16 +193,26 @@ Example code
 
 
 <script>
-    if(navPages[4] == 0){
-        url = "javascript:history.back()";
+    if (flagTriggerDone == "0")
+    {
+        alert("Warning you must compile before the trigger form");
+        url = "#createRecipe";
         window.location.replace(url);
-    } else {
-        console.log("ok");
+    }
+    if (count==5)
+    {
+        count++;
+    }
+    else
+    {
+        if(count<5)
+        {
+            url = "#createDO";
+            window.location.replace(url);
+        }
+
     }
 
-    $('.btn_next6').click(function () {
-        navPages[5] = 1;
-    });
 </script>
 
 </html>

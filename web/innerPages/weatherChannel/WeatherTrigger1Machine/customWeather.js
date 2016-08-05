@@ -308,6 +308,7 @@ $(function()
 
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
+                flagTriggerDone = "1";
                 var url = "/#/createRecipeAction";
                 window.location.replace(url);
             }

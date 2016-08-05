@@ -514,6 +514,7 @@ $(function(){
             }
             else
             {
+                flagTriggerDone = "1";
                 url = "#createRecipeAction";
                 window.location.replace(url);
 

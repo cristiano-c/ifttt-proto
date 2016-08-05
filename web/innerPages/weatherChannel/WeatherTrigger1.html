@@ -158,17 +158,20 @@
             }]);
 
 
-    if(navPages[1] == 0){
-        console.log("redirect!");
-        url = "#createIF";
-        window.location.replace(url);
-    } else {
-        console.log("ok");
+    if (count==2)
+    {
+        count++;
+        url1back = "#WeatherTrigger1";
     }
+    else
+    {
+        if(count<2)
+        {
+            url = "#allTriggers";
+            window.location.replace(url);
+        }
 
-    $('.btn_next3').click(function () {
-        navPages[2] = 1;
-    });
+    }
 
 </script>
 

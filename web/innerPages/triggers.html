@@ -187,20 +187,17 @@
 </div>
 
 <script>
+    if (count==1)
+        count++;
+    else
+    {
+        if(count<1) {
+            url = "#createRecipe";
+            window.location.replace(url);
+        }
 
 
-if(navPages[0] == 0){
-    url = "javascript:history.back()";
-    window.location.replace(url);
-} else {
-    console.log("ok");
-}
-
-$('.btn_next2').click(function () {
-    navPages[1] = 1;
-});
-
-
+    }
 </script>
 
 

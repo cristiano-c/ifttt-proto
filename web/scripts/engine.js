@@ -76,6 +76,10 @@ var period_customWeatherActionControllerTrigger4 = "";
 /* NAVIGATION */
 
 var navPages = [0,0,0,0,0,0];
+var count=0;
+var url1back = "";
+//var url2back = "";
+var flagTriggerDone = "0";
 
 // sendingToServerAll();
 
@@ -100,10 +104,12 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'homeController'
     });
 
+
     $routeProvider.when('/index/createIF', {
         templateUrl: 'innerPages/triggers.html',
         controller: 'ifCreatorController'
     });
+
 
     $routeProvider.when('/createDO', {
         templateUrl: 'innerPages/actions.html',
@@ -164,7 +170,8 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
     $routeProvider.when('/gMailSucces', {
-        templateUrl: 'innerPages/gmailChannel/gmailSuccess.html'
+        templateUrl: 'innerPages/gmailChannel/gmailSuccess.html',
+        controller: 'SuccessController'
     });
 
 
@@ -249,11 +256,13 @@ iftttApp.config(['$routeProvider', function($routeProvider){
    });
 
    $routeProvider.when('/SuccessTwitter', {
-       templateUrl: 'innerPages/twitterChannel/twitterSuccess.html'
+       templateUrl: 'innerPages/twitterChannel/twitterSuccess.html',
+       controller: 'SuccessController'
    });
 
    $routeProvider.when('/allTriggers', {
-       templateUrl: 'innerPages/triggers.html'
+       templateUrl: 'innerPages/triggers.html',
+       controller: 'ifCreatorController'
    });
 
    $routeProvider.when('/allActions', {
@@ -483,6 +492,33 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
     }]);
 
 
+iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
+    function ($scope, $rootscope, $routeParams, $http, $resource) {
+
+        if (flagTriggerDone == "1")
+        {
+            alert("Warning you must compile before the action form");
+            var url = "#createRecipeAction";
+            window.location.replace(url);
+        }
+        if (count==6)
+        {
+            count++;
+        }
+        else
+        {
+            if(count<6)
+            {
+                url = "#createDO";
+                window.location.replace(url);
+            }
+
+        }
+
+    }]);
+
+
+
 iftttApp.controller('homeController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
 
@@ -656,6 +692,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                 if(flag=="1")
                 {
+                    flagTriggerDone = "1";
                     sender_GmailTriggerController = sender;
                     subject_GmailTriggerController = subject;
                     url = "#createRecipeAction";
@@ -772,6 +809,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 if(flag == "1")
                 {
 
+                    flagTriggerDone = "0";
                     sender_GmailActionController = sender;
                     subject_GmailActionController = subject;
                     sendingToServerAll();
@@ -1151,6 +1189,8 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
                 description_Trigger1GcalendarController = subject;
                 place_Trigger1GcalendarController = place;
 
+
+                flagTriggerDone = "1";
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }
@@ -1262,6 +1302,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
                     place = "null";
                 }
 
+                flagTriggerDone = "1";
                 title_Trigger2GcalendarController = title;
                 description_Trigger2GcalendarController = subject;
                 place_Trigger2GcalendarController = place;
@@ -1491,8 +1532,9 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                 }
 
                 if (flag != "3") {
+                    flagTriggerDone = "0";
                     sendingToServerAll();
-                    url = "http://localhost:8080/#/gMailSucces";
+                    url = "#gMailSucces";
                     window.location.replace(url);
                 }
 
@@ -1689,6 +1731,8 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
                     subject = "null";
                 }
 
+                flagTriggerDone = "1";
+
                 username_sender_trigger1TwitterController = title;
                 hashtag_text_trigger1TwitterController = subject;
 
@@ -1764,6 +1808,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
                     subject = "null";
                 }
 
+                flagTriggerDone = "1";
                 username_sender_trigger2TwitterController = title;
                 hashtag_text_trigger2TwitterController = subject;
                 url = "#createRecipeAction";
@@ -1827,6 +1872,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
 
                 subject_action1TwitterController = subject;
                 sendingToServerAll();
+                flagTriggerDone = "0";
                 //href="#SuccessTwitter"
                 var url = "#SuccessTwitter";
                 window.location.replace(url);
@@ -1920,6 +1966,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 title_action2TwitterController = title;
                 subjec_action2TwitterController = subject;
                 sendingToServerAll();
+                flagTriggerDone = "0";
                 // href="#SuccessTwitter"
                 url = "#SuccessTwitter";
                 window.location.replace(url);

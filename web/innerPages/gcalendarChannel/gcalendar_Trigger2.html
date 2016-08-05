@@ -118,16 +118,20 @@
 
 <script>
 
-    if(navPages[1] == 0){
-        url = "javascript:history.back()";
-        window.location.replace(url);
-    } else {
-        console.log("ok");
+    if (count==2)
+    {
+        count++;
+        url1back = "#Trigger2Gcalendar";
     }
+    else
+    {
+        if(count<2)
+        {
+            url = "#allTriggers";
+            window.location.replace(url);
+        }
 
-    $('.btn_next3').click(function () {
-        navPages[2] = 1;
-    });
+    }
 
 </script>
 
