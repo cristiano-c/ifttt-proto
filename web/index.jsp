@@ -61,7 +61,7 @@
             <input ng-if="!iftttLogged" type="password" class="form-control" placeholder="password">
           </div>
           <button type="submit" class="btn btn-default" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
-          <button type="submit" class="btn btn-default" ng-if="iftttLogged"><span class="glyphicon glyphicon-log-in" aria-hidden="true" ng-click="logoutGoogle()"></span> Logout</button>
+          <button type="submit" class="btn btn-default" ng-if="iftttLogged" ng-click="logoutGoogle()"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logout</button>
         </form>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
