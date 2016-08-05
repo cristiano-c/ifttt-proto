@@ -9,21 +9,23 @@
 <html ng-app="iftttApp">
   <head>
     <title>IFTTT Polito</title>
+
+    <!-- JavaScript Libraries -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/notifyjs/dist/notify.js"></script>
+    <script src="scripts/engine.js"></script>
 
 
+    <!-- Cascade Style Sheets -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="stylesheets/2-col-portfolio.css">
     <link rel="stylesheet" href="stylesheets/index.css">
     <link rel="stylesheet" href="stylesheets/loginPage.css">
 
-
-    <script src="scripts/engine.js"></script>
   </head>
   <body ng-controller="indexController">
 
@@ -63,12 +65,15 @@
   </nav>
   <!-- TOP NAVBAR END -->
 
-
-  <div id="notificationsWrapper" style="margin: auto"></div>
-
+  <!-- DEBUG AREA BEGIN -->
   {{"googleLogged: "+ googleLogged}}
   <br>
   {{"twitterLogged: "+ twitterLogged}}
+  <!-- DEBUG AREA END -->
+
+  <!-- NOTIFICATIONS WRAPPER BEGIN -->
+  <div id="notificationsWrapper" style="margin: auto"></div>
+  <!-- NOTIFICATIONS WRAPPER END -->
 
   <!-- INNER PAGES BEGIN -->
   <ng-view></ng-view>
