@@ -81,6 +81,8 @@ var url1back = "";
 //var url2back = "";
 var flagTriggerDone = "0";
 
+var twitterLogin = "0";
+
 // sendingToServerAll();
 
 /* prova */
@@ -409,7 +411,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
-                    alert("#"+triggerPath);
+                    twitterLogin = "1";
+                    //alert("#"+triggerPath);
                     url = "#"+triggerPath;
                     window.location.replace(url);
                 } else {
@@ -441,6 +444,14 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             var requestLogout = {
                 requestLogout: 'twitter'
             };
+            /*Non so di preciso dove mettere questa variabile che serve per "sicurizzare"
+            le pagine di twitter ossia:
+             if(twitterLogin == "1") tu sei loggatto;
+             if(twitterLogin == "0") tu non sei loggato;
+            */
+
+            //Sloggagto
+            twitterLogin = "0";
 
             $http({
                 method: 'POST',

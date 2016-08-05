@@ -94,19 +94,27 @@
 </body>
 
 <script>
-    if (count==2)
+    if(twitterLogin == 1)
     {
-        count++;
-        url1back = "#Trigger1Twitter";
+        if (count==2)
+        {
+            count++;
+            url1back = "#Trigger1Twitter";
+        }
+        else
+        {
+            if(count<2)
+            {
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
+
+        }
     }
     else
     {
-        if(count<2)
-        {
-            url = "#allTriggers";
-            window.location.replace(url);
-        }
-
+        url = "#allTriggers";
+        window.location.replace(url);
     }
 </script>
 
