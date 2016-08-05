@@ -897,6 +897,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                             {
                                 $scope.flagEmail="not valid";
                                 flag = "0";
+                                alert("Your e.mail is not right . . .");
                             }
                         }
                         else {
