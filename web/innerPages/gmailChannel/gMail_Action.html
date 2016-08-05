@@ -32,16 +32,19 @@
                                 <!-- ng-change="checkemailfunc()" -->
                             </label><br/>
                             <div ng-if="checkedEmail" class="animate-if">
-                            <input type="email"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
+                            <input type="title"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
                                    ng-model="gmailActionvar.email"
                                    required="" name="uEmail"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                            <span>{{256 - gmailActionvar.email.length}} left </span>
+                                <span style="color: #0f0f0f" >{{"email is: "+ flagEmail}}</span>
+                            <!--
+                                <span>{{256 - gmailActionvar.email.length}} left </span>
                             <div ng-show="form.$submitted || form.uEmail.$touched">
                                 <span ng-show="form.uEmail.$error.email"   style="color: #b81900">This is not a valid email</span>
                             </div>
+                            -->
                             </div>
                         </div>
 

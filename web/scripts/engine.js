@@ -693,6 +693,8 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         //Bug stringa null
 
         $scope.gmailActionvar = [];
+        var flag = "1";
+        $scope.flagEmail = "e.mail is empty";
         $scope.actionGmail = function()
         {
             var sender ="";
@@ -707,13 +709,22 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     if (angular.isDefined($scope.gmailActionvar)) {
                         if (angular.isDefined($scope.gmailActionvar.email)) {
                             sender = $scope.gmailActionvar.email;
+
+                            if (validateEmail(sender));
+                            else
+                            {
+                                $scope.flagEmail="not valid";
+                                flag = "0";
+                            }
                         }
                         else {
                             sender = "";
+                            $scope.flagEmail="is empty";
                         }
                     }
                     else {
                         sender = "";
+                        $scope.flagEmail="is empty";
                     }
 
                 }
@@ -745,12 +756,15 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     subject = "null";
                 }
 
+                if(flag == "1")
+                {
 
-                sender_GmailActionController = sender;
-                subject_GmailActionController = subject;
-                sendingToServerAll();
-                var url = "#gMailSucces";
-                window.location.replace(url);
+                    sender_GmailActionController = sender;
+                    subject_GmailActionController = subject;
+                    sendingToServerAll();
+                    var url = "#gMailSucces";
+                    window.location.replace(url);
+                }
             }
             else
             {
@@ -777,6 +791,11 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         };
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
+        function validateEmail(email) {
+            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(email);
+        }
+
 
     }]);
 
