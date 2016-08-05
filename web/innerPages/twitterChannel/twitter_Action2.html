@@ -91,27 +91,59 @@
 </body>
 
 <script>
-    if (flagTriggerDone == "0")
+    if(twitterLogin == "1")
     {
-        alert("Warning you must compile before the trigger form");
-        url = "#createRecipe";
-        window.location.replace(url);
-    }
+        if (flagTriggerDone == "0")
+        {
+            alert("Warning you must compile before the trigger form");
+            url = "#allTriggers";
+            window.location.replace(url);
+        }
+        else
+        {
+            if (count == 5) {
+                count++;
+            }
+            else
+            {
+                if (count < 5)
+                {
+                    url = "#createDO";
+                    window.location.replace(url);
+                }
 
-    if (count==5)
-    {
-        count++;
+            }
+
+        }
+
+
     }
     else
     {
-        if(count<5)
+        if (flagTriggerDone == "0")
         {
-            url = "#createDO";
+            alert("Warning you must compile before the trigger form");
+            url = "#allTriggers";
             window.location.replace(url);
+        }
+        else
+        {
+            if (count == 5) {
+                count++;
+            }
+            else
+            {
+                if (count < 5)
+                {
+                    url = "#createDO";
+                    window.location.replace(url);
+                }
+
+            }
+
         }
 
     }
-
 </script>
 
 <!--href="#SubGMailAction" -->

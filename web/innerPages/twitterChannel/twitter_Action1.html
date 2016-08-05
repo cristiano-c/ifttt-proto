@@ -72,26 +72,62 @@
 </body>
 
 <script>
-    if (flagTriggerDone == "0")
-    {
-        alert("Warning you must compile before the trigger form");
-        url = "#createRecipe";
-        window.location.replace(url);
-    }
 
-    if (count==5)
+    if(twitterLogin == "1")
     {
-        count++;
+        if (flagTriggerDone == "0")
+        {
+            alert("Warning you must compile before the trigger form");
+            var url = "#allTriggers";
+            window.location.replace(url);
+        }
+        else
+        {
+            if (count == 5) {
+                count++;
+            }
+            else
+            {
+                if (count < 5)
+                {
+                    var url = "#createDO";
+                    window.location.replace(url);
+                }
+
+            }
+
+        }
+
+
     }
     else
     {
-        if(count<5)
+        if (flagTriggerDone == "0")
         {
-            url = "#createDO";
+            alert("Warning you must compile before the trigger form");
+            var url = "#allTriggers";
             window.location.replace(url);
+        }
+        else
+        {
+            if (count == 5) {
+                count++;
+            }
+            else
+            {
+                if (count < 5)
+                {
+                    var url = "#createDO";
+                    window.location.replace(url);
+                }
+
+            }
+
         }
 
     }
+
+
 
 </script>
 
