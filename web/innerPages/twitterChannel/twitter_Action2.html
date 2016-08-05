@@ -96,7 +96,7 @@
         if (flagTriggerDone == "0")
         {
             alert("Warning you must compile before the trigger form");
-            url = "#allTriggers";
+            var url = "#allTriggers";
             window.location.replace(url);
         }
         else
@@ -108,7 +108,7 @@
             {
                 if (count < 5)
                 {
-                    url = "#createDO";
+                    var url = "#createDO";
                     window.location.replace(url);
                 }
 
@@ -120,30 +120,38 @@
     }
     else
     {
-        if (flagTriggerDone == "0")
-        {
-            alert("Warning you must compile before the trigger form");
-            url = "#allTriggers";
-            window.location.replace(url);
-        }
-        else
-        {
-            if (count == 5) {
-                count++;
-            }
-            else
-            {
-                if (count < 5)
-                {
-                    url = "#createDO";
-                    window.location.replace(url);
-                }
+        // Qua l'utente non è logato cosa gli faciamo fare? E' già dentro la pagina di twitter acton
+        /*
+         if (flagTriggerDone == "0")
+         {
+         alert("Warning you must compile before the trigger form");
+         var url = "#allTriggers";
+         window.location.replace(url);
+         }
+         else
+         {
+         if (count == 5) {
+         count++;
+         }
+         else
+         {
+         if (count < 5)
+         {
+         var url = "#createDO";
+         window.location.replace(url);
+         }
 
-            }
+         }
 
-        }
+         }
+         */
+        alert("You are not logged please loged and return here");
+        var url = "#createDO";
+        window.location.replace(url);
 
     }
+
+
 </script>
 
 <!--href="#SubGMailAction" -->

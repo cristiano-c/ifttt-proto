@@ -102,6 +102,8 @@
     }
     else
     {
+        // Qua l'utente non è logato cosa gli faciamo fare? E' già dentro la pagina di twitter acton
+        /*
         if (flagTriggerDone == "0")
         {
             alert("Warning you must compile before the trigger form");
@@ -124,6 +126,10 @@
             }
 
         }
+        */
+        alert("You are not logged please loged and return here");
+        var url = "#createDO";
+        window.location.replace(url);
 
     }
 
