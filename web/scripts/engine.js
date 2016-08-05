@@ -309,7 +309,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.iftttLogged = true;
                     $('#loginIFTTTModal').modal('hide');
@@ -320,6 +320,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
+                    url = "#"+nextPath;
+                    window.location.replace(url);
                 } else {
                     $("#notificationsWrapper").notify(
                         "Authentication in IFTTT Polito failed",
@@ -368,6 +370,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
+                    window.location.replace('#');
                 } else {
                     $("#notificationsWrapper").notify(
                         "Some problem occurred, please retry",
@@ -412,7 +415,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.googleLogged = true;
                     $('#loginGoogleModal').modal('hide');
@@ -515,7 +518,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.twitterLogged = true;
                     $('#loginTwitterModal').modal('hide');
@@ -527,7 +530,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         }
                     );
                     twitterLogin = "1";
-                    //alert("#"+nextPath);
+                    //console.log("#"+nextPath);
                     url = "#"+nextPath;
                     window.location.replace(url);
                 } else {
@@ -629,7 +632,7 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
 
         if (flagTriggerDone == "1")
         {
-            alert("Warning you must compile before the action form");
+            console.log("Warning you must compile before the action form");
             var url = "#createRecipeAction";
             window.location.replace(url);
         }
@@ -723,7 +726,7 @@ iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
             if (angular.isDefined(email) && angular.isDefined(user) && angular.isDefined(pws1) && angular.isDefined(pws2)){
                 if(pws1==pws2)
                 {
-                    //alert(user + " " + email + " " + " " + pws1);
+                    //console.log(user + " " + email + " " + " " + pws1);
 
                     var loginDataSend =
                     {
@@ -731,14 +734,20 @@ iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
                         "email": email,
                         "pws1": pws1
                     };
-                    //alert(loginDataSend.user);
+                    //console.log(loginDataSend.user);
                     $.ajax
                     ({
                         method: "post",
                         url: "/MyServlet",
                         data: loginDataSend,
                         dataType: "json",
-                        success: console.log("la post ha avuto successo")
+                        success: function() {
+                            console.log("la post ha avuto successo");
+                            window.location.replace('#');
+                        },
+                        error: function(){
+                            alert("some error occurred");
+                        }
                     });
 
                 }
@@ -767,7 +776,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
             var subject = "";
             var flag = "1";
             triggerChose=1;
-            //alert($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
+            //console.log($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
             sender_GmailTriggerController="";
             subject_GmailTriggerController="";
@@ -897,7 +906,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                             {
                                 $scope.flagEmail="not valid";
                                 flag = "0";
-                                alert("Your e.mail is not right . . .");
+                                console.log("Your e.mail is not right . . .");
                             }
                         }
                         else {
@@ -1234,7 +1243,7 @@ iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
                     "password:": pass,
                     "email:": email
                 };
-                //alert(loginDataSend.pssword);
+                //console.log(loginDataSend.pssword);
                 $.ajax({
                     method: "post",
                     url: "/MyServlet",
@@ -1622,7 +1631,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                         if (dayVector > "0" && dayVector < "32");
                         else {
                             flag = "3";
-                            alert("Your date is not right plase verify the day");
+                            console.log("Your date is not right plase verify the day");
                         }
                     }
                     if (monthVector === "2" ||
@@ -1635,7 +1644,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                         else
                         {
                             flag = "3";
-                            alert("Your date is not right plase verify the day");
+                            console.log("Your date is not right plase verify the day");
                         }
 
                     }
@@ -1652,7 +1661,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                         if (monthVector === "2")
                             if (dayVector > 28) {
                                 flag = "3";
-                                alert("Thi is a leap year");
+                                console.log("Thi is a leap year");
                             }
 
 
@@ -1660,7 +1669,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                     if(monthVector == "2" && dayVector >29 && flag != "3")
                     {
-                        alert("Febrary has not " + dayVector + " days, please check" );
+                        console.log("Febrary has not " + dayVector + " days, please check" );
                         flag = "3";
                     }
 
@@ -2287,7 +2296,7 @@ function sendingToServerAll ()
             "monthVector" : monthVector_action1GcalendarController,
             "yearVector" : dayVector_action1GcalendarController
         };
-        //alert("ss");
+        //console.log("ss");
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==2 && actionChose == 3)

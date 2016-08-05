@@ -60,7 +60,8 @@
             <input ng-if="!iftttLogged" type="text" class="form-control" placeholder="username">
             <input ng-if="!iftttLogged" type="password" class="form-control" placeholder="password">
           </div>
-          <button type="submit" class="btn btn-default" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+          <button type="submit" class="btn btn-default" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal" ng-click="routeListener('index/myRecipes')"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+          <a href="#index/createAccount"><button type="submit" class="btn btn-default" ng-if="!iftttLogged"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logon</button></a>
           <button type="submit" class="btn btn-default" ng-if="iftttLogged" ng-click="logoutIFTTT()">Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
         </form>
       </div><!-- /.navbar-collapse -->
@@ -69,6 +70,8 @@
   <!-- TOP NAVBAR END -->
 
   <!-- DEBUG AREA BEGIN -->
+  {{"iftttLogged: "+ iftttLogged}}
+  <br>
   {{"googleLogged: "+ googleLogged}}
   <br>
   {{"twitterLogged: "+ twitterLogged}}

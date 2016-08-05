@@ -36,6 +36,7 @@
                     </p>
                 </div>
                 <div class="row">
+                    <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <h2>
                             Continue with login
@@ -44,18 +45,9 @@
                             If you are already registered, click here to access your recipes from your personal page, and if you do not you can immediately start to create one!
                         </p>
                         <p>
-                            <a class="btn" href="#loginPage">Continue <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
-                        </p>
-                    </div>
-                    <div class="col-md-6">
-                        <h2>
-                            Continue without login
-                        </h2>
                         <p>
-                            If you are not registered and do not want to register right away, you can take a tour of the site and feel free to create new recipes. Note that the recipes you create in this mode, they will not be functional.
-                        </p>
-                        <p>
-                            <a class="btn" href="#">Begin now <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                            <a class="btn" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal" ng-click="routeListener('index/myRecipes')">Login <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
+                            <a class="btn" ng-if="iftttLogged" href="#index/myRecipes">Create a new recipe <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
                     </div>
                 </div>
