@@ -473,8 +473,8 @@ $(function(){
             }
             else
             {
-                url = "#WeatherTrigger3";
-                window.location.replace(url);
+                //url = "#WeatherTrigger3";
+                //window.location.replace(url);
                 alert("The input of the time zone is not right");
 
             }

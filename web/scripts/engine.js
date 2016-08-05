@@ -49,7 +49,7 @@ var username_sender_trigger2TwitterController = "";
 var  hashtag_text_trigger2TwitterController = "";
 
 /* customWeatherActionControllerTrigger1 Tn 6 */
-var sender_customWeatherActionControllerTrigger1 ="";
+var idCity_customWeatherActionControllerTrigger1 ="";
 var timezone_customWeatherActionControllerTrigger1 = "";
 var ora_customWeatherActionControllerTrigger1 = "";
 
@@ -2351,7 +2351,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 6
-            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "idCity"  :  idCity_customWeatherActionControllerTrigger1,
             "timezone" : timezone_customWeatherActionControllerTrigger1,
             "ora" : ora_customWeatherActionControllerTrigger1,
 
@@ -2368,7 +2368,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 6
-            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "idCity"  :  idCity_customWeatherActionControllerTrigger1,
             "timezone" : timezone_customWeatherActionControllerTrigger1,
             "ora" : ora_customWeatherActionControllerTrigger1,
 
@@ -2389,7 +2389,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 6
-            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "idCity"  :  idCity_customWeatherActionControllerTrigger1,
             "timezone" : timezone_customWeatherActionControllerTrigger1,
             "ora" : ora_customWeatherActionControllerTrigger1,
 
@@ -2405,7 +2405,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 6
-            "sender"  :  sender_customWeatherActionControllerTrigger1,
+            "idCity"  :  idCity_customWeatherActionControllerTrigger1,
             "timezone" : timezone_customWeatherActionControllerTrigger1,
             "ora" : ora_customWeatherActionControllerTrigger1,
 

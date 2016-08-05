@@ -282,6 +282,7 @@ $(function()
              timezone_customWeatherActionControllerTrigger1 = "null";
              ora_customWeatherActionControllerTrigger1 = "null";
              */
+            idCity_customWeatherActionControllerTrigger1 = idCity;
             var timezone = $('#timezoneid').val();
             var htime = $('#timehourid').val();
             var mtime = $('#timeminuteid').val();
