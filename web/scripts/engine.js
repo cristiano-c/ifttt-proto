@@ -943,6 +943,8 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 {
 
                     flagTriggerDone = "0";
+                    count=0;
+
                     sender_GmailActionController = sender;
                     subject_GmailActionController = subject;
                     sendingToServerAll();
@@ -1666,6 +1668,7 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
                 if (flag != "3") {
                     flagTriggerDone = "0";
+                    count=0;
                     sendingToServerAll();
                     url = "#gMailSucces";
                     window.location.replace(url);
@@ -2002,10 +2005,11 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                     subject = "null";
                 }
 
+                flagTriggerDone = "0";
+                count=0;
 
                 subject_action1TwitterController = subject;
                 sendingToServerAll();
-                flagTriggerDone = "0";
                 //href="#SuccessTwitter"
                 var url = "#SuccessTwitter";
                 window.location.replace(url);
@@ -2104,6 +2108,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
                 subjec_action2TwitterController = subject;
                 sendingToServerAll();
                 flagTriggerDone = "0";
+                count=0;
                 // href="#SuccessTwitter"
                 url = "#SuccessTwitter";
                 window.location.replace(url);
