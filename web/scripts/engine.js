@@ -290,6 +290,108 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
 
+        /*
+         * Funzione che gestisce il click per gestire l'autenticazione a Google
+         */
+        $scope.requestIFTTTAuth = function() {
+
+            var iftttCredentials = {
+                serviceRequested: "iftttpolito",
+                email: $('#inputEmailIFTTT').val(),
+                password: $('#inputPasswordIFTTT').val()
+            };
+
+            console.log(JSON.stringify(iftttCredentials));
+            $http({
+                url: '/MyServlet',
+                method: "POST",
+                data: JSON.stringify(iftttCredentials),
+                dataType: 'application/json'
+                //headers: {'Content-Type': 'application/json'}
+            }).then(function success(response) {
+                alert(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
+                if(response.data.authenticated.localeCompare("true")==0){
+                    $scope.iftttLogged = true;
+                    $('#loginIFTTTModal').modal('hide');
+                    $("#notificationsWrapper").notify(
+                        "Logged with IFTTT Polito",
+                        {
+                            className: 'success',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Authentication in IFTTT Polito failed",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
+                console.log($scope.iftttLogged);
+            }, function error(response) {
+                $('#loginIFTTTModal').modal('hide');
+                $("#notificationsWrapper").notify(
+                    "Server error, retry",
+                    {
+                        className: 'error',
+                        position: 'bottom right'
+                    }
+                );
+                $scope.iftttLogged = false;
+                console.log($scope.iftttLogged);
+            });
+
+        };
+
+        /*
+         * Funzione che gestisce il click per gestire la disconnessione da Google
+         */
+        $scope.logoutIFTTT = function () {
+            var requestLogout = {
+                requestLogout: 'google'
+            };
+
+            $http({
+                method: 'POST',
+                url: '/MyServlet',
+                data: requestLogout
+            }).then(function success(response) {
+                console.log(response.data.disconnected);
+                if(response.data.disconnected.localeCompare("true")==0){
+                    $scope.googleLogged = false;
+                    $("#notificationsWrapper").notify(
+                        "Logged out from Google",
+                        {
+                            className: 'warning',
+                            position: 'bottom right'
+                        }
+                    );
+                } else {
+                    $("#notificationsWrapper").notify(
+                        "Some problem occurred, please retry",
+                        {
+                            className: 'error',
+                            position: 'bottom right'
+                        }
+                    );
+                }
+
+                console.log($scope.googleLogged);
+            }, function error(response) {
+                $('#loginGoogleModal').modal('hide');
+                $("#notificationsWrapper").notify(
+                    "Disconnect to Google failed",
+                    {
+                        className: 'error',
+                        position: 'bottom right'
+                    }
+                );
+                console.log($scope.googleLogged);
+            });
+
+        };
 
         /*
          * Funzione che gestisce il click per gestire l'autenticazione a Google
