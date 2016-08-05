@@ -51,14 +51,17 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-            <a href="" ng-click="logoutTwitter()"><img id="twitterLogoON" ng-if="twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
+              <a href="" ng-click="logoutIFTTT()"><img id="IFTTTLogoON" ng-if="iftttLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with IFTTT Polito" src="./images/logos/polito-logged-in.png" height="30" width="30"/></a>
+              <img id="iftttLogoOFF" ng-if="!iftttLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in IFTTT Polito" src="./images/logos/polito-logged-out.png" height="30" width="30"/>
+              <a href="" ng-click="logoutTwitter()"><img id="twitterLogoON" ng-if="twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
             <img id="twitterLogoOFF" ng-if="!twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
             <a href="" ng-click="logoutGoogle()"><img id="googleLogoON" ng-if="googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
             <img id="googleLogoOFF" ng-if="!googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
-            <input type="text" class="form-control" placeholder="username">
-            <input type="password" class="form-control" placeholder="password">
+            <input ng-if="!iftttLogged" type="text" class="form-control" placeholder="username">
+            <input ng-if="!iftttLogged" type="password" class="form-control" placeholder="password">
           </div>
-          <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+          <button type="submit" class="btn btn-default" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+          <button type="submit" class="btn btn-default" ng-if="iftttLogged"><span class="glyphicon glyphicon-log-in" aria-hidden="true" ng-click="logoutGoogle()"></span> Logout</button>
         </form>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
@@ -78,6 +81,44 @@
   <!-- INNER PAGES BEGIN -->
   <ng-view></ng-view>
   <!-- INNER PAGES END -->
+
+  <!-- MODAL FORM IFTTT -- BEGIN -->
+  <div class="modal fade" id="loginIFTTTModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <h2 class="modal-title"><img src="images/logos/polito-logged-in.png" height="30" width="30"/> Login with IFTTT Polito</h2>
+              </div>
+
+              <div class="modal-body">
+                  <!-- The form is placed inside the body of modal -->
+                  <form class="form-horizontal">
+                      <div class="form-group">
+                          <label for="inputEmailIFTTT" class="col-sm-3 control-label">IFTTT Polito mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+                          <div class="col-sm-9">
+                              <input type="email" class="form-control" id="inputEmailIFTTT" placeholder="Email">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="inputPasswordIFTTT" class="col-sm-3 control-label">Password <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></label>
+                          <div class="col-sm-9">
+                              <input type="password" class="form-control" id="inputPasswordIFTTT" placeholder="Password">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <div class="col-sm-offset-3 col-sm-9">
+                              <button id="ifttt-auth-btn" type="submit" class="btn btn-default" ng-click="requestIFTTTAuth()">Sign in</button>
+                          </div>
+                      </div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </div>
+  <!-- MODAL FORM IFTTT -- END -->
 
   <!-- MODAL FORM GOOGLE -- BEGIN -->
   <div class="modal fade" id="loginGoogleModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
