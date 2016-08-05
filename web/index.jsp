@@ -27,6 +27,7 @@
   </head>
   <body ng-controller="indexController">
 
+  <!-- TOP NAVBAR BEGIN -->
   <nav class="navbar navbar-inverse navbar-fixed-top navbar-default">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
@@ -60,6 +61,7 @@
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
+  <!-- TOP NAVBAR END -->
 
 
   <div id="notificationsWrapper" style="margin: auto"></div>
@@ -68,7 +70,9 @@
   <br>
   {{"twitterLogged: "+ twitterLogged}}
 
+  <!-- INNER PAGES BEGIN -->
   <ng-view></ng-view>
+  <!-- INNER PAGES END -->
 
   <!-- MODAL FORM GOOGLE -- BEGIN -->
   <div class="modal fade" id="loginGoogleModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
@@ -151,13 +155,10 @@
     <br>
   </div>
 
-
-
-
-
-  <!-- BOTTOM NAVBAR -- BEGIN -->
+  <!-- BOTTOM NAVBAR BEGIN -->
   <nav class="navbar navbar-inverse navbar-fixed-bottom navbar-default center">
     <div class="container">
+
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar-collapse-2" aria-expanded="false">
@@ -171,185 +172,16 @@
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse navbar-inner" id="bs-navbar-collapse-2">
         <ul class="nav navbar-nav">
-
           <li><a href="#aboutSite"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span> About the site</a></li>
           <li><a href="#ourTeam"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> The developers</a></li>
           <li><a href="http://www.polito.it" target="_blank"><span class="glyphicon glyphicon-education" aria-hidden="true"></span> PoliTo</a></li>
           <li><a href="https://creativecommons.org" target="_blank">Copyright <span class="glyphicon glyphicon-copyright-mark" aria-hidden="true"></span> IFTTT by PoliTo 2016</a></li>
-
-
-
         </ul>
-
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-->
   </nav>
-  <!-- BOTTOM NAVBAR -- END -->
-
-
-
-
-
-
+  <!-- BOTTOM NAVBAR END -->
 
   </body>
-
-  <script>
-
-
-//   var googleLogged = false;
-//   var twitterLogged = false;
-
-//   $(document).ready(function(){
-
-//     $('#googleLogoON').hide();
-//     $('#googleLogoOFF').show();
-//     $('#twitterLogoON').hide();
-//     $('#twitterLogoOFF').show();
-
-
-//     $('[data-toggle="popover"]').popover();
-
-//     /*
-//      *  GOOGLE AUTHENTICATION FUNCTIONS
-//      */
-
-//     $("#googleLogoON").click(function(e){
-
-//       var requestLogout = {
-//         requestLogout: 'Google'
-//       };
-
-//       $.ajax({
-
-//         url: "/MyServlet",
-//         type: "POST",
-//         data: requestLogout,
-
-//         success: function(data){
-//           //alert(data);
-//           $('#googleLogoON').hide();
-//           $('#googleLogoOFF').show();
-//           $("#notificationsWrapper").notify(
-//                   "Logged out with Google",
-//                   {
-//                     className: 'warning',
-//                     position: 'bottom right'
-//                   }
-//           );
-//           googleLogged = false;
-//         },
-//         error: function(data){
-//           //alert(JSON.stringify(data));
-//           googleLogged = true;
-
-//           $('#googleLogoON').show();
-//           $('#googleLogoOFF').hide();
-
-//         }
-//       });
-
-//     });
-
-//     /*
-//      *  TWITTER AUTHENTICATION FUNCTIONS
-//      */
-//     $("#twitter-auth-btn").click(function(e){
-
-//       var twitterCredentials = {
-//         email: $('#inputEmailtwitter').val(),
-//         password: $('#inputPasswordtwitter').val()
-//       };
-
-//       $.ajax({
-
-//         url: "/MyServlet",
-//         type: "POST",
-//         data: twitterCredentials,
-
-//         success: function(data){
-//           //alert(data);
-//           $('#loginTwitterModal').modal('hide');
-//           $("#notificationsWrapper").notify(
-//                   "Logged with Twitter",
-//                   {
-//                     className: 'success',
-//                     position: 'bottom right'
-//                   }
-//           );
-//           $('#twitterLogoON').show();
-//           $('#twitterLogoOFF').hide();
-
-//           twitterLogged = true;
-//         },
-//         error: function(data){
-//           //alert(JSON.stringify(data));
-//           $('#loginTwitterModal').modal('hide');
-//           twitterLogged = false;
-//           $("#notificationsWrapper").notify(
-//                   "Failed to login with Twitter",
-//                   {
-//                     className: 'error',
-//                     position: 'bottom right'
-//                   }
-//           );
-//           $('#twitterLogoON').hide();
-//           $('#twitterLogoOFF').show();
-
-//         }
-//       });
-
-//     });
-//     $("#twitterLogoON").click(function(e){
-
-//       var requestLogout = {
-//         requestLogout: 'Twitter'
-//       };
-
-//       $.ajax({
-
-//         url: "/MyServlet",
-//         type: "POST",
-//         data: requestLogout,
-
-//         success: function(data){
-//           //alert(data);
-//           $('#twitterLogoON').hide();
-//           $('#twitterLogoOFF').show();
-//           $("#notificationsWrapper").notify(
-//                   "Logged out with Twitter",
-//                   {
-//                     className: 'warning',
-//                     position: 'bottom right'
-//                   }
-//           );
-//           twitterLogged = false;
-//         },
-//         error: function(data){
-//           //alert(JSON.stringify(data));
-//           twitterLogged = true;
-
-//           $('#twitterLogoON').show();
-//           $('#twitterLogoOFF').hide();
-
-//         }
-//       });
-
-//     });
-
-//     console.log(googleLogged);
-
-//   });
-
-
-  </script>
-
 </html>
 
-
-<!--
-<button  ng-click="loadHome()"><a href="#home"> home </a></button>
-
-<button ng-click="loadHome()">OK</button>
-
--->
