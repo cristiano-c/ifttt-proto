@@ -22,23 +22,14 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="GmailActionController" novalidate>
 
                         <div class="form-group">
-                            <label>Email address:</label> <br>
-                            <label>Click me in order to active the email action:
-                                <input
-                                        id="checkedEmailid"
-                                        type="checkbox"
-                                        ng-model="checkedEmail"
-                                >
-                                <!-- ng-change="checkemailfunc()" -->
-                            </label><br/>
-                            <div ng-if="checkedEmail" class="animate-if">
-                            <input type="title"  ng-disabled="!checkedEmail" class="form-control" id="email" placeholder="insert your email"
+                            <label>Email address or receiver:</label> <br>
+                            <div>
+                            <input type="title"  class="form-control" id="email" placeholder="insert your email"
                                    ng-model="gmailActionvar.email"
                                    required="" name="uEmail"
                                    maxlength="100"
                                    ng-trim="false"
                             >
-                                <span style="color: #0f0f0f" >{{"email is: "+ flagEmail}}</span>
                             <!--
                                 <span>{{256 - gmailActionvar.email.length}} left </span>
                             <div ng-show="form.$submitted || form.uEmail.$touched">
@@ -49,8 +40,11 @@
                         </div>
 
 
-
-
+                        <label> Do you wish to receive from:</label><br>
+                        <form class="form-group">
+                        <input type="radio" name="emailSending" value="0" ng-model="gmailActionvar.sender" checked="checked"> ifttt.ai2016@gmail.com <br>
+                        <input type="radio" name="emailSending" value="1" ng-model="gmailActionvar.sender"> your e.mail <br>
+                        </form>
 
 
 
@@ -76,14 +70,35 @@
                         </div>
                             </div>
 
+
+                        <div class="form-group">
+                            <label>The body:</label>
+                            <label>Click me in order to active the subject action:
+                                <input
+                                        id="checkedBodyId"
+                                        type="checkbox"
+                                        ng-model="checkedBody"
+
+                                >
+                            </label><br/>
+                            <!--  ng-change="checkedSubjectfunc()" -->
+                            <div ng-if="checkedBody" class="animate-if">
+
+                            <textarea class="form-control" rows="5" id="checkedBody"  placeholder="insert the subject"
+                                      ng-model="gmailActionvar.checkedBody"  name="checkedBody"  ng-disabled="!checkedBody"
+                                      maxlength="500" ng-trim="false"
+                            ></textarea>
+                                <span>{{500 - gmailActionvar.checkedBody.length}} left </span>
+                            </div>
+                        </div>
+
+
+
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
-                            <a  ng-disabled="!checkedSubject && !checkedEmail" type="submit"
-                                class="btn btn-primary pull-right btn_next6"  ng-click="actionGmail()" >Next</a>
+                            <a   type="submit"
+                                class="btn btn-primary pull-right btn_next6"  ng-click="actionGmail(gmailActionvar)" >Next</a>
                         </div>
-                        <label ng-if="!checkedSubject && !checkedEmail" class="animate-if" >
-                            You have to ability e.mail or/and subject in order to continue
-                        </label>
 
                         <!--
                                http://localhost:8080/index.jsp#/SubGMail

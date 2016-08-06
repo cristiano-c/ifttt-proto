@@ -13,6 +13,8 @@ var subject_GmailTriggerController = ""; //subject
 /* GmailActionController  An 1*/
 var sender_GmailActionController = "";
 var subject_GmailActionController = "";
+var receiver_GmailActionController = "";
+var body_GmailActionController = "";
 
 /* Trigger1GcalendarController Tn 2 */
 var title_Trigger1GcalendarController = "";
@@ -901,45 +903,52 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
         $scope.gmailActionvar = [];
 
-        $scope.flagEmail = "e.mail is empty";
         $scope.actionGmail = function()
         {
-            var sender ="";
+           
+            var receiver ="";
             var subject = "";
+            var body = "";
             var flag = "1";
             actionChose=1;
-             sender_GmailActionController = "";
-             subject_GmailActionController = "";
+            //sender_GmailActionController = "";
 
-            if(($scope.checkedEmail == true || $scope.checkedSubject == true) && googleLogin == "1")  {
 
-                if ($scope.checkedEmail == true) {
-                    if (angular.isDefined($scope.gmailActionvar)) {
-                        if (angular.isDefined($scope.gmailActionvar.email)) {
-                            sender = $scope.gmailActionvar.email;
+            receiver_GmailActionController = "";
+            subject_GmailActionController = "";
+            sender_GmailActionController= ""
+            body_GmailActionController = "";
 
-                            if (validateEmail(sender));
+
+            if(googleLogin == "1")  {
+
+
+                    if (angular.isDefined($scope.gmailActionvar))
+                    {
+                        if (angular.isDefined($scope.gmailActionvar.email))
+                        {
+                            receiver = $scope.gmailActionvar.email;
+
+                            if (validateEmail(receiver));
                             else
                             {
-                                $scope.flagEmail="not valid";
                                 flag = "0";
-                                console.log("Your e.mail is not right . . .");
+                                alert("Your e.mail is not right . . .1");
                             }
                         }
                         else {
-                            sender = "";
-                            $scope.flagEmail="is empty";
+                            receiver = "";
+                            flag = "0";
+                            alert("Your e.mail is not right . . .2");
                         }
                     }
                     else {
-                        sender = "";
-                        $scope.flagEmail="is empty";
+                        receiver = "";
+                        flag = "0";
+                        alert("Your e.mail is not right . . .3");
                     }
 
-                }
-                else {
-                    sender = "null";
-                }
+
 
                 if ($scope.checkedSubject == true)
                 {
@@ -965,14 +974,46 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     subject = "null";
                 }
 
+
+                if ($scope.checkedBody == true)
+                {
+                    if (angular.isDefined($scope.gmailActionvar))
+                    {
+                        if (angular.isDefined($scope.gmailActionvar.checkedBody))
+                        {
+                            body = $scope.gmailActionvar.checkedBody;
+                        }
+                        else
+                        {
+                            body = "";
+                        }
+                    }
+                    else
+                    {
+                        body  = "";
+                    }
+
+                }
+                else
+                {
+                    body = "null";
+                }
+
+
+
                 if(flag == "1")
                 {
 
                     flagTriggerDone = "0";
                     count=7;
 
-                    sender_GmailActionController = sender;
+
+                    receiver_GmailActionController = receiver;
                     subject_GmailActionController = subject;
+                    sender_GmailActionController= gmailActionvar.sender;
+                    body_GmailActionController = body;
+
+
                     sendingToServerAll();
                     var url = "#gMailSucces";
                     window.location.replace(url);
@@ -2248,15 +2289,23 @@ function sendingToServerAll ()
          },
          */
 
+        "tritterType" : "gmail",
+            "trigger" : {
 
-        //Tn 1
-        "person": sender_GmailTriggerController,
-        "subject": subject_GmailTriggerController,
+                //Tn 1
+                "person": sender_GmailTriggerController,
+                "subject": subject_GmailTriggerController,
 
+                "action": {
+                    //An 1
+                    "sender": sender_GmailActionController,
+                    "subject": subject_GmailActionController,
+                    "receiver": receiver_GmailActionController,
+                    "body": body_GmailActionController
 
-        //An 1
-        "sender" : sender_GmailActionController,
-        "subject" : subject_GmailActionController
+                }
+            }
+
     };
 
 
