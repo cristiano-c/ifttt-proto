@@ -2291,17 +2291,21 @@ function sendingToServerAll ()
          */
 
             "trigger" : {
-                "triggerType" : "gmail",
+                "triggerType": "gmail",
+
+                //Tn 1
                 "person": sender_GmailTriggerController,
                 "subject": subject_GmailTriggerController,
             },
             "action": {
-                "actionType": "gmail", // Attenzione, prima non c'era! Va messo!
+                "actionType": "gmail", //Attenzione, questo campo prima non c'era e va messo!
+                //An 1
                 "sender": sender_GmailActionController,
                 "subject": subject_GmailActionController,
                 "receiver": receiver_GmailActionController,
                 "body": body_GmailActionController
 
+                }
             }
 
     };
