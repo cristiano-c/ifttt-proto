@@ -7,8 +7,8 @@ var triggerChose = 0;
 var actionChose =  0;
 
 /*GmailTriggerController  Tn 1*/
-var sender_GmailTriggerController = "";
-var subject_GmailTriggerController = "";
+var sender_GmailTriggerController = ""; //sender
+var subject_GmailTriggerController = ""; //subject
 
 /* GmailActionController  An 1*/
 var sender_GmailActionController = "";
@@ -1004,6 +1004,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         };
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
+        $scope.checkedbody=false;
         function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -2250,7 +2251,7 @@ function sendingToServerAll ()
 
         //Tn 1
         "person": sender_GmailTriggerController,
-        "testo": subject_GmailTriggerController,
+        "subject": subject_GmailTriggerController,
 
 
         //An 1
@@ -2267,7 +2268,7 @@ function sendingToServerAll ()
         {
             //Tn 1
             "person": sender_GmailTriggerController,
-            "testo": subject_GmailTriggerController,
+            "subject": subject_GmailTriggerController,
 
             //An 2
             "title" : title_action1GcalendarController,
@@ -2287,7 +2288,7 @@ function sendingToServerAll ()
         {
             //Tn 1
             "person": sender_GmailTriggerController,
-            "testo": subject_GmailTriggerController,
+            "subject": subject_GmailTriggerController,
 
             //An 3
             "subject" : subject_action1TwitterController
@@ -2303,7 +2304,11 @@ function sendingToServerAll ()
         {
             //Tn 1
             "person": sender_GmailTriggerController,
-            "testo": subject_GmailTriggerController,
+            "subject": subject_GmailTriggerController,
+
+            //An 4
+            "title" : title_action2TwitterController,
+            "subject" : subjec_action2TwitterController
 
 
 
