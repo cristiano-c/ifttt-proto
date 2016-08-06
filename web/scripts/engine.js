@@ -531,6 +531,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.twitterLogged = true;
+                    twitterLogin = "1";
                     $('#loginTwitterModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with Twitter",
@@ -539,7 +540,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
-                    twitterLogin = "1";
                     //console.log("#"+nextPath);
                     url = "#"+nextPath;
                     window.location.replace(url);
@@ -563,6 +563,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.twitterLogged = false;
+                twitterLogin = "0";
                 console.log(""+$scope.twitterLogged);
             });
 
@@ -581,9 +582,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
              if(twitterLogin == "0") tu non sei loggato;
             */
 
-            //Sloggagto
-            twitterLogin = "0";
-
             $http({
                 method: 'POST',
                 url: '/MyServlet',
@@ -592,6 +590,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.twitterLogged = false;
+                    twitterLogin="0";
                     $("#notificationsWrapper").notify(
                         "Logged out from Twitter",
                         {
@@ -1835,7 +1834,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
             var title;
             var subject;
 
-            if( $scope.checkedtitle == true  ||  $scope.checkedSubject == true)
+            if( $scope.checkedtitle == true  ||  $scope.checkedSubject == true && twitterLogin=="1")
             {
 
                 //First variable
@@ -1885,6 +1884,13 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }
+            if(twitterLogin == "0")
+            {
+                alert("You are not logged in twitter");
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
+
 
 
         };
