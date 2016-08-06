@@ -6,13 +6,8 @@
 </head>
 <body>
 <div>
-    <br>
-    <br>
 
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
+    <div class="row" style="padding-top: 6%">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
@@ -78,7 +73,7 @@
                             </div>
                             </div>
                         </div>
-<hr>
+                        <hr>
                         <div>
 
 
@@ -87,26 +82,17 @@
                             <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
                                 class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar()" >Next</a>
                         </div>
-                        <br>
-                        <br>
-                        <br>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
-                            Make at leas one choice to use this trigger
-                        </label>
-
-                 <!--
-                 href="#actionGcalendar"
-                        http://localhost:8080/index.jsp#/SubGMail
-                        <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(trigger1GcalendarVar)">Next</a>
-                        -->
+                        <div class="col-md-row" style="padding-top: 7%">
+                            <hr>
+                            <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
+                                <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Make at least one choice to use this trigger
+                            </label>
+                            </div>
 
                     </form>
                 </div>
                 <div class="col-md-4">
                 </div>
-            </div>
-        </div>
     </div>
 
 </div>
@@ -145,15 +131,6 @@
     }
 
 </script>
-
-<!--href="#SubGMailAction" -->
-
-
-<!--
-Example code
-<label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
-<button ng-model="button" ng-disabled="checked">Button</button>
--->
 </html>
 
 
