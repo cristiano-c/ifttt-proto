@@ -436,6 +436,10 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                             position: 'bottom right'
                         }
                     );
+                    //FXR
+                    url = "#"+nextPath;
+                    window.location.replace(url);
+                    //end
                 } else {
                     $("#notificationsWrapper").notify(
                         "Authentication in Google failed",
