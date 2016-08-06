@@ -2306,9 +2306,9 @@ function sendingToServerAll ()
                 "body": body_GmailActionController
 
                 }
-            }
+            };
 
-    };
+
 
 
         sedingServerAllRun(loginDataSend);
