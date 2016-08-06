@@ -84,7 +84,7 @@ var flagTriggerDone = "0";
 //Variabile per protegere le pagine da quello che ho visto devono essere globali.
 var googleLogin ="0";   //-> $scope.googleLogged
 var twitterLogin = "0"; //-> $scope.twitterLogged
-var iftttLogin = true; //-> $scope.iftttLogged
+var iftttLogin = false; //-> $scope.iftttLogged
 
 
 
@@ -1827,6 +1827,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
     {
 
         $scope.trigger1TwitterInput = [];
+        $scope.iftttLoginP = iftttLogin;
 
         $scope.trigger1Twitterfunc = function()
         {

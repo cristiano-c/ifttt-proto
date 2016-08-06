@@ -25,7 +25,7 @@
                                 <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
-                                    ng-disabled="!iftttLogin"
+                                    ng-disabled="!iftttLoginP"
 
                                 >
                             </label><br/>
@@ -35,7 +35,7 @@
                                    required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
-                                   ng-disabled="!iftttLogin"
+                                   ng-disabled="!iftttLoginP"
                             >
                             <span>{{100 - gmailinput.title.length}} left </span>
                                 </div>
@@ -49,7 +49,7 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
-                                        ng-disabled="!iftttLogin"
+                                        ng-disabled="!iftttLoginP"
 
                                 >
                             </label><br/>
@@ -59,7 +59,7 @@
                                       ng-model="trigger1TwitterInput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                                         type="title"
-                                    ng-disabled="!iftttLogin"
+                                    ng-disabled="!iftttLoginP"
                             >
                             <span>{{100 - gmailinput.subjectReceive.length}} left </span>
                         </div>
@@ -72,16 +72,16 @@
                             >Cancel</a>
                             <a    ng-disabled="!checkedtitle && !checkedSubject" type="submit"
                                 class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Twitterfunc()"
-                                  ng-disabled="!iftttLogin"
+                                  ng-disabled="!iftttLoginP"
                             >Next</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && iftttLogin" class="animate-if" >
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && iftttLoginP" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
                         </label>
                         <br>
                         <br>
-                        <div class="alert alert-danger" role="alert">
-                            <strong>Warning:</strong> <a href="#home" class="alert-link, animate-if" ng-if="!iftttLogin">
+                        <div class="alert alert-danger animate-if" ng-if="!iftttLoginP" role="alert">
+                            <strong>Warning:</strong> <a href="#home" class="alert-link, animate-if" ng-if="!iftttLoginP">
                             You are not logged in ifttt click me for exit!!!
                         </a>
                         </div>
