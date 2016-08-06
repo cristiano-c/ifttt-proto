@@ -13,18 +13,12 @@
 
     <div class="container" style="padding-top: 6%">
 
-
         <div class="row">
-            <div class="col-md-3">
-
-            </div>
+            <div class="col-md-3"></div>
             <div class="col-md-6">
 
-                <span align="center">
-                    <h2 class="">Chose the location that you wish to monitor</h2>
-                    <hr>
-                </span>
-
+                <p><h1><img src="../../images/weatherChannel/t4.png" style="width:42px;height:42px;border:0;"/> Specific weather condition trigger</h1></p>
+                <hr>
                 <div id="search-bar">
                     <div class="input-group">
                         <span class="input-group-addon ">
@@ -41,11 +35,11 @@
 
                 </div>
 
+                <br>
 
-                    <!-- <div id="temper"> -->
+                <!-- <div id="temper"> -->
                 <div id="temp-board">
                     <div id="temp-inner">
-
                         <div id="weather-desc">Cant find your Location :(</div>
                     </div>
                 </div>
@@ -56,32 +50,14 @@
                     <div class="values">Latitude : <span id="coord-lat">N.A</span> </div>
                     <div class="values">Country : <span id="sys-country">N.A</span>   </div>
                 </div>
-                <!-- Time -->
-                <!-- Don't work
-                <form name="myForm" ng-controller="DateController as dateCtrl">
-                    <label for="exampleInput">Insert the time that you wish to recive the advise</label>
-                    <input type="time" id="exampleInput" name="input" ng-model="example.value"
-                           placeholder="HH:mm:ss" min="00:00:00" max="24:00:00" required />
-                </form>
-                -->
                 <br>
-
-
                 <form name="weather">
-                    <br>
-                    <br>
-                    <b>Witch is the weather </b>  (Abilitation):
                     <input
                             id="weatheridcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckweather"
 
-                    >
-
-                    <!--
-                    <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
-                           required>
-                           -->
+                    > <b>Select the weather condition:</b>
                     <div  ng-if="checkmodelcheckweather" class="animate-if">
                         <form name="myForm">
                         <label for="mySelect">Make a choice:</label>
@@ -91,32 +67,30 @@
                                 ng-model="data.selectedOption"></select>
                         </form>
 
-
-
                         <div role="alert">
                             <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
                                 Required!</span>
                             </div>
 
-                </div>
+                    </div>
 
 
                 <form name="periodform">
-                    <br>
-                    <br>
-                    <b>Period </b>  (Abilitation):
                     <input
                             id="periodidcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckperiod"
 
-                    >
+                    > <b>Periodic checking? </b>
                         <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
+                            every
                         <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
                            min="0" max="700" required>
+                            decades? <img src="../../trash/omg.png" height="200" width="200"/> XD
 
-                    <div role="alert">
+
+                            <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="periodform.input.$error.required && checkmodelcheckperiod">
                             Required!</span>
                         <span  style="color:#ac2925"  class="error" ng-show="periodform.input.$error.number && checkmodelcheckperiod">
@@ -129,18 +103,13 @@
 
 
                 <!--   Time zone    --->
-                <br>
-                <br>
-
                 <form name="timeZone">
-                    <label><b>Inser your time zone: </b>  (Abilitation):
                         <input
                                 id="checktimeZonevar"
                                 type="checkbox"
                                 ng-model="checktimeZone"
 
-                        >
-                    </label>
+                        > <b>Custom timezone:</b>
                         <div  ng-if="checktimeZone" class="animate-if">
 
                         <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
