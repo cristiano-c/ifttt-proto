@@ -4,13 +4,38 @@
     <meta charset="UTF-8">
     <title>My recipes</title>
 </head>
-<body>
+<body ng-controller="myRecipesController">
 
 <div class="container" style="padding-top: 6%">
             <div class="row">
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-6">
+                    <div class="list-group">
+                        <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</a>
+
+
+
+                        <div ng-repeat="f in faq">
+                            <a href="#" class="list-group-item clearfix">
+                                <h4>
+                                    <span class="glyphicon glyphicon-file"></span>
+                                    {{f.key}}-{{f.value}}
+                                    <span class="pull-right">
+                            <button class="btn btn-warning">
+                              <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                          </span>
+                                </h4>
+                            </a>
+                    </div>
+
+                    </div>
+
+                </div>
+
+
+                    <!--
                     <div class="list-group">
                         <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</a>
 
@@ -28,17 +53,6 @@
                         </a>
 
 
-                        <a href="#" class="list-group-item clearfix">
-                            <h4>
-                                <span class="glyphicon glyphicon-file"></span>
-                                Google + Twitter
-                                <span class="pull-right">
-                            <button class="btn btn-warning">
-                              <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                          </span>
-                            </h4>
-                        </a>
 
 
                         <a href="#" class="list-group-item clearfix">
@@ -65,10 +79,24 @@
                           </span>
                             </h4>
                         </a>
+
+
+                        <a href="#" class="list-group-item clearfix">
+                            <h4>
+                                <span class="glyphicon glyphicon-file"></span>
+                                Google + Twitter
+                                <span class="pull-right">
+                            <button class="btn btn-warning">
+                              <span class="glyphicon glyphicon-trash"></span>
+                            </button>
+                          </span>
+                            </h4>
+                        </a>
+
 
                     </div>
 
-                </div>
+                </div> -->
             </div>
             <div class="row text-center" style="padding-top: 3%">
                 <p>or</p>
@@ -77,6 +105,5 @@
                 <a class="btn btn-success btn-large" href="#createRecipe">Create a new recipe</a>
             </div>
 </div>
-
 </body>
 </html>

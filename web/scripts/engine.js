@@ -721,6 +721,16 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 iftttApp.controller('myRecipesController',  ['$scope', '$routeParams',
     function ($scope, $rootscope, $routeParams, $http, $resource) {
 
+        $scope.faq = [
+            {key: "Question 1",
+                value: "Answer1"},
+
+            {key: "Question 2",
+                value: "Answer2"}
+        ];
+
+
+
 
     }]);
 
