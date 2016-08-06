@@ -111,19 +111,26 @@
 </body>
 
 <script>
-    if (count==2)
+    if(iftttLogin == false)
     {
-        count++;
-        url1back = "#Trigger1Gcalendar";
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
     }
     else
     {
-        if(count<2)
-        {
-            url = "#allTriggers";
-            window.location.replace(url);
+        if (count == 2) {
+            count++;
+            url1back = "#Trigger1Gcalendar";
         }
+        else {
+            if (count < 2) {
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
 
+        }
     }
 
 </script>

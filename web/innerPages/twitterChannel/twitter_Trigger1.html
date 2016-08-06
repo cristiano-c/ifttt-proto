@@ -106,27 +106,32 @@
 </body>
 
 <script>
-    if(twitterLogin == 1)
+    if(iftttLogin == false)
     {
-        if (count==2)
-        {
-            count++;
-            url1back = "#Trigger1Twitter";
-        }
-        else
-        {
-            if(count<2)
-            {
-                url = "#allTriggers";
-                window.location.replace(url);
-            }
-
-        }
-    }
-    else
-    {
-        url = "#allTriggers";
+        url = "#home";
         window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
+    }
+    else {
+
+        if (twitterLogin == 1) {
+            if (count == 2) {
+                count++;
+                url1back = "#Trigger1Twitter";
+            }
+            else {
+                if (count < 2) {
+                    url = "#allTriggers";
+                    window.location.replace(url);
+                }
+
+            }
+        }
+        else {
+            url = "#allTriggers";
+            window.location.replace(url);
+        }
     }
 </script>
 

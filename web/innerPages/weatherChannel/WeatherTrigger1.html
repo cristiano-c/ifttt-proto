@@ -158,19 +158,25 @@
             }]);
 
 
-    if (count==2)
+    if(iftttLogin == false)
     {
-        count++;
-        url1back = "#WeatherTrigger1";
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
     }
-    else
-    {
-        if(count<2)
-        {
-            url = "#allTriggers";
-            window.location.replace(url);
+    else {
+        if (count == 2) {
+            count++;
+            url1back = "#WeatherTrigger1";
         }
+        else {
+            if (count < 2) {
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
 
+        }
     }
 
 </script>

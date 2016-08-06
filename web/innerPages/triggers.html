@@ -187,16 +187,25 @@
 </div>
 
 <script>
-    if (count==1)
-        count++;
-    else
+    if(iftttLogin == false)
     {
-        if(count<1) {
-            url = "#createRecipe";
-            window.location.replace(url);
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
+    }
+    else {
+
+        if (count == 1)
+            count++;
+        else {
+            if (count < 1) {
+                url = "#createRecipe";
+                window.location.replace(url);
+            }
+
+
         }
-
-
     }
 </script>
 

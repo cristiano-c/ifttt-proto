@@ -38,8 +38,18 @@
 <br>
 
 <script>
-    if (count==0)
-        count++;
+    if(iftttLogin == false)
+    {
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
+    }
+    else {
+
+        if (count == 0)
+            count++;
+    }
 </script>
 
 </body>

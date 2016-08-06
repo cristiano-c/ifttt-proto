@@ -193,24 +193,31 @@ Example code
 
 
 <script>
-    if (flagTriggerDone == "0")
+    if(iftttLogin == false)
     {
-        alert("Warning you must compile before the trigger form");
-        url = "#allTriggers";
+        url = "#home";
         window.location.replace(url);
-    }
-    if (count==5)
-    {
-        count++;
+        count = 0;
+        flagTriggerDone="0";
     }
     else
     {
-        if(count<5)
-        {
-            url = "#createDO";
+
+        if (flagTriggerDone == "0") {
+            alert("Warning you must compile before the trigger form");
+            url = "#allTriggers";
             window.location.replace(url);
         }
+        if (count == 5) {
+            count++;
+        }
+        else {
+            if (count < 5) {
+                url = "#createDO";
+                window.location.replace(url);
+            }
 
+        }
     }
 
 </script>

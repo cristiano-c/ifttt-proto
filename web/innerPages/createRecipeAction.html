@@ -38,18 +38,26 @@
 </body>
 
 <script>
-    if (count==3)
+    if(iftttLogin == false)
     {
-        count++;
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
     }
-    else
-    {
-        if(count<3)
-        {
-            url="#allTriggers";
-            window.location.replace(url);
-        }
+    else {
 
+
+        if (count == 3) {
+            count++;
+        }
+        else {
+            if (count < 3) {
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
+
+        }
     }
 
 

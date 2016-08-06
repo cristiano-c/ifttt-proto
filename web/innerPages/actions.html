@@ -111,6 +111,15 @@
 </body>
 
 <script>
+    if(iftttLogin == false)
+    {
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone="0";
+    }
+    else
+        {
     if (count==4)
     {
         count++;
@@ -124,7 +133,7 @@
         }
 
     }
-
+    }
 
 </script>
 
