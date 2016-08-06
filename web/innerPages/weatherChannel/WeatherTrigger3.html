@@ -19,10 +19,8 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
-       <span align="center">
-        <h2 class="">Chose the location that you wish to monitor</h2>
-           <hr>
-       </span>
+            <h1><img src="../images/weatherChannel/t31.png" style="width:42px;height:42px;border:0;"> Sunrise/Sunset trigger <img src="../images/weatherChannel/t32.png" style="width:42px;height:42px;border:0;"></h1>
+            <hr>
 
             <div id="search-bar">
 
@@ -63,38 +61,30 @@
                 </form>
                 -->
                 <br>
-                <b>Do you wish to have the sunrise </b>  (Abilitation):
                 <input
                         id="checksunrise"
                         type="checkbox"
                         ng-model="checkadvisesunrise"
                         ng-change="checkadvisesunrisefunc(checkadvisetsunrisevar)"
-                >
+                > <b>Do you wish to have the sunrise </b>
                 <br>
-                <br>
-                <b>Do you wish to have the sunset </b>  (Abilitation):
                 <input
                         id="checksunset"
                         type="checkbox"
                         ng-model="checkadvisesunset"
                         ng-change="checkadvisetsunsetfunc(checkadvisesunsetvar)"
-                >
-
+                > <b>Do you wish to have the sunset </b>
+                <br>
 
 
                 <!--   Time zone    --->
-                <br>
-                <br>
-
                 <form name="timeZone">
-                <label><b>Inser your time zone: </b>  (Abilitation):
                     <input
                             id="checktimeZonevar"
                             type="checkbox"
                             ng-model="checktimeZone"
                             ng-change="checktimeZonefunc(checktimeZonevar)"
-                    >
-                </label>
+                    > <b>Custom timezone: </b>
                     <div  ng-if="checktimeZone" class="animate-if">
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
                            min="-12" max="12" required>
