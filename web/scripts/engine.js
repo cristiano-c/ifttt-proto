@@ -917,7 +917,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
             receiver_GmailActionController = "";
             subject_GmailActionController = "";
-            sender_GmailActionController= ""
+            sender_GmailActionController= "";
             body_GmailActionController = "";
 
 
@@ -982,7 +982,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     {
                         if (angular.isDefined($scope.gmailActionvar.checkedBody))
                         {
-                            body = $scope.gmailActionvar.checkedBody;
+                            body = c.gmailActionvar.checkedBody;
                         }
                         else
                         {
@@ -1011,7 +1011,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
                     receiver_GmailActionController = receiver;
                     subject_GmailActionController = subject;
-                    sender_GmailActionController= gmailActionvar.sender;
+                    sender_GmailActionController= $scope.gmailActionvar.sender;
                     body_GmailActionController = body;
 
 
