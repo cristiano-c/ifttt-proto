@@ -81,7 +81,14 @@ var url1back = "";
 //var url2back = "";
 var flagTriggerDone = "0";
 
-var twitterLogin = "0";
+//Variabile per protegere le pagine da quello che ho visto devono essere globali.
+var googleLogin ="0";   //-> $scope.googleLogged
+var twitterLogin = "0"; //-> $scope.twitterLogged
+var iftttLogin = true; //-> $scope.iftttLogged
+
+
+
+
 
 // sendingToServerAll();
 
@@ -312,6 +319,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.iftttLogged = true;
+                    iftttLogin= true;
                     $('#loginIFTTTModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with IFTTT Polito",
@@ -342,6 +350,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.iftttLogged = false;
+                iftttLogin= false;
                 console.log($scope.iftttLogged);
             });
 
@@ -363,6 +372,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.iftttLogged = false;
+                    iftttLogin=  false;
                     $("#notificationsWrapper").notify(
                         "Logged out from IFTTT Polito",
                         {

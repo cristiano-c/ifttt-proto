@@ -25,6 +25,7 @@
                                 <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
+                                    ng-disabled="!iftttLogin"
 
                                 >
                             </label><br/>
@@ -34,6 +35,7 @@
                                    required="" name="utitle"
                                    maxlength="100"
                                    ng-trim="false"
+                                   ng-disabled="!iftttLogin"
                             >
                             <span>{{100 - gmailinput.title.length}} left </span>
                                 </div>
@@ -47,6 +49,7 @@
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
+                                        ng-disabled="!iftttLogin"
 
                                 >
                             </label><br/>
@@ -56,6 +59,7 @@
                                       ng-model="trigger1TwitterInput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                                         type="title"
+                                    ng-disabled="!iftttLogin"
                             >
                             <span>{{100 - gmailinput.subjectReceive.length}} left </span>
                         </div>
@@ -64,22 +68,29 @@
 
 
                         <div>
-                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers"
+                            >Cancel</a>
                             <a    ng-disabled="!checkedtitle && !checkedSubject" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Twitterfunc()" >Next</a>
+                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Twitterfunc()"
+                                  ng-disabled="!iftttLogin"
+                            >Next</a>
                         </div>
-                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
+                        <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && iftttLogin" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
                         </label>
-
-
-
-                 <!--
-                 href="#actionGcalendar"
-                        http://localhost:8080/index.jsp#/SubGMail
-                        <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                        <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
-                        -->
+                        <br>
+                        <br>
+                        <div class="alert alert-danger" role="alert">
+                            <strong>Warning:</strong> <a href="#home" class="alert-link, animate-if" ng-if="!iftttLogin">
+                            You are not logged in ifttt click me for exit!!!
+                        </a>
+                        </div>
+                        <!--
+                        href="#actionGcalendar"
+                               http://localhost:8080/index.jsp#/SubGMail
+                               <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
+                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
+                               -->
 
                     </form>
                 </div>
@@ -90,6 +101,7 @@
     </div>
 
 </div>
+
 
 </body>
 
