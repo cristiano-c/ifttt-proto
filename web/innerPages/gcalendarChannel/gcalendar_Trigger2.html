@@ -16,20 +16,20 @@
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your trigger</h1></p>
+                    <p><h1><img src="../images/gcalendarChannel/event-added.png" style="width:42px;height:42px;border:0;"/> GCalendar triggered by new event added</h1></p>
+                    <hr>
                     <form id="gmail-form" role="form" name="form" ng-controller="Trigger2GcalendarController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
-                            <label>Click me in order to active this trigger:
+                            <label>
                                 <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
 
-                                >
+                                > Event name:
                             </label><br/>
                             <div  ng-if="checkedtitle" class="animate-if">
-                            <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
+                            <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="Insert the event name to watch"
                                    ng-model="trigger2GcalendarVar.title"
                                    required="" name="utitle"
                                    maxlength="100"
@@ -42,16 +42,15 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active the description trigger:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
 
-                                >
+                                > Event description:
                             </label><br/>
                             <div  ng-if="checkedSubject" class="animate-if">
-                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
+                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="Insert the event description to watch"
                                       ng-model="trigger2GcalendarVar.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
@@ -62,16 +61,15 @@
 
                         <!-- place -->
                         <div class="form-group">
-                            <label>place:</label> <br>
-                            <label>Click me in order to active this trigger:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedplace"
 
-                                >
+                                > Event location:
                             </label><br/>
                             <div  ng-if="checkedplace" class="animate-if">
-                            <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
+                            <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="Insert the evnet location to watch"
                                    ng-model="trigger2GcalendarVar.place"
                                    required="" name="uplace"
                                    maxlength="100"
@@ -84,13 +82,18 @@
                                 </div>
                         </div>
 
+                        <hr>
+
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
                             <a    ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
                                 class="btn btn-primary pull-right btn_next3" ng-click="trigger2Gcalendar()" >Next</a>
                         </div>
+                        <br>
+                        <br>
+                        <br>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkedplace" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place in order to continue
+                            Make at leas one choice to create this trigger
                         </label>
 
                  <!--
