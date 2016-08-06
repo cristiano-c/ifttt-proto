@@ -901,6 +901,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
         //Bug stringa null
 
+        $scope.test = "void";
         $scope.gmailActionvar = [];
 
         $scope.actionGmail = function()
