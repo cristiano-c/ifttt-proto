@@ -6,27 +6,23 @@
 </head>
 <body>
 <div>
-    <br>
-    <br>
 
+    <div class="container" style="padding-top: 6%">
 
-    <div class="row">
-        <div class="col-md-12">
             <div class="row">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your trigger</h1></p>
+                    <p><h1><img src="../../images/twitterChannel/new-tweet.png" style="width:42px;height:42px;border:0;"> New tweet trigger</h1></p>
+                    <hr>
                     <form id="gmail-form" role="form" name="form" ng-controller="trigger1TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>Sender:</label> <br>
-                            <label>Click me in order to active this trigger:
                                 <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
 
-                                >
+                                > <b>From the twitter user:</b>
                             </label><br/>
                             <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
@@ -42,13 +38,11 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active the description trigger:
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
 
-                                >
+                                > <b>Tweet content:</b>
                             </label><br/>
                             <div  ng-if="checkedSubject" class="animate-if">
 
@@ -71,25 +65,12 @@
 
                             >Next</a>
                         </div>
+                        <br>
+                        <br>
+                        <hr>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Make at least one choice to use this trigger
                         </label>
-                        <br>
-                        <br>
-                        <!--
-                        <div class="alert alert-danger animate-if"  role="alert">
-                            <strong>Warning:</strong> <a href="#home" class="alert-link, animate-if" ng-if="!iftttLoginP">
-                            You are not logged in ifttt click me for exit!!!
-                        </a>
-                        </div>
-                        -->
-
-                        <!--
-                        href="#actionGcalendar"
-                               http://localhost:8080/index.jsp#/SubGMail
-                               <a  type="submit" class="btn btn-primary" href="#logged_in" >Home</a>
-                               <a  type="submit" class="btn btn-primary"  href="#SubGMailAction" ng-click="triggerGmail(gmailinput)">Next</a>
-                               -->
 
                     </form>
                 </div>
@@ -97,7 +78,6 @@
                 </div>
             </div>
         </div>
-    </div>
 
 </div>
 
@@ -134,15 +114,6 @@
         }
     }
 </script>
-
-<!--href="#SubGMailAction" -->
-
-
-<!--
-Example code
-<label>Click me to toggle: <input type="checkbox" ng-model="checked"></label><br/>
-<button ng-model="button" ng-disabled="checked">Button</button>
--->
 </html>
 
 
