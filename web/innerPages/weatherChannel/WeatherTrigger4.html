@@ -18,19 +18,15 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
-       <span align="center">
-        <h2 class="">Chose the location that you wish to monitor</h2>
-           <hr>
-       </span>
+            <p><h1><img src="../../images/weatherChannel/temp-range.png" style="width:42px;height:42px;border:0;"/> Temperature range trigger</h1></p>
+            <hr>
 
             <div id="search-bar">
-
                 <div class="input-group">
                 <span class="input-group-addon ">
                     <div class="hidden-xs">Search for your city :
                     </div>
                 </span>
-
                     <input id="search-input" type="search" class="form-control" placeholder="Enter location...">
                     <span class="input-group-btn">
                 <button class="btn btn-default" type="button">Search!</button>
@@ -38,6 +34,7 @@
                 </div>
             </div>
 
+            <br>
 
             <div id="temper">
                 <div id="temp-board">
@@ -53,26 +50,18 @@
                     <div class="values">Latitude : <span id="coord-lat">N.A</span> </div>
                     <div class="values">Country : <span id="sys-country">N.A</span>   </div>
                       </div>
-                <!-- Time -->
-                <!-- Don't work
-                <form name="myForm" ng-controller="DateController as dateCtrl">
-                    <label for="exampleInput">Insert the time that you wish to recive the advise</label>
-                    <input type="time" id="exampleInput" name="input" ng-model="example.value"
-                           placeholder="HH:mm:ss" min="00:00:00" max="24:00:00" required />
-                </form>
-                -->
+
                 <br>
+
                 <form name="thmax">
-                <b>Witch is the thmax </b>  (Abilitation):
                 <input
                         id="thmaxidcheckbox"
                         type="checkbox"
                         ng-model="checkmodelcheckthmax"
-                >
+                > <b> Max temperature:</b>
                     <div  ng-if="checkmodelcheckthmax" class="animate-if">
                 <input id="thmaxidinput" ng-disabled="!checkmodelcheckthmax" type="number" name="input" ng-model="trigger1input.value1"
                        min="-70" max="70" required>
-
                 <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="thmax.input.$error.required  && checkmodelcheckthmax">
                             Required!</span>
@@ -83,15 +72,12 @@
                 </form>
 
                 <form name="thmin">
-                <br>
-                <br>
-                <b>Witch is the thmin </b>  (Abilitation):
                 <input
                         id="thminidcheckbox"
                         type="checkbox"
                         ng-model="checkmodelcheckthmin"
 
-                >
+                > <b> Min temperature:</b>
 
                     <div  ng-if="checkmodelcheckthmin" class="animate-if">
                 <input id="thminidinput" ng-disabled="!checkmodelcheckthmin" type="number" name="input" ng-model="trigger1input.value2"
@@ -109,15 +95,12 @@
 
 
                 <form name="periodform">
-                    <br>
-                    <br>
-                    <b>Period </b>  (Abilitation):
                     <input
                             id="periodidcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckperiod"
 
-                    >
+                    > <b>Period:</b>
 
                     <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
@@ -137,18 +120,13 @@
 
 
                 <!--   Time zone    --->
-                <br>
-                <br>
-
                 <form name="timeZone">
-                <label><b>Inser your time zone: </b>  (Abilitation):
                     <input
                             id="checktimeZonevar"
                             type="checkbox"
                             ng-model="checktimeZone"
 
-                    >
-                    </label>
+                    > <b>Custom timezone:</b>
                     <div  ng-if="checktimeZone" class="animate-if">
 
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
