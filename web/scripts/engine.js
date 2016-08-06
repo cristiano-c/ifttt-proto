@@ -1834,7 +1834,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
             var title;
             var subject;
 
-            if( $scope.checkedtitle == true  ||  $scope.checkedSubject == true && twitterLogin=="1")
+            if( ($scope.checkedtitle == true  ||  $scope.checkedSubject == true) && twitterLogin=="1")
             {
 
                 //First variable
@@ -1918,7 +1918,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
             var subject;
 
 
-            if ($scope.checkedtitle == true || $scope.checkedSubject == true)
+            if (($scope.checkedtitle == true || $scope.checkedSubject == true) && twitterLogin == "1")
             {
 
                 if ($scope.checkedtitle == true) {
@@ -1967,7 +1967,12 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
                 window.location.replace(url);
             }
 
-
+            if(twitterLogin == "0")
+            {
+                alert("You are not logged in twitter");
+                url = "#allTriggers";
+                window.location.replace(url);
+            }
 
 
 
@@ -2000,7 +2005,7 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
             var subject;
 
 
-            if ( $scope.checkedSubject == true )
+            if ( $scope.checkedSubject == true  && twitterLogin == "1")
             {
 
                 if ($scope.checkedSubject == true) {
@@ -2028,6 +2033,13 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
                 sendingToServerAll();
                 //href="#SuccessTwitter"
                 var url = "#SuccessTwitter";
+                window.location.replace(url);
+            }
+
+            if(twitterLogin == "0")
+            {
+                alert("You are not logged in twitter");
+                url = "#createDO";
                 window.location.replace(url);
             }
 
@@ -2078,7 +2090,7 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
             var title;
             var subject;
 
-            if($scope.checkedtitle == true ||  $scope.checkedSubject== true)
+            if(($scope.checkedtitle == true ||  $scope.checkedSubject== true)  && twitterLogin == "1")
             {
 
 
@@ -2131,6 +2143,13 @@ iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$route
 
 
             }
+            if(twitterLogin == "0")
+            {
+                alert("You are not logged in twitter");
+                url = "#createDO";
+                window.location.replace(url);
+            }
+
 
 
 
