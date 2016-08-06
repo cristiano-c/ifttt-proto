@@ -1,4 +1,4 @@
-/**
+/*
  * Created by kazuhira on 22/07/16.
  */
 
@@ -77,7 +77,7 @@ var period_customWeatherActionControllerTrigger4 = "";
 
 /* NAVIGATION */
 
-var navPages = [0,0,0,0,0,0];
+//unused? var navPages = [0,0,0,0,0,0];
 var count=0;
 var url1back = "";
 //var url2back = "";
@@ -98,7 +98,7 @@ var iftttLogin = false; //-> $scope.iftttLogged
 
 /* prova */
 
-var prova1 ="";
+// unused? var prova1 ="";
 
 iftttApp.config(['$routeProvider', function($routeProvider){
 
@@ -187,12 +187,9 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'SuccessController'
     });
 
-
     $routeProvider.when('/choseTriggerActionWeather', {
         templateUrl: 'innerPages/weatherChannel/weatherChooseTriggerAction.html'
     });
-
-
 
     $routeProvider.when('/WeatherTrigger1', {
         templateUrl: 'innerPages/weatherChannel/WeatherTrigger1.html',
@@ -289,8 +286,8 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
-iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$http', '$rootScope',
-    function ($scope, $routeParams, $window, $http, $rootscope) {
+iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http) {
 
     var nextPath;
 
@@ -343,7 +340,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     );
                 }
                 console.log($scope.iftttLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginIFTTTModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
@@ -395,7 +392,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 }
 
                 console.log($scope.iftttLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginIFTTTModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to IFTTT Polito failed",
@@ -454,7 +451,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     );
                 }
                 console.log($scope.googleLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
@@ -505,7 +502,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 }
 
                 console.log($scope.googleLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to Google failed",
@@ -563,7 +560,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     );
                 }
                 console.log($scope.twitterLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
@@ -619,7 +616,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 }
 
                 console.log($scope.twitterLogged);
-            }, function error(response) {
+            }, function error() {
                 $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to Twitter failed",
@@ -645,7 +642,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
     }]);
 iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+    function () {
 
         if (flagTriggerDone == "1")
         {
@@ -664,7 +661,7 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
 
 
 iftttApp.controller('homeController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+    function ($scope) {
 
         $scope.loadHome = function()
         {
@@ -674,8 +671,7 @@ iftttApp.controller('homeController',  ['$scope', '$routeParams',
     }]);
 
 iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
-
+    function ($scope) {
         $scope.loadHome = function()
         {
             console.log("createRecipeController: loaded");
@@ -684,7 +680,7 @@ iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
     }]);
 
 iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window',
-    function ($scope, $rootscope, $window, $routeParams, $http, $resource) {
+    function ($scope, $rootscope, $window) {
 
     $scope.NGgoogleLogged = false;
 
@@ -693,7 +689,7 @@ iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window'
             function () {
                 console.log("angular: "+$window.googleLogged);
                 return $window.googleLogged
-            }, function(n,o){
+            }, function(n){
                 console.log("changed ",n);
             },
             true
@@ -703,8 +699,8 @@ iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window'
 
     }]);
 
-iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('doCreatorController',  ['$scope',
+    function ($scope) {
 
         $scope.loadHome = function()
         {
@@ -720,8 +716,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     }]);
 
 
-iftttApp.controller('myRecipesController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('myRecipesController',  ['$scope',
+    function ($scope) {
 
         $scope.faq = [
             {key: "Question 1",
@@ -736,8 +732,8 @@ iftttApp.controller('myRecipesController',  ['$scope', '$routeParams',
 
     }]);
 
-iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('createAccountController',  ['$scope',
+    function ($scope) {
 
         $scope.createAccountFunc = function(user, email, pws1, pws2)
         {
@@ -783,7 +779,7 @@ iftttApp.controller('createAccountController',  ['$scope', '$routeParams',
 
 //Update
 iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
+    function ($scope) {
 
         //Bug stringa null
 
@@ -1058,10 +1054,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
 
 iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
-        $scope.loadHome = function()
-        {
-        }
+    function ($scope) {
 
         $scope.trigger1input = {
             value1: 0,
@@ -1073,8 +1066,8 @@ iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$route
 
         $scope.errorButton = 'cia';
         $scope.checkadvisetimevar = 'NO';
-        $scope.checktimeZonevar = 'NO'
-        $scope.checkadvisetimefunc = function(name)
+        $scope.checktimeZonevar = 'NO';
+        $scope.checkadvisetimefunc = function(/*name*/)
         {
             if($scope.checkadvisetimevar === "YES")
                 $scope.checkadvisetimevar = 'NO';
@@ -1083,7 +1076,7 @@ iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$route
             //console.log(name);
         };
 
-        $scope.checktimeZonefunc = function(name)
+        $scope.checktimeZonefunc = function(/*name*/)
         {
             if($scope.checktimeZonevar === "YES")
                 $scope.checktimeZonevar = 'NO';
@@ -1096,8 +1089,8 @@ iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$route
 
     }]);
 
-iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope',
+    function ($scope)
     {
         $scope.trigger1input = {
             value1: 0,
@@ -1118,7 +1111,7 @@ iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope', '$rootSc
                     ],
                     selectedOption: {id: '200', name: 'thunderstorm with light rain'} //This sets the default value of the select in the ui
 
-        }
+        };
 
         /* Code available --> http://openweathermap.org/weather-conditions
 
@@ -1232,8 +1225,8 @@ iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope', '$rootSc
     }]);
 
 
-iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope',
+    function ($scope)
     {
         $scope.trigger1input = {
             value3: 0
@@ -1246,7 +1239,7 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope', '$rootSc
         $scope.checkadvisetsunrisevar = 'NO';
         $scope.checktimeZonevar = 'NO';
 
-        $scope.checkadvisesunrisefunc = function(name)
+        $scope.checkadvisesunrisefunc = function(/*name*/)
         {
             if($scope.checkadvisetsunrisevar === "YES")
                 $scope.checkadvisetsunrisevar = 'NO';
@@ -1255,7 +1248,7 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope', '$rootSc
             //console.log(name);
         };
 
-        $scope.checkadvisetsunsetfunc = function(name)
+        $scope.checkadvisetsunsetfunc = function(/*name*/)
         {
             if($scope.checkadvisesunsetvar === "YES")
                 $scope.checkadvisesunsetvar = 'NO';
@@ -1264,7 +1257,7 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope', '$rootSc
             //console.log(name);
         };
 
-        $scope.checktimeZonefunc = function(name)
+        $scope.checktimeZonefunc = function(/*name*/)
         {
             if($scope.checktimeZonevar === "YES")
                 $scope.checktimeZonevar = 'NO';
@@ -1279,8 +1272,8 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope', '$rootSc
     }]);
 
 
-iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope',
+    function ($scope)
     {
         $scope.trigger1input = {
             value1: 0,
@@ -1292,8 +1285,8 @@ iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope', '$rootSc
     }]);
 
 // loginPageController
-iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
-    function ($scope, $rootscope, $routeParams, $http, $resource) {
+iftttApp.controller('loginPageController',  ['$scope',
+    function ($scope) {
 
         $scope.loginfunc = function(pass, email)
         {
@@ -1319,8 +1312,8 @@ iftttApp.controller('loginPageController',  ['$scope', '$routeParams',
 
 
 //Update
-iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('Trigger1GcalendarController', ['$scope',
+    function ($scope)
     {
 
         $scope.trigger1GcalendarVar = [];
@@ -1435,8 +1428,8 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope', '$rootScope', '$ro
 
 
 
-iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('Trigger2GcalendarController', ['$scope',
+    function ($scope)
     {
 
         $scope.trigger2GcalendarVar = [];
@@ -1558,13 +1551,13 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope', '$rootScope', '$ro
     }]);
 
 
-iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
+iftttApp.controller('action1GcalendarController', ['$scope',
+    function ($scope) {
 
 
         $scope.gcalendarinput = [];
         //gcalendarinput,  yearVector, monthVector, dayVector
-        $scope.actiongcalendar = function(yearVector, monthVector, dayVector) {
+        $scope.actiongcalendar = function() {
             var title = "";
             var subjectReceive = "";
             var place = "";
@@ -1889,8 +1882,8 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
 
 
-iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('trigger1TwitterController', ['$scope',
+    function ($scope)
     {
 
         $scope.trigger1TwitterInput = [];
@@ -1975,8 +1968,8 @@ iftttApp.controller('trigger1TwitterController', ['$scope', '$rootScope', '$rout
 
 
 
-iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('trigger2TwitterController', ['$scope',
+    function ($scope)
     {
         $scope.trigger2TwitterInput = [];
 
@@ -2061,8 +2054,8 @@ iftttApp.controller('trigger2TwitterController', ['$scope', '$rootScope', '$rout
 
 
 
-iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('action1TwitterController', ['$scope',
+    function ($scope)
     {
 
         $scope.action1TwitterInput = [];
@@ -2146,8 +2139,8 @@ iftttApp.controller('action1TwitterController', ['$scope', '$rootScope', '$route
 //action2TwitterController
 
 
-iftttApp.controller('action2TwitterController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
-    function ($scope, $rootscope, $routeParams, $http, $resource, $location)
+iftttApp.controller('action2TwitterController', ['$scope',
+    function ($scope)
     {
 
         $scope.action2TwitterInput = [];
@@ -2965,8 +2958,7 @@ function sendingToServerAll ()
 
 
 
-};
-
+}
 function sedingServerAllRun (loginDataSend)
 {
     $.ajax({
@@ -2976,8 +2968,8 @@ function sedingServerAllRun (loginDataSend)
         dataType: "json",
         success: console.log("la post ha avuto successo n 9")
     });
-};
-
+}
+/*
 function sedingServerAllRun1  (loginDataSend)
 {
     $.ajax({
@@ -2987,4 +2979,5 @@ function sedingServerAllRun1  (loginDataSend)
         dataType: "json",
         success: console.log("la post ha avuto successo n 9")
     });
-};
+}
+    */
