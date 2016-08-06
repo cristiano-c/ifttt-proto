@@ -47,7 +47,16 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
 
+          <li>
+            <a type="submit" href="#index/myRecipes" ng-if="iftttLogged"
+               data-target="#loginIFTTTModal">
+              <span  aria-hidden="true"></span>Your recipes</a>
+          </li>
+
+
+         <!--
           <li><a href="#createRecipe">Create a recipe</a></li>
+          -->
           <li>
             <a type="submit" href="" ng-if="!iftttLogged" data-toggle="modal"
                data-target="#loginIFTTTModal" ng-click="routeListener('createRecipe')">
@@ -62,6 +71,8 @@
             <!--
           <li><a href="#chooseChannel">Channels</a></li>
             -->
+
+
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">

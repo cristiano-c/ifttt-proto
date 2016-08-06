@@ -90,6 +90,8 @@ var iftttLogin = false; //-> $scope.iftttLogged
 
 
 
+
+
 // sendingToServerAll();
 
 /* prova */
@@ -307,7 +309,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 email: $('#inputEmailIFTTT').val(),
                 password: $('#inputPasswordIFTTT').val()
             };
-
             console.log(JSON.stringify(iftttCredentials));
             $http({
                 url: '/MyServlet',
