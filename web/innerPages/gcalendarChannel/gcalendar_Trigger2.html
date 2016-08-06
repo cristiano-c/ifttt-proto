@@ -127,6 +127,8 @@
     else
     {
 
+        if (googleLogin == "1") {
+
 
         if (count == 2) {
             count++;
@@ -138,6 +140,11 @@
                 window.location.replace(url);
             }
 
+        }
+        }
+        else {
+            url = "#allTriggers";
+            window.location.replace(url);
         }
     }
 

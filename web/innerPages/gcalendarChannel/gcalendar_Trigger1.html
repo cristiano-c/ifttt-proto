@@ -111,6 +111,8 @@
 </body>
 
 <script>
+
+
     if(iftttLogin == false)
     {
         url = "#home";
@@ -120,16 +122,22 @@
     }
     else
     {
-        if (count == 2) {
-            count++;
-            url1back = "#Trigger1Gcalendar";
+        if (googleLogin == "1") {
+            if (count == 2) {
+                count++;
+                url1back = "#Trigger1Gcalendar";
+            }
+            else {
+                if (count < 2) {
+                    url = "#allTriggers";
+                    window.location.replace(url);
+                }
+
+            }
         }
         else {
-            if (count < 2) {
-                url = "#allTriggers";
-                window.location.replace(url);
-            }
-
+            url = "#allTriggers";
+            window.location.replace(url);
         }
     }
 

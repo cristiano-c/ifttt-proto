@@ -90,9 +90,20 @@
                         <p>
                             Trigger activated when you receive an email monitored by Title, Description or Location.
                         </p>
+                       <!--
                         <p>
                             <a class="btn btn_next2" href="#gMailTrigger">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                         </p>
+                        -->
+
+                        <p>
+                            <a class="btn btn_next2" ng-if="!googleLogged" data-toggle="modal" data-target="#loginGoogleModal" ng-click="routeListener('gMailTrigger')">Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        </p>
+                        <p>
+                            <a class="btn btn_next2" href="#gMailTrigger" ng-if="googleLogged" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        </p>
+
+
                     </div>
                 </div>
             </div>

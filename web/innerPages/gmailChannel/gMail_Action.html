@@ -128,6 +128,7 @@ Example code
         flagTriggerDone="0";
     }
     else {
+        if (googleLogin == "1") {
         if (flagTriggerDone == "0") {
             alert("Warning you must compile before the trigger form");
             url = "#allTriggers";
@@ -143,6 +144,11 @@ Example code
                 window.location.replace(url);
             }
 
+        }
+        }
+        else {
+            url = "#createDO";
+            window.location.replace(url);
         }
     }
 </script>

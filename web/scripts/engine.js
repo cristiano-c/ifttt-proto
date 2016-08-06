@@ -428,6 +428,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.googleLogged = true;
+                    googleLogin = "1";
                     $('#loginGoogleModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with Google",
@@ -460,6 +461,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.googleLogged = false;
+                googleLogin="0";
                 console.log($scope.googleLogged);
             });
 
@@ -481,6 +483,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.googleLogged = false;
+                    googleLogin="0";
                     $("#notificationsWrapper").notify(
                         "Logged out from Google",
                         {
@@ -897,7 +900,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
              sender_GmailActionController = "";
              subject_GmailActionController = "";
 
-            if($scope.checkedEmail == true || $scope.checkedSubject == true) {
+            if(($scope.checkedEmail == true || $scope.checkedSubject == true) && googleLogin == "1")  {
 
                 if ($scope.checkedEmail == true) {
                     if (angular.isDefined($scope.gmailActionvar)) {
@@ -966,8 +969,9 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
             }
             else
             {
-                    //var url = "#gMailAction";
-                    //window.location.replace(url);
+                alert("You are not logged in google");
+                url = "#createDO";
+                window.location.replace(url);
             }
 
             /*
@@ -1517,10 +1521,10 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
 
             actionChose =  2;
 
-            if ($scope.checkedtitle == true ||
+            if (($scope.checkedtitle == true ||
                 $scope.checkedSubject == true ||
                 $scope.checkedplace == true    ||
-                $scope.checkdata == true)
+                $scope.checkdata == true) && googleLogin == "1")
             {
 
 
@@ -1686,6 +1690,12 @@ iftttApp.controller('action1GcalendarController', ['$scope', '$rootScope', '$rou
                     window.location.replace(url);
                 }
 
+            }
+            else
+            {
+                alert("You are not logged in google");
+                url = "#createDO";
+                window.location.replace(url);
             }
 
 
