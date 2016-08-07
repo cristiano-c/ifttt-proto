@@ -1386,88 +1386,92 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
             var place;
 
 
-            if($scope.checkedtitle == true ||  $scope.checkedSubject == true ||  $scope.checkedplace == true) {
+            if(googleLogin == "1") {
 
-                //First variable
-                if ($scope.checkedtitle == true) {
-                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
-                        if (angular.isDefined($scope.trigger1GcalendarVar.title)) {
-                            title = $scope.trigger1GcalendarVar.title;
+                if ($scope.checkedtitle == true || $scope.checkedSubject == true || $scope.checkedplace == true) {
+
+                    //First variable
+                    if ($scope.checkedtitle == true) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                            if (angular.isDefined($scope.trigger1GcalendarVar.title)) {
+                                title = $scope.trigger1GcalendarVar.title;
+                            }
+                            else {
+                                title = "";
+                            }
                         }
                         else {
                             title = "";
                         }
                     }
                     else {
-                        title = "";
+                        title = "null";
                     }
-                }
-                else {
-                    title = "null";
-                }
 
-                //Second variable
-                if ($scope.checkedSubject == true) {
-                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
-                        if (angular.isDefined($scope.trigger1GcalendarVar.subjectReceive)) {
-                            subject = $scope.trigger1GcalendarVar.subjectReceive;
+                    //Second variable
+                    if ($scope.checkedSubject == true) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                            if (angular.isDefined($scope.trigger1GcalendarVar.subjectReceive)) {
+                                subject = $scope.trigger1GcalendarVar.subjectReceive;
+                            }
+                            else {
+                                subject = "";
+                            }
                         }
                         else {
                             subject = "";
                         }
+
                     }
                     else {
-                        subject = "";
+                        subject = "null";
                     }
 
-                }
-                else {
-                    subject = "null";
-                }
-
-                //Third variable
-                if ($scope.checkedplace == true) {
-                    if (angular.isDefined($scope.trigger1GcalendarVar)) {
-                        if (angular.isDefined($scope.trigger1GcalendarVar.place)) {
-                            place = $scope.trigger1GcalendarVar.place;
+                    //Third variable
+                    if ($scope.checkedplace == true) {
+                        if (angular.isDefined($scope.trigger1GcalendarVar)) {
+                            if (angular.isDefined($scope.trigger1GcalendarVar.place)) {
+                                place = $scope.trigger1GcalendarVar.place;
+                            }
+                            else {
+                                place = "";
+                            }
                         }
                         else {
                             place = "";
                         }
+
                     }
                     else {
-                        place = "";
+                        place = "null";
                     }
 
+                    title_Trigger1GcalendarController = title;
+                    description_Trigger1GcalendarController = subject;
+                    place_Trigger1GcalendarController = place;
+
+                    modulinoj1 =
+                    {
+                        "triggerType": "calendar",
+                        "eventAction": "0",
+
+                        //Tn 2 S0
+                        "title": title_Trigger1GcalendarController,
+                        "description": description_Trigger1GcalendarController,
+                        "place": place_Trigger1GcalendarController
+                    };
+
+
+                    flagTriggerDone = "1";
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
                 }
-                else {
-                    place = "null";
-                }
-
-                title_Trigger1GcalendarController = title;
-                description_Trigger1GcalendarController = subject;
-                place_Trigger1GcalendarController = place;
-
-                modulinoj1 =
-                {
-                    "triggerType": "calendar",
-                    "eventAction": "0",
-
-                    //Tn 2 S0
-                    "title": title_Trigger1GcalendarController,
-                    "description": description_Trigger1GcalendarController,
-                    "place": place_Trigger1GcalendarController
-                };
-
-
-                flagTriggerDone = "1";
-                url = "#createRecipeAction";
-                window.location.replace(url);
             }
             else
             {
-                //url = "#Trigger1Gcalendar";
-                //window.location.replace(url);
+                alert("You are sloged from google please relog and redo it");
+                url = "#allTriggers";
+                window.location.replace(url);
 
             }
             /*
