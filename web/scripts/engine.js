@@ -2250,6 +2250,14 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                 username_sender_trigger1TwitterController = title;
                 hashtag_text_trigger1TwitterController = subject;
 
+                modulinoj1 =
+                {
+                  "triggerType" : "twitter",
+                    "type"      :  "0",
+                    "hashtag_text"  : hashtag_text_trigger1TwitterController,
+                    "username_sender" : hashtag_text_trigger1TwitterController
+                };
+
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }
@@ -2332,6 +2340,15 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                 flagTriggerDone = "1";
                 username_sender_trigger2TwitterController = title;
                 hashtag_text_trigger2TwitterController = subject;
+
+                modulinoj1 =
+                {
+                    "triggerType" : "twitter",
+                    "type"      :  "1",
+                    "hashtag_text"  : hashtag_text_trigger1TwitterController,
+                    "username_sender" : hashtag_text_trigger1TwitterController
+                };
+
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }
@@ -2399,6 +2416,15 @@ iftttApp.controller('action1TwitterController', ['$scope',
                 count=7;
 
                 subject_action1TwitterController = subject;
+
+                modulinoj2 =
+                {
+                    "triggerType" : "twitter",
+                    "type"      :  "0",
+                    "subject" :  subject_action1TwitterController
+
+                };
+
                 sendingToServerAll();
                 //href="#SuccessTwitter"
                 var url = "#SuccessTwitter";
@@ -2503,6 +2529,15 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
                 title_action2TwitterController = title;
                 subjec_action2TwitterController = subject;
+
+                modulinoj2 =
+                {
+                    "triggerType" : "twitter",
+                    "type"      :  "1",
+                    "title"   :  title_action2TwitterController,
+                    "subject" :  subject_action1TwitterController
+
+                };
                 sendingToServerAll();
                 flagTriggerDone = "0";
                 count=7;
