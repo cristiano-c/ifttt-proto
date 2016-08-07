@@ -66,14 +66,14 @@
                         type="checkbox"
                         ng-model="checkadvisesunrise"
                         ng-change="checkadvisesunrisefunc(checkadvisetsunrisevar)"
-                > <b>Do you wish to have the sunrise </b>
+                > <b>Sunrise time </b>
                 <br>
                 <input
                         id="checksunset"
                         type="checkbox"
                         ng-model="checkadvisesunset"
                         ng-change="checkadvisetsunsetfunc(checkadvisesunsetvar)"
-                > <b>Do you wish to have the sunset </b>
+                > <b>Sunset time </b>
                 <br>
 
 
@@ -84,7 +84,7 @@
                             type="checkbox"
                             ng-model="checktimeZone"
                             ng-change="checktimeZonefunc(checktimeZonevar)"
-                    > <b>Custom timezone: </b>
+                    > <b>Custom timezone </b>
                     <div  ng-if="checktimeZone" class="animate-if">
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
                            min="-12" max="12" required>
