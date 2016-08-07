@@ -33,27 +33,26 @@
 
                         <label> Send email from:</label><br>
                             <form class="form-group">
-                                <input type="radio" name="emailSending" value="0" ng-model="gmailActionvar.sender" checked="checked"> ifttt.ai2016@gmail.com <br>
-                                     <input type="radio" name="emailSending" value="1" ng-model="gmailActionvar.sender"> your e.mail <br>
+                                <input type="radio" name="emailSending" value="0" ng-model="gmailActionvar.sender" checked="checked"> us (ifttt.ai2016@gmail.com) <br>
+                                     <input type="radio" name="emailSending" value="1" ng-model="gmailActionvar.sender"> your IFTTT Polito email <br>
                                               </form>
 
 
 
 
                         <div class="form-group">
-                            <label>The object:</label>
-                            <label>Click me in order to active the subject action:
+                            <label>
                                 <input
                                         id="checkedSubjectId"
                                         type="checkbox"
                                         ng-model="checkedSubject"
 
-                                >
+                                > Email subject:
                             </label><br/>
                             <!--  ng-change="checkedSubjectfunc()" -->
                             <div ng-if="checkedSubject" class="animate-if">
 
-                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
+                            <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="Insert here the email subject"
                                       ng-model="gmailActionvar.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
@@ -63,19 +62,18 @@
 
 
                         <div class="form-group">
-                            <label>The body:</label>
-                            <label>Click me in order to active the subject action:
+                            <label>
                                 <input
                                         id="checkedBodyId"
                                         type="checkbox"
                                         ng-model="checkedBody"
 
-                                >
+                                > Email content
                             </label><br/>
                             <!--  ng-change="checkedSubjectfunc()" -->
                             <div ng-if="checkedBody" class="animate-if">
 
-                            <textarea class="form-control" rows="5" id="checkedBody"  placeholder="insert the subject"
+                            <textarea class="form-control" rows="5" id="checkedBody"  placeholder="Inert here the email content"
                                       ng-model="gmailActionvar.checkedBody"  name="checkedBody"  ng-disabled="!checkedBody"
                                       maxlength="500" ng-trim="false"
                             ></textarea>
