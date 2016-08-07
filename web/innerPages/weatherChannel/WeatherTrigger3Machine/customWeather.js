@@ -469,6 +469,19 @@ $(function(){
             if(flagTimezoneCheck == 1)
             {
                 flagTriggerDone = "1";
+
+                modulinoj1=
+                {
+                    "triggerType" : "weather",
+                    "type" : "2",
+                    "location":   idCity_customWeatherActionControllerTrigger3,
+                    "timezone" : timezone_customWeatherActionControllerTrigger3,
+                      "sunset"   : sunset_customWeatherActionControllerTrigger3,
+                        "sunrise"        : sunrise_customWeatherActionControllerTrigger3
+
+
+                };
+
                 url = "#createRecipeAction";
                 window.location.replace(url);
             }

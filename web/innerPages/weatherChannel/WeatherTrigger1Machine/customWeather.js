@@ -309,6 +309,16 @@ $(function()
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {
                 flagTriggerDone = "1";
+
+                modulinoj1=
+                {
+                    "triggerType" : "weather",
+                    "type" : "1",
+                    "location" : idCity_customWeatherActionControllerTrigger1,
+                    "ora"  : ora_customWeatherActionControllerTrigger1,
+                    "timezone" : timezone_customWeatherActionControllerTrigger1
+                };
+
                 var url = "/#/createRecipeAction";
                 window.location.replace(url);
             }

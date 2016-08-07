@@ -423,6 +423,18 @@ $(function(){
                 else
                 {
                     flagTriggerDone = "1";
+
+                    modulinoj1=
+                    {
+                        "triggerType" : "weather",
+                        "type" : "2",
+                         "location":   idCity_customWeatherActionControllerTrigger2,
+                        "tempo" : pweather_customWeatherActionControllerTrigger2,
+                        "period" : pperiod_customWeatherActionControllerTrigger2,
+                        "timezone" : pzone_customWeatherActionControllerTrigger2
+                    };
+
+
                     url = "#createRecipeAction";
                     window.location.replace(url);
 

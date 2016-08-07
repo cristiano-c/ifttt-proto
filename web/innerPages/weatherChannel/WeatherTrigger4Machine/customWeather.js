@@ -514,6 +514,19 @@ $(function(){
             }
             else
             {
+
+                modulinoj1=
+                {
+                    "triggerType" : "weather",
+                    "type" : "2",
+                    "location":   idCity_customWeatherActionControllerTrigger4,
+                    "timezone" : ptimezone_customWeatherActionControllerTrigger4,
+                    "thmax" : pthmax_customWeatherActionControllerTrigger4,
+                    "thmin" : pthmin_customWeatherActionControllerTrigger4
+                };
+
+
+
                 flagTriggerDone = "1";
                 url = "#createRecipeAction";
                 window.location.replace(url);
