@@ -1878,7 +1878,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         if (dayVector > "0" && dayVector < "32");
                         else {
                             flag = "3";
-                            console.log("Your date is not right plase verify the day");
+                            //console.log("Your date is not right plase verify the day");
+                            alertVariable = "Your date is not right plase verify the day";
+                            alertFunction ();
                         }
                     }
                     if (monthVector === "2" ||
@@ -1891,7 +1893,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         else
                         {
                             flag = "3";
-                            console.log("Your date is not right plase verify the day");
+                            //console.log("Your date is not right plase verify the day");
+                            alertVariable = "Your date is not right plase verify the day";
+                            alertFunction ();
                         }
 
                     }
@@ -1908,7 +1912,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         if (monthVector === "2")
                             if (dayVector > 28) {
                                 flag = "3";
-                                console.log("Thi is a leap year");
+                                //console.log("Thi is a leap year");
+                                alertVariable = "Thi is a leap year";
+                                alertFunction ();
                             }
 
 
@@ -1916,7 +1922,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                     if(monthVector == "2" && dayVector >29 && flag != "3")
                     {
-                        console.log("Febrary has not " + dayVector + " days, please check" );
+                        //console.log("Febrary has not " + dayVector + " days, please check" );
+                        alertVariable = "Febrary has not " + dayVector + " days, please check";
+                        alertFunction ();
                         flag = "3";
                     }
 
@@ -2684,6 +2692,8 @@ function sendingToServerAll ()
 
 
 }
+//alertVariable
+//alertFunction ()
 
 function alertFunction ()
 {
