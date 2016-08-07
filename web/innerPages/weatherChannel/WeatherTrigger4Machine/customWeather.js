@@ -273,6 +273,7 @@ $(function(){
         var timezone = "";
         var thmax =  "";
         var thmin = "";
+        var period = "";
 
 
 
@@ -306,10 +307,18 @@ $(function(){
                     timezone = "NULL";
                 }
 
+                if ($('#periodidcheckbox').is(":checked")) {
+                    period = $('#periodidinput').val();
+                }
+                else {
+                    period = "NULL";
+                }
+
                 idCity_customWeatherActionControllerTrigger4 =idCity;
                     ptimezone_customWeatherActionControllerTrigger4 = timezone;
                 pthmax_customWeatherActionControllerTrigger4 = thmax;
                 pthmin_customWeatherActionControllerTrigger4 = thmin;
+                period_customWeatherActionControllerTrigger4 = period;
                 /*
                  var flagThmaxCheck = "1";
                  var flagThminCheck = "1";
@@ -322,9 +331,10 @@ $(function(){
                 if ($('#thminidcheckbox').is(":checked"))
                     flagThminCheckfunc();
                 if ($('#checktimeZonevar').is(":checked"))
-                    flagPeriodCheckfunc();
-                if ($('#periodidcheckbox').is(":checked"))
                     flagTimeZoneCheckfunc();
+                if ($('#periodidcheckbox').is(":checked"))
+                    flagPeriodCheckfunc();
+
 
                 if (flagThmaxCheck == 0 || flagThminCheck == 0 || flagPeriodCheck == 0 || flagTimeZoneCheck == 0) {
                     // alert("Please check your input because is/are not right");
@@ -338,7 +348,8 @@ $(function(){
                         "location": idCity_customWeatherActionControllerTrigger4,
                         "timezone": ptimezone_customWeatherActionControllerTrigger4,
                         "thmax": pthmax_customWeatherActionControllerTrigger4,
-                        "thmin": pthmin_customWeatherActionControllerTrigger4
+                        "thmin": pthmin_customWeatherActionControllerTrigger4,
+                        "period" : period_customWeatherActionControllerTrigger4
                     };
 
 
