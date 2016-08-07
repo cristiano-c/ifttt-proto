@@ -18,7 +18,7 @@
         <div class="col-md-3"></div>
         <div class="col-md-6">
 
-            <p><h1><img src="../../images/weatherChannel/temp-range.png" style="width:42px;height:42px;border:0;"/> Triggered at specific weather condition</h1></p>
+            <p><h1><img src="../../images/weatherChannel/temp-range.png" style="width:42px;height:42px;border:0;"/> Triggered at temperature range</h1></p>
             <hr>
 
             <div id="search-bar">
@@ -100,12 +100,13 @@
                             type="checkbox"
                             ng-model="checkmodelcheckperiod"
 
-                    > <b>Period:</b>
+                    > <b>Periodic:</b>
 
                     <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
+                        every
                     <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
-                           min="0" max="700" required>
+                           min="0" max="700" required> days
 
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="periodform.input.$error.required && checkmodelcheckperiod">
