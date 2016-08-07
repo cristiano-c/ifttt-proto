@@ -2687,7 +2687,7 @@ function sendingToServerAll ()
 
                    //An 2
                    "title": title_action1GcalendarController,
-                   "description": subjectReceive_action1GcalendarController,
+                   "description": f_action1GcalendarController,
                    "location": place_action1GcalendarController,
                    "timezone": timeZone_action1GcalendarController,
                    "startdateYear": yearVector_action1GcalendarController,
