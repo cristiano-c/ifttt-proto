@@ -1595,10 +1595,22 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
             actionChose =  2;
 
+            if($scope.googleLogged == true){
+                alert("E' TRUE!!!!");
+            } else {
+                alert("E' FALSE!!!!");
+            }
+
+            if(!$scope.googleLogged == true){
+                alert("E' FALSE!!!!");
+            } else {
+                alert("E' TRUE!!!!");
+            }
+
             if (($scope.checkedtitle == true ||
                 $scope.checkedSubject == true ||
                 $scope.checkedplace == true    ||
-                $scope.checkdata == true) && googleLogin == "1")
+                $scope.checkdata == true) && $scope.googleLogged == true)
             {
 
 
