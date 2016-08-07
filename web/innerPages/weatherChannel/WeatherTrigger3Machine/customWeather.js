@@ -266,7 +266,14 @@ $(function(){
         if (idCity == '0')
         {
             //$scope.errorButton= "Almost a field must be completed";
-            alert("You have not found you ciry");
+            //alert("You have not found you ciry");
+            $("#notificationsWrapper").notify(
+                "You have not found you ciry",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
         }
         else
         {
@@ -319,12 +326,27 @@ $(function(){
                     window.location.replace(url);
                 }
                 else {
-                    alert("The input of the time zone is not right");
+                    //alert("The input of the time zone is not right");
+                    $("#notificationsWrapper").notify(
+                        "The input of the time zone is not right",
+                        {
+                            className: 'warning',
+                            position: 'bottom center'
+                        }
+                    );
                 }
             }
             else
                 {
-                    alert("You must chose sunset and/or sunris");
+                    //alert("The input of the time zone is not right");
+                    $("#notificationsWrapper").notify(
+                        "The input of the time zone is not right",
+                        {
+                            className: 'warning',
+                            position: 'bottom center'
+                        }
+                    );
+
                 }
 
 

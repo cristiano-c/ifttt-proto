@@ -272,7 +272,15 @@ $(function(){
         if (idCity == '0')
         {
             //$scope.errorButton= "Almost a field must be completed";
-            alert("You have not found you ciry");
+            //alert("You have not found you ciry");
+
+            $("#notificationsWrapper").notify(
+                "You have not found you ciry",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
         }
         else
         {
@@ -418,7 +426,14 @@ $(function(){
                 {
                     //url = "#WeatherTrigger2";
                     //window.location.replace(url);
-                    alert("Your input is not right");
+                    //alert("Your input is not right");
+                    $("#notificationsWrapper").notify(
+                        "Your input is not right",
+                        {
+                            className: 'warning',
+                            position: 'bottom center'
+                        }
+                    );
                 }
                 else
                 {

@@ -273,7 +273,14 @@ $(function()
         if (idCity == '0')
         {
 
-            alert("You have not found you ciry");
+            $("#notificationsWrapper").notify(
+                "You have not found you ciry",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
+            //alert("You have not found you ciry");
         }
         else
         {
@@ -329,7 +336,15 @@ $(function()
                 //Alert sull'errore commesso:
                 if(flagTimezoneCheck == "0" && flagTimeCheck == "0")
                 {
-                    alert("Your inputs are not right");
+
+                    $("#notificationsWrapper").notify(
+                        "Your inputs are not right",
+                        {
+                            className: 'warning',
+                            position: 'bottom center'
+                        }
+                    );
+                    //alert("Your inputs are not right");
                 }
                 else
                 {

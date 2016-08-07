@@ -96,6 +96,7 @@ var googleLogin ="0";   //-> $scope.googleLogged
 var twitterLogin = "0"; //-> $scope.twitterLogged
 var iftttLogin = false; //-> $scope.iftttLogged
 
+var alertVariable = "";
 
 
 
@@ -654,7 +655,9 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
 
         if (flagTriggerDone == "1")
         {
-            alert("Warning you must compile before the action form");
+            //alert("Warning you must compile before the action form");
+            
+            alertFunction()
             var url = "#createRecipeAction";
             window.location.replace(url);
         }
@@ -3386,6 +3389,17 @@ function sendingToServerAll ()
 
 
 
+}
+
+function alertFunction ()
+{
+    $("#notificationsWrapper").notify(
+        alertVariable,
+        {
+            className: 'warning',
+            position: 'bottom center'
+        }
+    );
 }
 function sedingServerAllRun (loginDataSend)
 {

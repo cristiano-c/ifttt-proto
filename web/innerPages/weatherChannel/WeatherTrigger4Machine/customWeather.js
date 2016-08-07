@@ -280,7 +280,15 @@ $(function(){
         if (idCity == '0')
         {
             //$scope.errorButton= "Almost a field must be completed";
-            alert("You have not found you ciry");
+           // alert("You have not found you ciry");
+            $("#notificationsWrapper").notify(
+                "You have not found you ciry",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
+
         }
         else
         {
@@ -361,7 +369,15 @@ $(function(){
             }
             else
                 {
-                    alert("Please chose tmax or/and tmin");
+                    //alert("Please chose tmax or/and tmin");
+                    $("#notificationsWrapper").notify(
+                        "Please chose tmax or/and tmin",
+                        {
+                            className: 'warning',
+                            position: 'bottom center'
+                        }
+                    );
+
                 }
 
 
@@ -379,7 +395,15 @@ $(function(){
 
             }
             if(flagThmaxCheck=="0")
-                alert("The range of the max temperature is -70/70");
+                //alert("The range of the max temperature is -70/70");
+            $("#notificationsWrapper").notify(
+                "The range of the max temperature is -70/70",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
+
 
         }
 
@@ -395,7 +419,15 @@ $(function(){
 
             }
             if(flagThminCheck=="0")
-                alert("The range of the min temperature is -70/70");
+                //alert("The range of the min temperature is -70/70");
+            $("#notificationsWrapper").notify(
+                "The range of the min temperature is -70/70",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
+
 
         }
 
@@ -410,7 +442,14 @@ $(function(){
 
             }
             if(flagPeriodCheck=="0")
-                alert("The range of the min temperature is 0/701");
+                //alert("The range of the min temperature is 0/700");
+                $("#notificationsWrapper").notify(
+                    "The range of the min temperature is 0/700",
+                    {
+                        className: 'warning',
+                        position: 'bottom center'
+                    }
+                );
 
 
         }
@@ -427,7 +466,15 @@ $(function(){
 
             }
             if(flagTimeZoneCheck=="0")
-                alert("The range of the time zone is -12/12");
+                //alert("The range of the time zone is -12/12");
+
+            $("#notificationsWrapper").notify(
+                "The range of the time zone is -12/12",
+                {
+                    className: 'warning',
+                    position: 'bottom center'
+                }
+            );
 
 
         }
