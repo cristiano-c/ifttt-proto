@@ -1830,7 +1830,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                     "actionType": "calendar",
                     //An 2
                     "title": title_action1GcalendarController,
-                    "subjectReceive": subjectReceive_action1GcalendarController,
+                    "description": subjectReceive_action1GcalendarController,
                     "place": place_action1GcalendarController,
                     "dayVector": yearVector_action1GcalendarController,
                     "monthVector": monthVector_action1GcalendarController,
@@ -2866,7 +2866,7 @@ function sendingToServerAll ()
                "actionType": "calendar",
                //An 2
                "title": title_action1GcalendarController,
-               "subjectReceive": subjectReceive_action1GcalendarController,
+               "description": subjectReceive_action1GcalendarController,
                "place": place_action1GcalendarController,
                "dayVector": yearVector_action1GcalendarController,
                "monthVector": monthVector_action1GcalendarController,
