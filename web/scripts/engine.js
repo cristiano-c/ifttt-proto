@@ -902,7 +902,8 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
         $scope.actionGmail = function()
         {
-           
+
+            var sender = "";
             var receiver ="";
             var subject = "";
             var body = "";
@@ -930,19 +931,19 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                             else
                             {
                                 flag = "0";
-                                alert("Your e.mail is not right . . .1");
+                                alert("Your e.mail is not right . . .");
                             }
                         }
                         else {
                             receiver = "";
                             flag = "0";
-                            alert("Your e.mail is not right . . .2");
+                            alert("Your e.mail is not right . . .");
                         }
                     }
                     else {
                         receiver = "";
                         flag = "0";
-                        alert("Your e.mail is not right . . .3");
+                        alert("Your e.mail is not right . . .");
                     }
 
 
@@ -978,7 +979,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     {
                         if (angular.isDefined($scope.gmailActionvar.checkedBody))
                         {
-                            body = c.gmailActionvar.checkedBody;
+                            body = $scope.gmailActionvar.checkedBody;
                         }
                         else
                         {
@@ -996,7 +997,33 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     body = "null";
                 }
 
+                //radio botton
+                if (angular.isDefined($scope.gmailActionvar))
+                {
+                    if (angular.isDefined($scope.gmailActionvar.sender))
+                    {
+                        sender = $scope.gmailActionvar.sender;
+                    }
+                    else
+                    {
+                        sender = "";
+                        flag = "0";
+                        alert("You must chose a option between ifttt e.mail or yours");
+                    }
+                }
+                else
+                {
+                    sender  = "";
+                    flag = "0";
+                    alert("You must chose a option between ifttt e.mail or yours");
+                }
 
+
+
+
+
+
+                //alert(flag + " " + body + " " + subject + " " + receiver + " " + $scope.gmailActionvar.sender);
 
                 if(flag == "1")
                 {
@@ -1007,7 +1034,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
                     receiver_GmailActionController = receiver;
                     subject_GmailActionController = subject;
-                    sender_GmailActionController= $scope.gmailActionvar.sender;
+                   sender_GmailActionController= sender;
                     body_GmailActionController = body;
 
 
@@ -2287,7 +2314,7 @@ function sendingToServerAll ()
                 "triggerType": "gmail",
 
                 //Tn 1
-                "person": sender_GmailTriggerController,
+                "sender": sender_GmailTriggerController,
                 "subject": subject_GmailTriggerController,
             },
             "action": {
@@ -2311,7 +2338,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 1
-            "person": sender_GmailTriggerController,
+            "sender": sender_GmailTriggerController,
             "subject": subject_GmailTriggerController,
 
             //An 2
@@ -2331,7 +2358,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 1
-            "person": sender_GmailTriggerController,
+            "sender": sender_GmailTriggerController,
             "subject": subject_GmailTriggerController,
 
             //An 3
@@ -2347,7 +2374,7 @@ function sendingToServerAll ()
         var loginDataSend =
         {
             //Tn 1
-            "person": sender_GmailTriggerController,
+            "sender": sender_GmailTriggerController,
             "subject": subject_GmailTriggerController,
 
             //An 4
@@ -2370,8 +2397,10 @@ function sendingToServerAll ()
             "place" : place_Trigger1GcalendarController,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
 
@@ -2444,8 +2473,10 @@ function sendingToServerAll ()
             "place" : place_Trigger2GcalendarController,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
 
@@ -2519,9 +2550,10 @@ function sendingToServerAll ()
             "hashtag_text" : hashtag_text_trigger1TwitterController,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
-
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
         };
@@ -2590,8 +2622,10 @@ function sendingToServerAll ()
             "hashtag_text" : hashtag_text_trigger2TwitterController,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
 
@@ -2660,9 +2694,10 @@ function sendingToServerAll ()
             "ora" : ora_customWeatherActionControllerTrigger1,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
-
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -2731,8 +2766,10 @@ function sendingToServerAll ()
             "pzone"   : pzone_customWeatherActionControllerTrigger2,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
 
@@ -2809,8 +2846,10 @@ function sendingToServerAll ()
             "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
         };
@@ -2886,8 +2925,10 @@ function sendingToServerAll ()
             "period" :  period_customWeatherActionControllerTrigger4,
 
             //An 1
-            "sender" : sender_GmailActionController,
-            "subject" : subject_GmailActionController
+            "sender": sender_GmailActionController,
+            "subject": subject_GmailActionController,
+            "receiver": receiver_GmailActionController,
+            "body": body_GmailActionController
 
 
         };
