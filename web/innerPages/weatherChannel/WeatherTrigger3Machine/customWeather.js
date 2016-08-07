@@ -293,7 +293,7 @@ $(function(){
 
                 //timezone
                 if ($('#checktimeZonevar').is(":checked")) {
-                    timezone_customWeatherActionControllerTrigger3 = timezone;
+                    timezone_customWeatherActionControllerTrigger3 = $('#timezoneid').val();
                     timezoneCheck();
                 }
                 else {
