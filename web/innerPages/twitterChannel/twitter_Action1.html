@@ -5,28 +5,24 @@
     <title>Title</title>
 </head>
 <body>
-<div>
-    <br>
-    <br>
 
+            <div class="row" style="padding-top: 6%">
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
                 <div class="col-md-4">
                 </div>
+
                 <div class="col-md-4">
-                    <p><h1>Choose your action</h1></p>
+                    <p><h1><img src="../../images/twitterChannel/new-tweet.png" style="width:42px;height:42px;border:0;"/> Post a new tweet</h1></p>
+                    <hr>
                     <form id="gmail-form" role="form" name="form" ng-controller="action1TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active  this action (to post a text):
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
 
-                                >
+                                > Tweet content:
                             </label><br/>
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
@@ -47,10 +43,13 @@
                                 class="btn btn-primary pull-right btn_next6" ng-click="twitterAction1func()" >Next</a>
 
 
+                            <br>
+                            <br>
+                            <hr>
 
                         </div>
                         <label style="color: #cd0a0a" ng-if="!checkedSubject" class="animate-if" >
-                            You have to ability Title in order to continue
+                            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Make at least one choice to use this trigger
                         </label>
 
                         <!--
@@ -62,13 +61,12 @@
 
                     </form>
                 </div>
+
                 <div class="col-md-4">
                 </div>
-            </div>
-        </div>
-    </div>
 
-</div>
+            </div>
+
 </body>
 
 <script>
