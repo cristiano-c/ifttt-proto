@@ -225,6 +225,10 @@
   </div>
   <!-- MODAL FORM TWITTER -- END -->
 
+  <form action="/MyServlet" method="get">
+    <button type="submit">goGet</button>
+  </form>
+
   <!-- extra space bottom page -->
   <div style="padding-bottom: 6%">
     <br>

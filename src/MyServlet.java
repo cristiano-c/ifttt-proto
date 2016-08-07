@@ -13,6 +13,7 @@ import java.util.Enumeration;
 @WebServlet(name = "MyServlet")
 public class MyServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         //System.out.println("(MyServlet): received a POST");
         System.out.println("servlet: ho ricevuto una post ->" + request.getParameterNames());
 
@@ -32,10 +33,17 @@ public class MyServlet extends HttpServlet {
         out.print(jsonObject);
         out.flush();
 
+
+
     }
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("(MyServlet): received a GET");
+        String aRecipe = "{'weather':'twitter','action':'twitter'}";
+        String recipesList = "[{'trigger':'weather','action':'twitter'},{'trigger':'gmail','action':'twitter'},{'trigger':'weather','action':'gmail'},{'trigger':'gcalendar','action':'gmail'},]";
+        response.setContentType("application/json");
+        PrintWriter out = response.getWriter();
+        out.print(recipesList);
+        out.flush();
     }
 }
