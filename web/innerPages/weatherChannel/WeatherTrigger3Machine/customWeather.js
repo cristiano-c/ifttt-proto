@@ -302,7 +302,7 @@ $(function(){
 
                 if (flagTimezoneCheck == 1) {
                     flagTriggerDone = "1";
-
+                    idCity_customWeatherActionControllerTrigger3  = idCity;
                     modulinoj1 =
                     {
                         "triggerType": "weather",
