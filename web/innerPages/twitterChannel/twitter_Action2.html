@@ -20,22 +20,24 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="action2TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
+                            <label>E.mail:</label> <br>
+                            <!--
                             <label>Click me in order to active this action (to send a message to a person):
                                 <input
                                         type="checkbox"
                                         ng-model="checkedtitle"
 
                                 >
-                            </label><br/>
-                            <div  ng-if="checkedtitle" class="animate-if">
-                            <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
+                            </label><br/> ng-if="checkedtitle" class="animate-if"
+                           -->
+                            <div>
+                            <input type="title"   class="form-control" id="title" placeholder="inser the e.mail"
                                    ng-model="action2TwitterInput.title"
                                    required="" name="utitle"
-                                   maxlength="100"
+                                   maxlength="256"
                                    ng-trim="false"
                             >
-                            <span>{{100 - action2TwitterInput.title.length}} left </span>
+                            <span>{{256 - action2TwitterInput.title.length}} left </span>
                                 </div>
                         </div>
 
@@ -63,12 +65,15 @@
 
                         <div>
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
-                            <a  ng-disabled="!checkedtitle && !checkedSubject" type="submit"
+                            <a   type="submit"
                                 class="btn btn-primary pull-right btn_next6"  ng-click="action2Twitterfunc()" >Next</a>
                         </div>
+                        <!--
+                        ng-disabled="!checkedtitle && !checkedSubject"
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject" class="animate-if" >
                             You have to ability Title or/and Subject in order to continue
                         </label>
+                        -->
 
 
 

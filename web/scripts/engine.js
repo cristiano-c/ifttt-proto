@@ -2295,13 +2295,14 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
             var subject;
 
 
-            if (($scope.checkedtitle == true || $scope.checkedSubject == true) && twitterLogin == "1")
+            if (twitterLogin == "1")
             {
 
                 if ($scope.checkedtitle == true) {
                     if (angular.isDefined($scope.trigger2TwitterInput)) {
                         if (angular.isDefined($scope.trigger2TwitterInput.title)) {
                             title = $scope.trigger2TwitterInput.title;
+                            flag=1
                         }
                         else {
                             title = "";
@@ -2345,8 +2346,8 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                 {
                     "triggerType" : "twitter",
                     "type"      :  "1",
-                    "hashtag_text"  : hashtag_text_trigger1TwitterController,
-                    "username_sender" : hashtag_text_trigger1TwitterController
+                    "hashtag_text"  : hashtag_text_trigger2TwitterController,
+                    "username_sender" : hashtag_text_trigger2TwitterController
                 };
 
                 url = "#createRecipeAction";
@@ -2482,36 +2483,47 @@ iftttApp.controller('action2TwitterController', ['$scope',
         {
 
             actionChose = 4;
-            var title;
+            var destination;
             var subject;
+            var flag = 0;
 
-            if(($scope.checkedtitle == true ||  $scope.checkedSubject== true)  && twitterLogin == "1")
+           // if(($scope.checkedtitle == true ||  $scope.checkedSubject== true)  && twitterLogin == "1")
+            if(twitterLogin == "1")
             {
 
 
-                    if ($scope.checkedtitle == true) {
-                        if (angular.isDefined($scope.action2TwitterInput)) {
-                            if (angular.isDefined($scope.action2TwitterInput.subjectReceive)) {
-                                title = $scope.action2TwitterInput.title;
+
+                   // if ($scope.checkedtitle == true)
+              //  {
+                        if (angular.isDefined($scope.action2TwitterInput))
+                        {
+                            if (angular.isDefined($scope.action2TwitterInput.title))
+                            {
+                                destination = $scope.action2TwitterInput.title;
+                                flag = 1;
                             }
                             else {
-                                title = "";
+                                destination = "";
                             }
                         }
                         else {
-                            title = "";
+                            destination = "";
                         }
 
-                    }
+               // }
+                /*
                     else {
                         title = "null";
                     }
+                    */
+
 
 
                     if ($scope.checkedSubject == true) {
                         if (angular.isDefined($scope.action2TwitterInput)) {
-                            if (angular.isDefined($scope.action2TwitterInput.subjectReceive)) {
-                                subject = $scope.action2TwitterInput.subjectReceive;
+                            if (angular.isDefined($scope.action2TwitterInput.subjectReceive))
+                            {
+                                subject =  $scope.action2TwitterInput.subjectReceive;
                             }
                             else {
                                 subject = "";
@@ -2527,23 +2539,29 @@ iftttApp.controller('action2TwitterController', ['$scope',
                     }
 
 
-                title_action2TwitterController = title;
+                title_action2TwitterController = destination;
                 subjec_action2TwitterController = subject;
 
                 modulinoj2 =
                 {
                     "triggerType" : "twitter",
                     "type"      :  "1",
-                    "title"   :  title_action2TwitterController,
-                    "subject" :  subject_action1TwitterController
-
+                    "destination"   :  title_action2TwitterController,
+                    "subject" :  subjec_action2TwitterController
+                    
                 };
-                sendingToServerAll();
-                flagTriggerDone = "0";
-                count=7;
-                // href="#SuccessTwitter"
-                url = "#SuccessTwitter";
-                window.location.replace(url);
+                if(flag == 1) {
+                    sendingToServerAll();
+                    flagTriggerDone = "0";
+                    count = 7;
+                    // href="#SuccessTwitter"
+                    url = "#SuccessTwitter";
+                    window.location.replace(url);
+                }
+                else
+                {
+                    alert ("You must insert the destination e.mail");
+                }
 
 
             }
