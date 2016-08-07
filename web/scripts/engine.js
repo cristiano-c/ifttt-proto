@@ -16,12 +16,12 @@ var subject_GmailActionController = "";
 var receiver_GmailActionController = "";
 var body_GmailActionController = "";
 
-/* Trigger1GcalendarController Tn 2 */
+/* Trigger1GcalendarController Tn 2  S0 */
 var title_Trigger1GcalendarController = "";
 var description_Trigger1GcalendarController = "";
 var place_Trigger1GcalendarController = "";
 
-/*Trigger2GcalendarController Tn 3 */
+/*Trigger2GcalendarController Tn 3  S0*/
 var title_Trigger2GcalendarController = "";
 var description_Trigger2GcalendarController = "";
 var place_Trigger2GcalendarController = "";
@@ -2391,16 +2391,26 @@ function sendingToServerAll ()
     {
         var loginDataSend =
         {
-            //Tn 2
-           "title" : title_Trigger1GcalendarController,
-            "description" : description_Trigger1GcalendarController,
-            "place" : place_Trigger1GcalendarController,
+            "trigger" :
+            {
+                "triggerType": "calendar",
+                "eventAction": "0",
 
-            //An 1
-            "sender": sender_GmailActionController,
-            "subject": subject_GmailActionController,
-            "receiver": receiver_GmailActionController,
-            "body": body_GmailActionController
+                //Tn 2 S0
+                "title": title_Trigger1GcalendarController,
+                "description": description_Trigger1GcalendarController,
+                "place": place_Trigger1GcalendarController,
+            },
+            "action":
+            {
+
+                    "actionType": "gmail",
+                    //An 1
+                    "sender": sender_GmailActionController,
+                    "subject": subject_GmailActionController,
+                    "receiver": receiver_GmailActionController,
+                    "body": body_GmailActionController,
+            },
 
 
 
@@ -2465,18 +2475,29 @@ function sendingToServerAll ()
     }
     if(triggerChose==3 && actionChose == 1)
     {
-        var loginDataSend =
-        {
-            //Tn 3
-            "title" : title_Trigger2GcalendarController,
-            "description" : description_Trigger2GcalendarController,
-            "place" : place_Trigger2GcalendarController,
 
-            //An 1
-            "sender": sender_GmailActionController,
-            "subject": subject_GmailActionController,
-            "receiver": receiver_GmailActionController,
-            "body": body_GmailActionController
+
+            var loginDataSend =
+        {
+            "trigger" :
+            {
+                "triggerType": "calendar",
+                "eventAction": "1",
+                //Tn 3
+                "title": title_Trigger2GcalendarController,
+                "description": description_Trigger2GcalendarController,
+                "place": place_Trigger2GcalendarController,
+            },
+            "action":
+            {
+                "actionType": "gmail",
+
+                //An 1
+                "sender": sender_GmailActionController,
+                "subject": subject_GmailActionController,
+                "receiver": receiver_GmailActionController,
+                "body": body_GmailActionController
+            }
 
 
 
@@ -2549,6 +2570,7 @@ function sendingToServerAll ()
             "username" : username_sender_trigger1TwitterController,
             "hashtag_text" : hashtag_text_trigger1TwitterController,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
@@ -2621,6 +2643,7 @@ function sendingToServerAll ()
             "username_sender" : username_sender_trigger2TwitterController,
             "hashtag_text" : hashtag_text_trigger2TwitterController,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
@@ -2693,6 +2716,7 @@ function sendingToServerAll ()
             "timezone" : timezone_customWeatherActionControllerTrigger1,
             "ora" : ora_customWeatherActionControllerTrigger1,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
@@ -2765,6 +2789,7 @@ function sendingToServerAll ()
             "pperiod" : pperiod_customWeatherActionControllerTrigger2,
             "pzone"   : pzone_customWeatherActionControllerTrigger2,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
@@ -2845,6 +2870,7 @@ function sendingToServerAll ()
             "sunset" : sunset_customWeatherActionControllerTrigger3,
             "sunrise" :  sunrise_customWeatherActionControllerTrigger3,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
@@ -2924,6 +2950,7 @@ function sendingToServerAll ()
             "pthmin" :   pthmin_customWeatherActionControllerTrigger4,
             "period" :  period_customWeatherActionControllerTrigger4,
 
+            "actionType": "gmail",
             //An 1
             "sender": sender_GmailActionController,
             "subject": subject_GmailActionController,
