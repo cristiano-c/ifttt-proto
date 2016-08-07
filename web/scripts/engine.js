@@ -35,6 +35,7 @@ var monthVector_action1GcalendarController = "";
 var dayVector_action1GcalendarController = "";
 var durationHour_action1GcalendarController = "";
 var durationMinute_action1GcalendarController = "";
+var timeZone_action1GcalendarController = "";
 
 
 /* action1TwitterController An 3 */
@@ -1732,8 +1733,8 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 {
                     if (angular.isDefined($scope.gcalendarinput))
                     {
-                        durationHour = $('#selectHour').val();
-                        durationMinute = $('#selecMinute').val();
+                        durationHour = $('#selectHourDuration').val();
+                        durationMinute = $('#selectMinuteDuration').val();
 
                     }
 
@@ -1764,6 +1765,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 dayVector_action1GcalendarController = yearVector;
                 durationHour_action1GcalendarController = durationHour;
                 durationMinute_action1GcalendarController = durationMinute;
+                timeZone_action1GcalendarController =  timeZone;
 
 
 
@@ -2562,14 +2564,17 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
 
-        };
+    };
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==1 && actionChose == 3)
@@ -2648,11 +2653,14 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
         };
         //console.log("ss");
         sedingServerAllRun(loginDataSend);
@@ -2811,12 +2819,14 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
-
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
 
         };
@@ -2884,12 +2894,14 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
-
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
 
         };
@@ -2937,11 +2949,15 @@ function sendingToServerAll ()
 
             "actionType": "gmail",
             //An 1
-            "sender": sender_GmailActionController,
-            "subject": subject_GmailActionController,
-            "receiver": receiver_GmailActionController,
-            "body": body_GmailActionController
-
+            "title" : title_action1GcalendarController,
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
         };
         sedingServerAllRun(loginDataSend);
     }
@@ -2956,14 +2972,19 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
 
-        };
+
+
+    };
         sedingServerAllRun(loginDataSend);
     }
     if(triggerChose==6 && actionChose == 3)
@@ -3032,12 +3053,14 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
-
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
 
         };
@@ -3112,12 +3135,14 @@ function sendingToServerAll ()
 
             //An 2
             "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
-
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
 
         };
         sedingServerAllRun(loginDataSend);
@@ -3192,14 +3217,15 @@ function sendingToServerAll ()
             "period" :  period_customWeatherActionControllerTrigger4,
 
             //An 2
-           "title" : title_action1GcalendarController,
-            "subjectReceive" : subjectReceive_action1GcalendarController,
-            "place" : place_action1GcalendarController,
-            "dayVector" : yearVector_action1GcalendarController,
-            "monthVector" : monthVector_action1GcalendarController,
-            "yearVector" : dayVector_action1GcalendarController
-
-
+            "title" : title_action1GcalendarController,
+            "description" : subjectReceive_action1GcalendarController,
+            "location" : place_action1GcalendarController,
+            "timezone" : timeZone_action1GcalendarController,
+            "startdateYear": yearVector_action1GcalendarController,
+            "startdateMonth" : monthVector_action1GcalendarController,
+            "startdateDay" : dayVector_action1GcalendarController,
+            "durationHour" : durationHour_action1GcalendarController,
+            "duratoinMinute" :    durationMinute_action1GcalendarController
     };
         sedingServerAllRun(loginDataSend);
     }

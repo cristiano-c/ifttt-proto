@@ -148,14 +148,14 @@
                         <br>
                         <div  ng-if="durationEventCheck" class="animate-if">
 
-                            <label for="selectYear">Hour:</label>
-                            <select name="mySelect" id="selectHour"
+                            <label for="selectHourDuration">Hour:</label>
+                            <select name="mySelect" id="selectHourDuration"
                                     ng-disabled="!durationEventCheck"
                                     ng-options="option.hour  for option in hourVector.availableOptions track by option.id"
                                     ng-model="hourVector.selectedOption"></select>
 
-                            <label for="selectMonth">Minute:</label>
-                            <select name="mySelect" id="selecMinute"
+                            <label for="selectMinuteDuration">Minute:</label>
+                            <select name="mySelect" id="selectMinuteDuration"
                                     ng-disabled="!durationEventCheck"
                                     ng-options="option.minute  for option in minuteVector.availableOptions track by option.id"
                                     ng-model="minuteVector.selectedOption"></select>
@@ -173,7 +173,7 @@
                                 name="durationEventName"
 
                         >
-                        <b>Time zone:</b>
+                        <b>Time zone: </b>
 
                         <!--
                         <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
@@ -182,11 +182,11 @@
                         <br>
                         <div  ng-if="timeZoneCheck" class="animate-if">
 
-                            <label for="selectYear">Time zone:</label>
+                            <label for="selecttimezone">Time zone:</label>
                             <select name="mySelect" id="selecttimezone"
                                     ng-disabled="!timeZoneCheck"
                                     ng-options="option.zone  for option in timezoneVector.availableOptions track by option.id"
-                                    ng-model="hourVector.selectedOption"></select>
+                                    ng-model="timezoneVector.selectedOption"></select>
 
                         </div>
 
@@ -205,17 +205,20 @@
 
 
                         <div>
+                            <!-- ng-disabled="!checkedtitle && !checkedSubject && !checkdata && !checkedplace" -->
                             <a  type="submit" class="btn btn-danger pull-left" href="#allActions" >Cancel</a>
-                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkdata && !checkedplace" type="submit"
+                            <a    type="submit"
                                 class="btn btn-primary pull-right btn_next6"
                                  ng-click="actiongcalendar(gcalendarinput,  yearVector, monthVector, dayVector)" >Summit</a>
                         </div>
                         <br>
                         <br>
                         <hr>
+                        <!--
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata && !checkedplace" class="animate-if" >
                             <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Make at least one choice to use this trigger
                         </label>
+                        -->
 
                         <!--
                         href="#actionGcalendar"
