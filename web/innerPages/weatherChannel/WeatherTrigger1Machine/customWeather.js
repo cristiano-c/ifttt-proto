@@ -337,8 +337,17 @@ $(function()
                     {
                         alert("The time is not right");
                     }
-                    else
-                        alert("The timezone input is not right");
+                    else {
+                        //alert("The timezone input is not right");
+                        $("#notificationsWrapper").notify(
+                            "The timezone input is not right",
+                            {
+                                className: 'warning',
+                                position: 'bottom center'
+                            }
+                        );
+                        //window.location.replace('#');
+                    }
                 }
 
             }
