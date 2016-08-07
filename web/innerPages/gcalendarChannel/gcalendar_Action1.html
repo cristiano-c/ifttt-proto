@@ -9,25 +9,24 @@
 
 
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
+            <div class="row" style="padding-top: 6%">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
-                    <p><h1>Choose your action</h1></p>
+                    <p><h1><img src="../../images/gcalendarChannel/new-event.png" style="width:42px;height:42px;border:0;"/> Create new GCalendar event</h1></p>
+                    <hr>
                     <form id="gmail-form" role="form" name="form" ng-controller="action1GcalendarController" novalidate>
 
                         <div class="form-group">
-                            <label>Title:</label> <br>
-                            <label>Click me in order to active this action:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedtitle"
                                         id="idcheckedtitle"
 
-                                >
-                            </label><br/>
+                                > Event name:</label>
+
+                            <br/>
                             <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
                                    ng-model="gcalendarinput.title"
@@ -42,15 +41,14 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active the description action:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
                                         id="idcheckedSubject"
 
-                                >
-                            </label><br/>
+                                > Event description:</label>
+                            <br>
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
                                       ng-model="gcalendarinput.subjectReceive"  name="subjectReceive"  ng-disabled="!checkedSubject"
@@ -63,15 +61,14 @@
 
                         <!-- place -->
                         <div class="form-group">
-                            <label>place:</label> <br>
-                            <label>Click me in order to active this action:
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedplace"
                                         id="idcheckedplace"
 
-                                >
-                            </label><br/>
+                                > Event location:</label>
+                            <br>
                             <div  ng-if="checkedplace" class="animate-if">
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
                                    ng-model="gcalendarinput.place"
@@ -90,14 +87,15 @@
 
 
 
-                            <b> </b>  Start date:
+
+                        <label>
                             <input
                                     id="weatheridcheckbox"
                                     type="checkbox"
                                     ng-model="checkdata"
                                     name="checkdataname"
 
-                            >
+                            > <b> Event date:</b></label>
 
                             <!--
                             <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
@@ -130,17 +128,18 @@
                             <!---       ---------------------------------------------------------------------     -->
 
 
+                        <br>
 
 
 
-                        <b> </b>  Duration event:
+                        <label>
                         <input
                                 id="durationEvent"
                                 type="checkbox"
                                 ng-model="durationEventCheck"
                                 name="durationEventName"
 
-                        >
+                        > <b>Event duration:</b></label>
 
                         <!--
                         <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
@@ -166,8 +165,7 @@
 
 
 
-
-
+                        <hr>
 
 
 
@@ -178,8 +176,11 @@
                                 class="btn btn-primary pull-right btn_next6"
                                  ng-click="actiongcalendar(gcalendarinput,  yearVector, monthVector, dayVector)" >Summit</a>
                         </div>
+                        <br>
+                        <br>
+                        <hr>
                         <label style="color: #cd0a0a" ng-if="!checkedtitle && !checkedSubject && !checkdata && !checkedplace" class="animate-if" >
-                            You have to ability Title or/and Subject or/and Place or/and Data in order to continue
+                            <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span> Make at least one choice to use this trigger
                         </label>
 
                         <!--
@@ -194,8 +195,6 @@
                 <div class="col-md-4">
                 </div>
             </div>
-        </div>
-    </div>
 
 </div>
 
