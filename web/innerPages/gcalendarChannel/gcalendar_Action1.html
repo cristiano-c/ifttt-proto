@@ -164,6 +164,40 @@
 
 
 
+                    <!--- time zone  -->
+                        <label></label>
+                        <input
+                                id="timeZone"
+                                type="checkbox"
+                                ng-model="timeZoneCheck"
+                                name="durationEventName"
+
+                        >
+                        <b>Time zone:</b>
+
+                        <!--
+                        <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
+                               required>
+                               -->
+                        <br>
+                        <div  ng-if="timeZoneCheck" class="animate-if">
+
+                            <label for="selectYear">Time zone:</label>
+                            <select name="mySelect" id="selecttimezone"
+                                    ng-disabled="!timeZoneCheck"
+                                    ng-options="option.zone  for option in timezoneVector.availableOptions track by option.id"
+                                    ng-model="hourVector.selectedOption"></select>
+
+                        </div>
+
+
+
+
+
+
+
+
+
 
                         <hr>
 

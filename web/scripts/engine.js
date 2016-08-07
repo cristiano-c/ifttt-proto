@@ -33,6 +33,8 @@ var place_action1GcalendarController = "";
 var  yearVector_action1GcalendarController = "";
 var monthVector_action1GcalendarController = "";
 var dayVector_action1GcalendarController = "";
+var durationHour_action1GcalendarController = "";
+var durationMinute_action1GcalendarController = "";
 
 
 /* action1TwitterController An 3 */
@@ -1592,8 +1594,13 @@ iftttApp.controller('action1GcalendarController', ['$scope',
             var monthVector = "";
             var dayVector = "";
             var flag = "1";
+            var timeZone = "";
+            var durationHour = "";
+            var durationMinute = "";
 
             actionChose =  2;
+
+            /*
 
             if($scope.googleLogged == true){
                 alert("E' TRUE!!!!");
@@ -1606,11 +1613,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
             } else {
                 alert("E' TRUE!!!!");
             }
+            */
 
-            if (($scope.checkedtitle == true ||
-                $scope.checkedSubject == true ||
-                $scope.checkedplace == true    ||
-                $scope.checkdata == true) && $scope.googleLogged == true)
+            if($scope.googleLogged == true)
             {
 
 
@@ -1683,7 +1688,6 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                         else
                         {
-                            place = "null";
                             dayVector = "null";
                             yearVector = "null";
                             monthVector = "null";
@@ -1694,13 +1698,62 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    place = "null";
                     dayVector = "null";
                     yearVector = "null";
                     monthVector = "null";
                     flag=0;
                 }
 
+
+                //Time zone
+                if ($scope.timeZoneCheck == true)
+                {
+                    if (angular.isDefined($scope.gcalendarinput))
+                    {
+                        timeZone = $('#selecttimezone').val();
+
+                    }
+
+                    else
+                    {
+                        timeZone = "null";
+                    }
+
+
+
+                }
+                else {
+                    timeZone = "null";
+                }
+
+
+
+                if ($scope.durationEventCheck == true)
+                {
+                    if (angular.isDefined($scope.gcalendarinput))
+                    {
+                        durationHour = $('#selectHour').val();
+                        durationMinute = $('#selecMinute').val();
+
+                    }
+
+                    else
+                    {
+                        durationHour = "NULL";
+                        durationMinute = "NULL";
+
+                    }
+
+
+
+                }
+                else {
+                    durationHour = "NULL";
+                    durationMinute = "NULL";
+                }
+
+
+                //Duration
 
 
                 title_action1GcalendarController = title;
@@ -1709,6 +1762,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 yearVector_action1GcalendarController = dayVector;
                 monthVector_action1GcalendarController = monthVector;
                 dayVector_action1GcalendarController = yearVector;
+                durationHour_action1GcalendarController = durationHour;
+                durationMinute_action1GcalendarController = durationMinute;
+
 
 
 
@@ -1867,39 +1923,39 @@ iftttApp.controller('action1GcalendarController', ['$scope',
         {
             availableOptions:
                 [
-                    {id: '1', day: '1°'},
-                    {id: '2', day: '2°'},
-                    {id: '3', day: '3°'},
-                    {id: '4', day: '4°'},
-                    {id: '5', day: '5°'},
-                    {id: '6', day: '6°'},
-                    {id: '7', day: '7°'},
-                    {id: '8', day: '8°'},
-                    {id: '9', day: '9°'},
-                    {id: '10', day: '10°'},
-                    {id: '11', day: '11°'},
-                    {id: '12', day: '12°'},
-                    {id: '13', day: '13°'},
-                    {id: '14', day: '14°'},
-                    {id: '15', day: '15°'},
-                    {id: '16', day: '16°'},
-                    {id: '17', day: '17°'},
-                    {id: '18', day: '18°'},
-                    {id: '19', day: '19°'},
-                    {id: '20', day: '20°'},
-                    {id: '21', day: '21°'},
-                    {id: '22', day: '22°'},
-                    {id: '23', day: '23°'},
-                    {id: '24', day: '24°'},
-                    {id: '25', day: '25°'},
-                    {id: '26', day: '26°'},
-                    {id: '27', day: '27°'},
-                    {id: '28', day: '28°'},
-                    {id: '29', day: '29°'},
-                    {id: '30', day: '30°'},
-                    {id: '31', day: '31°'}
+                    {id: '1', day: '1'},
+                    {id: '2', day: '2'},
+                    {id: '3', day: '3'},
+                    {id: '4', day: '4'},
+                    {id: '5', day: '5'},
+                    {id: '6', day: '6'},
+                    {id: '7', day: '7'},
+                    {id: '8', day: '8'},
+                    {id: '9', day: '9'},
+                    {id: '10', day: '10'},
+                    {id: '11', day: '11'},
+                    {id: '12', day: '12'},
+                    {id: '13', day: '13'},
+                    {id: '14', day: '14'},
+                    {id: '15', day: '15'},
+                    {id: '16', day: '16'},
+                    {id: '17', day: '17'},
+                    {id: '18', day: '18'},
+                    {id: '19', day: '19'},
+                    {id: '20', day: '20'},
+                    {id: '21', day: '21'},
+                    {id: '22', day: '22'},
+                    {id: '23', day: '23'},
+                    {id: '24', day: '24'},
+                    {id: '25', day: '25'},
+                    {id: '26', day: '26'},
+                    {id: '27', day: '27'},
+                    {id: '28', day: '28'},
+                    {id: '29', day: '29'},
+                    {id: '30', day: '30'},
+                    {id: '31', day: '31'}
                 ],
-            selectedOption: {id: '1', day: '1°'}
+            selectedOption: {id: '1', day: '1'}
 
         };
 
@@ -1910,39 +1966,39 @@ iftttApp.controller('action1GcalendarController', ['$scope',
         {
             availableOptions:
                 [
-                    {id: '1', hour: '1°'},
-                    {id: '2', hour: '2°'},
-                    {id: '3', hour: '3°'},
-                    {id: '4', hour: '4°'},
-                    {id: '5', hour: '5°'},
-                    {id: '6', hour: '6°'},
-                    {id: '7', hour: '7°'},
-                    {id: '8', hour: '8°'},
-                    {id: '9', hour: '9°'},
-                    {id: '10', hour: '10°'},
-                    {id: '11', hour: '11°'},
-                    {id: '12', hour: '12°'},
-                    {id: '13', hour: '13°'},
-                    {id: '14', hour: '14°'},
-                    {id: '15', hour: '15°'},
-                    {id: '16', hour: '16°'},
-                    {id: '17', hour: '17°'},
-                    {id: '18', hour: '18°'},
-                    {id: '19', hour: '19°'},
-                    {id: '20', hour: '20°'},
-                    {id: '21', hour: '21°'},
-                    {id: '22', hour: '22°'},
-                    {id: '23', hour: '23°'},
-                    {id: '24', hour: '24°'},
-                    {id: '25', hour: '25°'},
-                    {id: '26', hour: '26°'},
-                    {id: '27', hour: '27°'},
-                    {id: '28', hour: '28°'},
-                    {id: '29', hour: '29°'},
-                    {id: '30', hour: '30°'},
-                    {id: '31', hour: '31°'}
+                    {id: '1', hour: '1'},
+                    {id: '2', hour: '2'},
+                    {id: '3', hour: '3'},
+                    {id: '4', hour: '4'},
+                    {id: '5', hour: '5'},
+                    {id: '6', hour: '6'},
+                    {id: '7', hour: '7'},
+                    {id: '8', hour: '8'},
+                    {id: '9', hour: '9'},
+                    {id: '10', hour: '10'},
+                    {id: '11', hour: '11'},
+                    {id: '12', hour: '12'},
+                    {id: '13', hour: '13'},
+                    {id: '14', hour: '14'},
+                    {id: '15', hour: '15'},
+                    {id: '16', hour: '16'},
+                    {id: '17', hour: '17'},
+                    {id: '18', hour: '18'},
+                    {id: '19', hour: '19'},
+                    {id: '20', hour: '20'},
+                    {id: '21', hour: '21'},
+                    {id: '22', hour: '22'},
+                    {id: '23', hour: '23'},
+                    {id: '24', hour: '24'},
+                    {id: '25', hour: '25'},
+                    {id: '26', hour: '26'},
+                    {id: '27', hour: '27'},
+                    {id: '28', hour: '28'},
+                    {id: '29', hour: '29'},
+                    {id: '30', hour: '30'},
+                    {id: '31', hour: '31'}
                 ],
-            selectedOption: {id: '1', hour: '1°'}
+            selectedOption: {id: '1', hour: '1'}
 
         };
 
@@ -1951,70 +2007,104 @@ iftttApp.controller('action1GcalendarController', ['$scope',
         {
             availableOptions:
                 [
-                    {id: '1', minute: '1°'},
-                    {id: '2', minute: '2°'},
-                    {id: '3', minute: '3°'},
-                    {id: '4', minute: '4°'},
-                    {id: '5', minute: '5°'},
-                    {id: '6', minute: '6°'},
-                    {id: '7', minute: '7°'},
-                    {id: '8', minute: '8°'},
-                    {id: '9', minute: '9°'},
-                    {id: '10', minute: '10°'},
-                    {id: '11', minute: '11°'},
-                    {id: '12', minute: '12°'},
-                    {id: '13', minute: '13°'},
-                    {id: '14', minute: '14°'},
-                    {id: '15', minute: '15°'},
-                    {id: '16', minute: '16°'},
-                    {id: '17', minute: '17°'},
-                    {id: '18', minute: '18°'},
-                    {id: '19', minute: '19°'},
-                    {id: '20', minute: '20°'},
-                    {id: '21', minute: '21°'},
-                    {id: '22', minute: '22°'},
-                    {id: '23', minute: '23°'},
-                    {id: '24', minute: '24°'},
-                    {id: '25', minute: '25°'},
-                    {id: '26', minute: '26°'},
-                    {id: '27', minute: '27°'},
-                    {id: '28', minute: '28°'},
-                    {id: '29', minute: '29°'},
-                    {id: '30', minute: '30°'},
-                    {id: '31', minute: '31°'},
-                    {id: '32', minute: '32°'},
-                    {id: '33', minute: '3°'},
-                    {id: '34', minute: '4°'},
-                    {id: '35', minute: '5°'},
-                    {id: '36', minute: '6°'},
-                    {id: '37', minute: '7°'},
-                    {id: '38', minute: '8°'},
-                    {id: '39', minute: '9°'},
-                    {id: '40', minute: '10°'},
-                    {id: '41', minute: '11°'},
-                    {id: '42', minute: '12°'},
-                    {id: '43', minute: '13°'},
-                    {id: '44', minute: '14°'},
-                    {id: '45', minute: '15°'},
-                    {id: '46', minute: '16°'},
-                    {id: '47', minute: '17°'},
-                    {id: '48', minute: '18°'},
-                    {id: '49', minute: '19°'},
-                    {id: '50', minute: '20°'},
-                    {id: '51', minute: '21°'},
-                    {id: '52', minute: '22°'},
-                    {id: '53', minute: '23°'},
-                    {id: '54', minute: '24°'},
-                    {id: '55', minute: '25°'},
-                    {id: '56', minute: '26°'},
-                    {id: '57', minute: '27°'},
-                    {id: '58', minute: '28°'},
-                    {id: '59', minute: '29°'}
+                    {id: '1', minute: '1'},
+                    {id: '2', minute: '2'},
+                    {id: '3', minute: '3'},
+                    {id: '4', minute: '4'},
+                    {id: '5', minute: '5'},
+                    {id: '6', minute: '6'},
+                    {id: '7', minute: '7'},
+                    {id: '8', minute: '8'},
+                    {id: '9', minute: '9'},
+                    {id: '10', minute: '10'},
+                    {id: '11', minute: '11'},
+                    {id: '12', minute: '12'},
+                    {id: '13', minute: '13'},
+                    {id: '14', minute: '14'},
+                    {id: '15', minute: '15'},
+                    {id: '16', minute: '16'},
+                    {id: '17', minute: '17'},
+                    {id: '18', minute: '18'},
+                    {id: '19', minute: '19'},
+                    {id: '20', minute: '20'},
+                    {id: '21', minute: '21'},
+                    {id: '22', minute: '22'},
+                    {id: '23', minute: '23'},
+                    {id: '24', minute: '24'},
+                    {id: '25', minute: '25'},
+                    {id: '26', minute: '26'},
+                    {id: '27', minute: '27'},
+                    {id: '28', minute: '28'},
+                    {id: '29', minute: '29'},
+                    {id: '30', minute: '30'},
+                    {id: '31', minute: '31'},
+                    {id: '32', minute: '32'},
+                    {id: '33', minute: '33'},
+                    {id: '34', minute: '34'},
+                    {id: '35', minute: '35'},
+                    {id: '36', minute: '36'},
+                    {id: '37', minute: '37'},
+                    {id: '38', minute: '38'},
+                    {id: '39', minute: '39'},
+                    {id: '40', minute: '40'},
+                    {id: '41', minute: '41'},
+                    {id: '42', minute: '42'},
+                    {id: '43', minute: '43'},
+                    {id: '44', minute: '44'},
+                    {id: '45', minute: '45'},
+                    {id: '46', minute: '46'},
+                    {id: '47', minute: '47'},
+                    {id: '48', minute: '48'},
+                    {id: '49', minute: '49'},
+                    {id: '50', minute: '50'},
+                    {id: '51', minute: '51'},
+                    {id: '52', minute: '52'},
+                    {id: '53', minute: '53'},
+                    {id: '54', minute: '54'},
+                    {id: '55', minute: '55'},
+                    {id: '56', minute: '56'},
+                    {id: '57', minute: '57'},
+                    {id: '58', minute: '58'},
+                    {id: '59', minute: '59'}
                 ],
-            selectedOption: {id: '1', minute: '1°'}
+            selectedOption: {id: '1', minute: '1'}
 
         };
 
+
+        $scope.timezoneVector =
+        {
+            availableOptions:
+                [
+                    {id: '-1', zone: '-1'},
+                    {id: '-2', zone: '-2'},
+                    {id: '-3', zone: '-3'},
+                    {id: '-4', zone: '-4'},
+                    {id: '-5', zone: '-5'},
+                    {id: '-6', zone: '-6'},
+                    {id: '-7', zone: '-7'},
+                    {id: '-8', zone: '-8'},
+                    {id: '-9', zone: '-9'},
+                    {id: '-10', zone: '-10'},
+                    {id: '-11', zone: '-11'},
+                    {id: '-12', zone: '-12'},
+                    {id: '1', zone: '1'},
+                    {id: '2', zone: '2'},
+                    {id: '3', zone: '3'},
+                    {id: '4', zone: '4'},
+                    {id: '5', zone: '5'},
+                    {id: '6', zone: '6'},
+                    {id: '7', zone: '7'},
+                    {id: '8', zone: '8'},
+                    {id: '9', zone: '9'},
+                    {id: '10', zone: '10'},
+                    {id: '11', zone: '11'},
+                    {id: '12', zone: '12'}
+
+                ],
+            selectedOption: {id: '1', zone: '1'}
+
+        };
 
 
 
@@ -2023,6 +2113,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
         $scope.checkedplace = false;
         $scope.checkdata = false;
         $scope.durationEventCheck = false;
+        $scope.timeZoneCheck = false;
 
 
 
