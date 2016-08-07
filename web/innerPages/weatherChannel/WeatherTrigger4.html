@@ -147,7 +147,9 @@
                 <hr>
 
                 <a  type="submit" class="btn btn-danger pull-left"   href="#allTriggers" >Cancel</a>
-                <button id="but" type="submit"  class="btn btn-primary pull-right btn_next3">Submit</button>
+                <button id="but" type="submit"
+                        ng-disabled="!checkmodelcheckthmin && !checkmodelcheckthmax"
+                        class="btn btn-primary pull-right btn_next3">Submit</button>
 
             </div>
 
