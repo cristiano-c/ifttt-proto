@@ -20,7 +20,7 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="action2TwitterController" novalidate>
 
                         <div class="form-group">
-                            <label>E.mail:</label> <br>
+                            <label>To:</label> <br>
                             <!--
                             <label>Click me in order to active this action (to send a message to a person):
                                 <input
@@ -31,7 +31,7 @@
                             </label><br/> ng-if="checkedtitle" class="animate-if"
                            -->
                             <div>
-                            <input type="title"   class="form-control" id="title" placeholder="inser the e.mail"
+                            <input type="title"   class="form-control" id="title" placeholder="Insert the twitter user here"
                                    ng-model="action2TwitterInput.title"
                                    required="" name="utitle"
                                    maxlength="256"
@@ -44,13 +44,12 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
-                            <label>Description:</label>
-                            <label>Click me in order to active this action (the text to send):
+                            <label>
                                 <input
                                         type="checkbox"
                                         ng-model="checkedSubject"
 
-                                >
+                                > Message content:
                             </label><br/>
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
