@@ -1333,6 +1333,9 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope',
 iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope',
     function ($scope)
     {
+        $scope.checkmodelcheckthmax =false;
+        $scope.checkmodelcheckthmin =false;
+
         $scope.trigger1input = {
             value1: 0,
             value2: 0,
