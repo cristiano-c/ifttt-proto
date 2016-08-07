@@ -95,6 +95,7 @@
   <!-- TOP NAVBAR END -->
 
   <!-- DEBUG AREA BEGIN -->
+  <!--
   {{"iftttLogged: "+ iftttLogged}}
   <br>
   {{"googleLogged: "+ googleLogged}}
