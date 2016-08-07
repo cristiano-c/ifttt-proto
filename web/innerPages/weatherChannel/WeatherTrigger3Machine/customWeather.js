@@ -258,7 +258,8 @@ $(function(){
     });
 
 
-    $("#but").on("click", function updateView(){
+    $("#but").on("click", function updateView()
+    {
         //alert(idCity);
         flagTimezoneCheck = "1";
         triggerChose=8;
@@ -269,229 +270,62 @@ $(function(){
         }
         else
         {
-            //Brute force resolution
-            /*checksunset    checksunrise   checktimeZonevar        DONE
-               0                0               0                   *
-               0                0               1                   *
-               0                1               0                   *
-               0                1               1                   *
-               1                0               0
-               1                0               1
-               1                1               0
-               1                1               1
-            */
 
 
-
-
-            //          0                                       0                                       0
-            if ($('#checksunset').is(":checked") &&  $('#checksunrise').is(":checked") &&   $('#checktimeZonevar').is(":checked"))
+            if($('#checksunset').is(":checked") || $('#checksunrise').is(":checked"))
             {
-                var timezone = $('#timezoneid').val();
-                /*
-                var loginDataSend =
-                {
-                    "sender:":  idCity,
-                    "timezone": timezone,
-                    "sunset":   "1",
-                    "sunrise":  "1"
+                //checksunrise
 
-                }
-                sendingToServer(loginDataSend);
-                */
-                idCity_customWeatherActionControllerTrigger3 = idCity;
-                timezone_customWeatherActionControllerTrigger3 = timezone;
-                sunset_customWeatherActionControllerTrigger3 = "1";
-                sunrise_customWeatherActionControllerTrigger3 = "1";
-
-
-
-            }
-            else
-            {
-                //          0                                       0
-                if ($('#checksunset').is(":checked") &&  $('#checksunrise').is(":checked"))
-                {
-                    //var timezone = $('#timezoneid').val();
-                    /*
-                    var loginDataSend =
-                    {
-                        "sender:":  idCity,
-                        "timezone": "null",
-                        "sunset":   "1",
-                        "sunrise":  "1"
-
-                    }
-                    sendingToServer(loginDataSend);
-                    */
-                    idCity_customWeatherActionControllerTrigger3 = idCity;
-                    timezone_customWeatherActionControllerTrigger3 = "null";
+                if ($('#checksunset').is(":checked")) {
                     sunset_customWeatherActionControllerTrigger3 = "1";
+                }
+                else {
+                    sunrise_customWeatherActionControllerTrigger3 = "0";
+                }
+
+                //checksunset
+                if ($('#checksunrise').is(":checked")) {
                     sunrise_customWeatherActionControllerTrigger3 = "1";
-
-
                 }
-                else
-                {
-                    //          0                                       0
-                    if ($('#checksunset').is(":checked")  &&   $('#checktimeZonevar').is(":checked"))
-                    {
-                        var timezone = $('#timezoneid').val();
-                        /*
-                        var loginDataSend =
-                        {
-                            "sender:":  idCity,
-                            "timezone": timezone,
-                            "sunset":   "1",
-                            "sunrise":  "0"
-
-                        }
-                        sendingToServer(loginDataSend);
-                        */
-                        idCity_customWeatherActionControllerTrigger3 = idCity;
-                        timezone_customWeatherActionControllerTrigger3 = timezone;
-                        sunset_customWeatherActionControllerTrigger3 = "1";
-                        sunrise_customWeatherActionControllerTrigger3 = "0";
-
-
-
-                    }
-                    else
-                    {
-                        //          0
-                        if ($('#checksunset').is(":checked"))
-                        {
-                            //var timezone = $('#timezoneid').val();
-                            /*
-                            var loginDataSend =
-                            {
-                                "sender:":  idCity,
-                                "timezone": "null",
-                                "sunset":   "1",
-                                "sunrise":  "0"
-
-                            }
-                            sendingToServer(loginDataSend);
-                            */
-                            idCity_customWeatherActionControllerTrigger3 = idCity;
-                            timezone_customWeatherActionControllerTrigger3 = "null";
-                            sunset_customWeatherActionControllerTrigger3 = "1";
-                            sunrise_customWeatherActionControllerTrigger3 = "0";
-
-
-                        }
-                        else
-                        {
-                            //          1                                       0                                       1
-                            if ($('#checksunrise').is(":checked"))
-                            {
-                                //var timezone = $('#timezoneid').val();
-                                /*
-                                var loginDataSend =
-                                {
-                                    "sender:":  idCity,
-                                    "timezone": "null",
-                                    "sunset":   "0",
-                                    "sunrise":  "1"
-
-                                }
-                                sendingToServer(loginDataSend);
-                                */
-                                idCity_customWeatherActionControllerTrigger3 = idCity;
-                                timezone_customWeatherActionControllerTrigger3 = "null";
-                                sunset_customWeatherActionControllerTrigger3 = "0";
-                                sunrise_customWeatherActionControllerTrigger3 = "1";
-
-
-                            }
-                            else
-                            {
-                                //          1                                       1                                         0
-                                if ($('#checktimeZonevar').is(":checked"))
-                                {
-                                    var timezone = $('#timezoneid').val();
-                                    /*
-                                    var loginDataSend =
-                                    {
-                                        "sender:":  idCity,
-                                        "timezone": timezone,
-                                        "sunset":   "0",
-                                        "sunrise":  "0"
-
-                                    }
-                                    sendingToServer(loginDataSend);
-                                    */
-                                    idCity_customWeatherActionControllerTrigger3 = idCity;
-                                    timezone_customWeatherActionControllerTrigger3 = timezone;
-                                    sunset_customWeatherActionControllerTrigger3 = "0";
-                                    sunrise_customWeatherActionControllerTrigger3 = "0";
-
-
-                                }
-                                else
-                                {
-                                    //var timezone = $('#timezoneid').val();
-                                    /*
-                                    var loginDataSend =
-                                    {
-                                        "sender:":  idCity,
-                                        "timezone": "null",
-                                        "sunset":   "0",
-                                        "sunrise":  "0"
-
-                                    }
-                                    sendingToServer(loginDataSend);
-                                    */
-                                    idCity_customWeatherActionControllerTrigger3 = idCity;
-                                    timezone_customWeatherActionControllerTrigger3 = "null";
-                                    sunset_customWeatherActionControllerTrigger3 = "0";
-                                    sunrise_customWeatherActionControllerTrigger3 = "0";
-
-
-                                }
-
-
-
-                            }
-
-
-
-                        }
-
-
-                    }
+                else {
+                    sunrise_customWeatherActionControllerTrigger3 = "0";
                 }
 
+                //timezone
+                if ($('#checktimeZonevar').is(":checked")) {
+                    timezone_customWeatherActionControllerTrigger3 = timezone;
+                    timezoneCheck();
+                }
+                else {
+                    timezone_customWeatherActionControllerTrigger3 = "NULL";
+                }
 
-            }
-            if($('#checktimeZonevar').is(":checked"))
-                timezoneCheck();
-            if(flagTimezoneCheck == 1)
-            {
-                flagTriggerDone = "1";
+                if (flagTimezoneCheck == 1) {
+                    flagTriggerDone = "1";
 
-                modulinoj1=
-                {
-                    "triggerType" : "weather",
-                    "type" : "2",
-                    "location":   idCity_customWeatherActionControllerTrigger3,
-                    "timezone" : timezone_customWeatherActionControllerTrigger3,
-                      "sunset"   : sunset_customWeatherActionControllerTrigger3,
-                        "sunrise"        : sunrise_customWeatherActionControllerTrigger3
+                    modulinoj1 =
+                    {
+                        "triggerType": "weather",
+                        "type": "2",
+                        "location": idCity_customWeatherActionControllerTrigger3,
+                        "timezone": timezone_customWeatherActionControllerTrigger3,
+                        "sunset": sunset_customWeatherActionControllerTrigger3,
+                        "sunrise": sunrise_customWeatherActionControllerTrigger3
 
 
-                };
+                    };
 
-                url = "#createRecipeAction";
-                window.location.replace(url);
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
+                else {
+                    alert("The input of the time zone is not right");
+                }
             }
             else
-            {
-                //url = "#WeatherTrigger3";
-                //window.location.replace(url);
-                alert("The input of the time zone is not right");
-
-            }
+                {
+                    alert("You must chose sunset and/or sunris");
+                }
 
 
 
@@ -535,7 +369,7 @@ $(function(){
         };
 
 
-
+        /*
         function sendingToServer (loginDataSend)
         {
             $.ajax({
@@ -547,6 +381,7 @@ $(function(){
             });
 
         }
+        */
         /*
          var loginDataSend =
          {

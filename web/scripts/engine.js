@@ -1290,6 +1290,8 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope',
 
 
 
+        $scope.checkadvisesunset = false;
+        $scope.checkadvisesunrise = false;
 
         $scope.checkadvisesunsetvar = 'NO';
         $scope.checkadvisetsunrisevar = 'NO';
