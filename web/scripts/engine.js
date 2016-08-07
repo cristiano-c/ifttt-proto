@@ -1903,10 +1903,126 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
         };
 
+
+
+
+        $scope.hourVector =
+        {
+            availableOptions:
+                [
+                    {id: '1', hour: '1°'},
+                    {id: '2', hour: '2°'},
+                    {id: '3', hour: '3°'},
+                    {id: '4', hour: '4°'},
+                    {id: '5', hour: '5°'},
+                    {id: '6', hour: '6°'},
+                    {id: '7', hour: '7°'},
+                    {id: '8', hour: '8°'},
+                    {id: '9', hour: '9°'},
+                    {id: '10', hour: '10°'},
+                    {id: '11', hour: '11°'},
+                    {id: '12', hour: '12°'},
+                    {id: '13', hour: '13°'},
+                    {id: '14', hour: '14°'},
+                    {id: '15', hour: '15°'},
+                    {id: '16', hour: '16°'},
+                    {id: '17', hour: '17°'},
+                    {id: '18', hour: '18°'},
+                    {id: '19', hour: '19°'},
+                    {id: '20', hour: '20°'},
+                    {id: '21', hour: '21°'},
+                    {id: '22', hour: '22°'},
+                    {id: '23', hour: '23°'},
+                    {id: '24', hour: '24°'},
+                    {id: '25', hour: '25°'},
+                    {id: '26', hour: '26°'},
+                    {id: '27', hour: '27°'},
+                    {id: '28', hour: '28°'},
+                    {id: '29', hour: '29°'},
+                    {id: '30', hour: '30°'},
+                    {id: '31', hour: '31°'}
+                ],
+            selectedOption: {id: '1', hour: '1°'}
+
+        };
+
+
+        $scope.minuteVector =
+        {
+            availableOptions:
+                [
+                    {id: '1', minute: '1°'},
+                    {id: '2', minute: '2°'},
+                    {id: '3', minute: '3°'},
+                    {id: '4', minute: '4°'},
+                    {id: '5', minute: '5°'},
+                    {id: '6', minute: '6°'},
+                    {id: '7', minute: '7°'},
+                    {id: '8', minute: '8°'},
+                    {id: '9', minute: '9°'},
+                    {id: '10', minute: '10°'},
+                    {id: '11', minute: '11°'},
+                    {id: '12', minute: '12°'},
+                    {id: '13', minute: '13°'},
+                    {id: '14', minute: '14°'},
+                    {id: '15', minute: '15°'},
+                    {id: '16', minute: '16°'},
+                    {id: '17', minute: '17°'},
+                    {id: '18', minute: '18°'},
+                    {id: '19', minute: '19°'},
+                    {id: '20', minute: '20°'},
+                    {id: '21', minute: '21°'},
+                    {id: '22', minute: '22°'},
+                    {id: '23', minute: '23°'},
+                    {id: '24', minute: '24°'},
+                    {id: '25', minute: '25°'},
+                    {id: '26', minute: '26°'},
+                    {id: '27', minute: '27°'},
+                    {id: '28', minute: '28°'},
+                    {id: '29', minute: '29°'},
+                    {id: '30', minute: '30°'},
+                    {id: '31', minute: '31°'},
+                    {id: '32', minute: '32°'},
+                    {id: '33', minute: '3°'},
+                    {id: '34', minute: '4°'},
+                    {id: '35', minute: '5°'},
+                    {id: '36', minute: '6°'},
+                    {id: '37', minute: '7°'},
+                    {id: '38', minute: '8°'},
+                    {id: '39', minute: '9°'},
+                    {id: '40', minute: '10°'},
+                    {id: '41', minute: '11°'},
+                    {id: '42', minute: '12°'},
+                    {id: '43', minute: '13°'},
+                    {id: '44', minute: '14°'},
+                    {id: '45', minute: '15°'},
+                    {id: '46', minute: '16°'},
+                    {id: '47', minute: '17°'},
+                    {id: '48', minute: '18°'},
+                    {id: '49', minute: '19°'},
+                    {id: '50', minute: '20°'},
+                    {id: '51', minute: '21°'},
+                    {id: '52', minute: '22°'},
+                    {id: '53', minute: '23°'},
+                    {id: '54', minute: '24°'},
+                    {id: '55', minute: '25°'},
+                    {id: '56', minute: '26°'},
+                    {id: '57', minute: '27°'},
+                    {id: '58', minute: '28°'},
+                    {id: '59', minute: '29°'}
+                ],
+            selectedOption: {id: '1', minute: '1°'}
+
+        };
+
+
+
+
         $scope.checkedtitle = false;
         $scope.checkedSubject = false;
         $scope.checkedplace = false;
         $scope.checkdata = false;
+        $scope.durationEventCheck = false;
 
 
 

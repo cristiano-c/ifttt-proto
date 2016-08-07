@@ -90,7 +90,7 @@
 
 
 
-                            <b> </b>  (Abilitation):
+                            <b> </b>  Start date:
                             <input
                                     id="weatheridcheckbox"
                                     type="checkbox"
@@ -124,17 +124,52 @@
                                         ng-options="option.day  for option in dayVector.availableOptions track by option.id"
                                         ng-model="dayVector.selectedOption"></select>
 
+                        </div>
 
 
                             <!---       ---------------------------------------------------------------------     -->
 
-                            </label>
-                            <div role="alert">
-                        <span  style="color:#ac2925" class="error" ng-show="weather.input.$error.required && checkmodelcheckweather">
-                            Required!</span>
-                            </div>
 
+
+
+
+                        <b> </b>  Duration event:
+                        <input
+                                id="durationEvent"
+                                type="checkbox"
+                                ng-model="durationEventCheck"
+                                name="durationEventName"
+
+                        >
+
+                        <!--
+                        <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
+                               required>
+                               -->
+                        <br>
+                        <div  ng-if="durationEventCheck" class="animate-if">
+
+                            <label for="selectYear">Hour:</label>
+                            <select name="mySelect" id="selectHour"
+                                    ng-disabled="!durationEventCheck"
+                                    ng-options="option.hour  for option in hourVector.availableOptions track by option.id"
+                                    ng-model="hourVector.selectedOption"></select>
+
+                            <label for="selectMonth">Minute:</label>
+                            <select name="mySelect" id="selecMinute"
+                                    ng-disabled="!durationEventCheck"
+                                    ng-options="option.minute  for option in minuteVector.availableOptions track by option.id"
+                                    ng-model="minuteVector.selectedOption"></select>
                         </div>
+
+
+
+
+
+
+
+
+
 
 
                         <div>
