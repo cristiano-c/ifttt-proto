@@ -2358,7 +2358,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                     "triggerType" : "twitter",
                     "type"      :  "1",
                     "hashtag_text"  : hashtag_text_trigger2TwitterController,
-                    "username_sender" : hashtag_text_trigger2TwitterController
+                    "username_sender" : username_sender_trigger2TwitterController
                 };
 
                 url = "#createRecipeAction";
