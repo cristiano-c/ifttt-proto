@@ -656,8 +656,8 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
         if (flagTriggerDone == "1")
         {
             //alert("Warning you must compile before the action form");
-            
-            alertFunction()
+            alertVariable="Warning you must compile before the action form";
+            alertFunction();
             var url = "#createRecipeAction";
             window.location.replace(url);
         }
@@ -772,7 +772,10 @@ iftttApp.controller('createAccountController',  ['$scope',
                             window.location.replace('#');
                         },
                         error: function(){
-                            alert("some error occurred");
+                            //alert("some error occurred");
+                            alertVariable="some error occurred";
+                            alertFunction();
+
                         }
                     });
 
@@ -952,19 +955,27 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                             else
                             {
                                 flag = "0";
-                                alert("Your e.mail is not right . . .");
+                                //alert("Your e.mail is not right . . .");
+                                alertVariable="Your e.mail is not right . . .";
+                                alertFunction();
+
                             }
                         }
                         else {
                             receiver = "";
                             flag = "0";
-                            alert("Your e.mail is not right . . .");
+                            //alert("Your e.mail is not right . . .");
+                            alertVariable="Your e.mail is not right . . .";
+                            alertFunction();
+
                         }
                     }
                     else {
                         receiver = "";
                         flag = "0";
-                        alert("Your e.mail is not right . . .");
+                        //alert("Your e.mail is not right . . .");
+                        alertVariable="Your e.mail is not right . . .";
+                        alertFunction();
                     }
 
 
@@ -1029,14 +1040,19 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     {
                         sender = "";
                         flag = "0";
-                        alert("You must chose a option between ifttt e.mail or yours");
+                        //alert("You must chose a option between ifttt e.mail or yours");
+                        alertVariable="You must chose a option between ifttt e.mail or yours";
+                        alertFunction();
+
                     }
                 }
                 else
                 {
                     sender  = "";
                     flag = "0";
-                    alert("You must chose a option between ifttt e.mail or yours");
+                    //alert("You must chose a option between ifttt e.mail or yours");
+                    alertVariable="You must chose a option between ifttt e.mail or yours";
+                    alertFunction();
                 }
 
 
@@ -1077,7 +1093,9 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
             }
             else
             {
-                alert("You are not logged in google");
+                //alert("You are not logged in google");
+                alertVariable="You are not logged in google";
+                alertFunction();
                 url = "#createDO";
                 window.location.replace(url);
             }
@@ -1472,7 +1490,9 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
             }
             else
             {
-                alert("You are sloged from google please relog and redo it");
+                //alert("You are sloged from google please relog and redo it");
+                alertVariable="You are sloged from google please relog and redo it";
+                alertFunction();
                 url = "#allTriggers";
                 window.location.replace(url);
 
@@ -1601,7 +1621,9 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
             }
             else
             {
-                alert("You are non logged google please relog it and redo it");
+                //alert("You are non logged google please relog it and redo it");
+                alertVariable="You are non logged google please relog it and redo it";
+                alertFunction();
                 url = "#allTriggers";
                 window.location.replace(url);
             }
@@ -1911,7 +1933,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
             }
             else
             {
-                alert("You are not logged in google");
+                //alert("You are not logged in google");
+                alertVariable="You are not logged in google";
+                alertFunction();
                 url = "#createDO";
                 window.location.replace(url);
             }
@@ -2277,7 +2301,9 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
             }
             if(twitterLogin == "0")
             {
-                alert("You are not logged in twitter");
+                //alert("You are not logged in twitter");
+                alertVariable="You are not logged in twitter";
+                alertFunction();
                 url = "#allTriggers";
                 window.location.replace(url);
             }
@@ -2370,7 +2396,9 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
             if(twitterLogin == "0")
             {
-                alert("You are not logged in twitter");
+               //alert("You are not logged in twitter");
+                alertVariable="You are not logged in twitter";
+                alertFunction();
                 url = "#allTriggers";
                 window.location.replace(url);
             }
@@ -2448,7 +2476,9 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
             if(twitterLogin == "0")
             {
-                alert("You are not logged in twitter");
+                //alert("You are not logged in twitter");
+                alertVariable="You are not logged in twitter";
+                alertFunction();
                 url = "#createDO";
                 window.location.replace(url);
             }
@@ -2574,14 +2604,19 @@ iftttApp.controller('action2TwitterController', ['$scope',
                 }
                 else
                 {
-                    alert ("You must insert the destination e.mail");
+                    //alert ("You must insert the destination e.mail");
+                    alertVariable="You must insert the destination e.mail";
+                    alertFunction();
                 }
 
 
             }
             if(twitterLogin == "0")
             {
-                alert("You are not logged in twitter");
+                //alert("You are not logged in twitter");
+                alertVariable="You are not logged in twitter";
+                alertFunction();
+
                 url = "#createDO";
                 window.location.replace(url);
             }
@@ -2645,747 +2680,6 @@ function sendingToServerAll ()
     };
     sedingServerAllRun(loginDataSend);
 
-
-    //Tn 9
-    //An 4
-
-   if(1==0) {
-
-       if (triggerChose == 1 && actionChose == 1) {
-
-           var loginDataSend = {
-
-               "trigger": {
-                   "triggerType": "gmail",
-
-                   //Tn 1
-                   "sender": sender_GmailTriggerController,
-                   "subject": subject_GmailTriggerController,
-               },
-               "action": {
-                   "actionType": "gmail", //Attenzione, questo campo prima non c'era e va messo!
-                   //An 1
-                   "sender": sender_GmailActionController,
-                   "subject": subject_GmailActionController,
-                   "receiver": receiver_GmailActionController,
-                   "body": body_GmailActionController
-
-               }
-           };
-
-
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 1 && actionChose == 2) {
-           var loginDataSend =
-           {
-               "trigger": {
-                   "triggerType": "gmail",
-                   //Tn 1
-                   "sender": sender_GmailTriggerController,
-                   "subject": subject_GmailTriggerController
-               },
-               "action": {
-                   "actionType": "calendar",
-
-                   //An 2
-                   "title": title_action1GcalendarController,
-                   "description": f_action1GcalendarController,
-                   "location": place_action1GcalendarController,
-                   "timezone": timeZone_action1GcalendarController,
-                   "startdateYear": yearVector_action1GcalendarController,
-                   "startdateMonth": monthVector_action1GcalendarController,
-                   "startdateDay": dayVector_action1GcalendarController,
-                   "durationHour": durationHour_action1GcalendarController,
-                   "duratoinMinute": durationMinute_action1GcalendarController
-               }
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 1 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 1
-               "sender": sender_GmailTriggerController,
-               "subject": subject_GmailTriggerController,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 1 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 1
-               "sender": sender_GmailTriggerController,
-               "subject": subject_GmailTriggerController,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 2 && actionChose == 1) {
-           var loginDataSend =
-           {
-               "trigger": {
-                   "triggerType": "calendar",
-                   "eventAction": "0",
-
-                   //Tn 2 S0
-                   "title": title_Trigger1GcalendarController,
-                   "description": description_Trigger1GcalendarController,
-                   "place": place_Trigger1GcalendarController,
-               },
-               "action": {
-
-                   "actionType": "gmail",
-                   //An 1
-                   "sender": sender_GmailActionController,
-                   "subject": subject_GmailActionController,
-                   "receiver": receiver_GmailActionController,
-                   "body": body_GmailActionController,
-               },
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 2 && actionChose == 2)
-       // Fare una prova per credere O.o nel json non ci possono essere due campi uguali
-       {
-           var loginDataSend =
-           {
-               "trigger": {
-                   "triggerType": "calendar",
-                   "eventAction": "0",
-
-                   //Tn 2 S0
-                   "title": title_Trigger1GcalendarController,
-                   "description": description_Trigger1GcalendarController,
-                   "place": place_Trigger1GcalendarController,
-               },
-               "action": {
-                   "actionType": "calendar",
-                   //An 2
-                   "title": title_action1GcalendarController,
-                   "description": subjectReceive_action1GcalendarController,
-                   "location": place_action1GcalendarController,
-                   "timezone": timeZone_action1GcalendarController,
-                   "startdateYear": yearVector_action1GcalendarController,
-                   "startdateMonth": monthVector_action1GcalendarController,
-                   "startdateDay": dayVector_action1GcalendarController,
-                   "durationHour": durationHour_action1GcalendarController,
-                   "duratoinMinute": durationMinute_action1GcalendarController
-               }
-           };
-           //console.log("ss");
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 2 && actionChose == 3) {
-           var loginDataSend =
-           {
-               "triggerType": "calendar",
-               "eventAction": "0",
-
-               //Tn 2 S0
-               "title": title_Trigger1GcalendarController,
-               "description": description_Trigger1GcalendarController,
-               "place": place_Trigger1GcalendarController,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 2 && actionChose == 4) {
-           var loginDataSend =
-           {
-               "triggerType": "calendar",
-               "eventAction": "0",
-
-               //Tn 2 S0
-               "title": title_Trigger1GcalendarController,
-               "description": description_Trigger1GcalendarController,
-               "place": place_Trigger1GcalendarController,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 3 && actionChose == 1) {
-
-
-           var loginDataSend =
-           {
-               "trigger": {
-                   "triggerType": "calendar",
-                   "eventAction": "1",
-                   //Tn 3
-                   "title": title_Trigger2GcalendarController,
-                   "description": description_Trigger2GcalendarController,
-                   "place": place_Trigger2GcalendarController,
-               },
-               "action": {
-                   "actionType": "gmail",
-
-                   //An 1
-                   "sender": sender_GmailActionController,
-                   "subject": subject_GmailActionController,
-                   "receiver": receiver_GmailActionController,
-                   "body": body_GmailActionController
-               }
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 3 && actionChose == 2) {
-           var trigger3 = {
-               "triggerType": "calendar",
-               "eventAction": "1",
-               //Tn 3
-               "title": title_Trigger2GcalendarController,
-               "description": description_Trigger2GcalendarController,
-               "place": place_Trigger2GcalendarController
-
-           };
-           var action2 =
-           {
-               "actionType": "calendar",
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "place": place_action1GcalendarController,
-               "dayVector": yearVector_action1GcalendarController,
-               "monthVector": monthVector_action1GcalendarController,
-               "yearVector": dayVector_action1GcalendarController
-           };
-
-           var loginDataSend =
-           {
-               "trigger": trigger3,
-               "action": action2
-           };
-
-           /*
-            {
-            "trigger" :
-            {
-            "triggerType": "calendar",
-            "eventAction": "1",
-            //Tn 3
-            "title": title_Trigger2GcalendarController,
-            "description": description_Trigger2GcalendarController,
-            "place": place_Trigger2GcalendarController
-            },
-            "action" :
-            {
-            "actionType": "calendar",
-            //An 2
-            "title": title_action1GcalendarController,
-            "subjectReceive": subjectReceive_action1GcalendarController,
-            "place": place_action1GcalendarController,
-            "dayVector": yearVector_action1GcalendarController,
-            "monthVector": monthVector_action1GcalendarController,
-            "yearVector": dayVector_action1GcalendarController
-            }
-            **/
-
-
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 3 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 3
-               "title": title_Trigger2GcalendarController,
-               "description": description_Trigger2GcalendarController,
-               "place": place_Trigger2GcalendarController,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 3 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 3
-               "title": title_Trigger2GcalendarController,
-               "description": description_Trigger2GcalendarController,
-               "place": place_Trigger2GcalendarController,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 4 && actionChose == 1) {
-           var loginDataSend =
-           {
-               //Tn 4
-               "username": username_sender_trigger1TwitterController,
-               "hashtag_text": hashtag_text_trigger1TwitterController,
-
-               "actionType": "gmail",
-               //An 1
-               "sender": sender_GmailActionController,
-               "subject": subject_GmailActionController,
-               "receiver": receiver_GmailActionController,
-               "body": body_GmailActionController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 4 && actionChose == 2) {
-
-           var loginDataSend =
-           {
-               //Tn 4
-               "username": username_sender_trigger1TwitterController,
-               "hashtag_text": hashtag_text_trigger1TwitterController,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 4 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 4
-               "username": username_sender_trigger1TwitterController,
-               "hashtag_text": hashtag_text_trigger1TwitterController,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 4 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 4
-               "username": username_sender_trigger1TwitterController,
-               "hashtag_text": hashtag_text_trigger1TwitterController,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 5 && actionChose == 1) {
-           var loginDataSend =
-           {
-               //Tn 5
-               "username_sender": username_sender_trigger2TwitterController,
-               "hashtag_text": hashtag_text_trigger2TwitterController,
-
-               "actionType": "gmail",
-               //An 1
-               "sender": sender_GmailActionController,
-               "subject": subject_GmailActionController,
-               "receiver": receiver_GmailActionController,
-               "body": body_GmailActionController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 5 && actionChose == 2) {
-           var loginDataSend =
-           {
-               //Tn 5
-               "username_sender": username_sender_trigger2TwitterController,
-               "hashtag_text": hashtag_text_trigger2TwitterController,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 5 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 5
-               "username_sender": username_sender_trigger2TwitterController,
-               "hashtag_text": hashtag_text_trigger2TwitterController,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 5 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 5
-               "username_sender": username_sender_trigger2TwitterController,
-               "hashtag_text": hashtag_text_trigger2TwitterController,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 6 && actionChose == 1) {
-           var loginDataSend =
-           {
-               //Tn 6
-               "idCity": idCity_customWeatherActionControllerTrigger1,
-               "timezone": timezone_customWeatherActionControllerTrigger1,
-               "ora": ora_customWeatherActionControllerTrigger1,
-
-               "actionType": "gmail",
-               //An 1
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 6 && actionChose == 2) {
-           var loginDataSend =
-           {
-               //Tn 6
-               "idCity": idCity_customWeatherActionControllerTrigger1,
-               "timezone": timezone_customWeatherActionControllerTrigger1,
-               "ora": ora_customWeatherActionControllerTrigger1,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 6 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 6
-               "idCity": idCity_customWeatherActionControllerTrigger1,
-               "timezone": timezone_customWeatherActionControllerTrigger1,
-               "ora": ora_customWeatherActionControllerTrigger1,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 6 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 6
-               "idCity": idCity_customWeatherActionControllerTrigger1,
-               "timezone": timezone_customWeatherActionControllerTrigger1,
-               "ora": ora_customWeatherActionControllerTrigger1,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 7 && actionChose == 1) {
-           var loginDataSend =
-           {
-               //Tn 7
-               "idCity": idCity_customWeatherActionControllerTrigger2,
-               "pweather": pweather_customWeatherActionControllerTrigger2,
-               "pperiod": pperiod_customWeatherActionControllerTrigger2,
-               "pzone": pzone_customWeatherActionControllerTrigger2,
-
-               "actionType": "gmail",
-               //An 1
-               "sender": sender_GmailActionController,
-               "subject": subject_GmailActionController,
-               "receiver": receiver_GmailActionController,
-               "body": body_GmailActionController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 7 && actionChose == 2) {
-           var loginDataSend =
-           {
-               //Tn 7
-               "idCity": idCity_customWeatherActionControllerTrigger2,
-               "pweather": pweather_customWeatherActionControllerTrigger2,
-               "pperiod": pperiod_customWeatherActionControllerTrigger2,
-               "pzone": pzone_customWeatherActionControllerTrigger2,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 7 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 7
-               "idCity": idCity_customWeatherActionControllerTrigger2,
-               "pweather": pweather_customWeatherActionControllerTrigger2,
-               "pperiod": pperiod_customWeatherActionControllerTrigger2,
-               "pzone": pzone_customWeatherActionControllerTrigger2,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 7 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 7
-               "idCity": idCity_customWeatherActionControllerTrigger2,
-               "pweather": pweather_customWeatherActionControllerTrigger2,
-               "pperiod": pperiod_customWeatherActionControllerTrigger2,
-               "pzone": pzone_customWeatherActionControllerTrigger2,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 8 && actionChose == 1) {
-           var loginDataSend =
-           {
-               // Tn 8
-               "idCity": idCity_customWeatherActionControllerTrigger3,
-               "timezone": timezone_customWeatherActionControllerTrigger3,
-               "sunset": sunset_customWeatherActionControllerTrigger3,
-               "sunrise": sunrise_customWeatherActionControllerTrigger3,
-
-               "actionType": "gmail",
-               //An 1
-               "sender": sender_GmailActionController,
-               "subject": subject_GmailActionController,
-               "receiver": receiver_GmailActionController,
-               "body": body_GmailActionController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 8 && actionChose == 2) {
-           var loginDataSend =
-           {
-               // Tn 8
-               "idCity": idCity_customWeatherActionControllerTrigger3,
-               "timezone": timezone_customWeatherActionControllerTrigger3,
-               "sunset": sunset_customWeatherActionControllerTrigger3,
-               "sunrise": sunrise_customWeatherActionControllerTrigger3,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 8 && actionChose == 3) {
-           var loginDataSend =
-           {
-               // Tn 8
-               "idCity": idCity_customWeatherActionControllerTrigger3,
-               "timezone": timezone_customWeatherActionControllerTrigger3,
-               "sunset": sunset_customWeatherActionControllerTrigger3,
-               "sunrise": sunrise_customWeatherActionControllerTrigger3,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 8 && actionChose == 4) {
-           var loginDataSend =
-           {
-               // Tn 8
-               "idCity": idCity_customWeatherActionControllerTrigger3,
-               "timezone": timezone_customWeatherActionControllerTrigger3,
-               "sunset": sunset_customWeatherActionControllerTrigger3,
-               "sunrise": sunrise_customWeatherActionControllerTrigger3,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 9 && actionChose == 1) {
-           var loginDataSend =
-           {
-               //Tn 9
-               "idCity": idCity_customWeatherActionControllerTrigger4,
-               "ptimezone": ptimezone_customWeatherActionControllerTrigger4,
-               "pthmax": pthmax_customWeatherActionControllerTrigger4,
-               "pthmin": pthmin_customWeatherActionControllerTrigger4,
-               "period": period_customWeatherActionControllerTrigger4,
-
-               "actionType": "gmail",
-               //An 1
-               "sender": sender_GmailActionController,
-               "subject": subject_GmailActionController,
-               "receiver": receiver_GmailActionController,
-               "body": body_GmailActionController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 9 && actionChose == 2) {
-           var loginDataSend =
-           {
-               //Tn 9
-               "idCity": idCity_customWeatherActionControllerTrigger4,
-               "ptimezone": ptimezone_customWeatherActionControllerTrigger4,
-               "pthmax": pthmax_customWeatherActionControllerTrigger4,
-               "pthmin": pthmin_customWeatherActionControllerTrigger4,
-               "period": period_customWeatherActionControllerTrigger4,
-
-               //An 2
-               "title": title_action1GcalendarController,
-               "description": subjectReceive_action1GcalendarController,
-               "location": place_action1GcalendarController,
-               "timezone": timeZone_action1GcalendarController,
-               "startdateYear": yearVector_action1GcalendarController,
-               "startdateMonth": monthVector_action1GcalendarController,
-               "startdateDay": dayVector_action1GcalendarController,
-               "durationHour": durationHour_action1GcalendarController,
-               "duratoinMinute": durationMinute_action1GcalendarController
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 9 && actionChose == 3) {
-           var loginDataSend =
-           {
-               //Tn 9
-               "idCity": idCity_customWeatherActionControllerTrigger4,
-               "ptimezone": ptimezone_customWeatherActionControllerTrigger4,
-               "pthmax": pthmax_customWeatherActionControllerTrigger4,
-               "pthmin": pthmin_customWeatherActionControllerTrigger4,
-               "period": period_customWeatherActionControllerTrigger4,
-
-               //An 3
-               "subject": subject_action1TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-       if (triggerChose == 9 && actionChose == 4) {
-           var loginDataSend =
-           {
-               //Tn 9
-               "idCity": idCity_customWeatherActionControllerTrigger4,
-               "ptimezone": ptimezone_customWeatherActionControllerTrigger4,
-               "pthmax": pthmax_customWeatherActionControllerTrigger4,
-               "pthmin": pthmin_customWeatherActionControllerTrigger4,
-               "period": period_customWeatherActionControllerTrigger4,
-
-               //An 4
-               "title": title_action2TwitterController,
-               "subject": subjec_action2TwitterController
-
-
-           };
-           sedingServerAllRun(loginDataSend);
-       }
-
-   }
 
 
 
