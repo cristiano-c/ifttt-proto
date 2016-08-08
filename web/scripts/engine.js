@@ -645,6 +645,26 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.routeListener = function (nextRoute) {
             nextPath = nextRoute;
             console.log("routeListener(nextRoute): "+nextPath);
+        };
+        
+        $scope.RequestRecipes = function () {
+
+
+            $http({
+                method: 'POST',
+                url: '/Recipes',
+                data: JSON.stringify({value:"nothing"}),
+                dataType: "application/json;charset=UTF-8"
+            }).then(function success(response) {
+                // Success code here
+                console.log(JSON.stringify(response));
+                $scope.faq = response.data;
+
+            }, function error(response) {
+                // Error code here
+                alert("error");
+            });
+
         }
 
 
@@ -729,15 +749,6 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
 iftttApp.controller('myRecipesController',  ['$scope',
     function ($scope) {
-
-        $scope.faq = [
-            {key: "Question 1",
-                value: "Answer1"},
-
-            {key: "Question 2",
-                value: "Answer2"}
-        ];
-
 
 
 

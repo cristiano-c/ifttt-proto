@@ -225,9 +225,10 @@
   </div>
   <!-- MODAL FORM TWITTER -- END -->
 
-  <form action="/MyServlet" method="get">
-    <button type="submit">goGet</button>
-  </form>
+
+  <!-- Test area BEGIN -->
+    <button ng-click="RequestRecipes()">Request recipes</button>
+  <!-- Test area END -->
 
   <!-- extra space bottom page -->
   <div style="padding-bottom: 6%">

@@ -39,11 +39,6 @@ public class MyServlet extends HttpServlet {
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String aRecipe = "{'weather':'twitter','action':'twitter'}";
-        String recipesList = "[{'trigger':'weather','action':'twitter'},{'trigger':'gmail','action':'twitter'},{'trigger':'weather','action':'gmail'},{'trigger':'gcalendar','action':'gmail'},]";
-        response.setContentType("application/json");
-        PrintWriter out = response.getWriter();
-        out.print(recipesList);
-        out.flush();
+
     }
 }
