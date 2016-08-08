@@ -7,9 +7,8 @@
 <body>
 <div>
 
-    <div class="container" style="padding-top: 6%">
 
-            <div class="row">
+            <div class="row" style="padding-top: 6%">
                 <div class="col-md-4">
                 </div>
                 <div class="col-md-4">
@@ -22,7 +21,7 @@
                                         type="checkbox"
                                         ng-model="checkedtitle"
 
-                                > <b>Message title</b>
+                                > <b>From twitter user</b>
                             <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="insert your title"
                                    ng-model="trigger2TwitterInput.title"

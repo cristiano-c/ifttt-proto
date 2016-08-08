@@ -2489,7 +2489,8 @@ iftttApp.controller('action1TwitterController', ['$scope',
                 {
                     "triggerType" : "twitter",
                     "type"      :  "0",
-                    "subject" :  subject_action1TwitterController
+                    "body"      :  subject_action1TwitterController,
+                    "destination" :  "null"
 
                 };
 
@@ -2616,7 +2617,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
                     "triggerType" : "twitter",
                     "type"      :  "1",
                     "destination"   :  title_action2TwitterController,
-                    "subject" :  subjec_action2TwitterController
+                    "body" :  subjec_action2TwitterController
                     
                 };
                 if(flag == 1) {
