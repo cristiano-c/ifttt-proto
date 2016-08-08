@@ -306,6 +306,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.iftttLogged = false;
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
+        $scope.userRecipes = null;
 
         /*
          * Funzione che gestisce il click per gestire l'autenticazione a IFTTT Polito
@@ -329,6 +330,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.iftttLogged = true;
                     iftttLogin= true;
+                    $scope.userRecipes = response.data.userRecipesJSON;
                     $('#loginIFTTTModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with IFTTT Polito",
@@ -658,7 +660,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             }).then(function success(response) {
                 // Success code here
                 console.log(JSON.stringify(response));
-                $scope.faq = response.data;
+                response.data.forEach(function (x) {
+                    console.log(JSON.stringify(x));
+                    $scope.userRecipes.push(x);
+                });
+
 
             }, function error(response) {
                 // Error code here
