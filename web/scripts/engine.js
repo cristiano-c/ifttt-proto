@@ -308,7 +308,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.twitterLogged = false;
 
         /*
-         * Funzione che gestisce il click per gestire l'autenticazione a Google
+         * Funzione che gestisce il click per gestire l'autenticazione a IFTTT Polito
          */
         $scope.requestIFTTTAuth = function() {
 
@@ -366,7 +366,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         };
 
         /*
-         * Funzione che gestisce il click per gestire la disconnessione da Google
+         * Funzione che gestisce il click per gestire la disconnessione da IFTTT Polito
          */
         $scope.logoutIFTTT = function () {
             var requestLogout = {

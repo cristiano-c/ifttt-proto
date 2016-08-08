@@ -11,26 +11,19 @@
                 <div class="col-md-3">
                 </div>
                 <div class="col-md-6">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item active"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</a>
-
-
-
-                        <div ng-repeat="f in faq">
-                            <a href="#" class="list-group-item clearfix">
+                    <ul class="list-group">
+                        <li class="list-group-item active text-center"><h1><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</h1></li>
+                            <li ng-repeat="f in faq" class="list-group-item">
                                 <h4>
                                     <span class="glyphicon glyphicon-file"></span>
                                     {{f.key}}-{{f.value}}
-                                    <span class="pull-right">
-                            <button class="btn btn-warning">
-                              <span class="glyphicon glyphicon-trash"></span>
-                            </button>
-                          </span>
+                                    <button class="btn btn-warning pull-right">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                    </button>
                                 </h4>
-                            </a>
-                    </div>
+                            </li>
 
-                    </div>
+                    </ul>
 
                 </div>
 
@@ -99,10 +92,10 @@
                 </div> -->
             </div>
             <div class="row text-center" style="padding-top: 3%">
-                <p>or</p>
+                <h3>or</h3>
             </div>
-            <div class="row text-center" style="padding-top: 3%">
-                <a class="btn btn-success btn-large" href="#createRecipe">Create a new recipe</a>
+            <div class="row text-center" style="padding-top: 4%">
+                <a class="btn btn-success btn-large" href="#createRecipe"><h4>Create a new recipe</h4></a>
             </div>
 </div>
 </body>
