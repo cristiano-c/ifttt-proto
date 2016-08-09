@@ -2708,7 +2708,8 @@ function sendingToServerAll ()
     sendDataToServer =
     {
         "trigger" : modulinoj1,
-        "action" : modulinoj2
+        "action" : modulinoj2,
+        "desc": "example descrition here, written by the user"/*recipedDesc*/
     };
 
     sedingServerAllRun(sendDataToServer);
