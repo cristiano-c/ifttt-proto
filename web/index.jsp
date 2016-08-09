@@ -76,11 +76,11 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-              <a href="" ng-click="logoutIFTTT()" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with IFTTT Polito (click to logout)"><img id="IFTTTLogoON" ng-if="iftttLogged" src="./images/logos/polito-logged-in.png" height="30" width="30"/></a>
+              <a href="" ng-click="logoutIFTTT()" ><img id="IFTTTLogoON" ng-if="iftttLogged" src="./images/logos/polito-logged-in.png" height="30" width="30"/></a>
               <img id="iftttLogoOFF" ng-if="!iftttLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in IFTTT Polito" src="./images/logos/polito-logged-out.png" height="30" width="30"/>
-              <a href="" ng-click="logoutTwitter()" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Twitter (click to logout)"><img id="twitterLogoON" ng-if="twitterLogged" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
+              <a href="" ng-click="logoutTwitter()" ><img id="twitterLogoON" ng-if="twitterLogged" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
             <img id="twitterLogoOFF" ng-if="!twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
-            <a href="" ng-click="logoutGoogle()" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Connected with Google (click to logout)"><img id="googleLogoON" ng-if="googleLogged" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
+            <a href="" ng-click="logoutGoogle()" ><img id="googleLogoON" ng-if="googleLogged" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
             <img id="googleLogoOFF" ng-if="!googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
             <input ng-if="!iftttLogged" type="text" class="form-control" placeholder="username">
             <input ng-if="!iftttLogged" type="password" class="form-control" placeholder="password">
