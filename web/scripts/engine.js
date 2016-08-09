@@ -98,9 +98,10 @@ var iftttLogin = false; //-> $scope.iftttLogged
 
 var alertVariable = "";
 
+//Esiste già
+//var loginDataSend = null;
 
-
-
+var sendDataToServer = null;
 
 
 // sendingToServerAll();
@@ -307,6 +308,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
         $scope.userRecipes = null;
+        //$scope.userRecipes = sendDataToServer;
 
         /*
          * Funzione che gestisce il click per gestire l'autenticazione a IFTTT Polito
@@ -650,7 +652,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         };
         
         $scope.RequestRecipes = function () {
-
+            var luna = sendDataToServer;
+            $scope.userRecipes.push(luna);
+            alert("wwww");
 
             $http({
                 method: 'POST',
@@ -2673,6 +2677,8 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
     }]);
 
+
+
 function sendingToServerAll ()
 {
     /*
@@ -2699,12 +2705,13 @@ function sendingToServerAll ()
      */
 
 
-    var loginDataSend =
+    sendDataToServer =
     {
         "trigger" : modulinoj1,
         "action" : modulinoj2
     };
-    sedingServerAllRun(loginDataSend);
+
+    sedingServerAllRun(sendDataToServer);
 
 
 
@@ -2730,7 +2737,9 @@ function sedingServerAllRun (loginDataSend)
         url: "/MyServlet",
         data: loginDataSend,
         dataType: "json",
-        success: console.log("la post ha avuto successo n 9")
+        success: function() {
+            //console.log("la post ha avuto successo n 9");
+        }
     });
 }
 /*

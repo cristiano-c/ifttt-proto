@@ -102,7 +102,7 @@
   <br>
   {{"twitterLogged: "+ twitterLogged}}
   <!-- DEBUG AREA END -->
-
+  {{"recipe: "+ userRecipes}}
   <!-- NOTIFICATIONS WRAPPER BEGIN -->
   <div id="notificationsWrapper" style="margin: auto"></div>
   <!-- NOTIFICATIONS WRAPPER END -->
