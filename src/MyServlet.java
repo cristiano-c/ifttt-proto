@@ -27,7 +27,9 @@ public class MyServlet extends HttpServlet {
 
         System.out.println(request.getParameter("googleCredentials"));
 
-        String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\", \"userRecipesJSON\":[{\"trigger\":\"weather\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\"},{\"trigger\":\"gmail\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\"},{\"trigger\":\"weather\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\"},{\"trigger\":\"gcalendar\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\"}]}";
+
+
+        String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\", \"userRecipesJSON\":[{\"trigger\":\"weather\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\", \"id\":\"5\"},{\"trigger\":\"gmail\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\",\"id\":\"6\"},{\"trigger\":\"weather\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"7\"},{\"trigger\":\"gcalendar\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"8\"}]}";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(jsonObject);
