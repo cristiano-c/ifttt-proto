@@ -2727,19 +2727,38 @@ function alertFunction ()
         alertVariable,
         {
             className: 'warning',
-            position: 'bottom center'
+            position: 'bottom center',
+            id: null,
+            desc: null,
         }
     );
 }
 function sedingServerAllRun (loginDataSend)
 {
+    var result = "ciao";
     $.ajax({
         method: "post",
         url: "/MyServlet",
         data: loginDataSend,
         dataType: "json",
-        success: function() {
+        success: function(response) {
             //console.log("la post ha avuto successo n 9");
+            result = response;
+            //alert("1");
+
+            /*
+            $.ajax({
+                method: "post",
+                url: "/MyServlet",
+                data: result,
+                dataType: "json",
+                success: function(response) {
+                    //console.log("la post ha avuto successo n 9");
+                    alert("2");
+
+                }
+            });
+            */
         }
     });
 }
