@@ -16,7 +16,9 @@ public class Recipes extends HttpServlet {
 
         System.out.println("è stata richiesta la lista delle ricette, invio in corso....");
 
-        String recipesList = "[{\"trigger\":\"weather\",\"action\":\"gcalendar\"},{\"trigger\":\"gmail\",\"action\":\"gmail\"},{\"trigger\":\"weather\",\"action\":\"twitter\"},{\"trigger\":\"XXXX\",\"action\":\"YYYY\"}]";
+
+
+        String recipesList = "[{\"trigger\":\"weather\",\"action\":\"gcalendar\",\"id\":\"1\"},{\"trigger\":\"gmail\",\"action\":\"gmail\",\"id\":\"2\"},{\"trigger\":\"weather\",\"action\":\"twitter\",\"id\":\"3\"},{\"trigger\":\"XXXX\",\"action\":\"YYYY\",\"id\":\"4\"}]";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(recipesList);
