@@ -308,7 +308,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
         $scope.userRecipes = null;
-        $scope.recipedDescriptionInput = null;
         //$scope.userRecipes = sendDataToServer;
 
         /*
@@ -676,31 +675,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 alert("error");
             });
 
-        };
-
-        $scope.saveRecipeDescription = function () {
-            console.log("inserted the following description: "+$scope.recipedDescriptionInput);
-            // Salvare la descrizione nella varaibile globale e nella ricetta in questione
-            // Invio della descrizione al server con una UPDATE
-            $http({
-                method: 'UPDATE',
-                url: '/Recipes',
-                data: JSON.stringify({"desc":$scope.recipedDescriptionInput}),
-                dataType: "application/json"
-            }).then(function success(response) {
-                // Success code here
-                alert(JSON.stringify(response));
-                response.data.forEach(function (x) {
-                    console.log(JSON.stringify(x));
-                });
-
-
-            }, function error(response) {
-                // Error code here
-                alert("error to update description");
-            });
-            $('#recipedDescriptionModal').modal('hide');
         }
+
 
 
     }]);
