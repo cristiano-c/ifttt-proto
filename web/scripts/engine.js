@@ -1978,12 +1978,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 if (flag != "3") {
                     flagTriggerDone = "0";
                     count=7;
-
-                    $('#recipedDescriptionModal').modal('show');
-
-                    //sendingToServerAll();
-                    //url = "#gMailSucces";
-                    //window.location.replace(url);
+                    sendingToServerAll();
+                    url = "#gMailSucces";
+                    window.location.replace(url);
                 }
 
             }
