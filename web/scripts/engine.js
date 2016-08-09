@@ -103,6 +103,9 @@ var alertVariable = "";
 
 var sendDataToServer = null;
 
+//Variabile di descriozione
+var descriptionRecipeGlobal = "";
+
 
 // sendingToServerAll();
 
@@ -679,6 +682,41 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         };
 
         $scope.saveRecipeDescription = function () {
+            //Prende la descrizione della ricetta
+
+
+            //Variabile per prendere la descrizione dell'user --> recipedDescriptionInput
+            if (angular.isDefined($scope.recipedDescriptionInput))
+            {
+                if (angular.isDefined($scope.recipedDescriptionInput))
+                {
+                    descriptionRecipeGlobal = $scope.recipedDescriptionInput;
+                }
+                else
+                {
+                    //Questo task non ha alcuna descrizione
+                    descriptionRecipeGlobal ="This task has not a description";
+                }
+            }
+            else
+            {
+                descriptionRecipeGlobal ="This task has not a description";
+            }
+            if($scope.recipedDescriptionInput == null)  descriptionRecipeGlobal = "This task has not a description";
+            else
+                if($scope.recipedDescriptionInput == "")  descriptionRecipeGlobal = "This task has not a description";
+
+
+
+
+            //Mando i dati al server con i due modulini + la descrizione.
+            sendingToServerAll ();
+
+            // $('#recipedDescriptionModal').modal('hide');
+
+
+            /*
+
             console.log("inserted the following description: "+$scope.recipedDescriptionInput);
             // Salvare la descrizione nella varaibile globale e nella ricetta in questione
             // Invio della descrizione al server con una UPDATE
@@ -707,8 +745,9 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             $scope.userRecipes.splice(index, 1);
 
             // MANCA DA FARE LA DELETE ALLA SERVLET
+            */
         };
-        
+
 
 
     }]);
@@ -2740,13 +2779,16 @@ function sendingToServerAll ()
      */
 
 
+
     sendDataToServer =
     {
+        id: "???",
+        desc: descriptionRecipeGlobal,
         "trigger" : modulinoj1,
-        "action" : modulinoj2,
-        "desc": "example descrition here, written by the user"/*recipedDesc*/
+        "action" : modulinoj2
     };
 
+    //"desc": "example descrition here, written by the user"/*recipedDesc*/
     sedingServerAllRun(sendDataToServer);
 
 
@@ -2770,15 +2812,23 @@ function alertFunction ()
 }
 function sedingServerAllRun (loginDataSend)
 {
-    var result = "ciao";
+    //var result = "ciao";
     $.ajax({
         method: "post",
         url: "/MyServlet",
         data: loginDataSend,
         dataType: "json",
         success: function(response) {
+
+            $('#recipedDescriptionModal').modal('hide');
+
             //console.log("la post ha avuto successo n 9");
-            result = response;
+            //result = response;
+
+            //sendingToServerAll();
+            url = "#gMailSucces";
+            window.location.replace(url);
+
             //alert("1");
 
             /*
