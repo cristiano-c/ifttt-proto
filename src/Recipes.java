@@ -1,3 +1,5 @@
+import org.json.JSONObject;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,14 +18,20 @@ public class Recipes extends HttpServlet {
 
         System.out.println("è stata richiesta la lista delle ricette, invio in corso....");
 
+        JSONObject json = new JSONObject();
+        json.put("city", "Mumbai");
+        json.put("country", "India");
 
 
+        System.out.println(json.toString());
+
+        /*
         String recipesList = "[{\"trigger\":\"weather\",\"action\":\"gcalendar\",\"id\":\"1\"},{\"trigger\":\"gmail\",\"action\":\"gmail\",\"id\":\"2\"},{\"trigger\":\"weather\",\"action\":\"twitter\",\"id\":\"3\"},{\"trigger\":\"XXXX\",\"action\":\"YYYY\",\"id\":\"4\"}]";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(recipesList);
         out.flush();
-
+        */
     }
 
 
