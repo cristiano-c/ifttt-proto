@@ -700,7 +700,15 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 alert("error to update description");
             });
             $('#recipedDescriptionModal').modal('hide');
-        }
+        };
+
+        $scope.removeRecipe = function(index){
+            console.log("REMOVING: "+index);
+            $scope.userRecipes.splice(index, 1);
+
+            // MANCA DA FARE LA DELETE ALLA SERVLET
+        };
+        
 
 
     }]);

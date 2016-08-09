@@ -18,7 +18,7 @@
                                     <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="{{f.desc}}"></span>
                                     IF THIS <u>{{f.trigger}}</u> DO THAT <u>{{f.action}}</u>
                                     <button class="btn btn-warning pull-right">
-                                    <span class="glyphicon glyphicon-trash"></span>
+                                    <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe($index)"></span>
                                     </button>
                                 </h4>
                             </li>
@@ -26,7 +26,7 @@
                     </ul>
 
                 </div>
-                
+
             </div>
             <div class="row text-center" style="padding-top: 3%">
                 <h3>or</h3>
