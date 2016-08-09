@@ -11,5 +11,5 @@
 }
 
 .popover{
-    max-width: 11%; /* Max Width of the popover (depending on the container!) */
+    max-width: 200px; /* Max Width of the popover (depending on the container!) */
 }
