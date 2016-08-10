@@ -29,9 +29,7 @@ public class MyServlet extends HttpServlet {
 
 
 
-
-        //String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\", \"userRecipesJSON\":[{\"trigger\":\"weather\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\", \"id\":\"1\"},{\"trigger\":\"gmail\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\",\"id\":\"2\"},{\"trigger\":\"weather\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"3\"},{\"trigger\":\"gcalendar\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"4\"}]}";
-        String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\"}";
+        String jsonObject = "{\"authenticated\":\"true\",\"disconnected\":\"true\", \"userRecipesJSON\":[{\"trigger\":\"weather\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\", \"id\":\"1\"},{\"trigger\":\"gmail\",\"action\":\"twitter\", \"desc\": \"example descrition here, written by the user\",\"id\":\"2\"},{\"trigger\":\"weather\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"3\"},{\"trigger\":\"gcalendar\",\"action\":\"gmail\", \"desc\": \"example descrition here, written by the user\",\"id\":\"4\"}]}";
         response.setContentType("application/json");
         PrintWriter out = response.getWriter();
         out.print(jsonObject);
