@@ -76,16 +76,16 @@
         </ul>
         <form class="navbar-form navbar-right" role="search">
           <div class="form-group">
-              <a href="" ng-click="logoutIFTTT()" ><img id="IFTTTLogoON" ng-if="iftttLogged" src="./images/logos/polito-logged-in.png" height="30" width="30"/></a>
-              <img id="iftttLogoOFF" ng-if="!iftttLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in IFTTT Polito" src="./images/logos/polito-logged-out.png" height="30" width="30"/>
-              <a href="" ng-click="logoutTwitter()" ><img id="twitterLogoON" ng-if="twitterLogged" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
-            <img id="twitterLogoOFF" ng-if="!twitterLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
-            <a href="" ng-click="logoutGoogle()" ><img id="googleLogoON" ng-if="googleLogged" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
-            <img id="googleLogoOFF" ng-if="!googleLogged" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
+              <a href="" ng-click="logoutIFTTT()" ><img id="IFTTTLogoON"  ng-if="iftttLogged" src="./images/logos/polito-logged-in.png" height="30" width="30"/></a>
+              <img id="iftttLogoOFF" ng-if="!iftttLogged"  data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in IFTTT Polito" src="./images/logos/polito-logged-out.png" height="30" width="30"/>
+              <a href="" ng-click="logoutTwitter()" ><img id="twitterLogoON"  ng-if="twitterLogged" src="./images/logos/twitter-logged-in.png" height="34" width="34"/></a>
+            <img id="twitterLogoOFF" ng-if="!twitterLogged"  data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Twitter" src="./images/logos/twitter-logged-out.png" height="34" width="34"/>
+            <a href="" ng-click="logoutGoogle()" ><img id="googleLogoON"   ng-if="googleLogged" src="./images/logos/google-logged-in.png" height="30" width="30"/></a>
+            <img id="googleLogoOFF" ng-if="!googleLogged" style="margin-left: 3px" data-toggle="popover" data-placement="bottom" data-trigger="hover" data-content="Not logged in Google" src="./images/logos/google-logged-out.png" height="30" width="30"/>
 
           </div>
-          <button type="submit" class="btn btn-default" ng-if="!iftttLogged" data-toggle="modal" data-target="#loginIFTTTModal" ng-click="routeListener('index/myRecipes')"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
-          <a href="#index/createAccount"><button type="submit" class="btn btn-default" ng-if="!iftttLogged"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logon</button></a>
+          <button type="submit" class="btn btn-default" ng-if="!iftttLogged" style="margin-left: 6px"   data-toggle="modal" data-target="#loginIFTTTModal" ng-click="routeListener('index/myRecipes')"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</button>
+          <a href="#index/createAccount"><button type="submit" class="btn btn-default" style=" margin-left: 6px"  ng-if="!iftttLogged"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Logon</button></a>
           <button type="submit" class="btn btn-default" ng-if="iftttLogged" ng-click="logoutIFTTT()">Logout <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span></button>
         </form>
       </div><!-- /.navbar-collapse -->
