@@ -607,7 +607,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
             $http({
                 method: 'POST',
-                url: '/MyServlet',
+                url: 'http://localhost:3000/authentication',
                 data: requestLogout
             }).then(function success(response) {
                 console.log(response.data.disconnected);
@@ -738,6 +738,23 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             alert(JSON.stringify("id",$scope.userRecipes[index].id));
 
 
+            $http.post('http://localhost:3000/userRecipes', JSON.stringify({"uno":"test"})).then(function success () {
+                alert("ok");
+            },function error() {
+                alert("fail");
+            });
+
+            /*
+            $http({
+                method: 'POST',
+                url: 'http://localhost:3000/db',
+                data: JSON.stringify({myData:"example"})
+            }).then(function success(response) {
+                console.log("ok");
+            }, function error() {
+                console.log("some error occurred");
+            });
+
             $http.delete("/Recipes", JSON.stringify("id",$scope.userRecipes[index].id))
                 .then(function success(response){
                         $scope.userRecipes.splice(index, 1);
@@ -747,6 +764,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         console.log("some problem occurred, recipes was not deleted");
                     }
                 );
+                */
 
             // MANCA DA FARE LA DELETE ALLA SERVLET
         };
