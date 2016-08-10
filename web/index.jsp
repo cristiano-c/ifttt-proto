@@ -102,7 +102,9 @@
   <br>
   {{"twitterLogged: "+ twitterLogged}}
   <!-- DEBUG AREA END -->
+  <!--
   {{"recipe: "+ userRecipes}}
+  -->
   <!-- NOTIFICATIONS WRAPPER BEGIN -->
   <div id="notificationsWrapper" style="margin: auto"></div>
   <!-- NOTIFICATIONS WRAPPER END -->
@@ -252,7 +254,9 @@
 
 
   <!-- Test area BEGIN -->
-    <button ng-click="RequestRecipes()">Request recipes</button>
+  <!--
+  <button ng-click="RequestRecipes()">Request recipes</button>
+  -->
   <!-- Test area END -->
 
   <!-- extra space bottom page -->
