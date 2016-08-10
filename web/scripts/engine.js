@@ -2782,7 +2782,7 @@ function sendingToServerAll ()
 
     sendDataToServer =
     {
-        id: "???",
+        id: null,
         desc: descriptionRecipeGlobal,
         "trigger" : modulinoj1,
         "action" : modulinoj2
