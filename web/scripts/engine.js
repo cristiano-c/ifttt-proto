@@ -731,13 +731,24 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 alert("error to update description");
             });
             $('#recipedDescriptionModal').modal('hide');
+        };*/
 
         $scope.removeRecipe = function(index){
             console.log("REMOVING: "+index);
-            $scope.userRecipes.splice(index, 1);
+            alert(JSON.stringify("id",$scope.userRecipes[index].id));
+
+
+            $http.delete("/Recipes", JSON.stringify("id",$scope.userRecipes[index].id))
+                .then(function success(response){
+                        $scope.userRecipes.splice(index, 1);
+                        console.log("recipe deleted successfully from the server and local machine");
+                    },
+                    function failure(response){
+                        console.log("some problem occurred, recipes was not deleted");
+                    }
+                );
 
             // MANCA DA FARE LA DELETE ALLA SERVLET
-            */
         };
 
 
