@@ -296,6 +296,13 @@ iftttApp.config(['$routeProvider', function($routeProvider){
        templateUrl: 'innerPages/createRecipeAction.html'
    });
 
+
+    $routeProvider.when('/SuccessRepice', {
+        templateUrl: 'innerPages/success/SuccessRecipe.html',
+        controller: 'SuccessController'
+    });
+
+
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
@@ -1178,9 +1185,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
 
 
-                    sendingToServerAll();
-                    var url = "#gMailSucces";
-                    window.location.replace(url);
+                    $('#recipedDescriptionModal').modal('show');
+                    //sendingToServerAll();
+                    //var url = "#gMailSucces";
+                    //window.location.replace(url);
                 }
             }
             else
@@ -2572,10 +2580,11 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
                 };
 
-                sendingToServerAll();
+                $('#recipedDescriptionModal').modal('show');
+                //sendingToServerAll();
                 //href="#SuccessTwitter"
-                var url = "#SuccessTwitter";
-                window.location.replace(url);
+                //var url = "#SuccessTwitter";
+                //window.location.replace(url);
             }
 
             if(twitterLogin == "0")
@@ -2699,12 +2708,14 @@ iftttApp.controller('action2TwitterController', ['$scope',
                     
                 };
                 if(flag == 1) {
-                    sendingToServerAll();
+
+                    $('#recipedDescriptionModal').modal('show');
+                    //sendingToServerAll();
                     flagTriggerDone = "0";
                     count = 7;
                     // href="#SuccessTwitter"
-                    url = "#SuccessTwitter";
-                    window.location.replace(url);
+                    //url = "#SuccessTwitter";
+                    //window.location.replace(url);
                 }
                 else
                 {
@@ -2826,7 +2837,7 @@ function sedingServerAllRun (loginDataSend)
             //result = response;
 
             //sendingToServerAll();
-            url = "#gMailSucces";
+            url = "#SuccessRepice";
             window.location.replace(url);
 
             //alert("1");
