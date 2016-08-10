@@ -49,7 +49,7 @@
 
           <li>
             <a type="submit" href="#index/myRecipes" ng-if="iftttLogged"
-               data-target="#loginIFTTTModal">
+               data-target="#loginIFTTTModal" ng-click="requestRecipes()">
               <span  aria-hidden="true"></span>Your recipes</a>
           </li>
 
@@ -252,7 +252,7 @@
 
 
   <!-- Test area BEGIN -->
-    <button ng-click="RequestRecipes()">Request recipes</button>
+    <button ng-click="requestRecipes()">Request recipes</button>
   <!-- Test area END -->
 
   <!-- extra space bottom page -->
