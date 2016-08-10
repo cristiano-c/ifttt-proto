@@ -195,10 +195,6 @@ iftttApp.config(['$routeProvider', function($routeProvider){
         controller: 'GmailActionController' //o.k.
     });
 
-    $routeProvider.when('/gMailSucces', {
-        templateUrl: 'innerPages/gmailChannel/gmailSuccess.html',
-        controller: 'SuccessController'
-    });
 
     $routeProvider.when('/choseTriggerActionWeather', {
         templateUrl: 'innerPages/weatherChannel/weatherChooseTriggerAction.html'
@@ -278,10 +274,6 @@ iftttApp.config(['$routeProvider', function($routeProvider){
 
    });
 
-   $routeProvider.when('/SuccessTwitter', {
-       templateUrl: 'innerPages/twitterChannel/twitterSuccess.html',
-       controller: 'SuccessController'
-   });
 
    $routeProvider.when('/allTriggers', {
        templateUrl: 'innerPages/triggers.html',
