@@ -654,25 +654,25 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             console.log("routeListener(nextRoute): "+nextPath);
         };
         
-        $scope.RequestRecipes = function () {
-            var luna = sendDataToServer;
-            $scope.userRecipes.push(luna);
-            alert("wwww");
+        $scope.requestRecipes = function () {
+            /*var luna = sendDataToServer;
+            $scope.userRecipes.push(luna);*/
 
             $http({
-                method: 'POST',
-                url: '/Recipes',
-                data: JSON.stringify({value:"nothing"}),
-                dataType: "application/json;charset=UTF-8"
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes',
             }).then(function success(response) {
                 // Success code here
-                console.log(JSON.stringify(response));
+                $scope.userRecipes = [];
+                alert(JSON.stringify(response));
                 response.data.forEach(function (x) {
                     console.log(JSON.stringify(x));
+                    console.log("????"+JSON.stringify($scope.userRecipes));
                     $scope.userRecipes.push(x);
+                    console.log("after"+JSON.stringify($scope.userRecipes));
+                    alert("WTF");
+                    alert("triggerType:"+JSON.stringify($scope.userRecipes[0]));
                 });
-
-
             }, function error(response) {
                 // Error code here
                 alert("error");
@@ -738,7 +738,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             alert(JSON.stringify("id",$scope.userRecipes[index].id));
 
 
-            $http.post('http://localhost:3000/userRecipes', JSON.stringify({"uno":"test"})).then(function success () {
+            $http.delete('http://localhost:3000/userRecipes', JSON.stringify({"id":$scope.userRecipes[index].id})).then(function success () {
                 alert("ok");
             },function error() {
                 alert("fail");
@@ -2839,10 +2839,147 @@ function sedingServerAllRun (loginDataSend)
 {
     //url: "/MyServlet",
     //var result = "ciao";
+    var exampleJSON = {
+        "medications":[{
+            "aceInhibitors":[{
+                "name":"lisinopril",
+                "strength":"10 mg Tab",
+                "dose":"1 tab",
+                "route":"PO",
+                "sig":"daily",
+                "pillCount":"#90",
+                "refills":"Refill 3"
+            }],
+            "antianginal":[{
+                "name":"nitroglycerin",
+                "strength":"0.4 mg Sublingual Tab",
+                "dose":"1 tab",
+                "route":"SL",
+                "sig":"q15min PRN",
+                "pillCount":"#30",
+                "refills":"Refill 1"
+            }],
+            "anticoagulants":[{
+                "name":"warfarin sodium",
+                "strength":"3 mg Tab",
+                "dose":"1 tab",
+                "route":"PO",
+                "sig":"daily",
+                "pillCount":"#90",
+                "refills":"Refill 3"
+            }],
+            "betaBlocker":[{
+                "name":"metoprolol tartrate",
+                "strength":"25 mg Tab",
+                "dose":"1 tab",
+                "route":"PO",
+                "sig":"daily",
+                "pillCount":"#90",
+                "refills":"Refill 3"
+            }],
+            "diuretic":[{
+                "name":"furosemide",
+                "strength":"40 mg Tab",
+                "dose":"1 tab",
+                "route":"PO",
+                "sig":"daily",
+                "pillCount":"#90",
+                "refills":"Refill 3"
+            }],
+            "mineral":[{
+                "name":"potassium chloride ER",
+                "strength":"10 mEq Tab",
+                "dose":"1 tab",
+                "route":"PO",
+                "sig":"daily",
+                "pillCount":"#90",
+                "refills":"Refill 3"
+            }]
+        }
+        ],
+        "labs":[{
+            "name":"Arterial Blood Gas",
+            "time":"Today",
+            "location":"Main Hospital Lab"
+        },
+            {
+                "name":"BMP",
+                "time":"Today",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"BNP",
+                "time":"3 Weeks",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"BUN",
+                "time":"1 Year",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"Cardiac Enzymes",
+                "time":"Today",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"CBC",
+                "time":"1 Year",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"Creatinine",
+                "time":"1 Year",
+                "location":"Main Hospital Lab"
+            },
+            {
+                "name":"Electrolyte Panel",
+                "time":"1 Year",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"Glucose",
+                "time":"1 Year",
+                "location":"Main Hospital Lab"
+            },
+            {
+                "name":"PT/INR",
+                "time":"3 Weeks",
+                "location":"Primary Care Clinic"
+            },
+            {
+                "name":"PTT",
+                "time":"3 Weeks",
+                "location":"Coumadin Clinic"
+            },
+            {
+                "name":"TSH",
+                "time":"1 Year",
+                "location":"Primary Care Clinic"
+            }
+        ],
+        "imaging":[{
+            "name":"Chest X-Ray",
+            "time":"Today",
+            "location":"Main Hospital Radiology"
+        },
+            {
+                "name":"Chest X-Ray",
+                "time":"Today",
+                "location":"Main Hospital Radiology"
+            },
+            {
+                "name":"Chest X-Ray",
+                "time":"Today",
+                "location":"Main Hospital Radiology"
+            }
+        ]
+    };
+
     $.ajax({
         method: "post",
         url: "http://localhost:3000/userRecipes",
-        data: loginDataSend,
+        data: exampleJSON /*loginDataSend*/,
         dataType: "json",
         success: function(response) {
 

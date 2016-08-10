@@ -12,6 +12,22 @@
       "action[type]": 0,
       "action[body]": "^-^",
       "action[destination]": "null"
+    },
+    {
+      "id": 2,
+      "desc": "qwetyuiopè",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "ads",
+      "trigger[description]": "qwe",
+      "trigger[place]": "zcx",
+      "action[actionType]": "calendar",
+      "action[title]": "qwewqeqweqwe",
+      "action[description]": "adsasdasdasd",
+      "action[place]": "null",
+      "action[dayVector]": "null",
+      "action[monthVector]": "null",
+      "action[yearVector]": "null"
     }
   ]
 }
