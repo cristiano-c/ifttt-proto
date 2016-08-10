@@ -685,31 +685,25 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
 
             //Variabile per prendere la descrizione dell'user --> recipedDescriptionInput
-            if (angular.isDefined($scope.recipedDescriptionInput))
-            {
-                if (angular.isDefined($scope.recipedDescriptionInput))
-                {
+            if (angular.isDefined($scope.recipedDescriptionInput)) {
+                if (angular.isDefined($scope.recipedDescriptionInput)) {
                     descriptionRecipeGlobal = $scope.recipedDescriptionInput;
                 }
-                else
-                {
+                else {
                     //Questo task non ha alcuna descrizione
-                    descriptionRecipeGlobal ="This task has not a description";
+                    descriptionRecipeGlobal = "This task has not a description";
                 }
             }
-            else
-            {
-                descriptionRecipeGlobal ="This task has not a description";
+            else {
+                descriptionRecipeGlobal = "This task has not a description";
             }
-            if($scope.recipedDescriptionInput == null)  descriptionRecipeGlobal = "This task has not a description";
-            else
-                if($scope.recipedDescriptionInput == "")  descriptionRecipeGlobal = "This task has not a description";
-
-
+            if ($scope.recipedDescriptionInput == null)  descriptionRecipeGlobal = "This task has not a description";
+            else if ($scope.recipedDescriptionInput == "")  descriptionRecipeGlobal = "This task has not a description";
 
 
             //Mando i dati al server con i due modulini + la descrizione.
-            sendingToServerAll ();
+            sendingToServerAll();
+        };
 
             // $('#recipedDescriptionModal').modal('hide');
 
@@ -737,7 +731,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 alert("error to update description");
             });
             $('#recipedDescriptionModal').modal('hide');
-        };
 
         $scope.removeRecipe = function(index){
             console.log("REMOVING: "+index);
