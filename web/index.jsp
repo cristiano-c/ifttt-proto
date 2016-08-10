@@ -48,9 +48,11 @@
         <ul class="nav navbar-nav">
 
           <li>
-            <a type="submit" href="#index/myRecipes" ng-if="iftttLogged"
+              <!-- href="#index/myRecipes" -->
+              <a type="submit"  data-ng-click="loadRecipesAndSeeThem()" ng-if="iftttLogged"
                data-target="#loginIFTTTModal">
-              <span  aria-hidden="true"></span>Your recipes</a>
+              <span  aria-hidden="true"></span>Your recipes
+            </a>
           </li>
 
 

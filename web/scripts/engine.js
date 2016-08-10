@@ -113,6 +113,9 @@ var descriptionRecipeGlobal = "";
 
 // unused? var prova1 ="";
 
+
+var privateuserRecipesVet = [];
+
 iftttApp.config(['$routeProvider', function($routeProvider){
 
     $routeProvider.when('/', {
@@ -654,7 +657,12 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             console.log("routeListener(nextRoute): "+nextPath);
         };
         
-        $scope.RequestRecipes = function ()
+
+      /*   Funzione deprecata non più usata */
+
+
+        //  $scope.RequestRecipes = function ()
+        $scope.loadRecipesAndSeeThem = function ()
         {
 
             //var luna = sendDataToServer;
@@ -687,7 +695,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             //Get the recipes and print them
 
 
-
+/*
             $http({
                 method: 'GET',
                 url: 'http://localhost:3000/userRecipes'
@@ -724,10 +732,81 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 // Error code here
                 alert("error");
             });
+            */
+
+
+
+
+            //Get from server the informations in order to print.
+
+            $http
+            (
+                {
+                    method: 'GET',
+                    url: 'http://localhost:3000/userRecipes'
+                }
+            )
+                .then
+                (
+                    function success(response)
+                    {
+                        alert("o.k. :)");
+                        $scope.userRecipes=[];
+                        // Success code here
+                        //For debug
+                        //console.log(JSON.stringify(response));
+                        //alert(JSON.stringify(response));
+
+                        var i = 0;
+                        var demp = [];
+                        response.data.forEach
+                        (
+                            function (x)
+                            {
+                                //console.log(JSON.stringify(x));
+                                //console.log("????"+JSON.stringify($scope.userRecipes));
+
+                                //$scope.userRecipes.push(x);
+
+
+                                demp.push(x);
+                                //alert("--> " + JSON.stringify(privateuserRecipesVet[i]["trigger[triggerType]"]));
+                                var d1 =
+                                {
+                                    "triggerType" :  demp[i]["trigger[triggerType]"]
+                                };
+                                $scope.userRecipes.push(d1);
+                                //alert( $scope.userRecipes[0].triggerType);
+
+
+                                //console.log("after"+JSON.stringify($scope.userRecipes));
+                                //alert("WTF");
+                                //Per ottenere la descrizione:
+                                //alert("-->" + JSON.stringify($scope.userRecipes));
+                                //trigger[triggerType]
+                                //alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+                                i++;
+                            }
+                        );
+                        //Cambia pagina
+                        url = "#/index/myRecipes";
+                        window.location.replace(url);
+
+                    },
+                    function error(response)
+                    {
+                        // Error code here
+                        alert("error");
+                    }
+                );
+
+            alert("---" + $scope.userRecipes[0].triggerType);
+
 
 
 
         };
+
 
         $scope.saveRecipeDescription = function () {
             //Prende la descrizione della ricetta
@@ -880,10 +959,67 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     }]);
 
 
-iftttApp.controller('myRecipesController',  ['$scope',
-    function ($scope) {
+iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http) {
 
 
+        //var privateuserRecipesVet = [];
+
+        //Get from server the informations in order to print.
+/*
+             $http
+             (
+                 {
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes'
+                }
+             )
+             .then
+             (
+                function success(response)
+                {
+                    alert("o.k.");
+                    // Success code here
+                    //For debug
+                    //console.log(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
+
+                    var i = 0;
+                    response.data.forEach
+                    (
+                        function (x)
+                        {
+                            //console.log(JSON.stringify(x));
+                            //console.log("????"+JSON.stringify($scope.userRecipes));
+
+                            //$scope.userRecipes.push(x);
+
+                            privateuserRecipesVet.push(x);
+
+                            //console.log("after"+JSON.stringify($scope.userRecipes));
+                            //alert("WTF");
+                            //Per ottenere la descrizione:
+                            //alert("-->" + JSON.stringify($scope.userRecipes));
+                            //trigger[triggerType]
+                            //alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+                            //i++;
+                        }
+                    );
+
+
+                },
+                 function error(response)
+                    {
+                        // Error code here
+                    alert("error");
+                    }
+             );
+
+
+
+        //};
+
+    */
 
     }]);
 
