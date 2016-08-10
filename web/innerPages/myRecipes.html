@@ -16,7 +16,7 @@
                             <li ng-repeat="f in userRecipes" class="list-group-item">
                                 <h4>
                                     <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="{{f.desc}}"></span>
-                                    IF THIS <em>{{f.trigger.triggerType}}</em> DO THAT <u>{{f.action.actionType}}</u>
+                                    IF THIS <em>{{f.trigger}}</em> DO THAT <u>{{f.action}}</u>
                                     <button class="btn btn-warning pull-right">
                                     <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe($index)"></span>
                                     </button>
