@@ -1,0 +1,15 @@
+{"data":[{"id":1,"desc":"This task has not a description","trigger[triggerType]":"calendar","trigger[eventAction]":0,"trigger[title]":"null","trigger[description]":"null","trigger[place]":"","action[actionType]":"calendar","action[title]":"null","action[description]":"null","action[place]":"null","action[dayVector]":"null","action[monthVector]":"null","action[yearVector]":"null"}],"status":200,"config":{"method":"GET","transformRequest":[null],"transformResponse":[null],"url":"http://localhost:3000/userRecipes","headers":{"Accept":"application/json, text/plain, */*"}},"statusText":"OK"}
+
+
+{"id":1,
+  "desc":"This task has not a description",
+  "trigger[triggerType]":"calendar",
+  "trigger[eventAction]":0,"trigger[title]":"null","trigger[description]":"null","trigger[place]":"","action[actionType]":"calendar","action[title]":"null","action[description]":"null","action[place]":"null","action[dayVector]":"null","action[monthVector]":"null","action[yearVector]":"null"}
+
+
+var JSONText = '{"c":{"a":[{"name":"cable - black","value":2},{"name":"case","value":2}]},
+"o":{"v":[{"name":"over the ear headphones - white/purple","value":1}]},"l":{"e":[{"name":"lens cleaner","value":1}]},"h":{"d":[{"name":"hdmi cable","value":1},{"name":"hdtv essentials (hdtv cable setup)","value":1},{"name":"hd dvd \u0026 blue-ray disc lens cleaner","value":1}]}'
+
+var JSONObject = JSON.parse(JSONText);
+var c = JSONObject["c"];
+var o = JSONObject["o"];

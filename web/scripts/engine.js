@@ -80,8 +80,8 @@ var period_customWeatherActionControllerTrigger4 = "";
 
 
 /* Modulini per json*/
-var modulinoj1 = "";
-var modulinoj2 = "";
+var modulinoj1 = [];
+var modulinoj2 = [];
 
 /* NAVIGATION */
 
@@ -101,7 +101,7 @@ var alertVariable = "";
 //Esiste già
 //var loginDataSend = null;
 
-var sendDataToServer = null;
+var sendDataToServer = [];
 
 //Variabile di descriozione
 var descriptionRecipeGlobal = "";
@@ -654,14 +654,18 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             console.log("routeListener(nextRoute): "+nextPath);
         };
         
-        $scope.RequestRecipes = function () {
-            var luna = sendDataToServer;
-            $scope.userRecipes.push(luna);
-            alert("wwww");
+        $scope.RequestRecipes = function ()
+        {
 
+            //var luna = sendDataToServer;
+            //$scope.userRecipes.push(luna);
+            //alert("wwww");
+
+
+           /*
             $http({
-                method: 'POST',
-                url: '/Recipes',
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes',
                 data: JSON.stringify({value:"nothing"}),
                 dataType: "application/json;charset=UTF-8"
             }).then(function success(response) {
@@ -677,6 +681,51 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 // Error code here
                 alert("error");
             });
+            */
+
+
+            //Get the recipes and print them
+
+
+
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes'
+            }).then(
+                function success(response)
+            {
+                // Success code here
+                $scope.userRecipes = [];
+                console.log(JSON.stringify(response));
+                $scope.userRecipes = [];
+                //alert(JSON.stringify(response));
+
+
+                var i = 0;
+                response.data.forEach(function (x)
+                {
+
+                    //console.log(JSON.stringify(x));
+                    //console.log("????"+JSON.stringify($scope.userRecipes));
+                    $scope.userRecipes.push(x);
+                    //console.log("after"+JSON.stringify($scope.userRecipes));
+                    //alert("WTF");
+                    //Per ottenere la descrizione:
+                    alert("-->" + JSON.stringify($scope.userRecipes));
+                    //trigger[triggerType]
+                    alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+
+                    i++;
+                });
+
+
+            }, function error(response)
+            {
+                // Error code here
+                alert("error");
+            });
+
+
 
         };
 
@@ -2820,9 +2869,11 @@ function alertFunction ()
 function sedingServerAllRun (loginDataSend)
 {
     //var result = "ciao";
+    //url: 'http://localhost:3000/userRecipes
+    //url: "/MyServlet"
     $.ajax({
         method: "post",
-        url: "/MyServlet",
+        url: "http://localhost:3000/userRecipes",
         data: loginDataSend,
         dataType: "json",
         success: function(response) {
