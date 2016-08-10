@@ -1,4 +1,17 @@
 {
   "userRecipes": [
+    {
+      "id": 1,
+      "desc": "ciao",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "lUNA",
+      "trigger[description]": "?",
+      "trigger[place]": "torino",
+      "action[triggerType]": "twitter",
+      "action[type]": 0,
+      "action[body]": "^-^",
+      "action[destination]": "null"
+    }
   ]
 }

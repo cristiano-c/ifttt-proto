@@ -2837,10 +2837,11 @@ function alertFunction ()
 }
 function sedingServerAllRun (loginDataSend)
 {
+    //url: "/MyServlet",
     //var result = "ciao";
     $.ajax({
         method: "post",
-        url: "/MyServlet",
+        url: "http://localhost:3000/userRecipes",
         data: loginDataSend,
         dataType: "json",
         success: function(response) {
