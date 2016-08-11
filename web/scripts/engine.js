@@ -3,8 +3,10 @@
  */
 
 var iftttApp = angular.module('iftttApp', ['ngRoute']);
+//Secure controll
 var triggerChose = 0;
 var actionChose =  0;
+var  modifyVar = 0;
 
 /*GmailTriggerController  Tn 1*/
 var sender_GmailTriggerController = ""; //sender
@@ -100,12 +102,22 @@ var alertVariable = "";
 
 //Esiste già
 //var loginDataSend = null;
-
 var sendDataToServer = [];
 
 //Variabile di descriozione
 var descriptionRecipeGlobal = "";
 
+//Variabile Id
+var idRecipe = "";
+
+//Variabile action and trigger
+var actionGlobalVariable = "";
+var triggreGlobalVariable = "";
+var subTriggerGlobalVariable = "";
+
+//Url action and trigger
+var urlActionGlobalVariable = "";
+var ulrTriggreGlobalVariable = "";
 
 
 iftttApp.config(['$routeProvider', function($routeProvider){
@@ -287,6 +299,12 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     $routeProvider.when('/SuccessRepice', {
         templateUrl: 'innerPages/success/SuccessRecipe.html',
         controller: 'SuccessController'
+    });
+
+
+    $routeProvider.when('/choseModify', {
+        templateUrl: 'innerPages/choseModify.html',
+        controller: 'choseModifyController'
     });
 
 
@@ -1092,11 +1110,141 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     });
 
             };
-        $scope.modifyRecipe = function(index, id)
-        {
-            //
 
-        }
+        //Salva i valori del vettore dentro alle variabili globali.
+        $scope.modifyRecipe = function(index)
+        {
+            var data = $scope.privateuserRecipesVetAllData[index];
+
+            descriptionRecipeGlobal = $scope.privateuserRecipesVetAllData[index].desc;
+            idRecipe = $scope.privateuserRecipesVetAllData[index].id;
+            triggreGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[triggerType]"];
+            actionGlobalVariable = $scope.privateuserRecipesVetAllData[index]["action[actionType]"];
+
+
+            /*
+            urlActionGlobalVariable = "";
+            ulrTriggreGlobalVariable = "";
+
+             */
+
+            if(triggreGlobalVariable == "gmail")
+            {
+                sender_GmailTriggerController = $scope.privateuserRecipesVetAllData[index]["trigger[sender]"];
+                subject_GmailTriggerController = $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
+                ulrTriggreGlobalVariable= "#gMailTrigger";
+
+            }
+            else
+            {
+
+                if(triggreGlobalVariable == "calendar")
+                {
+                    if (0 == $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"])
+                    {
+                        title_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[title]"];
+                        description_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[description]"];
+                        place_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[place]"];
+                        subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
+                        ulrTriggreGlobalVariable = "#Trigger1Gcalendar";
+                    }
+                    else
+                    {
+                        title_Trigger2GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[title]"];
+                        description_Trigger2GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
+                        place_Trigger2GcalendarController =$scope.privateuserRecipesVetAllData[index]["trigger[place]"];
+                        subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
+                        ulrTriggreGlobalVariable = "#Trigger2Gcalendar";
+                    }
+
+                }
+                else
+                {
+                    if (triggreGlobalVariable == "weather") {
+
+                        if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 1)
+                        {
+                            idCity_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[location]"];
+                            timezone_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[ora]"];
+                            ora_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
+                            subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                            ulrTriggreGlobalVariable = "#WeatherTrigger1";
+                        }
+                        else {
+                            if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 2)
+                            {
+
+                                idCity_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[location]"];
+                                pweather_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[tempo]"];
+                                pperiod_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[period]"];
+                                pzone_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
+                                subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                                ulrTriggreGlobalVariable = "#WeatherTrigger2";
+                            }
+                            else
+                            {
+                                if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 3)
+                                {
+                                    idCity_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[location]"];
+                                    timezone_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
+                                    sunset_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[sunset]"];
+                                    sunrise_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[sunrise]"];
+                                    subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                                    ulrTriggreGlobalVariable = "#WeatherTrigger3";
+
+
+                                }
+                                else
+                                {
+                                    if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 4)
+                                    {
+                                        idCity_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[location]"];
+                                        ptimezone_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
+                                        pthmax_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[thmax]"];
+                                        pthmin_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[thmin]"];
+                                        period_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[period]"];
+                                        subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                                        ulrTriggreGlobalVariable = "#WeatherTrigger4";
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        if (triggreGlobalVariable == "twitter")
+                        {
+
+                            if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 0)
+                            {
+                                hashtag_text_trigger1TwitterController =    $scope.privateuserRecipesVetAllData[index]["trigger[hashtag_text]"];
+                                username_sender_trigger1TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
+                                subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                                ulrTriggreGlobalVariable = "#Trigger1Twitter";
+                            }
+                            else
+                            {
+                                hashtag_text_trigger2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[hashtag_text]"];
+                                username_sender_trigger2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
+                                subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
+                                ulrTriggreGlobalVariable = "#Trigger2Twitter";
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            
+            modifyVar=1;
+            var url = "#choseModify";
+            window.location.replace(url);
+
+        };
 
 
 }]);
@@ -1146,6 +1294,7 @@ iftttApp.controller('createAccountController',  ['$scope',
 
 
     }]);
+
 
 
 
@@ -3017,6 +3166,17 @@ iftttApp.controller('action2TwitterController', ['$scope',
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
 
+
+
+    }]);
+
+
+
+
+//Update done
+iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
+    function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
+        $scope.urlTriggerUser = ulrTriggreGlobalVariable;
 
 
     }]);

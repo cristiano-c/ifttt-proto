@@ -15,7 +15,37 @@
       "action[dayVector]": "null",
       "action[monthVector]": "null",
       "action[yearVector]": "null",
-      "flag": true
+      "flag": false
+    },
+    {
+      "id": 2,
+      "desc": "This task has not a description",
+      "trigger[triggerType]": "gmail",
+      "trigger[sender]": "",
+      "trigger[subject]": "",
+      "action[actionType]": "calendar",
+      "action[title]": "null",
+      "action[description]": "null",
+      "action[place]": "null",
+      "action[dayVector]": "null",
+      "action[monthVector]": "null",
+      "action[yearVector]": "null"
+    },
+    {
+      "id": 3,
+      "desc": "This task has not a description",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "",
+      "trigger[description]": "",
+      "trigger[place]": "",
+      "action[actionType]": "calendar",
+      "action[title]": "",
+      "action[description]": "",
+      "action[place]": "null",
+      "action[dayVector]": "null",
+      "action[monthVector]": "null",
+      "action[yearVector]": "null"
     }
   ]
 }
