@@ -61,10 +61,10 @@ var timezone_customWeatherActionControllerTrigger1 = "";
 var ora_customWeatherActionControllerTrigger1 = "";
 
 /*  customWeatherActionControllerTrigger2 Tn 7 */
-var     idCity_customWeatherActionControllerTrigger2 = "";
-var     pweather_customWeatherActionControllerTrigger2 = "";
-var     pperiod_customWeatherActionControllerTrigger2 = "";
-var     pzone_customWeatherActionControllerTrigger2 = "";
+var idCity_customWeatherActionControllerTrigger2 = "";
+var pweather_customWeatherActionControllerTrigger2 = "";
+var pperiod_customWeatherActionControllerTrigger2 = "";
+var pzone_customWeatherActionControllerTrigger2 = "";
 
 /* customWeatherActionControllerTrigger3  Tn 8 */
 var  idCity_customWeatherActionControllerTrigger3 = "";
@@ -114,6 +114,7 @@ var idRecipe = "";
 var actionGlobalVariable = "";
 var triggreGlobalVariable = "";
 var subTriggerGlobalVariable = "";
+var subActionGlobalVariable = "";
 
 //Url action and trigger
 var urlActionGlobalVariable = "";
@@ -1239,7 +1240,57 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 }
             }
 
-            
+            if(actionGlobalVariable == "calendar")
+            {
+                title_action1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[title]"];
+                subjectReceive_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[description]"];
+                place_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[place]"];
+                yearVector_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[dayVector]"];
+                monthVector_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[monthVector]"];
+                dayVector_action1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[yearVector]"];
+                urlActionGlobalVariable = "#action1Gcalendar";
+            }
+            else
+            {
+                if(actionGlobalVariable == "gmail")
+                {
+                    body_GmailActionController = $scope.privateuserRecipesVetAllData[index]["trigger[body]"];
+                    receiver_GmailActionController = $scope.privateuserRecipesVetAllData[index]["trigger[receiver]"];
+                    sender_GmailActionController = $scope.privateuserRecipesVetAllData[index]["trigger[sender]"];
+                    subject_GmailActionController =  $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
+                    urlActionGlobalVariable = "#gMailAction";
+
+                }
+                else
+                {
+                    if(actionGlobalVariable == "twitter")
+                    {
+                        subject_action1TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[body]"];
+                        subActionGlobalVariable = "0";
+                        urlActionGlobalVariable = "Action1Twitter";
+
+                    }
+                    else
+                    {
+
+                        title_action2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[destination]"];
+                        subjec_action2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[body]"];
+                        subActionGlobalVariable = "1";
+                        urlActionGlobalVariable = "Action2Twitter";
+
+                    }
+
+
+                }
+
+            }
+
+
+
+
+
+
+
             modifyVar=1;
             var url = "#choseModify";
             window.location.replace(url);
