@@ -1343,6 +1343,20 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 monthVector_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[monthVector]"];
                 dayVector_action1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[yearVector]"];
                 urlActionGlobalVariable = "#action1Gcalendar";
+
+                modulinoj2 =
+                {
+                    "actionType": "calendar",
+                    //An 2
+                    "title": title_action1GcalendarController,
+                    "description": subjectReceive_action1GcalendarController,
+                    "place": place_action1GcalendarController,
+                    "dayVector": yearVector_action1GcalendarController,
+                    "monthVector": monthVector_action1GcalendarController,
+                    "yearVector": dayVector_action1GcalendarController
+
+                };
+
             }
             else
             {
@@ -1354,6 +1368,16 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     subject_GmailActionController =  $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
                     urlActionGlobalVariable = "#gMailAction";
 
+                    modulinoj2=
+                    {
+                        "actionType" : "gmail",
+                        "body" : body_GmailActionController,
+                        "receiver" : receiver_GmailActionController,
+                        "sender" : sender_GmailActionController,
+                        "subject" : subject_GmailActionController
+                    };
+
+
                 }
                 else
                 {
@@ -1363,14 +1387,31 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         subActionGlobalVariable = "0";
                         urlActionGlobalVariable = "Action1Twitter";
 
+                        modulinoj2 =
+                        {
+                            "triggerType" : "twitter",
+                            "type"      :  "0",
+                            "body"      :  subject_action1TwitterController,
+                            "destination" :  "null"
+
+                        };
+
                     }
                     else
                     {
-
                         title_action2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[destination]"];
                         subjec_action2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[body]"];
                         subActionGlobalVariable = "1";
                         urlActionGlobalVariable = "Action2Twitter";
+
+                        modulinoj2 =
+                        {
+                            "triggerType" : "twitter",
+                            "type"      :  "1",
+                            "destination"   :  title_action2TwitterController,
+                            "body" :  subjec_action2TwitterController
+
+                        };
 
                     }
 
