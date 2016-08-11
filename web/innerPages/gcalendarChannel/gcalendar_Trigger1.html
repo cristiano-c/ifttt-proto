@@ -80,7 +80,13 @@
                             <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
 
                             <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar()" >Next</a>
+                                  ng-if="!modifyButton"
+                                class="btn btn-primary pull-right btn_next3 animate-if"  ng-click="trigger1Gcalendar()"  >Next</a>
+
+                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                                 ng-if="modifyButton"
+                                 class="btn btn-primary pull-right btn_next3 animate-if"  ng-click="trigger1Gcalendar()" >Submit</a>
+
                         </div>
                         <div class="col-md-row" style="padding-top: 7%">
                             <hr>
@@ -100,17 +106,21 @@
 </body>
 
 <script>
+if(modifyVar == 1)
+{
+
+}
+else
+{
 
 
-    if(iftttLogin == false)
-    {
+    if (iftttLogin == false) {
         url = "#home";
         window.location.replace(url);
         count = 0;
-        flagTriggerDone="0";
+        flagTriggerDone = "0";
     }
-    else
-    {
+    else {
         if (googleLogin == "1") {
             if (count == 2) {
                 count++;
@@ -129,6 +139,7 @@
             window.location.replace(url);
         }
     }
+}
 
 </script>
 </html>

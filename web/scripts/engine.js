@@ -900,19 +900,24 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
     function () {
 
-        if (flagTriggerDone == "1")
+        if(modifyVar == 1)
         {
-            //alert("Warning you must compile before the action form");
-            alertVariable="Warning you must compile before the action form";
-            alertFunction();
-            var url = "#createRecipeAction";
-            window.location.replace(url);
+            sendingToServerAll();
         }
-        if (count==7) count=0;
         else
         {
-            url = "#createDO";
-            window.location.replace(url);
+            if (flagTriggerDone == "1") {
+                //alert("Warning you must compile before the action form");
+                alertVariable = "Warning you must compile before the action form";
+                alertFunction();
+                var url = "#createRecipeAction";
+                window.location.replace(url);
+            }
+            if (count == 7) count = 0;
+            else {
+                url = "#createDO";
+                window.location.replace(url);
+            }
         }
 
     }]);
@@ -2178,8 +2183,17 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
 
                     flagTriggerDone = "1";
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        url = "#SuccessRepice";
+                        window.location.replace(url);
+
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
                 }
             }
             else
@@ -2210,7 +2224,14 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
         };
 
-
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+        else
+        {
+            $scope.modifyButton = false;
+        }
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
@@ -3363,6 +3384,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
 iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
         $scope.urlTriggerUser = ulrTriggreGlobalVariable;
+        modifyVar = 1;
 
 
     }]);
