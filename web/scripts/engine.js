@@ -960,6 +960,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     function ($scope, $routeParams, $window, $http)
     {
         $scope.privateuserRecipesVet = null;
+       // $scope.privateuserRecipesVetAllData = null;
 
 
         $http
@@ -971,11 +972,11 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
         )
             .then
             (
-                function success(response)
-                {
+                function success(response) {
                     //alert("o.k. :)");
                     //$scope.userRecipes=[];
                     $scope.privateuserRecipesVet = [];
+                    $scope.privateuserRecipesVetAllData = [];
                     // Success code here
                     //For debug
                     //console.log(JSON.stringify(response));
@@ -984,80 +985,111 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     var varDemp = [];
                     response.data.forEach
                     (
-                        function (x)
-                        {
-                            //console.log(JSON.stringify(x));
-                            //console.log("????"+JSON.stringify($scope.userRecipes));
-
-                            //$scope.userRecipes.push(x);
-
+                        function (x) {
                             varDemp.push(x);
-                            //alert("--> " + JSON.stringify(privateuserRecipesVet[i]["trigger[triggerType]"]));
                             var pezzoX =
                             {
-                                "triggerType" :  varDemp[index]["trigger[triggerType]"],
-                                "desc" : varDemp[index].desc,
-                                "id" : varDemp[index].id,
-                                "index": index
+                                "triggerType": varDemp[index]["trigger[triggerType]"],
+                                "desc": varDemp[index].desc,
+                                "id": varDemp[index].id,
+                                "index": index,
+                                "flag": varDemp[index].flag
                             };
                             $scope.privateuserRecipesVet.push(pezzoX);
-                            //alert( $scope.privateuserRecipesVet[0].triggerType);
-
-
-                            //console.log("after"+JSON.stringify($scope.userRecipes));
-                            //alert("WTF");
-                            //Per ottenere la descrizione:
-                            //alert("-->" + JSON.stringify($scope.userRecipes));
-                            //trigger[triggerType]
-                            //alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+                            $scope.privateuserRecipesVetAllData.push(x);
                             index++;
                         }
                     );
-                    //Cambia pagina
-                    //url = "#/index/myRecipes";
-                    //window.location.replace(url);
 
                 },
-                function error(response)
-                {
+                function error(response) {
                     // Error code here
                     alert("error");
                 }
             );
 
-        //alert("---" + $scope.userRecipes[0].triggerType);
 
-
-        $scope.removeRecipe = function(index, id){
+        $scope.removeRecipe = function(index, id)
+        {
             $http
             (
                 {
                     method: 'delete',
                     url: 'http://localhost:3000/userRecipes/' + id
                 }
-            ).error(function()
-            {
-                // Error code here
-                alert("error");
-            })
-            .success(function ()
-            {
-                alert("o.k.");
-                $scope.privateuserRecipesVet.splice(index, 1);
+            ).error(function () {
+                    // Error code here
+                    alert("error");
+                })
+                .success(function () {
+                    alert("o.k.");
+                    $scope.privateuserRecipesVet.splice(index, 1);
+                    $scope.privateuserRecipesVetAllData.splice(index, 1)
 
 
-            });
-
-
+                });
         };
+            $scope.shareRecipe = function(index, id)
+            {
 
+                alert("1");
+                //var loginDataSend = $scope.privateuserRecipesVetAllData[index];
+                //loginDataSend.flag = true;
+                //$scope.privateuserRecipesVet[index].flag = true;
+                //alert($scope.privateuserRecipesVet[index].flag);
 
+                /*
+                $http
+                (
+                    {
+                        method: "put",
+                        url: "http://localhost:3000/userRecipes/" + id,
+                        data: loginDataSend,
+                        dataType: "json"
+                    }
+                ).error(function()
+                    {
+                        // Error code here
+                        alert("error");
+                    })
+                    .success(function ()
+                    {
+                        alert("o.k.");
+                    });
 
+*/
+            };
 
+            //Rosso don't share
+            $scope.DoNotshareRecipe = function(index, id)
+            {
 
+                alert("2");
+               //var loginDataSend = $scope.privateuserRecipesVetAllData[index];
+                //loginDataSend.flag = false;
+                //$scope.privateuserRecipesVet[index].flag = false;
+                //alert($scope.privateuserRecipesVet[index].flag);
 
-
-
+                /*
+                                 $http
+                                 (
+                                 {
+                                 method: "put",
+                                 url: "http://localhost:3000/userRecipes/" + id,
+                                 data: loginDataSend,
+                                 dataType: "json"
+                                 }
+                                 ).error(function()
+                                 {
+                                 // Error code here
+                                 alert("error");
+                                 })
+                                 .success(function ()
+                                 {
+                                 alert("o.k.");
+                                 });
+                */
+            };
 
 
 }]);
