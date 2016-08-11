@@ -1029,23 +1029,6 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
 
         $scope.removeRecipe = function(index, id){
-            alert("her");
-            //console.log("REMOVING: "+index);
-            //alert(JSON.stringify("id",$scope.userRecipes[index].id));
-
-            var target = {"id": $scope.privateuserRecipesVet[index].id};
-            var delete_configuration = {data: JSON.stringify(target)};
-            /*
-            $http.delete("http://localhost:3000/userRecipes" + $scope.privateuserRecipesVet[index].id, delete_configuration)
-                .success(function () {
-                alert("1");
-                    //serverStatusON();
-            }).error(function () {
-                //serverStatusOFF();
-                alert("2");
-            });
-*/
-
             $http
             (
                 {
@@ -1060,10 +1043,12 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             .success(function ()
             {
                 alert("o.k.");
+                $scope.privateuserRecipesVet.splice(index, 1);
 
 
             });
-            
+
+
         };
 
 
