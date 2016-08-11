@@ -960,7 +960,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     function ($scope, $routeParams, $window, $http)
     {
         $scope.privateuserRecipesVet = null;
-       // $scope.privateuserRecipesVetAllData = null;
+       $scope.privateuserRecipesVetAllData = null;
 
 
         $http
@@ -1032,19 +1032,17 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             $scope.shareRecipe = function(index, id)
             {
 
-                alert("1");
-                //var loginDataSend = $scope.privateuserRecipesVetAllData[index];
-                //loginDataSend.flag = true;
-                //$scope.privateuserRecipesVet[index].flag = true;
+                //alert("1");
+                var flagDataSend = $scope.privateuserRecipesVetAllData[index];
+                flagDataSend.flag = true;
+                $scope.privateuserRecipesVet[index].flag = true;
                 //alert($scope.privateuserRecipesVet[index].flag);
-
-                /*
                 $http
                 (
                     {
                         method: "put",
                         url: "http://localhost:3000/userRecipes/" + id,
-                        data: loginDataSend,
+                        data: flagDataSend,
                         dataType: "json"
                     }
                 ).error(function()
@@ -1057,38 +1055,36 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         alert("o.k.");
                     });
 
-*/
             };
 
             //Rosso don't share
             $scope.DoNotshareRecipe = function(index, id)
             {
 
-                alert("2");
-               //var loginDataSend = $scope.privateuserRecipesVetAllData[index];
-                //loginDataSend.flag = false;
-                //$scope.privateuserRecipesVet[index].flag = false;
+                //alert("2");
+               var flagDataSend = $scope.privateuserRecipesVetAllData[index];
+                flagDataSend.flag = false;
+                $scope.privateuserRecipesVet[index].flag = false;
                 //alert($scope.privateuserRecipesVet[index].flag);
+                $http
+                (
+                    {
+                        method: "put",
+                        url: "http://localhost:3000/userRecipes/" + id,
+                        data: flagDataSend,
+                        dataType: "json"
+                    }
 
-                /*
-                                 $http
-                                 (
-                                 {
-                                 method: "put",
-                                 url: "http://localhost:3000/userRecipes/" + id,
-                                 data: loginDataSend,
-                                 dataType: "json"
-                                 }
-                                 ).error(function()
-                                 {
-                                 // Error code here
-                                 alert("error");
-                                 })
-                                 .success(function ()
-                                 {
-                                 alert("o.k.");
-                                 });
-                */
+                ).error(function()
+                {
+                    // Error code here
+                    alert("error");
+                })
+                    .success(function ()
+                    {
+                        alert("o.k.");
+                    });
+
             };
 
 
