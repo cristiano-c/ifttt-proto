@@ -1052,28 +1052,18 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     method: 'delete',
                     url: 'http://localhost:3000/userRecipes/' + id
                 }
-            ).then ( function error()
+            ).error(function()
             {
                 // Error code here
                 alert("error");
+            })
+            .success(function ()
+            {
+                alert("o.k.");
+
+
             });
-
-            /*
-
-            $http.delete("http://localhost:3000/userRecipes", JSON.stringify("id", $scope.privateuserRecipesVet[index].id))
-                .then(function success(response){
-                        $scope.privateuserRecipesVet.splice(index, 1);
-                    alert("1");
-                    //console.log("recipe deleted successfully from the server and local machine");
-                    },
-                    function failure(response){
-                        console.log("some problem occurred, recipes was not deleted");
-                        alert("2");
-                    }
-                );
-                */
-
-            // MANCA DA FARE LA DELETE ALLA SERVLET
+            
         };
 
 
