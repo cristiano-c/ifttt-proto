@@ -10,16 +10,17 @@
             <div class="row">
                 <div class="col-md-3">
                 </div>
-                    {{privateuserRecipesVet[0].triggerType}}
+                  <!--  {{privateprivateuserRecipesVetVet[0].triggerType}} -->
                 <div class="col-md-6">
-                    <ul class="list-group"> <!-- privateuserRecipesVet =  userRecipes -->
+                    <ul class="list-group"> <!-- privateprivateuserRecipesVetVet =  privateuserRecipesVet -->
                         <li class="list-group-item active text-center"><h1><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</h1></li>
-                            <li ng-repeat="f in  userRecipes" class="list-group-item">
-                                <h4>
-                                    <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" data-content="{{f.desc}}"></span>
-                                    IF THIS <em>{{f.triggerType}}</em> DO THAT <em>{{f.triggerType}}</em>
+                            <li ng-repeat="f in  privateuserRecipesVet" class="list-group-item">
+                                <h4><!-- data-content="{{f.desc}}" -->
+                                    <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" ></span>
+                                    N° {{$index + 1}} <em>{{f.desc}}</em>
                                     <button class="btn btn-warning pull-right">
-                                    <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe($index)"></span>
+                                    <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe(f.index, f.id)"></span>
+                                      <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
                                 </h4>
                             </li>

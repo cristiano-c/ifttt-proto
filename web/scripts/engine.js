@@ -107,14 +107,6 @@ var sendDataToServer = [];
 var descriptionRecipeGlobal = "";
 
 
-// sendingToServerAll();
-
-/* prova */
-
-// unused? var prova1 ="";
-
-
-var privateuserRecipesVet = [];
 
 iftttApp.config(['$routeProvider', function($routeProvider){
 
@@ -312,9 +304,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.iftttLogged = false;
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
-        $scope.userRecipes = null;
+        //$scope.userRecipes = null;  //X1
         $scope.recipedDescriptionInput = null;
-        //$scope.userRecipes = sendDataToServer;
 
         /*
          * Funzione che gestisce il click per gestire l'autenticazione a IFTTT Polito
@@ -338,7 +329,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.iftttLogged = true;
                     iftttLogin= true;
-                    $scope.userRecipes = response.data.userRecipesJSON;
+                    //$scope.userRecipes = response.data.userRecipesJSON; //x1
                     $('#loginIFTTTModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with IFTTT Polito",
@@ -658,6 +649,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         };
         
 
+
       /*   Funzione deprecata non più usata */
 
 
@@ -734,11 +726,13 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             });
             */
 
-
+            url = "#/index/myRecipes";
+            window.location.replace(url);
 
 
             //Get from server the informations in order to print.
 
+            /*
             $http
             (
                 {
@@ -773,7 +767,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                                 //alert("--> " + JSON.stringify(privateuserRecipesVet[i]["trigger[triggerType]"]));
                                 var d1 =
                                 {
-                                    "triggerType" :  demp[i]["trigger[triggerType]"]
+                                    "triggerType" :  demp[i]["trigger[triggerType]"],
+                                    "desc" : demp[i].desc
                                 };
                                 $scope.userRecipes.push(d1);
                                 //alert( $scope.userRecipes[0].triggerType);
@@ -800,10 +795,10 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
 
-            alert("---" + $scope.userRecipes[0].triggerType);
+            //alert("---" + $scope.userRecipes[0].triggerType);
 
 
-
+            */
 
         };
 
@@ -861,12 +856,13 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             $('#recipedDescriptionModal').modal('hide');
         };*/
 
+        /*
         $scope.removeRecipe = function(index){
             console.log("REMOVING: "+index);
             alert(JSON.stringify("id",$scope.userRecipes[index].id));
 
 
-            $http.delete("/Recipes", JSON.stringify("id",$scope.userRecipes[index].id))
+            $http.delete("http://localhost:3000/userRecipes", JSON.stringify("id",$scope.userRecipes[index].id))
                 .then(function success(response){
                         $scope.userRecipes.splice(index, 1);
                         console.log("recipe deleted successfully from the server and local machine");
@@ -878,7 +874,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
             // MANCA DA FARE LA DELETE ALLA SERVLET
         };
-
+*/
 
 
     }]);
@@ -959,32 +955,33 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     }]);
 
 
-iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window', '$http',
-    function ($scope, $routeParams, $window, $http) {
+
+    iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http)
+    {
+        $scope.privateuserRecipesVet = null;
 
 
-        //var privateuserRecipesVet = [];
-
-        //Get from server the informations in order to print.
-/*
-             $http
-             (
-                 {
+        $http
+        (
+            {
                 method: 'GET',
                 url: 'http://localhost:3000/userRecipes'
-                }
-             )
-             .then
-             (
+            }
+        )
+            .then
+            (
                 function success(response)
                 {
-                    alert("o.k.");
+                    //alert("o.k. :)");
+                    //$scope.userRecipes=[];
+                    $scope.privateuserRecipesVet = [];
                     // Success code here
                     //For debug
                     //console.log(JSON.stringify(response));
                     //alert(JSON.stringify(response));
-
-                    var i = 0;
+                    var index = 0;
+                    var varDemp = [];
                     response.data.forEach
                     (
                         function (x)
@@ -994,7 +991,18 @@ iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window'
 
                             //$scope.userRecipes.push(x);
 
-                            privateuserRecipesVet.push(x);
+                            varDemp.push(x);
+                            //alert("--> " + JSON.stringify(privateuserRecipesVet[i]["trigger[triggerType]"]));
+                            var pezzoX =
+                            {
+                                "triggerType" :  varDemp[index]["trigger[triggerType]"],
+                                "desc" : varDemp[index].desc,
+                                "id" : varDemp[index].id,
+                                "index": index
+                            };
+                            $scope.privateuserRecipesVet.push(pezzoX);
+                            //alert( $scope.privateuserRecipesVet[0].triggerType);
+
 
                             //console.log("after"+JSON.stringify($scope.userRecipes));
                             //alert("WTF");
@@ -1002,26 +1010,82 @@ iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window'
                             //alert("-->" + JSON.stringify($scope.userRecipes));
                             //trigger[triggerType]
                             //alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
-                            //i++;
+                            index++;
                         }
                     );
-
+                    //Cambia pagina
+                    //url = "#/index/myRecipes";
+                    //window.location.replace(url);
 
                 },
-                 function error(response)
-                    {
-                        // Error code here
+                function error(response)
+                {
+                    // Error code here
                     alert("error");
+                }
+            );
+
+        //alert("---" + $scope.userRecipes[0].triggerType);
+
+
+        $scope.removeRecipe = function(index, id){
+            alert("her");
+            //console.log("REMOVING: "+index);
+            //alert(JSON.stringify("id",$scope.userRecipes[index].id));
+
+            var target = {"id": $scope.privateuserRecipesVet[index].id};
+            var delete_configuration = {data: JSON.stringify(target)};
+            /*
+            $http.delete("http://localhost:3000/userRecipes" + $scope.privateuserRecipesVet[index].id, delete_configuration)
+                .success(function () {
+                alert("1");
+                    //serverStatusON();
+            }).error(function () {
+                //serverStatusOFF();
+                alert("2");
+            });
+*/
+
+            $http
+            (
+                {
+                    method: 'delete',
+                    url: 'http://localhost:3000/userRecipes/' + id
+                }
+            ).then ( function error()
+            {
+                // Error code here
+                alert("error");
+            });
+
+            /*
+
+            $http.delete("http://localhost:3000/userRecipes", JSON.stringify("id", $scope.privateuserRecipesVet[index].id))
+                .then(function success(response){
+                        $scope.privateuserRecipesVet.splice(index, 1);
+                    alert("1");
+                    //console.log("recipe deleted successfully from the server and local machine");
+                    },
+                    function failure(response){
+                        console.log("some problem occurred, recipes was not deleted");
+                        alert("2");
                     }
-             );
+                );
+                */
+
+            // MANCA DA FARE LA DELETE ALLA SERVLET
+        };
 
 
 
-        //};
 
-    */
 
-    }]);
+
+
+
+
+
+}]);
 
 iftttApp.controller('createAccountController',  ['$scope',
     function ($scope) {
