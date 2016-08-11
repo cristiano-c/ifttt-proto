@@ -972,7 +972,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
         )
             .then
             (
-                function success(response) {
+                function success(response)
+                {
                     //alert("o.k. :)");
                     //$scope.userRecipes=[];
                     $scope.privateuserRecipesVet = [];
@@ -1035,7 +1036,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 //alert("1");
                 var flagDataSend = $scope.privateuserRecipesVetAllData[index];
                 flagDataSend.flag = true;
-                $scope.privateuserRecipesVet[index].flag = true;
+                //$scope.privateuserRecipesVet[index].flag = true;
                 //alert($scope.privateuserRecipesVet[index].flag);
                 $http
                 (
@@ -1052,8 +1053,11 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     })
                     .success(function ()
                     {
+                        $scope.privateuserRecipesVet[index].flag = true;
+                        $scope.privateuserRecipesVetAllData[index].flag = true;
                         alert("o.k.");
-                    });
+                    }
+                );
 
             };
 
@@ -1064,7 +1068,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 //alert("2");
                var flagDataSend = $scope.privateuserRecipesVetAllData[index];
                 flagDataSend.flag = false;
-                $scope.privateuserRecipesVet[index].flag = false;
+                //$scope.privateuserRecipesVet[index].flag = false;
                 //alert($scope.privateuserRecipesVet[index].flag);
                 $http
                 (
@@ -1082,10 +1086,17 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 })
                     .success(function ()
                     {
+                        $scope.privateuserRecipesVet[index].flag = false;
+                        $scope.privateuserRecipesVetAllData[index].flag = false;
                         alert("o.k.");
                     });
 
             };
+        $scope.modifyRecipe = function(index, id)
+        {
+            //
+
+        }
 
 
 }]);
