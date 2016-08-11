@@ -313,7 +313,7 @@ $(function(){
                     modulinoj1 =
                     {
                         "triggerType": "weather",
-                        "type": "2",
+                        "type": "3",
                         "location": idCity_customWeatherActionControllerTrigger3,
                         "timezone": timezone_customWeatherActionControllerTrigger3,
                         "sunset": sunset_customWeatherActionControllerTrigger3,

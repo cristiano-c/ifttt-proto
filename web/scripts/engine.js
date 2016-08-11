@@ -1135,6 +1135,16 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 subject_GmailTriggerController = $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
                 ulrTriggreGlobalVariable= "#gMailTrigger";
 
+                modulinoj1 =
+                {
+                    "triggerType": "gmail",
+                    //Tn 1
+                    "sender": sender_GmailTriggerController,
+                    "subject": subject_GmailTriggerController
+                };
+
+
+
             }
             else
             {
@@ -1148,6 +1158,19 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         place_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[place]"];
                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
                         ulrTriggreGlobalVariable = "#Trigger1Gcalendar";
+
+                        modulinoj1 =
+                        {
+                            "triggerType": "calendar",
+                            "eventAction": "0",
+
+                            //Tn 2 S0
+                            "title": title_Trigger1GcalendarController,
+                            "description": description_Trigger1GcalendarController,
+                            "place": place_Trigger1GcalendarController
+                        };
+
+
                     }
                     else
                     {
@@ -1156,6 +1179,18 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         place_Trigger2GcalendarController =$scope.privateuserRecipesVetAllData[index]["trigger[place]"];
                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
                         ulrTriggreGlobalVariable = "#Trigger2Gcalendar";
+
+                        modulinoj1 =
+                        {
+                            "triggerType": "calendar",
+                            "eventAction": "1",
+                            //Tn 3
+                            "title": title_Trigger2GcalendarController,
+                            "description": description_Trigger2GcalendarController,
+                            "place": place_Trigger2GcalendarController
+                        };
+
+
                     }
 
                 }
@@ -1170,6 +1205,17 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             ora_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
                             subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                             ulrTriggreGlobalVariable = "#WeatherTrigger1";
+
+                            modulinoj1=
+                            {
+                                "triggerType" : "weather",
+                                "type" : "1",
+                                "location" : idCity_customWeatherActionControllerTrigger1,
+                                "ora"  : ora_customWeatherActionControllerTrigger1,
+                                "timezone" : timezone_customWeatherActionControllerTrigger1
+                            };
+
+
                         }
                         else {
                             if ($scope.privateuserRecipesVetAllData[index]["trigger[type]"] == 2)
@@ -1181,6 +1227,18 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 pzone_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                                 ulrTriggreGlobalVariable = "#WeatherTrigger2";
+
+                                modulinoj1=
+                                {
+                                    "triggerType" : "weather",
+                                    "type" : "2",
+                                    "location":   idCity_customWeatherActionControllerTrigger2,
+                                    "tempo" : pweather_customWeatherActionControllerTrigger2,
+                                    "period" : pperiod_customWeatherActionControllerTrigger2,
+                                    "timezone" : pzone_customWeatherActionControllerTrigger2
+                                };
+
+
                             }
                             else
                             {
@@ -1192,8 +1250,17 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                     sunrise_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[sunrise]"];
                                     subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                                     ulrTriggreGlobalVariable = "#WeatherTrigger3";
+                                    modulinoj1 =
+                                    {
+                                        "triggerType": "weather",
+                                        "type": "3",
+                                        "location": idCity_customWeatherActionControllerTrigger3,
+                                        "timezone": timezone_customWeatherActionControllerTrigger3,
+                                        "sunset": sunset_customWeatherActionControllerTrigger3,
+                                        "sunrise": sunrise_customWeatherActionControllerTrigger3
 
 
+                                    };
                                 }
                                 else
                                 {
@@ -1206,6 +1273,16 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                         period_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[period]"];
                                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                                         ulrTriggreGlobalVariable = "#WeatherTrigger4";
+                                        modulinoj1 =
+                                        {
+                                            "triggerType": "weather",
+                                            "type": "4",
+                                            "location": idCity_customWeatherActionControllerTrigger4,
+                                            "timezone": ptimezone_customWeatherActionControllerTrigger4,
+                                            "thmax": pthmax_customWeatherActionControllerTrigger4,
+                                            "thmin": pthmin_customWeatherActionControllerTrigger4,
+                                            "period" : period_customWeatherActionControllerTrigger4
+                                        };
                                     }
                                 }
 
@@ -1225,6 +1302,15 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 username_sender_trigger1TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                                 ulrTriggreGlobalVariable = "#Trigger1Twitter";
+
+                                modulinoj1 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  "0",
+                                    "hashtag_text"  : hashtag_text_trigger1TwitterController,
+                                    "username_sender" : username_sender_trigger1TwitterController
+                                };
+
                             }
                             else
                             {
@@ -1232,6 +1318,14 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 username_sender_trigger2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
                                 ulrTriggreGlobalVariable = "#Trigger2Twitter";
+
+                                modulinoj1 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  "1",
+                                    "hashtag_text"  : hashtag_text_trigger2TwitterController,
+                                    "username_sender" : username_sender_trigger2TwitterController
+                                };
                             }
 
                         }

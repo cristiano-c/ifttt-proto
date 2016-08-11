@@ -352,7 +352,7 @@ $(function(){
                     modulinoj1 =
                     {
                         "triggerType": "weather",
-                        "type": "2",
+                        "type": "4",
                         "location": idCity_customWeatherActionControllerTrigger4,
                         "timezone": ptimezone_customWeatherActionControllerTrigger4,
                         "thmax": pthmax_customWeatherActionControllerTrigger4,
