@@ -2,14 +2,14 @@
   "userRecipes": [
     {
       "id": 14,
-      "desc": "This task has not a description",
+      "desc": "prova",
       "trigger[triggerType]": "weather",
       "trigger[type]": 1,
       "trigger[location]": 3176269,
       "trigger[ora]": "NULL",
       "trigger[timezone]": "NULL",
       "action[actionType]": "calendar",
-      "action[title]": "llllllasdfghjklsdfghjk",
+      "action[title]": "pippoooooodooooooooooooooooooooooo",
       "action[description]": "null",
       "action[place]": "null",
       "action[dayVector]": "null",
@@ -30,7 +30,8 @@
       "action[place]": "null",
       "action[dayVector]": "null",
       "action[monthVector]": "null",
-      "action[yearVector]": "null"
+      "action[yearVector]": "null",
+      "flag": false
     },
     {
       "id": 20,
@@ -7702,6 +7703,16 @@
       "action[title]": "null",
       "action[description]": "null",
       "action[place]": "prova"
+    },
+    {
+      "id": 567,
+      "desc": "lkh",
+      "trigger[triggerType]": "gmail",
+      "trigger[sender]": "null",
+      "trigger[subject]": "sd",
+      "action[actionType]": "gmail",
+      "action[sender]": "null",
+      "action[subject]": "prova"
     }
   ]
 }

@@ -143,6 +143,8 @@ var urlActionGlobalVariable = "";
 var rootingAutenticationTriggerAction = "";
 
 
+
+
 iftttApp.config(['$routeProvider', function($routeProvider){
 
     $routeProvider.when('/', {
@@ -1021,6 +1023,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
         modifyVar=0;
 
 
+
         $http
         (
             {
@@ -1867,6 +1870,15 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
         $scope.checkedbody=false;
+
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
+
+
         function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -3620,19 +3632,16 @@ function sendingToServerAllput ()
         "trigger" : modulinoj1,
         "action" : modulinoj2
     };
-    sedingServerAllRun(sendDataToServer);
+    sedingServerAllRunput(sendDataToServer);
 
 }
 
 
 function sedingServerAllRunput (loginDataSend)
 {
-    //var result = "ciao";
-    //url: 'http://localhost:3000/userRecipes
-    //url: "/MyServlet"
     $.ajax({
         method: "put",
-        url: "http://localhost:3000/userRecipes",
+        url: "http://localhost:3000/userRecipes/" + idRecipe,
         data: loginDataSend,
         dataType: "json",
         success: function(response) {

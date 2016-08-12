@@ -276,33 +276,33 @@ Example code
             url = "#home";
             window.location.replace(url);
             modifyCountVar = 0;
-            flagTriggerDone = "0";
         }
         else {
             if (googleLogin == "1")
             {
-                if (modifyCountVar == 0)
+                if (modifyCountVar == 2)
                 {
                     modifyCountVar++;
-                    url1back = "#choseModify";
                 }
                 else
                 {
-                    url = "#home";
-                    window.location.replace(url);
-
+                    if (modifyCountVar < 2)
+                    {
+                        url = "#/index/myRecipes";
+                        window.location.replace(url);
+                    }
 
                 }
+
+
             }
             else
             {
                 url = "#home";
                 window.location.replace(url);
+                alert("Non sei loggato a google");
             }
         }
-
-
-
     }
 
     else {

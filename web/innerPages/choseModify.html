@@ -162,12 +162,22 @@
         modifyCountVar=0;
         url = "#home";
         window.location.replace(url);
-        count = 0;
-        flagTriggerDone="0";
     }
     else
     {
-        modifyCountVar=0;
+        modifyVar=1;
+        if (modifyCountVar == 1) {
+            modifyCountVar++;
+        }
+        else {
+            if (modifyCountVar < 1) {
+                url = "#/index/myRecipes";
+                window.location.replace(url);
+            }
+
+        }
+
+
     }
 </script>
 

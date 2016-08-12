@@ -217,6 +217,7 @@
 </div>
 
 <script>
+    modifyCountVar = 0;
     if(iftttLogin == false)
     {
         url = "#home";
@@ -225,9 +226,11 @@
         flagTriggerDone="0";
     }
     else {
-
         if (count == 1)
+        {
             count++;
+        }
+
         else {
             if (count < 1) {
                 url = "#createRecipe";

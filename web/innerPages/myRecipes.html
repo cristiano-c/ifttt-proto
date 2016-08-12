@@ -63,6 +63,17 @@
             container: 'body'
         });
     });
+    if(iftttLogin == false)
+    {
+        modifyCountVar=0;
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+    }
+    else
+    {
+        modifyCountVar=1;
+    }
 </script>
 
 <style type="text/css">
