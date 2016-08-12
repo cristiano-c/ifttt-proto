@@ -319,6 +319,12 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
 
+    $routeProvider.when('/publicRecipes', {
+        templateUrl: 'innerPages/publishPage/PublicRecipes.html',
+        controller: 'publicRecipesController'
+    });
+
+
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
@@ -480,7 +486,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                   var  url = "#"+nextPath;
                     if (modifyVar == 1)
                     {
-                        url = "#" + rootingAutenticationTriggerAction; //<--------------------------------------------------------
+                        url = "#" + rootingAutenticationTriggerAction; //<--------------------------------------------------------*
                     }
                     window.location.replace(url);
                     //end
@@ -1023,7 +1029,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     function ($scope, $routeParams, $window, $http)
     {
         $scope.privateuserRecipesVet = null;
-       $scope.privateuserRecipesVetAllData = null;
+        $scope.privateuserRecipesVetAllData = null;
         modifyVar=0;
 
 
@@ -1480,6 +1486,75 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
 
 }]);
+
+
+iftttApp.controller('publicRecipesController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http)
+    {
+
+        $scope.privateuserRecipesVet = [];
+        $scope.privateuserRecipesVetAllData = [];
+        $http
+        (
+            {
+                /*
+                Qui si devono solo prendere le ricette che sono pubbliche :)
+                In tutte le altre parti solo dell'utente che si è loggato.
+               */
+                method: 'GET',
+                url: 'http://localhost:3000/publicRecipes'
+            }
+        )
+            .then
+            (
+                function success(response)
+                {
+                    //alert("o.k. :)");
+                    //$scope.userRecipes=[];
+                    $scope.privateuserRecipesVet = [];
+                    $scope.privateuserRecipesVetAllData = [];
+                    // Success code here
+                    //For debug
+                    //console.log(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
+                    var index = 0;
+                    var varDemp = [];
+                    response.data.forEach
+                    (
+                        function (x) {
+                            varDemp.push(x);
+                            var pezzoX =
+                            {
+                                "triggerType": varDemp[index]["trigger[triggerType]"],
+                                "desc": varDemp[index].desc,
+                                "id": varDemp[index].id,
+                                "index": index,
+                                "flag": varDemp[index].flag
+                            };
+                            $scope.privateuserRecipesVet.push(pezzoX);
+                            $scope.privateuserRecipesVetAllData.push(x);
+                            index++;
+                        }
+                    );
+
+                },
+                function error(response) {
+                    // Error code here
+                    alert("error");
+                }
+            );
+
+
+
+
+
+
+
+
+    }]);
+
+
+
 
 iftttApp.controller('createAccountController',  ['$scope',
     function ($scope) {

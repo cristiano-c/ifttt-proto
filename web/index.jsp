@@ -74,6 +74,12 @@
           <li><a href="#chooseChannel">Channels</a></li>
             -->
 
+            <li>
+                <a  href="#publicRecipes">
+                    <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Public a recipe</a>
+            </li>
+
+
 
         </ul>
         <form class="navbar-form navbar-right" role="search">

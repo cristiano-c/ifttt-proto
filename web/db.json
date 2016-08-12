@@ -7708,5 +7708,24 @@
       "action[subject]": "null",
       "flag": true
     }
+  ],
+  "publicRecipes": [
+    {
+      "id": 1,
+      "desc": "n1",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "null",
+      "trigger[description]": "null",
+      "trigger[place]": "",
+      "action[actionType]": "calendar",
+      "action[title]": "null",
+      "action[description]": "null",
+      "action[place]": "",
+      "action[dayVector]": "null",
+      "action[monthVector]": "null",
+      "action[yearVector]": "null",
+      "flag" : true
+    }
   ]
 }
