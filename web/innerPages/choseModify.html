@@ -111,17 +111,9 @@
                     <p>
                         The trigger can be changed and save it.
                     </p>
-                    <!--
-                    <p>
-                        <a class="btn btn_next2" href="#Trigger1Gcalendar">Continue <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a></a>
 
                     <p>
-                    -->
-                    <p>
-                        <a class="btn btn_next2" ng-if="!googleLogged" data-toggle="modal" data-target="#loginGoogleModal" ng-click="routeListener('Trigger1Gcalendar')">Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                    </p>
-                    <p>
-                        <a class="btn btn_next2" href="#Trigger1Gcalendar" ng-if="googleLogged" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next2" data-ng-click="setupValueChange(0)" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
 
 
@@ -134,12 +126,8 @@
                         The action can be changed and save it.
                     </p>
 
-
                     <p>
-                        <a class="btn btn_next2" ng-if="!googleLogged" data-toggle="modal" data-target="#loginGoogleModal" ng-click="routeListener('Trigger2Gcalendar')">Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                    </p>
-                    <p>
-                        <a class="btn btn_next2" href="#Trigger2Gcalendar" ng-if="googleLogged" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next2" ng-click="setupValueChange(1)" > Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
 
                 </div>

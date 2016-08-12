@@ -110,6 +110,7 @@ var flagTriggerDone = "0";
 //Variabile di percorso per la modify parte
 var  modifyVar = 0;
 var modifyCountVar = 0;
+var setChooseAx  = 0;
 
 //Variabile per protegere le pagine da quello che ho visto devono essere globali.
 var googleLogin ="0";   //-> $scope.googleLogged
@@ -978,9 +979,18 @@ iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
     }]);
 
 iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window',
-    function ($scope, $rootscope, $window) {
+    function ($scope, $rootscope, $window)
+    {
 
-    $scope.NGgoogleLogged = false;
+        $scope.NGgoogleLogged = false;
+        $scope.modifyButton =false;
+
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
+
 
     // A
         $scope.$watch(
@@ -2289,8 +2299,11 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
         };
 
+        $scope.modifyButton = false;
         if(modifyVar == 1)
         {
+
+
             $scope.modifyButton = true;
         }
         else
@@ -3539,6 +3552,22 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
             $('#loginGoogleModal').modal('show');
         };
 
+
+        $scope.setupValueChange =function(chosePath)
+        {
+            var urlx ="";
+            if(chosePath == 0 )
+            {
+                setChooseAx = 4;
+                urlx = "#allTriggers";
+            }
+            else
+            {
+                urlx = "allActions";
+                setChooseAx = 5;
+            }
+            window.location.replace(urlx);
+        };
 
 
         $scope.descriptionModifyLanch = function()

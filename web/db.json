@@ -2,36 +2,15 @@
   "userRecipes": [
     {
       "id": 14,
-      "desc": "prova",
+      "desc": "Now the web site has been assimilated!!! It is borg, it is perfeclty!!\n\nSeriusly? Yes of course!!!!\n\nMa se arriva janney? Allora sarà distrutto XD :P o forse no XD",
       "trigger[triggerType]": "weather",
-      "trigger[type]": 1,
+      "trigger[type]": 4,
       "trigger[location]": 3176269,
-      "trigger[ora]": "NULL",
       "trigger[timezone]": "NULL",
-      "action[actionType]": "calendar",
-      "action[title]": "pippoooooodooooooooooooooooooooooo",
-      "action[description]": "null",
-      "action[place]": "null",
-      "action[dayVector]": "null",
-      "action[monthVector]": "null",
-      "action[yearVector]": "null"
-    },
-    {
-      "id": 18,
-      "desc": "s",
-      "trigger[triggerType]": "weather",
-      "trigger[type]": 1,
-      "trigger[location]": 3176269,
-      "trigger[ora]": "NULL",
-      "trigger[timezone]": "NULL",
-      "action[actionType]": "calendar",
-      "action[title]": "",
-      "action[description]": "null",
-      "action[place]": "null",
-      "action[dayVector]": "null",
-      "action[monthVector]": "null",
-      "action[yearVector]": "null",
-      "flag": false
+      "trigger[thmax]": 0,
+      "trigger[thmin]": "NULL",
+      "trigger[period]": "NULL",
+      "action[actionType]": "calendar"
     },
     {
       "id": 20,
@@ -67,19 +46,13 @@
     },
     {
       "id": 23,
-      "desc": "s",
+      "desc": "This task has not a description",
       "trigger[triggerType]": "weather",
       "trigger[type]": 1,
       "trigger[location]": 3176269,
       "trigger[ora]": "NULL",
       "trigger[timezone]": "NULL",
-      "action[actionType]": "calendar",
-      "action[title]": "",
-      "action[description]": "null",
-      "action[place]": "null",
-      "action[dayVector]": "null",
-      "action[monthVector]": "null",
-      "action[yearVector]": "null"
+      "action[actionType]": "calendar"
     },
     {
       "id": 24,
