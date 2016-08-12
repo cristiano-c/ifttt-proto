@@ -2,13 +2,16 @@
   "userRecipes": [
     {
       "id": 14,
-      "desc": "Now the web site has been assimilated!!! It is borg, it is perfeclty!!\n\nSeriusly? Yes of course!!!!\n\nMa se arriva janney? Allora sarà distrutto XD :P o forse no XD",
+      "desc": "?",
       "trigger[triggerType]": "calendar",
       "trigger[eventAction]": 0,
-      "trigger[title]": "sdsssdsss",
-      "trigger[description]": "null",
+      "trigger[title]": "null",
+      "trigger[description]": "s",
       "trigger[place]": "null",
-      "action[actionType]": "calendar"
+      "action[triggerType]": "twitter",
+      "action[type]": 0,
+      "action[body]": "s",
+      "action[destination]": "null"
     },
     {
       "id": 20,
@@ -22,23 +25,21 @@
     },
     {
       "id": 22,
-      "desc": "s",
+      "desc": "adfb",
       "trigger[triggerType]": "weather",
       "trigger[type]": 1,
       "trigger[location]": 3176269,
       "trigger[ora]": "NULL",
       "trigger[timezone]": "NULL",
-      "action[actionType]": "calendar",
-      "action[title]": "",
-      "action[description]": "null",
-      "action[place]": "null",
-      "action[dayVector]": "null",
-      "action[monthVector]": "null",
-      "action[yearVector]": "null"
+      "action[actionType]": "gmail",
+      "action[body]": "null",
+      "action[receiver]": "sd@libero.it",
+      "action[sender]": 1,
+      "action[subject]": "s"
     },
     {
       "id": 23,
-      "desc": "This task has not a description",
+      "desc": "Silent night\nBlack Bird\nLa tana",
       "trigger[triggerType]": "weather",
       "trigger[type]": 1,
       "trigger[location]": 3176269,
@@ -7691,6 +7692,21 @@
       "action[type]": 0,
       "action[body]": "",
       "action[destination]": "null"
+    },
+    {
+      "id": 569,
+      "desc": "li",
+      "trigger[triggerType]": "weather",
+      "trigger[type]": 1,
+      "trigger[location]": 3176269,
+      "trigger[ora]": "NULL",
+      "trigger[timezone]": "NULL",
+      "action[actionType]": "gmail",
+      "action[body]": "null",
+      "action[receiver]": "costa1.hope@libero.it",
+      "action[sender]": 0,
+      "action[subject]": "null",
+      "flag": true
     }
   ]
 }

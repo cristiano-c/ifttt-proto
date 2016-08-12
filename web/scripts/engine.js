@@ -3,21 +3,6 @@
  */
 
 
-/*
- if(modifyVar == "1")
- {
- sendingToServerAllput();
- }
- $scope.modifyButton = false;
- if(modifyVar == 1)
- {
- $scope.modifyButton = true;
- }
-
-
-
- */
-
 var iftttApp = angular.module('iftttApp', ['ngRoute']);
 //Secure controll
 var triggerChose = 0;
@@ -1853,8 +1838,11 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
 
 
-
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
                     //sendingToServerAll();
                     //var url = "#gMailSucces";
                     //window.location.replace(url);
@@ -2749,7 +2737,11 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                     flagTriggerDone = "0";
                     count=7;
 
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
 
                     //sendingToServerAll();
                     //url = "#gMailSucces";
@@ -3319,7 +3311,11 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
                 };
 
-                $('#recipedDescriptionModal').modal('show');
+                if (modifyVar == 0)
+                {
+                    $('#recipedDescriptionModal').modal('show');
+                }
+                else sendingToServerAllput();
                 //sendingToServerAll();
                 //href="#SuccessTwitter"
                 //var url = "#SuccessTwitter";
@@ -3448,7 +3444,11 @@ iftttApp.controller('action2TwitterController', ['$scope',
                 };
                 if(flag == 1) {
 
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
                     //sendingToServerAll();
                     flagTriggerDone = "0";
                     count = 7;
