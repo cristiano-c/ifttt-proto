@@ -6,7 +6,6 @@ var iftttApp = angular.module('iftttApp', ['ngRoute']);
 //Secure controll
 var triggerChose = 0;
 var actionChose =  0;
-var  modifyVar = 0;
 
 /*GmailTriggerController  Tn 1*/
 var sender_GmailTriggerController = ""; //sender
@@ -87,11 +86,14 @@ var modulinoj2 = [];
 
 /* NAVIGATION */
 
-//unused? var navPages = [0,0,0,0,0,0];
+//unused? var navPages = [0,0,0,0,0,0]; normal navigation
 var count=0;
 var url1back = "";
-//var url2back = "";
 var flagTriggerDone = "0";
+
+//Variabile di percorso per la modify parte
+var  modifyVar = 0;
+var modifyCountVar = 0;
 
 //Variabile per protegere le pagine da quello che ho visto devono essere globali.
 var googleLogin ="0";   //-> $scope.googleLogged
@@ -99,6 +101,7 @@ var twitterLogin = "0"; //-> $scope.twitterLogged
 var iftttLogin = false; //-> $scope.iftttLogged
 
 var alertVariable = "";
+
 
 //Esiste già
 //var loginDataSend = null;
@@ -467,7 +470,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         }
                     );
                     //FXR
-                    url = "#"+nextPath;
+                  var  url = "#"+nextPath;
+                    if (modifyVar == 1)
+                    {
+                        url = "#" + ulrTriggreGlobalVariable;
+                    }
                     window.location.replace(url);
                     //end
                 } else {
@@ -664,7 +671,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
          */
         $scope.routeListener = function (nextRoute) {
             nextPath = nextRoute;
-            console.log("routeListener(nextRoute): "+nextPath);
+            //console.log("routeListener(nextRoute): "+nextPath);
         };
         
 
@@ -902,7 +909,8 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
 
         if(modifyVar == 1)
         {
-            sendingToServerAll();
+
+
         }
         else
         {
@@ -935,6 +943,7 @@ iftttApp.controller('homeController',  ['$scope', '$routeParams',
 
 iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
     function ($scope) {
+        modifyVar=0;
         $scope.loadHome = function()
         {
             console.log("createRecipeController: loaded");
@@ -985,6 +994,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     {
         $scope.privateuserRecipesVet = null;
        $scope.privateuserRecipesVetAllData = null;
+        modifyVar=0;
 
 
         $http
@@ -1138,7 +1148,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             {
                 sender_GmailTriggerController = $scope.privateuserRecipesVetAllData[index]["trigger[sender]"];
                 subject_GmailTriggerController = $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
-                ulrTriggreGlobalVariable= "#gMailTrigger";
+                ulrTriggreGlobalVariable= "gMailTrigger";
 
                 modulinoj1 =
                 {
@@ -1162,7 +1172,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         description_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[description]"];
                         place_Trigger1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[place]"];
                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
-                        ulrTriggreGlobalVariable = "#Trigger1Gcalendar";
+                        ulrTriggreGlobalVariable = "Trigger1Gcalendar";
 
                         modulinoj1 =
                         {
@@ -1183,7 +1193,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         description_Trigger2GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
                         place_Trigger2GcalendarController =$scope.privateuserRecipesVetAllData[index]["trigger[place]"];
                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[eventAction]"];
-                        ulrTriggreGlobalVariable = "#Trigger2Gcalendar";
+                        ulrTriggreGlobalVariable = "Trigger2Gcalendar";
 
                         modulinoj1 =
                         {
@@ -1209,7 +1219,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             timezone_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[ora]"];
                             ora_customWeatherActionControllerTrigger1 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
                             subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                            ulrTriggreGlobalVariable = "#WeatherTrigger1";
+                            ulrTriggreGlobalVariable = "WeatherTrigger1";
 
                             modulinoj1=
                             {
@@ -1231,7 +1241,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 pperiod_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[period]"];
                                 pzone_customWeatherActionControllerTrigger2 = $scope.privateuserRecipesVetAllData[index]["trigger[timezone]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                                ulrTriggreGlobalVariable = "#WeatherTrigger2";
+                                ulrTriggreGlobalVariable = "WeatherTrigger2";
 
                                 modulinoj1=
                                 {
@@ -1254,7 +1264,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                     sunset_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[sunset]"];
                                     sunrise_customWeatherActionControllerTrigger3 = $scope.privateuserRecipesVetAllData[index]["trigger[sunrise]"];
                                     subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                                    ulrTriggreGlobalVariable = "#WeatherTrigger3";
+                                    ulrTriggreGlobalVariable = "WeatherTrigger3";
                                     modulinoj1 =
                                     {
                                         "triggerType": "weather",
@@ -1277,7 +1287,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                         pthmin_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[thmin]"];
                                         period_customWeatherActionControllerTrigger4 = $scope.privateuserRecipesVetAllData[index]["trigger[period]"];
                                         subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                                        ulrTriggreGlobalVariable = "#WeatherTrigger4";
+                                        ulrTriggreGlobalVariable = "WeatherTrigger4";
                                         modulinoj1 =
                                         {
                                             "triggerType": "weather",
@@ -1306,7 +1316,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 hashtag_text_trigger1TwitterController =    $scope.privateuserRecipesVetAllData[index]["trigger[hashtag_text]"];
                                 username_sender_trigger1TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                                ulrTriggreGlobalVariable = "#Trigger1Twitter";
+                                ulrTriggreGlobalVariable = "Trigger1Twitter";
 
                                 modulinoj1 =
                                 {
@@ -1322,7 +1332,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 hashtag_text_trigger2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[hashtag_text]"];
                                 username_sender_trigger2TwitterController = $scope.privateuserRecipesVetAllData[index]["trigger[username_sender]"];
                                 subTriggerGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[type]"];
-                                ulrTriggreGlobalVariable = "#Trigger2Twitter";
+                                ulrTriggreGlobalVariable = "Trigger2Twitter";
 
                                 modulinoj1 =
                                 {
@@ -1347,7 +1357,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 yearVector_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[dayVector]"];
                 monthVector_action1GcalendarController =  $scope.privateuserRecipesVetAllData[index]["trigger[monthVector]"];
                 dayVector_action1GcalendarController = $scope.privateuserRecipesVetAllData[index]["trigger[yearVector]"];
-                urlActionGlobalVariable = "#action1Gcalendar";
+                urlActionGlobalVariable = "action1Gcalendar";
 
                 modulinoj2 =
                 {
@@ -1371,7 +1381,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     receiver_GmailActionController = $scope.privateuserRecipesVetAllData[index]["trigger[receiver]"];
                     sender_GmailActionController = $scope.privateuserRecipesVetAllData[index]["trigger[sender]"];
                     subject_GmailActionController =  $scope.privateuserRecipesVetAllData[index]["trigger[subject]"];
-                    urlActionGlobalVariable = "#gMailAction";
+                    urlActionGlobalVariable = "gMailAction";
 
                     modulinoj2=
                     {
@@ -2185,9 +2195,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                     flagTriggerDone = "1";
                     if(modifyVar == "1")
                     {
-                        url = "#SuccessRepice";
-                        window.location.replace(url);
-
+                        sendingToServerAllput();
                     }
                     else
                     {
@@ -2205,22 +2213,6 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                 window.location.replace(url);
 
             }
-            /*
-            var loginDataSend =
-            {
-                title : title_Trigger1GcalendarController,
-                description: description_Trigger1GcalendarController,
-                place: place_Trigger1GcalendarController
-            }
-            $.ajax
-            ({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo")
-            });
-            */
 
         };
 
@@ -3384,7 +3376,28 @@ iftttApp.controller('action2TwitterController', ['$scope',
 iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
     function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
         $scope.urlTriggerUser = ulrTriggreGlobalVariable;
+        $scope.activeGoogleAutentication = false;
+        $scope.activeTwitterAutentication = false;
+        $scope.activeWeatherAutentication = false;
+
         modifyVar = 1;
+        if(triggreGlobalVariable == "gmail" ||  triggreGlobalVariable == "calendar" )
+        {
+            $scope.activeGoogleAutentication = true;
+        }
+        else
+        {
+            if(triggreGlobalVariable == "twitter")
+            {
+                $scope.activeTwitterAutentication = true;
+            }
+            else
+            {
+                $scope.activeWeatherAutentication = true;
+
+            }
+
+        }
 
 
     }]);
@@ -3393,31 +3406,6 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
 
 function sendingToServerAll ()
 {
-    /*
-    var triggerChose = 0;
-    var actionChose =  0;
-
-    GmailTriggerController  n 1
-    var sender_GmailTriggerController = "";
-    var subject_GmailTriggerController = "";
-
-     GmailActionController  n 1
-    var sender_GmailActionController = "";
-    var subject_GmailActionController = "";
-
-    Trigger1GcalendarController n 2
-    var title_Trigger1GcalendarController = "";
-    var description_Trigger1GcalendarController = "";
-    var place_Trigger1GcalendarController = "";
-
-    Trigger2GcalendarController n 3
-    var title_Trigger2GcalendarController = "";
-    var description_Trigger2GcalendarController = "";
-    var place_Trigger2GcalendarController = "";
-     */
-
-
-
     sendDataToServer =
     {
         id: null,
@@ -3487,15 +3475,36 @@ function sedingServerAllRun (loginDataSend)
         }
     });
 }
-/*
-function sedingServerAllRun1  (loginDataSend)
+
+function sendingToServerAllput ()
 {
+    sendDataToServer =
+    {
+        id: idRecipe,
+        desc: descriptionRecipeGlobal,
+        "trigger" : modulinoj1,
+        "action" : modulinoj2
+    };
+    sedingServerAllRun(sendDataToServer);
+
+}
+
+
+function sedingServerAllRunput (loginDataSend)
+{
+    //var result = "ciao";
+    //url: 'http://localhost:3000/userRecipes
+    //url: "/MyServlet"
     $.ajax({
-        method: "post",
-        url: "/MyServletJsonJson",
+        method: "put",
+        url: "http://localhost:3000/userRecipes",
         data: loginDataSend,
         dataType: "json",
-        success: console.log("la post ha avuto successo n 9")
+        success: function(response) {
+            url = "#SuccessRepice";
+            window.location.replace(url);
+
+        }
     });
 }
-    */
+
