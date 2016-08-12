@@ -77,7 +77,15 @@
                         <div>
 
 
-                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#allTriggers"
+                                ng-if="!modifyButton"
+                            >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#choseModify"
+                                ng-if="modifyButton"
+                            >Cancel</a>
+
+
+
 
                             <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
                                   ng-if="!modifyButton"

@@ -1583,8 +1583,15 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                     };
 
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
                 }
             }
             else
@@ -1612,6 +1619,11 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         };
 
         // $scope.checkedtitle = true;
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
 
@@ -1619,6 +1631,8 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
+
+
 
 
     }]);

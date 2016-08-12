@@ -68,9 +68,23 @@
                         <hr>
 
                         <div>
-                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#allTriggers"
+                                ng-if="!modifyButton"
+                            >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#choseModify"
+                                ng-if="modifyButton"
+                            >Cancel</a>
+
+
+
                             <a   ng-disabled="!checkedSubject && !checkedEmail" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="triggerGmail()" >Next</a>
+                                 ng-if="!modifyButton"
+                                class="btn btn-primary pull-right btn_next3  animate-if"  ng-click="triggerGmail()" >Next</a>
+                            <a   ng-disabled="!checkedSubject && !checkedEmail" type="submit"
+                                 ng-if="modifyButton"
+                                 class="btn btn-primary pull-right btn_next3  animate-if"  ng-click="triggerGmail()" >Submit</a>
+
+
                         </div>
                         <div class="col-md-row" style="padding-top: 7%">
                             <hr>
@@ -90,35 +104,72 @@
 
 
 <script>
-    if(iftttLogin == false)
+    if(modifyVar == 1)
     {
-        url = "#home";
-        window.location.replace(url);
-        count = 0;
-        flagTriggerDone="0";
-    }
-    else {
-        if (googleLogin == "1") {
-
-
-            if (count == 2) {
-                count++;
-                url1back = "#gMailTrigger";
-            }
-            else {
-                if (count < 2) {
-                    url = "#allTriggers";
-                    window.location.replace(url);
-                }
-
-            }
+        if (iftttLogin == false) {
+            url = "#home";
+            window.location.replace(url);
+            modifyCountVar = 0;
+            flagTriggerDone = "0";
         }
         else {
+            if (googleLogin == "1")
+            {
+                if (modifyCountVar == 0)
+                {
+                    modifyCountVar++;
+                    url1back = "#choseModify";
+                }
+                else
+                {
+                    url = "#home";
+                    window.location.replace(url);
+
+
+                }
+            }
+            else
+            {
+                url = "#home";
+                window.location.replace(url);
+            }
+        }
+
+
+
+    }
+
+    else {
+
+
+        if (iftttLogin == false) {
+            url = "#home";
+            window.location.replace(url);
+            count = 0;
+            flagTriggerDone = "0";
+        }
+        else {
+            if (googleLogin == "1") {
+
+
+                if (count == 2) {
+                    count++;
+                    url1back = "#gMailTrigger";
+                }
+                else {
+                    if (count < 2) {
+                        url = "#allTriggers";
+                        window.location.replace(url);
+                    }
+
+                }
+            }
+            else {
                 url = "#allTriggers";
                 window.location.replace(url);
             }
+        }
     }
-
 </script>
 
 
