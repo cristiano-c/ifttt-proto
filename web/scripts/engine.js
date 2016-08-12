@@ -3504,7 +3504,7 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
         }
 
 
-        if(triggreGlobalVariable == "gmail" ||  triggreGlobalVariable == "calendar" )
+        if(actionGlobalVariable == "gmail" ||  actionGlobalVariable == "calendar" )
         {
             $scope.activeGoogleAutenticationAction = true;
         }
