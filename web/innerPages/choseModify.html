@@ -40,12 +40,12 @@
                         <a class="btn btn_next2" ng-if="!twitterLogged && activeTwitterAutentication" data-toggle="modal" data-target="#loginGoogleModal">Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
                     <p>
-                        <a class="btn btn_next2" href="{{urlTriggerUser}}" ng-if="twitterLogged && activeTwitterAutentication" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next2" href="#{{urlTriggerUser}}" ng-if="twitterLogged && activeTwitterAutentication" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
 
                     <!-- Weather -->
                     <p>
-                        <a class="btn btn_next2" href="{{urlTriggerUser}}" ng-if="activeWeatherAutentication" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next2" href="#{{urlTriggerUser}}" ng-if="activeWeatherAutentication" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
 
                 </div>
@@ -74,13 +74,8 @@
                     <p>
                         The description can be modify and save it.
                     </p>
-
-
                     <p>
-                        <a class="btn btn_next2" ng-if="!googleLogged" data-toggle="modal" data-target="#loginGoogleModal" ng-click="routeListener('Trigger2Gcalendar')">Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
-                    </p>
-                    <p>
-                        <a class="btn btn_next2" href="#Trigger2Gcalendar" ng-if="googleLogged" >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
+                        <a class="btn btn_next2" ng-click="descriptionModifyLanch()"  >Continue<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></a>
                     </p>
 
                 </div>
@@ -159,6 +154,10 @@
         window.location.replace(url);
         count = 0;
         flagTriggerDone="0";
+    }
+    else
+    {
+        modifyCountVar=0;
     }
 </script>
 

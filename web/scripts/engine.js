@@ -2,6 +2,22 @@
  * Created by kazuhira on 22/07/16.
  */
 
+
+/*
+ if(modifyVar == "1")
+ {
+ sendingToServerAllput();
+ }
+ $scope.modifyButton = false;
+ if(modifyVar == 1)
+ {
+ $scope.modifyButton = true;
+ }
+
+
+
+ */
+
 var iftttApp = angular.module('iftttApp', ['ngRoute']);
 //Secure controll
 var triggerChose = 0;
@@ -851,7 +867,12 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
 
             //Mando i dati al server con i due modulini + la descrizione.
-            sendingToServerAll();
+            if(modifyVar == "1")
+            {
+                sendingToServerAllput();
+            }
+            else
+                sendingToServerAll();
         };
 
             // $('#recipedDescriptionModal').modal('hide');
@@ -1885,6 +1906,12 @@ iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$route
             //console.log(name);
         };
 
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
 
     }]);
@@ -2019,6 +2046,12 @@ iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope',
 
 
          */
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
 
 
@@ -2068,6 +2101,11 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope',
             //console.log(name);
         };
 
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
 
 
 
@@ -2086,6 +2124,12 @@ iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope',
             value3: 0,
             value4: 0
         };
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
     }]);
 
@@ -2335,8 +2379,15 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                         "place": place_Trigger2GcalendarController
                     };
 
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
 
                 }
             }
@@ -2360,6 +2411,12 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
 
              $scope.sedingServer(loginDataSend);
              */
+
+            $scope.modifyButton = false;
+            if(modifyVar == 1)
+            {
+                $scope.modifyButton = true;
+            }
 
 
         };
@@ -3028,8 +3085,15 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                     "username_sender" : username_sender_trigger1TwitterController
                 };
 
-                url = "#createRecipeAction";
-                window.location.replace(url);
+
+                if(modifyVar == "1")
+                {
+                    sendingToServerAllput();
+                }
+                else {
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
             }
             if(twitterLogin == "0")
             {
@@ -3048,6 +3112,12 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
     }]);
 
@@ -3122,8 +3192,15 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                     "username_sender" : username_sender_trigger2TwitterController
                 };
 
-                url = "#createRecipeAction";
-                window.location.replace(url);
+                if(modifyVar == "1")
+                {
+                    sendingToServerAllput();
+                }
+                else
+                {
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
             }
 
             if(twitterLogin == "0")
@@ -3138,9 +3215,13 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
 
 
-
+            Trigger1GcalendarController
         };
-
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
 
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
@@ -3412,6 +3493,10 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
             }
 
         }
+        $scope.descriptionModifyLanch = function()
+        {
+            $('#recipedDescriptionModal').modal('show');
+        }
 
 
     }]);
@@ -3515,6 +3600,11 @@ function sedingServerAllRunput (loginDataSend)
         data: loginDataSend,
         dataType: "json",
         success: function(response) {
+            if(modifyVar == "1")
+            {
+                $('#recipedDescriptionModal').modal('hide');
+
+            }
             url = "#SuccessRepice";
             window.location.replace(url);
 

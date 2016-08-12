@@ -326,8 +326,15 @@ $(function()
                     "timezone" : timezone_customWeatherActionControllerTrigger1
                 };
 
-                var url = "/#/createRecipeAction";
-                window.location.replace(url);
+                if(modifyVar == "1")
+                {
+                    sendingToServerAllput();
+                }
+                else
+                {
+                    var url = "/#/createRecipeAction";
+                    window.location.replace(url);
+                }
             }
             else
             {
