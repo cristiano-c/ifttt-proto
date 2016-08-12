@@ -136,8 +136,11 @@ var subTriggerGlobalVariable = "";
 var subActionGlobalVariable = "";
 
 //Url action and trigger
-var urlActionGlobalVariable = "";
 var ulrTriggreGlobalVariable = "";
+var urlActionGlobalVariable = "";
+
+//Temporary root for login
+var rootingAutenticationTriggerAction = "";
 
 
 iftttApp.config(['$routeProvider', function($routeProvider){
@@ -489,7 +492,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                   var  url = "#"+nextPath;
                     if (modifyVar == 1)
                     {
-                        url = "#" + ulrTriggreGlobalVariable;
+                        url = "#" + rootingAutenticationTriggerAction; //<--------------------------------------------------------
                     }
                     window.location.replace(url);
                     //end
@@ -3475,6 +3478,12 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
         $scope.activeTwitterAutentication = false;
         $scope.activeWeatherAutentication = false;
 
+        $scope.urlActionUser = urlActionGlobalVariable;
+        $scope.activeGoogleAutenticationAction = false;
+        $scope.activeTwitterAutenticationAction = false;
+
+
+
         modifyVar = 1;
         if(triggreGlobalVariable == "gmail" ||  triggreGlobalVariable == "calendar" )
         {
@@ -3493,6 +3502,33 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
             }
 
         }
+
+
+        if(triggreGlobalVariable == "gmail" ||  triggreGlobalVariable == "calendar" )
+        {
+            $scope.activeGoogleAutenticationAction = true;
+        }
+        else
+        {
+            if(triggreGlobalVariable == "twitter")
+            {
+                $scope.activeTwitterAutenticationAction = true;
+            }
+
+        }
+
+        $scope.changePage = function (chosePath)
+        {
+            if(chosePath == 0 )
+                rootingAutenticationTriggerAction = ulrTriggreGlobalVariable;
+            else
+                rootingAutenticationTriggerAction = urlActionGlobalVariable;
+
+            $('#loginGoogleModal').modal('show');
+        };
+
+
+
         $scope.descriptionModifyLanch = function()
         {
             $('#recipedDescriptionModal').modal('show');
