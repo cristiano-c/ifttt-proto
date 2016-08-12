@@ -693,6 +693,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
          */
         $scope.routeListener = function (nextRoute) {
             nextPath = nextRoute;
+            rootingAutenticationTriggerAction=nextRoute;
             //console.log("routeListener(nextRoute): "+nextPath);
         };
         
@@ -1009,6 +1010,14 @@ iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window'
 
 iftttApp.controller('doCreatorController',  ['$scope',
     function ($scope) {
+
+        $scope.modifyButton =false;
+
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
         $scope.loadHome = function()
         {
@@ -3563,7 +3572,7 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
             }
             else
             {
-                urlx = "allActions";
+                urlx = "#allActions";
                 setChooseAx = 5;
             }
             window.location.replace(urlx);

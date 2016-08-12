@@ -3,13 +3,11 @@
     {
       "id": 14,
       "desc": "Now the web site has been assimilated!!! It is borg, it is perfeclty!!\n\nSeriusly? Yes of course!!!!\n\nMa se arriva janney? Allora sarà distrutto XD :P o forse no XD",
-      "trigger[triggerType]": "weather",
-      "trigger[type]": 4,
-      "trigger[location]": 3176269,
-      "trigger[timezone]": "NULL",
-      "trigger[thmax]": 0,
-      "trigger[thmin]": "NULL",
-      "trigger[period]": "NULL",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "sdsssdsss",
+      "trigger[description]": "null",
+      "trigger[place]": "null",
       "action[actionType]": "calendar"
     },
     {
@@ -20,13 +18,7 @@
       "trigger[location]": 3176269,
       "trigger[ora]": "NULL",
       "trigger[timezone]": "NULL",
-      "action[actionType]": "calendar",
-      "action[title]": "",
-      "action[description]": "null",
-      "action[place]": "null",
-      "action[dayVector]": "null",
-      "action[monthVector]": "null",
-      "action[yearVector]": "null"
+      "action[actionType]": "calendar"
     },
     {
       "id": 22,
@@ -7686,6 +7678,19 @@
       "action[actionType]": "gmail",
       "action[sender]": "null",
       "action[subject]": "prova"
+    },
+    {
+      "id": 568,
+      "desc": "This task has not a description",
+      "trigger[triggerType]": "calendar",
+      "trigger[eventAction]": 0,
+      "trigger[title]": "null",
+      "trigger[description]": "null",
+      "trigger[place]": "torino",
+      "action[triggerType]": "twitter",
+      "action[type]": 0,
+      "action[body]": "",
+      "action[destination]": "null"
     }
   ]
 }
