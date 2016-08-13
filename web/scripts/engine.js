@@ -469,7 +469,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             $http({
                 url: '/MyServlet',
                 method: "POST",
-                data: JSON.stringify(googleCredentials),
+                data: JSON.stringify({"requestGoogleAuth":"true"}),
+                contentType: "application/json",
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
@@ -494,13 +495,12 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     window.location.replace(url);
                     //end
                 } else {
-                    $("#notificationsWrapper").notify(
-                        "Authentication in Google failed",
-                        {
-                            className: 'error',
-                            position: 'bottom right'
-                        }
-                    );
+                    // Se non è connesso...
+                    $('#loginGoogleModal').modal('hide');
+                    // @server-side: mettere qui la url a Google O-Auth
+                    url = "mettere-la-url-per-google-O-auth";
+                    window.location.replace(url);
+
                 }
                 console.log($scope.googleLogged);
             }, function error() {
