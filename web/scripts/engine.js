@@ -112,6 +112,9 @@ var sendDataToServer = [];
 //Variabile di descriozione
 var descriptionRecipeGlobal = "";
 
+//Variabile se è pubblica o no
+var  publishRecipeGlobal = false;
+
 //Variabile Id
 var idRecipe = "";
 
@@ -1065,7 +1068,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 "desc": varDemp[index].desc,
                                 "id": varDemp[index].id,
                                 "index": index,
-                                "flag": varDemp[index].flag
+                                "publish": varDemp[index].publish
                             };
                             $scope.privateuserRecipesVet.push(pezzoX);
                             $scope.privateuserRecipesVetAllData.push(x);
@@ -1106,9 +1109,9 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                 //alert("1");
                 var flagDataSend = $scope.privateuserRecipesVetAllData[index];
-                flagDataSend.flag = true;
-                //$scope.privateuserRecipesVet[index].flag = true;
-                //alert($scope.privateuserRecipesVet[index].flag);
+                flagDataSend.publish = true;
+                //$scope.privateuserRecipesVet[index].publish = true;
+                //alert($scope.privateuserRecipesVet[index].publish);
                 $http
                 (
                     {
@@ -1124,8 +1127,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     })
                     .success(function ()
                     {
-                        $scope.privateuserRecipesVet[index].flag = true;
-                        $scope.privateuserRecipesVetAllData[index].flag = true;
+                        $scope.privateuserRecipesVet[index].publish = true;
+                        $scope.privateuserRecipesVetAllData[index].publish = true;
                         alert("o.k.");
                     }
                 );
@@ -1139,8 +1142,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 //alert("2");
                var flagDataSend = $scope.privateuserRecipesVetAllData[index];
                 flagDataSend.flag = false;
-                //$scope.privateuserRecipesVet[index].flag = false;
-                //alert($scope.privateuserRecipesVet[index].flag);
+                //$scope.privateuserRecipesVet[index].publish = false;
+                //alert($scope.privateuserRecipesVet[index].publish);
                 $http
                 (
                     {
@@ -1157,8 +1160,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 })
                     .success(function ()
                     {
-                        $scope.privateuserRecipesVet[index].flag = false;
-                        $scope.privateuserRecipesVetAllData[index].flag = false;
+                        $scope.privateuserRecipesVet[index].publish = false;
+                        $scope.privateuserRecipesVetAllData[index].publish = false;
                         alert("o.k.");
                     });
 
@@ -1173,6 +1176,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             idRecipe = $scope.privateuserRecipesVetAllData[index].id;
             triggreGlobalVariable = $scope.privateuserRecipesVetAllData[index]["trigger[triggerType]"];
             actionGlobalVariable = $scope.privateuserRecipesVetAllData[index]["action[actionType]"];
+            publishRecipeGlobal = $scope.privateuserRecipesVetAllData[publish];
+
 
 
             /*
@@ -1529,7 +1534,7 @@ iftttApp.controller('publicRecipesController',  ['$scope', '$routeParams', '$win
                                 "desc": varDemp[index].desc,
                                 "id": varDemp[index].id,
                                 "index": index,
-                                "flag": varDemp[index].flag
+                                "publish": varDemp[index].publish
                             };
                             $scope.privateuserRecipesVet.push(pezzoX);
                             $scope.privateuserRecipesVetAllData.push(x);
@@ -3671,7 +3676,8 @@ function sendingToServerAll ()
         id: null,
         desc: descriptionRecipeGlobal,
         "trigger" : modulinoj1,
-        "action" : modulinoj2
+        "action" : modulinoj2,
+        "publish": false
     };
 
     //"desc": "example descrition here, written by the user"/*recipedDesc*/
@@ -3692,7 +3698,7 @@ function alertFunction ()
             className: 'warning',
             position: 'bottom center',
             id: null,
-            desc: null,
+            desc: null
         }
     );
 }
@@ -3743,7 +3749,8 @@ function sendingToServerAllput ()
         id: idRecipe,
         desc: descriptionRecipeGlobal,
         "trigger" : modulinoj1,
-        "action" : modulinoj2
+        "action" : modulinoj2,
+        "publish" : publishRecipeGlobal
     };
     sedingServerAllRunput(sendDataToServer);
 
