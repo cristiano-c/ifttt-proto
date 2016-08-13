@@ -90,7 +90,7 @@ var modulinoj2 = [];
 //unused? var navPages = [0,0,0,0,0,0]; normal navigation
 var count=0;
 var url1back = "";
-var flagTriggerDone = "0";
+var flagTriggerDone = false;
 
 //Variabile di percorso per la modify parte
 var  modifyVar = 0;
@@ -98,8 +98,8 @@ var modifyCountVar = 0;
 var setChooseAx  = 0;
 
 //Variabile per protegere le pagine da quello che ho visto devono essere globali.
-var googleLogin ="0";   //-> $scope.googleLogged
-var twitterLogin = "0"; //-> $scope.twitterLogged
+var googleLogin =false;   //-> $scope.googleLogged
+var twitterLogin = false; //-> $scope.twitterLogged
 var iftttLogin = false; //-> $scope.iftttLogged
 
 var alertVariable = "";
@@ -488,7 +488,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 $('#serverSpinner').spin(false);
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.googleLogged = true;
-                    googleLogin = "1";
+                    googleLogin = true;
                     $('#loginGoogleModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with Google",
@@ -525,7 +525,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.googleLogged = false;
-                googleLogin="0";
+                googleLogin=false;
                 console.log($scope.googleLogged);
             });
 
@@ -549,7 +549,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.googleLogged = false;
-                    googleLogin="0";
+                    googleLogin=false;
                     $("#notificationsWrapper").notify(
                         "Logged out from Google",
                         {
@@ -607,7 +607,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.twitterLogged = true;
-                    twitterLogin = "1";
+                    twitterLogin = true;
                     $('#loginTwitterModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with Twitter",
@@ -640,7 +640,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     }
                 );
                 $scope.twitterLogged = false;
-                twitterLogin = "0";
+                twitterLogin = false;
                 console.log(""+$scope.twitterLogged);
             });
 
@@ -655,8 +655,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             };
             /*Non so di preciso dove mettere questa variabile che serve per "sicurizzare"
             le pagine di twitter ossia:
-             if(twitterLogin == "1") tu sei loggatto;
-             if(twitterLogin == "0") tu non sei loggato;
+             if(twitterLogin == true) tu sei loggatto;
+             if(twitterLogin == false) tu non sei loggato;
             */
 
             $('#serverSpinner').spin();
@@ -669,7 +669,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.twitterLogged = false;
-                    twitterLogin="0";
+                    twitterLogin=false;
                     $("#notificationsWrapper").notify(
                         "Logged out from Twitter",
                         {
@@ -889,7 +889,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
 
             //Mando i dati al server con i due modulini + la descrizione.
-            if(modifyVar == "1")
+            if(modifyVar == true)
             {
                 sendingToServerAllput();
             }
@@ -957,7 +957,7 @@ iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
         }
         else
         {
-            if (flagTriggerDone == "1") {
+            if (flagTriggerDone == true) {
                 //alert("Warning you must compile before the action form");
                 alertVariable = "Warning you must compile before the action form";
                 alertFunction();
@@ -1139,7 +1139,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             $scope.shareRecipe = function(index, id)
             {
 
-                //alert("1");
+                //alert(true);
                 var flagDataSend = $scope.userRecipes[index];
                 flagDataSend.publish = true;
                 //$scope.userRecipes[index].publish = true;
@@ -1256,7 +1256,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         modulinoj1 =
                         {
                             "triggerType": "calendar",
-                            "eventAction": "0",
+                            "eventAction": false,
 
                             //Tn 2 S0
                             "title": title_Trigger1GcalendarController,
@@ -1277,7 +1277,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         modulinoj1 =
                         {
                             "triggerType": "calendar",
-                            "eventAction": "1",
+                            "eventAction": true,
                             //Tn 3
                             "title": title_Trigger2GcalendarController,
                             "description": description_Trigger2GcalendarController,
@@ -1303,7 +1303,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             modulinoj1=
                             {
                                 "triggerType" : "weather",
-                                "type" : "1",
+                                "type" : true,
                                 "location" : idCity_customWeatherActionControllerTrigger1,
                                 "ora"  : ora_customWeatherActionControllerTrigger1,
                                 "timezone" : timezone_customWeatherActionControllerTrigger1
@@ -1400,7 +1400,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 modulinoj1 =
                                 {
                                     "triggerType" : "twitter",
-                                    "type"      :  "0",
+                                    "type"      :  false,
                                     "hashtag_text"  : hashtag_text_trigger1TwitterController,
                                     "username_sender" : username_sender_trigger1TwitterController
                                 };
@@ -1416,7 +1416,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                 modulinoj1 =
                                 {
                                     "triggerType" : "twitter",
-                                    "type"      :  "1",
+                                    "type"      :  true,
                                     "hashtag_text"  : hashtag_text_trigger2TwitterController,
                                     "username_sender" : username_sender_trigger2TwitterController
                                 };
@@ -1478,13 +1478,13 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     if(actionGlobalVariable == "twitter")
                     {
                         subject_action1TwitterController = $scope.userRecipes[index].trigger.body;
-                        subActionGlobalVariable = "0";
+                        subActionGlobalVariable = false;
                         urlActionGlobalVariable = "Action1Twitter";
 
                         modulinoj2 =
                         {
                             "triggerType" : "twitter",
-                            "type"      :  "0",
+                            "type"      :  false,
                             "body"      :  subject_action1TwitterController,
                             "destination" :  "null"
 
@@ -1495,13 +1495,13 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     {
                         title_action2TwitterController = $scope.userRecipes[index].trigger.destination;
                         subjec_action2TwitterController = $scope.userRecipes[index].trigger.body;
-                        subActionGlobalVariable = "1";
+                        subActionGlobalVariable = true;
                         urlActionGlobalVariable = "Action2Twitter";
 
                         modulinoj2 =
                         {
                             "triggerType" : "twitter",
-                            "type"      :  "1",
+                            "type"      :  true,
                             "destination"   :  title_action2TwitterController,
                             "body" :  subjec_action2TwitterController
 
@@ -1643,7 +1643,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         {
             var sender = "";
             var subject = "";
-            var flag = "1";
+            var flag = true;
             triggerChose=1;
             //console.log($scope.gmailinput.email + " "  + $scope.gmailinput.subjectReceive);
 
@@ -1660,7 +1660,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                             else
                             {
                                 $scope.flagEmail="not valid";
-                                flag = "0";
+                                flag = false;
                             }
 
 
@@ -1700,9 +1700,9 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
                     subject = "null";
                 }
 
-                if(flag=="1")
+                if(flag==true)
                 {
-                    flagTriggerDone = "1";
+                    flagTriggerDone = true;
                     sender_GmailTriggerController = sender;
                     subject_GmailTriggerController = subject;
 
@@ -1715,7 +1715,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                     };
 
-                    if(modifyVar == "1")
+                    if(modifyVar == true)
                     {
                         sendingToServerAllput();
                     }
@@ -1785,7 +1785,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
             var receiver ="";
             var subject = "";
             var body = "";
-            var flag = "1";
+            var flag = true;
             actionChose=1;
             //sender_GmailActionController = "";
 
@@ -1796,7 +1796,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
             body_GmailActionController = "";
 
 
-            if(googleLogin == "1")  {
+            if(googleLogin == true)  {
 
 
                     if (angular.isDefined($scope.gmailActionvar))
@@ -1808,7 +1808,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                             if (validateEmail(receiver));
                             else
                             {
-                                flag = "0";
+                                flag = false;
                                 //alert("Your e.mail is not right . . .");
                                 alertVariable="Your e.mail is not right . . .";
                                 alertFunction();
@@ -1817,7 +1817,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                         }
                         else {
                             receiver = "";
-                            flag = "0";
+                            flag = false;
                             //alert("Your e.mail is not right . . .");
                             alertVariable="Your e.mail is not right . . .";
                             alertFunction();
@@ -1826,7 +1826,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     }
                     else {
                         receiver = "";
-                        flag = "0";
+                        flag = false;
                         //alert("Your e.mail is not right . . .");
                         alertVariable="Your e.mail is not right . . .";
                         alertFunction();
@@ -1893,7 +1893,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                     else
                     {
                         sender = "";
-                        flag = "0";
+                        flag = false;
                         //alert("You must chose a option between ifttt e.mail or yours");
                         alertVariable="You must chose a option between ifttt e.mail or yours";
                         alertFunction();
@@ -1903,7 +1903,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 else
                 {
                     sender  = "";
-                    flag = "0";
+                    flag = false;
                     //alert("You must chose a option between ifttt e.mail or yours");
                     alertVariable="You must chose a option between ifttt e.mail or yours";
                     alertFunction();
@@ -1916,10 +1916,10 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
                 //alert(flag + " " + body + " " + subject + " " + receiver + " " + $scope.gmailActionvar.sender);
 
-                if(flag == "1")
+                if(flag == true)
                 {
 
-                    flagTriggerDone = "0";
+                    flagTriggerDone = false;
                     count=7;
 
 
@@ -2301,7 +2301,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
             var place;
 
 
-            if(googleLogin == "1") {
+            if(googleLogin == true) {
 
                 if ($scope.checkedtitle == true || $scope.checkedSubject == true || $scope.checkedplace == true) {
 
@@ -2368,7 +2368,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                     modulinoj1 =
                     {
                         "triggerType": "calendar",
-                        "eventAction": "0",
+                        "eventAction": false,
 
                         //Tn 2 S0
                         "title": title_Trigger1GcalendarController,
@@ -2377,8 +2377,8 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                     };
 
 
-                    flagTriggerDone = "1";
-                    if(modifyVar == "1")
+                    flagTriggerDone = true;
+                    if(modifyVar == true)
                     {
                         sendingToServerAllput();
                     }
@@ -2433,7 +2433,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
             var subject;
             var place;
 
-            if(googleLogin == "1") {
+            if(googleLogin == true) {
                 if ($scope.checkedtitle == true || $scope.checkedSubject == true || $scope.checkedplace == true) {
 
                     //first variable
@@ -2494,7 +2494,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                         place = "null";
                     }
 
-                    flagTriggerDone = "1";
+                    flagTriggerDone = true;
                     title_Trigger2GcalendarController = title;
                     description_Trigger2GcalendarController = subject;
                     place_Trigger2GcalendarController = place;
@@ -2502,14 +2502,14 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                     modulinoj1 =
                     {
                         "triggerType": "calendar",
-                        "eventAction": "1",
+                        "eventAction": true,
                         //Tn 3
                         "title": title_Trigger2GcalendarController,
                         "description": description_Trigger2GcalendarController,
                         "location": place_Trigger2GcalendarController
                     };
 
-                    if(modifyVar == "1")
+                    if(modifyVar == true)
                     {
                         sendingToServerAllput();
                     }
@@ -2587,7 +2587,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
             var  yearVector = "";
             var monthVector = "";
             var dayVector = "";
-            var flag = "1";
+            var flag = true;
             var timeZone = "";
             var durationHour = "";
             var durationMinute = "";
@@ -2776,16 +2776,16 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
 
 
-                if (flag == "1")
+                if (flag == true)
                 {
-                    if (monthVector === "1" ||
+                    if (monthVector === true ||
                         monthVector === "3" ||
                         monthVector === "5" ||
                         monthVector === "7" ||
                         monthVector === "8" ||
                         monthVector === "10" ||
                         monthVector === "12") {
-                        if (dayVector > "0" && dayVector < "32");
+                        if (dayVector > false && dayVector < "32");
                         else {
                             flag = "3";
                             //console.log("Your date is not right plase verify the day");
@@ -2799,7 +2799,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         monthVector === "9" ||
                         monthVector === "11")
                     {
-                        if (dayVector > "0" && dayVector < "31");
+                        if (dayVector > false && dayVector < "31");
                         else
                         {
                             flag = "3";
@@ -2841,7 +2841,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 }
 
                 if (flag != "3") {
-                    flagTriggerDone = "0";
+                    flagTriggerDone = false;
                     count=7;
 
                     if (modifyVar == 0)
@@ -3166,7 +3166,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
             var title;
             var subject;
 
-            if( ($scope.checkedtitle == true  ||  $scope.checkedSubject == true) && twitterLogin=="1")
+            if( ($scope.checkedtitle == true  ||  $scope.checkedSubject == true) && twitterLogin==true)
             {
 
                 //First variable
@@ -3208,7 +3208,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                     subject = "null";
                 }
 
-                flagTriggerDone = "1";
+                flagTriggerDone = true;
 
                 username_sender_trigger1TwitterController = title;
                 hashtag_text_trigger1TwitterController = subject;
@@ -3216,13 +3216,13 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                 modulinoj1 =
                 {
                   "triggerType" : "twitter",
-                    "type"      :  "0",
+                    "type"      :  false,
                     "hashtag_text"  : hashtag_text_trigger1TwitterController,
                     "username_sender" : username_sender_trigger1TwitterController
                 };
 
 
-                if(modifyVar == "1")
+                if(modifyVar == true)
                 {
                     sendingToServerAllput();
                 }
@@ -3231,7 +3231,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                     window.location.replace(url);
                 }
             }
-            if(twitterLogin == "0")
+            if(twitterLogin == false)
             {
                 //alert("You are not logged in twitter");
                 alertVariable="You are not logged in twitter";
@@ -3273,7 +3273,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
             var subject;
 
 
-            if (twitterLogin == "1")
+            if (twitterLogin == true)
             {
 
                 if ($scope.checkedtitle == true) {
@@ -3316,19 +3316,19 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                     subject = "null";
                 }
 
-                flagTriggerDone = "1";
+                flagTriggerDone = true;
                 username_sender_trigger2TwitterController = title;
                 hashtag_text_trigger2TwitterController = subject;
 
                 modulinoj1 =
                 {
                     "triggerType" : "twitter",
-                    "type"      :  "1",
+                    "type"      :  true,
                     "hashtag_text"  : hashtag_text_trigger2TwitterController,
                     "username_sender" : username_sender_trigger2TwitterController
                 };
 
-                if(modifyVar == "1")
+                if(modifyVar == true)
                 {
                     sendingToServerAllput();
                 }
@@ -3339,7 +3339,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                 }
             }
 
-            if(twitterLogin == "0")
+            if(twitterLogin == false)
             {
                //alert("You are not logged in twitter");
                 alertVariable="You are not logged in twitter";
@@ -3383,7 +3383,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
             var subject;
 
 
-            if ( $scope.checkedSubject == true  && twitterLogin == "1")
+            if ( $scope.checkedSubject == true  && twitterLogin == true)
             {
 
                 if ($scope.checkedSubject == true) {
@@ -3404,7 +3404,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
                     subject = "null";
                 }
 
-                flagTriggerDone = "0";
+                flagTriggerDone = false;
                 count=7;
 
                 subject_action1TwitterController = subject;
@@ -3412,7 +3412,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
                 modulinoj2 =
                 {
                     "triggerType" : "twitter",
-                    "type"      :  "0",
+                    "type"      :  false,
                     "body"      :  subject_action1TwitterController,
                     "destination" :  "null"
 
@@ -3429,7 +3429,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
                 //window.location.replace(url);
             }
 
-            if(twitterLogin == "0")
+            if(twitterLogin == false)
             {
                 //alert("You are not logged in twitter");
                 alertVariable="You are not logged in twitter";
@@ -3486,8 +3486,8 @@ iftttApp.controller('action2TwitterController', ['$scope',
             var subject;
             var flag = 0;
 
-           // if(($scope.checkedtitle == true ||  $scope.checkedSubject== true)  && twitterLogin == "1")
-            if(twitterLogin == "1")
+           // if(($scope.checkedtitle == true ||  $scope.checkedSubject== true)  && twitterLogin == true)
+            if(twitterLogin == true)
             {
 
 
@@ -3544,7 +3544,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
                 modulinoj2 =
                 {
                     "triggerType" : "twitter",
-                    "type"      :  "1",
+                    "type"      :  true,
                     "destination"   :  title_action2TwitterController,
                     "body" :  subjec_action2TwitterController
                     
@@ -3557,7 +3557,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
                     }
                     else sendingToServerAllput();
                     //sendingToServerAll();
-                    flagTriggerDone = "0";
+                    flagTriggerDone = false;
                     count = 7;
                     // href="#SuccessTwitter"
                     //url = "#SuccessTwitter";
@@ -3572,7 +3572,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
 
             }
-            if(twitterLogin == "0")
+            if(twitterLogin == false)
             {
                 //alert("You are not logged in twitter");
                 alertVariable="You are not logged in twitter";
@@ -3753,7 +3753,7 @@ function sedingServerAllRun (loginDataSend)
             url = "#SuccessRepice";
             window.location.replace(url);
 
-            //alert("1");
+            //alert(true);
 
             /*
             $.ajax({
@@ -3799,7 +3799,7 @@ function sedingServerAllRunput (loginDataSend)
         dataType: "json",
         success: function(response) {
             $('#serverSpinner').spin(false);
-            if(modifyVar == "1")
+            if(modifyVar == true)
             {
                 $('#recipedDescriptionModal').modal('hide');
 
