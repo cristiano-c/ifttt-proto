@@ -342,7 +342,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.iftttLogged = false;
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
-        //$scope.userRecipes = null;  //X1
+        $scope.userRecipes = [];  //X1
         $scope.recipedDescriptionInput = null;
 
         /*
@@ -1048,6 +1048,18 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
             (
                 function success(response)
                 {
+                    $scope.userRecipes = response.data;
+
+                    var tmp = 0;
+                    $scope.userRecipes.forEach(function (element) {
+                        element.index = tmp;
+                        tmp++;
+                    });
+
+                    console.log("user recipes: "+JSON.stringify(response.data));
+                    console.log("user scoep: "+JSON.stringify($scope.userRecipes));
+
+                    /*
                     //alert("o.k. :)");
                     //$scope.userRecipes=[];
                     $scope.privateuserRecipesVet = [];
@@ -1075,6 +1087,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             index++;
                         }
                     );
+                    */
 
                 },
                 function error(response) {
