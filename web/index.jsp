@@ -201,7 +201,7 @@
           <!-- The form is placed inside the body of modal -->
           <form class="form-horizontal">
             <div class="form-group">
-              <label for="inputEmailGoogle" class="col-sm-3 control-label">Twitter mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
+              <label for="inputEmailTwitter" class="col-sm-3 control-label">Twitter mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
               <div class="col-sm-9">
                 <input type="email" class="form-control" id="inputEmailTwitter" placeholder="Email">
               </div>
