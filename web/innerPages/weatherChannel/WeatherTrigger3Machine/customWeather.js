@@ -313,7 +313,7 @@ $(function(){
                     modulinoj1 =
                     {
                         "triggerType": "weather",
-                        "type": "2",
+                        "type": "3",
                         "location": idCity_customWeatherActionControllerTrigger3,
                         "timezone": timezone_customWeatherActionControllerTrigger3,
                         "sunset": sunset_customWeatherActionControllerTrigger3,
@@ -322,8 +322,15 @@ $(function(){
 
                     };
 
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
                 }
                 else {
                     //alert("The input of the time zone is not right");

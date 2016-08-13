@@ -2,7 +2,9 @@
  * Created by kazuhira on 22/07/16.
  */
 
+
 var iftttApp = angular.module('iftttApp', ['ngRoute']);
+//Secure controll
 var triggerChose = 0;
 var actionChose =  0;
 
@@ -59,10 +61,10 @@ var timezone_customWeatherActionControllerTrigger1 = "";
 var ora_customWeatherActionControllerTrigger1 = "";
 
 /*  customWeatherActionControllerTrigger2 Tn 7 */
-var     idCity_customWeatherActionControllerTrigger2 = "";
-var     pweather_customWeatherActionControllerTrigger2 = "";
-var     pperiod_customWeatherActionControllerTrigger2 = "";
-var     pzone_customWeatherActionControllerTrigger2 = "";
+var idCity_customWeatherActionControllerTrigger2 = "";
+var pweather_customWeatherActionControllerTrigger2 = "";
+var pperiod_customWeatherActionControllerTrigger2 = "";
+var pzone_customWeatherActionControllerTrigger2 = "";
 
 /* customWeatherActionControllerTrigger3  Tn 8 */
 var  idCity_customWeatherActionControllerTrigger3 = "";
@@ -80,16 +82,20 @@ var period_customWeatherActionControllerTrigger4 = "";
 
 
 /* Modulini per json*/
-var modulinoj1 = "";
-var modulinoj2 = "";
+var modulinoj1 = [];
+var modulinoj2 = [];
 
 /* NAVIGATION */
 
-//unused? var navPages = [0,0,0,0,0,0];
+//unused? var navPages = [0,0,0,0,0,0]; normal navigation
 var count=0;
 var url1back = "";
-//var url2back = "";
 var flagTriggerDone = "0";
+
+//Variabile di percorso per la modify parte
+var  modifyVar = 0;
+var modifyCountVar = 0;
+var setChooseAx  = 0;
 
 //Variabile per protegere le pagine da quello che ho visto devono essere globali.
 var googleLogin ="0";   //-> $scope.googleLogged
@@ -98,20 +104,35 @@ var iftttLogin = false; //-> $scope.iftttLogged
 
 var alertVariable = "";
 
+
 //Esiste già
 //var loginDataSend = null;
-
-var sendDataToServer = null;
+var sendDataToServer = [];
 
 //Variabile di descriozione
 var descriptionRecipeGlobal = "";
 
+//Variabile se è pubblica o no
+var  publishRecipeGlobal = false;
 
-// sendingToServerAll();
+//Variabile Id
+var idRecipe = "";
 
-/* prova */
+//Variabile action and trigger
+var actionGlobalVariable = "";
+var triggreGlobalVariable = "";
+var subTriggerGlobalVariable = "";
+var subActionGlobalVariable = "";
 
-// unused? var prova1 ="";
+//Url action and trigger
+var ulrTriggreGlobalVariable = "";
+var urlActionGlobalVariable = "";
+
+//Temporary root for login
+var rootingAutenticationTriggerAction = "";
+
+
+
 
 iftttApp.config(['$routeProvider', function($routeProvider){
 
@@ -295,6 +316,18 @@ iftttApp.config(['$routeProvider', function($routeProvider){
     });
 
 
+    $routeProvider.when('/choseModify', {
+        templateUrl: 'innerPages/choseModify.html',
+        controller: 'choseModifyController'
+    });
+
+
+    $routeProvider.when('/publicRecipes', {
+        templateUrl: 'innerPages/publishPage/PublicRecipes.html',
+        controller: 'publicRecipesController'
+    });
+
+
     $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
@@ -309,9 +342,8 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
         $scope.iftttLogged = false;
         $scope.googleLogged = false;
         $scope.twitterLogged = false;
-        $scope.userRecipes = null;
+        $scope.userRecipes = [];  //X1
         $scope.recipedDescriptionInput = null;
-        //$scope.userRecipes = sendDataToServer;
 
         /*
          * Funzione che gestisce il click per gestire l'autenticazione a IFTTT Polito
@@ -335,7 +367,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.iftttLogged = true;
                     iftttLogin= true;
-                    $scope.userRecipes = response.data.userRecipesJSON;
+                    //$scope.userRecipes = response.data.userRecipesJSON; //x1
                     $('#loginIFTTTModal').modal('hide');
                     $("#notificationsWrapper").notify(
                         "Logged with IFTTT Polito",
@@ -454,7 +486,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         }
                     );
                     //FXR
-                    url = "#"+nextPath;
+                  var  url = "#"+nextPath;
+                    if (modifyVar == 1)
+                    {
+                        url = "#" + rootingAutenticationTriggerAction; //<--------------------------------------------------------*
+                    }
                     window.location.replace(url);
                     //end
                 } else {
@@ -651,17 +687,28 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
          */
         $scope.routeListener = function (nextRoute) {
             nextPath = nextRoute;
-            console.log("routeListener(nextRoute): "+nextPath);
+            rootingAutenticationTriggerAction=nextRoute;
+            //console.log("routeListener(nextRoute): "+nextPath);
         };
         
-        $scope.RequestRecipes = function () {
-            var luna = sendDataToServer;
-            $scope.userRecipes.push(luna);
-            alert("wwww");
 
+
+      /*   Funzione deprecata non più usata */
+
+
+        //  $scope.RequestRecipes = function ()
+        $scope.loadRecipesAndSeeThem = function ()
+        {
+
+            //var luna = sendDataToServer;
+            //$scope.userRecipes.push(luna);
+            //alert("wwww");
+
+
+           /*
             $http({
-                method: 'POST',
-                url: '/Recipes',
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes',
                 data: JSON.stringify({value:"nothing"}),
                 dataType: "application/json;charset=UTF-8"
             }).then(function success(response) {
@@ -677,8 +724,127 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 // Error code here
                 alert("error");
             });
+            */
+
+
+            //Get the recipes and print them
+
+
+/*
+            $http({
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes'
+            }).then(
+                function success(response)
+            {
+                // Success code here
+                $scope.userRecipes = [];
+                console.log(JSON.stringify(response));
+                $scope.userRecipes = [];
+                //alert(JSON.stringify(response));
+
+
+                var i = 0;
+                response.data.forEach(function (x)
+                {
+
+                    //console.log(JSON.stringify(x));
+                    //console.log("????"+JSON.stringify($scope.userRecipes));
+                    $scope.userRecipes.push(x);
+                    //console.log("after"+JSON.stringify($scope.userRecipes));
+                    //alert("WTF");
+                    //Per ottenere la descrizione:
+                    alert("-->" + JSON.stringify($scope.userRecipes));
+                    //trigger[triggerType]
+                    alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+
+                    i++;
+                });
+
+
+            }, function error(response)
+            {
+                // Error code here
+                alert("error");
+            });
+            */
+
+            url = "#/index/myRecipes";
+            window.location.replace(url);
+
+
+            //Get from server the informations in order to print.
+
+            /*
+            $http
+            (
+                {
+                    method: 'GET',
+                    url: 'http://localhost:3000/userRecipes'
+                }
+            )
+                .then
+                (
+                    function success(response)
+                    {
+                        alert("o.k. :)");
+                        $scope.userRecipes=[];
+                        // Success code here
+                        //For debug
+                        //console.log(JSON.stringify(response));
+                        //alert(JSON.stringify(response));
+
+                        var i = 0;
+                        var demp = [];
+                        response.data.forEach
+                        (
+                            function (x)
+                            {
+                                //console.log(JSON.stringify(x));
+                                //console.log("????"+JSON.stringify($scope.userRecipes));
+
+                                //$scope.userRecipes.push(x);
+
+
+                                demp.push(x);
+                                //alert("--> " + JSON.stringify(userRecipes[i]["trigger[triggerType]"]));
+                                var d1 =
+                                {
+                                    "triggerType" :  demp[i]["trigger[triggerType]"],
+                                    "desc" : demp[i].desc
+                                };
+                                $scope.userRecipes.push(d1);
+                                //alert( $scope.userRecipes[0].triggerType);
+
+
+                                //console.log("after"+JSON.stringify($scope.userRecipes));
+                                //alert("WTF");
+                                //Per ottenere la descrizione:
+                                //alert("-->" + JSON.stringify($scope.userRecipes));
+                                //trigger[triggerType]
+                                //alert("-->" + JSON.stringify($scope.userRecipes[i]["trigger[triggerType]"]));
+                                i++;
+                            }
+                        );
+                        //Cambia pagina
+                        url = "#/index/myRecipes";
+                        window.location.replace(url);
+
+                    },
+                    function error(response)
+                    {
+                        // Error code here
+                        alert("error");
+                    }
+                );
+
+            //alert("---" + $scope.userRecipes[0].triggerType);
+
+
+            */
 
         };
+
 
         $scope.saveRecipeDescription = function () {
             //Prende la descrizione della ricetta
@@ -702,7 +868,12 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
 
             //Mando i dati al server con i due modulini + la descrizione.
-            sendingToServerAll();
+            if(modifyVar == "1")
+            {
+                sendingToServerAllput();
+            }
+            else
+                sendingToServerAll();
         };
 
             // $('#recipedDescriptionModal').modal('hide');
@@ -733,12 +904,13 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             $('#recipedDescriptionModal').modal('hide');
         };*/
 
+        /*
         $scope.removeRecipe = function(index){
             console.log("REMOVING: "+index);
             alert(JSON.stringify("id",$scope.userRecipes[index].id));
 
 
-            $http.delete("/Recipes", JSON.stringify("id",$scope.userRecipes[index].id))
+            $http.delete("http://localhost:3000/userRecipes", JSON.stringify("id",$scope.userRecipes[index].id))
                 .then(function success(response){
                         $scope.userRecipes.splice(index, 1);
                         console.log("recipe deleted successfully from the server and local machine");
@@ -750,26 +922,32 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
             // MANCA DA FARE LA DELETE ALLA SERVLET
         };
-
+*/
 
 
     }]);
 iftttApp.controller('SuccessController',  ['$scope', '$routeParams',
     function () {
 
-        if (flagTriggerDone == "1")
+        if(modifyVar == 1)
         {
-            //alert("Warning you must compile before the action form");
-            alertVariable="Warning you must compile before the action form";
-            alertFunction();
-            var url = "#createRecipeAction";
-            window.location.replace(url);
+
+
         }
-        if (count==7) count=0;
         else
         {
-            url = "#createDO";
-            window.location.replace(url);
+            if (flagTriggerDone == "1") {
+                //alert("Warning you must compile before the action form");
+                alertVariable = "Warning you must compile before the action form";
+                alertFunction();
+                var url = "#createRecipeAction";
+                window.location.replace(url);
+            }
+            if (count == 7) count = 0;
+            else {
+                url = "#createDO";
+                window.location.replace(url);
+            }
         }
 
     }]);
@@ -787,6 +965,7 @@ iftttApp.controller('homeController',  ['$scope', '$routeParams',
 
 iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
     function ($scope) {
+        modifyVar=0;
         $scope.loadHome = function()
         {
             console.log("createRecipeController: loaded");
@@ -795,9 +974,18 @@ iftttApp.controller('createRecipeController',  ['$scope', '$routeParams',
     }]);
 
 iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window',
-    function ($scope, $rootscope, $window) {
+    function ($scope, $rootscope, $window)
+    {
 
-    $scope.NGgoogleLogged = false;
+        $scope.NGgoogleLogged = false;
+        $scope.modifyButton =false;
+
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
+
 
     // A
         $scope.$watch(
@@ -817,6 +1005,14 @@ iftttApp.controller('ifCreatorController',  ['$scope', '$routeParams', '$window'
 iftttApp.controller('doCreatorController',  ['$scope',
     function ($scope) {
 
+        $scope.modifyButton =false;
+
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
+
         $scope.loadHome = function()
         {
             console.log("createRecipeController: loaded");
@@ -831,12 +1027,530 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
     }]);
 
 
-iftttApp.controller('myRecipesController',  ['$scope',
-    function ($scope) {
+
+    iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http)
+    {
+        $scope.userRecipes = null;
+        modifyVar=0;
+
+
+
+        $http
+        (
+            {
+                method: 'GET',
+                url: 'http://localhost:3000/userRecipes'
+            }
+        )
+            .then
+            (
+                function success(response)
+                {
+                    $scope.userRecipes = response.data;
+
+                    var tmp = 0;
+                    $scope.userRecipes.forEach(function (element) {
+                        element.index = tmp;
+                        tmp++;
+                    });
+
+                    console.log("user recipes: "+JSON.stringify(response.data));
+                    console.log("user scoep: "+JSON.stringify($scope.userRecipes));
+
+                    /*
+                    //alert("o.k. :)");
+                    //$scope.userRecipes=[];
+                    $scope.userRecipes = [];
+                    $scope.userRecipes = [];
+                    // Success code here
+                    //For debug
+                    //console.log(JSON.stringify(response));
+                    //alert(JSON.stringify(response));
+                    var index = 0;
+                    var varDemp = [];
+                    response.data.forEach
+                    (
+                        function (x) {
+                            varDemp.push(x);
+                            var pezzoX =
+                            {
+                                "triggerType": varDemp[index]["trigger[triggerType]"],
+                                "desc": varDemp[index].desc,
+                                "id": varDemp[index].id,
+                                "index": index,
+                                "publish": varDemp[index].publish
+                            };
+                            $scope.userRecipes.push(pezzoX);
+                            $scope.userRecipes.push(x);
+                            index++;
+                        }
+                    );
+                    */
+
+                },
+                function error(response) {
+                    // Error code here
+                    alert("error");
+                }
+            );
+
+
+        $scope.removeRecipe = function(index, id)
+        {
+            $http
+            (
+                {
+                    method: 'delete',
+                    url: 'http://localhost:3000/userRecipes/' + id
+                }
+            ).error(function () {
+                    // Error code here
+                    alert("error");
+                })
+                .success(function () {
+                    alert("o.k.");
+                    $scope.userRecipes.splice(index, 1)
+
+
+                });
+        };
+            $scope.shareRecipe = function(index, id)
+            {
+
+                //alert("1");
+                var flagDataSend = $scope.userRecipes[index];
+                flagDataSend.publish = true;
+                //$scope.userRecipes[index].publish = true;
+                //alert($scope.userRecipes[index].publish);
+                $http
+                (
+                    {
+                        method: "put",
+                        url: "http://localhost:3000/userRecipes/" + id,
+                        data: flagDataSend,
+                        dataType: "json"
+                    }
+                ).error(function()
+                    {
+                        // Error code here
+                        alert("error");
+                    })
+                    .success(function ()
+                    {
+                        $scope.userRecipes[index].publish = true;
+                        alert("o.k.");
+                    }
+                );
+
+            };
+
+            //Rosso don't share
+            $scope.DoNotshareRecipe = function(index, id)
+            {
+
+                //alert("2");
+               var flagDataSend = $scope.userRecipes[index];
+                flagDataSend.flag = false;
+                //$scope.userRecipes[index].publish = false;
+                //alert($scope.userRecipes[index].publish);
+                $http
+                (
+                    {
+                        method: "put",
+                        url: "http://localhost:3000/userRecipes/" + id,
+                        data: flagDataSend,
+                        dataType: "json"
+                    }
+
+                ).error(function()
+                {
+                    // Error code here
+                    alert("error");
+                })
+                    .success(function ()
+                    {
+                        $scope.userRecipes[index].publish = false;
+                        alert("o.k.");
+                    });
+
+            };
+
+        //Salva i valori del vettore dentro alle variabili globali.
+        $scope.modifyRecipe = function(index)
+        {
+            var data = $scope.userRecipes[index];
+
+            descriptionRecipeGlobal = $scope.userRecipes[index].desc;
+            idRecipe = $scope.userRecipes[index].id;
+            triggreGlobalVariable = $scope.userRecipes[index].trigger.triggerType;
+            actionGlobalVariable = $scope.userRecipes[index].action.actionType;
+            publishRecipeGlobal = $scope.userRecipes[index].publish;
+
+
+            //alert("MODIFY RECIPE:\n\n\n"+descriptionRecipeGlobal+"\n\n"+idRecipe+"\n\n"+triggreGlobalVariable+"\n\n"+actionGlobalVariable+"\n\n"+publishRecipeGlobal+"\n\n"+"\n\n"+"\n\n");
+
+            /*
+            urlActionGlobalVariable = "";
+            ulrTriggreGlobalVariable = "";
+
+             */
+
+            if(triggreGlobalVariable == "gmail")
+            {
+                sender_GmailTriggerController = $scope.userRecipes[index].trigger.sender;
+                subject_GmailTriggerController = $scope.userRecipes[index].trigger.subject;
+                ulrTriggreGlobalVariable= "gMailTrigger";
+
+                modulinoj1 =
+                {
+                    "triggerType": "gmail",
+                    //Tn 1
+                    "sender": sender_GmailTriggerController,
+                    "subject": subject_GmailTriggerController
+                };
+
+
+
+            }
+            else
+            {
+
+                if(triggreGlobalVariable == "calendar")
+                {
+                    if (0 == $scope.userRecipes[index].trigger.eventAction)
+                    {
+                        title_Trigger1GcalendarController = $scope.userRecipes[index].trigger.title;
+                        description_Trigger1GcalendarController = $scope.userRecipes[index].trigger.description;
+                        place_Trigger1GcalendarController = $scope.userRecipes[index].trigger.place;
+                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
+                        ulrTriggreGlobalVariable = "Trigger1Gcalendar";
+
+                        modulinoj1 =
+                        {
+                            "triggerType": "calendar",
+                            "eventAction": "0",
+
+                            //Tn 2 S0
+                            "title": title_Trigger1GcalendarController,
+                            "description": description_Trigger1GcalendarController,
+                            "place": place_Trigger1GcalendarController
+                        };
+
+
+                    }
+                    else
+                    {
+                        title_Trigger2GcalendarController = $scope.userRecipes[index].trigger.title;
+                        description_Trigger2GcalendarController = $scope.userRecipes[index].trigger.subject;
+                        place_Trigger2GcalendarController =$scope.userRecipes[index].trigger.place;
+                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
+                        ulrTriggreGlobalVariable = "Trigger2Gcalendar";
+
+                        modulinoj1 =
+                        {
+                            "triggerType": "calendar",
+                            "eventAction": "1",
+                            //Tn 3
+                            "title": title_Trigger2GcalendarController,
+                            "description": description_Trigger2GcalendarController,
+                            "place": place_Trigger2GcalendarController
+                        };
+
+
+                    }
+
+                }
+                else
+                {
+                    if (triggreGlobalVariable == "weather") {
+
+                        if ($scope.userRecipes[index].trigger.type == 1)
+                        {
+                            idCity_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.location;
+                            timezone_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.ora;
+                            ora_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.timezone;
+                            subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                            ulrTriggreGlobalVariable = "WeatherTrigger1";
+
+                            modulinoj1=
+                            {
+                                "triggerType" : "weather",
+                                "type" : "1",
+                                "location" : idCity_customWeatherActionControllerTrigger1,
+                                "ora"  : ora_customWeatherActionControllerTrigger1,
+                                "timezone" : timezone_customWeatherActionControllerTrigger1
+                            };
+
+
+                        }
+                        else {
+                            if ($scope.userRecipes[index].trigger.type == 2)
+                            {
+
+                                idCity_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.location;
+                                pweather_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.tempo;
+                                pperiod_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.period;
+                                pzone_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.timezone;
+                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                ulrTriggreGlobalVariable = "WeatherTrigger2";
+
+                                modulinoj1=
+                                {
+                                    "triggerType" : "weather",
+                                    "type" : "2",
+                                    "location":   idCity_customWeatherActionControllerTrigger2,
+                                    "tempo" : pweather_customWeatherActionControllerTrigger2,
+                                    "period" : pperiod_customWeatherActionControllerTrigger2,
+                                    "timezone" : pzone_customWeatherActionControllerTrigger2
+                                };
+
+
+                            }
+                            else
+                            {
+                                if ($scope.userRecipes[index].trigger.type == 3)
+                                {
+                                    idCity_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.location;
+                                    timezone_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.timezone;
+                                    sunset_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.sunset;
+                                    sunrise_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.sunrise;
+                                    subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                    ulrTriggreGlobalVariable = "WeatherTrigger3";
+                                    modulinoj1 =
+                                    {
+                                        "triggerType": "weather",
+                                        "type": "3",
+                                        "location": idCity_customWeatherActionControllerTrigger3,
+                                        "timezone": timezone_customWeatherActionControllerTrigger3,
+                                        "sunset": sunset_customWeatherActionControllerTrigger3,
+                                        "sunrise": sunrise_customWeatherActionControllerTrigger3
+
+
+                                    };
+                                }
+                                else
+                                {
+                                    if ($scope.userRecipes[index].trigger.type == 4)
+                                    {
+                                        idCity_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.location;
+                                        ptimezone_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.timezone;
+                                        pthmax_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.thmax;
+                                        pthmin_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.thmin;
+                                        period_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.period;
+                                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                        ulrTriggreGlobalVariable = "WeatherTrigger4";
+                                        modulinoj1 =
+                                        {
+                                            "triggerType": "weather",
+                                            "type": "4",
+                                            "location": idCity_customWeatherActionControllerTrigger4,
+                                            "timezone": ptimezone_customWeatherActionControllerTrigger4,
+                                            "thmax": pthmax_customWeatherActionControllerTrigger4,
+                                            "thmin": pthmin_customWeatherActionControllerTrigger4,
+                                            "period" : period_customWeatherActionControllerTrigger4
+                                        };
+                                    }
+                                }
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        if (triggreGlobalVariable == "twitter")
+                        {
+
+                            if ($scope.userRecipes[index].trigger.type == 0)
+                            {
+                                hashtag_text_trigger1TwitterController =    $scope.userRecipes[index].trigger.hashtag_text;
+                                username_sender_trigger1TwitterController = $scope.userRecipes[index].trigger.username_sender;
+                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                ulrTriggreGlobalVariable = "Trigger1Twitter";
+
+                                modulinoj1 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  "0",
+                                    "hashtag_text"  : hashtag_text_trigger1TwitterController,
+                                    "username_sender" : username_sender_trigger1TwitterController
+                                };
+
+                            }
+                            else
+                            {
+                                hashtag_text_trigger2TwitterController = $scope.userRecipes[index].trigger.hashtag_text;
+                                username_sender_trigger2TwitterController = $scope.userRecipes[index].trigger.username_sender;
+                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                ulrTriggreGlobalVariable = "Trigger2Twitter";
+
+                                modulinoj1 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  "1",
+                                    "hashtag_text"  : hashtag_text_trigger2TwitterController,
+                                    "username_sender" : username_sender_trigger2TwitterController
+                                };
+                            }
+
+                        }
+
+                    }
+                }
+            }
+
+            if(actionGlobalVariable == "calendar")
+            {
+                title_action1GcalendarController = $scope.userRecipes[index].trigger.title;
+                subjectReceive_action1GcalendarController =  $scope.userRecipes[index].trigger.description;
+                place_action1GcalendarController =  $scope.userRecipes[index].trigger.place;
+                yearVector_action1GcalendarController =  $scope.userRecipes[index].trigger.dayVector;
+                monthVector_action1GcalendarController =  $scope.userRecipes[index].trigger.monthVector;
+                dayVector_action1GcalendarController = $scope.userRecipes[index].trigger.yearVector;
+                urlActionGlobalVariable = "action1Gcalendar";
+
+                modulinoj2 =
+                {
+                    "actionType": "calendar",
+                    //An 2
+                    "title": title_action1GcalendarController,
+                    "description": subjectReceive_action1GcalendarController,
+                    "place": place_action1GcalendarController,
+                    "dayVector": yearVector_action1GcalendarController,
+                    "monthVector": monthVector_action1GcalendarController,
+                    "yearVector": dayVector_action1GcalendarController
+
+                };
+
+            }
+            else
+            {
+                if(actionGlobalVariable == "gmail")
+                {
+                    body_GmailActionController = $scope.userRecipes[index].trigger.body;
+                    receiver_GmailActionController = $scope.userRecipes[index].trigger.receiver;
+                    sender_GmailActionController = $scope.userRecipes[index].trigger.sender;
+                    subject_GmailActionController =  $scope.userRecipes[index].trigger.subject;
+                    urlActionGlobalVariable = "gMailAction";
+
+                    modulinoj2=
+                    {
+                        "actionType" : "gmail",
+                        "body" : body_GmailActionController,
+                        "receiver" : receiver_GmailActionController,
+                        "sender" : sender_GmailActionController,
+                        "subject" : subject_GmailActionController
+                    };
+
+
+                }
+                else
+                {
+                    if(actionGlobalVariable == "twitter")
+                    {
+                        subject_action1TwitterController = $scope.userRecipes[index].trigger.body;
+                        subActionGlobalVariable = "0";
+                        urlActionGlobalVariable = "Action1Twitter";
+
+                        modulinoj2 =
+                        {
+                            "triggerType" : "twitter",
+                            "type"      :  "0",
+                            "body"      :  subject_action1TwitterController,
+                            "destination" :  "null"
+
+                        };
+
+                    }
+                    else
+                    {
+                        title_action2TwitterController = $scope.userRecipes[index].trigger.destination;
+                        subjec_action2TwitterController = $scope.userRecipes[index].trigger.body;
+                        subActionGlobalVariable = "1";
+                        urlActionGlobalVariable = "Action2Twitter";
+
+                        modulinoj2 =
+                        {
+                            "triggerType" : "twitter",
+                            "type"      :  "1",
+                            "destination"   :  title_action2TwitterController,
+                            "body" :  subjec_action2TwitterController
+
+                        };
+
+                    }
+
+
+                }
+
+            }
+
+
+
+
+
+
+
+            modifyVar=1;
+            var url = "#choseModify";
+            window.location.replace(url);
+
+        };
+
+
+}]);
+
+
+iftttApp.controller('publicRecipesController',  ['$scope', '$routeParams', '$window', '$http',
+    function ($scope, $routeParams, $window, $http)
+    {
+
+        $scope.userRecipes = [];
+        $http
+        (
+            {
+                /*
+                Qui si devono solo prendere le ricette che sono pubbliche :)
+                In tutte le altre parti solo dell'utente che si è loggato.
+               */
+                method: 'GET',
+                url: 'http://localhost:3000/publicRecipes'
+            }
+        )
+            .then
+            (
+                function success(response)
+                {
+                    $scope.userRecipes = [];
+
+                    $scope.userRecipes = response.data;
+
+                    var tmp = 0;
+                    $scope.userRecipes.forEach(function (element) {
+                            element.index = tmp;
+                            tmp++;
+                        });
+
+                },
+                function error(response) {
+                    // Error code here
+                    alert("error");
+                }
+            );
+
+
+
+
+
 
 
 
     }]);
+
+
+
 
 iftttApp.controller('createAccountController',  ['$scope',
     function ($scope) {
@@ -883,6 +1597,7 @@ iftttApp.controller('createAccountController',  ['$scope',
 
 
     }]);
+
 
 
 
@@ -970,8 +1685,15 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                     };
 
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
                 }
             }
             else
@@ -999,6 +1721,11 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
         };
 
         // $scope.checkedtitle = true;
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
 
@@ -1006,6 +1733,8 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
         }
+
+
 
 
     }]);
@@ -1180,8 +1909,11 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
 
 
 
-
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
                     //sendingToServerAll();
                     //var url = "#gMailSucces";
                     //window.location.replace(url);
@@ -1216,6 +1948,15 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
         $scope.checkedEmail = false;
         $scope.checkedSubject = false;
         $scope.checkedbody=false;
+
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
+
+
         function validateEmail(email) {
             var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
             return re.test(email);
@@ -1257,6 +1998,12 @@ iftttApp.controller('customWeatherActionControllerTrigger1',  ['$scope', '$route
                 $scope.checktimeZonevar = 'YES';
             //console.log(name);
         };
+
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
 
 
 
@@ -1392,6 +2139,12 @@ iftttApp.controller('customWeatherActionControllerTrigger2', ['$scope',
 
 
          */
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
 
 
@@ -1441,6 +2194,11 @@ iftttApp.controller('customWeatherActionControllerTrigger3', ['$scope',
             //console.log(name);
         };
 
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
 
 
 
@@ -1459,6 +2217,12 @@ iftttApp.controller('customWeatherActionControllerTrigger4', ['$scope',
             value3: 0,
             value4: 0
         };
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
     }]);
 
@@ -1580,8 +2344,15 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
 
                     flagTriggerDone = "1";
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
                 }
             }
             else
@@ -1593,26 +2364,20 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                 window.location.replace(url);
 
             }
-            /*
-            var loginDataSend =
-            {
-                title : title_Trigger1GcalendarController,
-                description: description_Trigger1GcalendarController,
-                place: place_Trigger1GcalendarController
-            }
-            $.ajax
-            ({
-                method: "post",
-                url: "/MyServlet",
-                data: loginDataSend,
-                dataType: "json",
-                success: console.log("la post ha avuto successo")
-            });
-            */
 
         };
 
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
 
+
+            $scope.modifyButton = true;
+        }
+        else
+        {
+            $scope.modifyButton = false;
+        }
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
@@ -1710,8 +2475,15 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                         "place": place_Trigger2GcalendarController
                     };
 
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
 
                 }
             }
@@ -1735,6 +2507,12 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
 
              $scope.sedingServer(loginDataSend);
              */
+
+            $scope.modifyButton = false;
+            if(modifyVar == 1)
+            {
+                $scope.modifyButton = true;
+            }
 
 
         };
@@ -2030,7 +2808,11 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                     flagTriggerDone = "0";
                     count=7;
 
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
 
                     //sendingToServerAll();
                     //url = "#gMailSucces";
@@ -2403,8 +3185,15 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
                     "username_sender" : username_sender_trigger1TwitterController
                 };
 
-                url = "#createRecipeAction";
-                window.location.replace(url);
+
+                if(modifyVar == "1")
+                {
+                    sendingToServerAllput();
+                }
+                else {
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
             }
             if(twitterLogin == "0")
             {
@@ -2423,6 +3212,12 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
         $scope.checkedplace=false;
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
+
 
     }]);
 
@@ -2497,8 +3292,15 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
                     "username_sender" : username_sender_trigger2TwitterController
                 };
 
-                url = "#createRecipeAction";
-                window.location.replace(url);
+                if(modifyVar == "1")
+                {
+                    sendingToServerAllput();
+                }
+                else
+                {
+                    url = "#createRecipeAction";
+                    window.location.replace(url);
+                }
             }
 
             if(twitterLogin == "0")
@@ -2513,9 +3315,13 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
 
 
-
+            Trigger1GcalendarController
         };
-
+        $scope.modifyButton = false;
+        if(modifyVar == 1)
+        {
+            $scope.modifyButton = true;
+        }
 
         $scope.checkedtitle = false;
         $scope.checkedSubject= false;
@@ -2576,7 +3382,11 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
                 };
 
-                $('#recipedDescriptionModal').modal('show');
+                if (modifyVar == 0)
+                {
+                    $('#recipedDescriptionModal').modal('show');
+                }
+                else sendingToServerAllput();
                 //sendingToServerAll();
                 //href="#SuccessTwitter"
                 //var url = "#SuccessTwitter";
@@ -2705,7 +3515,11 @@ iftttApp.controller('action2TwitterController', ['$scope',
                 };
                 if(flag == 1) {
 
-                    $('#recipedDescriptionModal').modal('show');
+                    if (modifyVar == 0)
+                    {
+                        $('#recipedDescriptionModal').modal('show');
+                    }
+                    else sendingToServerAllput();
                     //sendingToServerAll();
                     flagTriggerDone = "0";
                     count = 7;
@@ -2760,39 +3574,101 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
 
 
+
+//Update done
+iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routeParams', '$http', '$location',
+    function ($scope, $rootscope, $routeParams, $http, $resource, $location) {
+        $scope.urlTriggerUser = ulrTriggreGlobalVariable;
+        $scope.activeGoogleAutentication = false;
+        $scope.activeTwitterAutentication = false;
+        $scope.activeWeatherAutentication = false;
+
+        $scope.urlActionUser = urlActionGlobalVariable;
+        $scope.activeGoogleAutenticationAction = false;
+        $scope.activeTwitterAutenticationAction = false;
+
+
+
+        modifyVar = 1;
+        if(triggreGlobalVariable == "gmail" ||  triggreGlobalVariable == "calendar" )
+        {
+            $scope.activeGoogleAutentication = true;
+        }
+        else
+        {
+            if(triggreGlobalVariable == "twitter")
+            {
+                $scope.activeTwitterAutentication = true;
+            }
+            else
+            {
+                $scope.activeWeatherAutentication = true;
+
+            }
+
+        }
+
+
+        if(actionGlobalVariable == "gmail" ||  actionGlobalVariable == "calendar" )
+        {
+            $scope.activeGoogleAutenticationAction = true;
+        }
+        else
+        {
+            if(triggreGlobalVariable == "twitter")
+            {
+                $scope.activeTwitterAutenticationAction = true;
+            }
+
+        }
+
+        $scope.changePage = function (chosePath)
+        {
+            if(chosePath == 0 )
+                rootingAutenticationTriggerAction = ulrTriggreGlobalVariable;
+            else
+                rootingAutenticationTriggerAction = urlActionGlobalVariable;
+
+            $('#loginGoogleModal').modal('show');
+        };
+
+
+        $scope.setupValueChange =function(chosePath)
+        {
+            var urlx ="";
+            if(chosePath == 0 )
+            {
+                setChooseAx = 4;
+                urlx = "#allTriggers";
+            }
+            else
+            {
+                urlx = "#allActions";
+                setChooseAx = 5;
+            }
+            window.location.replace(urlx);
+        };
+
+
+        $scope.descriptionModifyLanch = function()
+        {
+            $('#recipedDescriptionModal').modal('show');
+        }
+
+
+    }]);
+
+
+
 function sendingToServerAll ()
 {
-    /*
-    var triggerChose = 0;
-    var actionChose =  0;
-
-    GmailTriggerController  n 1
-    var sender_GmailTriggerController = "";
-    var subject_GmailTriggerController = "";
-
-     GmailActionController  n 1
-    var sender_GmailActionController = "";
-    var subject_GmailActionController = "";
-
-    Trigger1GcalendarController n 2
-    var title_Trigger1GcalendarController = "";
-    var description_Trigger1GcalendarController = "";
-    var place_Trigger1GcalendarController = "";
-
-    Trigger2GcalendarController n 3
-    var title_Trigger2GcalendarController = "";
-    var description_Trigger2GcalendarController = "";
-    var place_Trigger2GcalendarController = "";
-     */
-
-
-
     sendDataToServer =
     {
         id: null,
         desc: descriptionRecipeGlobal,
         "trigger" : modulinoj1,
-        "action" : modulinoj2
+        "action" : modulinoj2,
+        "publish": false
     };
 
     //"desc": "example descrition here, written by the user"/*recipedDesc*/
@@ -2813,18 +3689,20 @@ function alertFunction ()
             className: 'warning',
             position: 'bottom center',
             id: null,
-            desc: null,
+            desc: null
         }
     );
 }
 function sedingServerAllRun (loginDataSend)
 {
     //var result = "ciao";
+    //url: 'http://localhost:3000/userRecipes
+    //url: "/MyServlet"
     $.ajax({
         method: "post",
-        url: "/MyServlet",
-        data: loginDataSend,
-        dataType: "json",
+        url: "http://localhost:3000/userRecipes",
+        data: JSON.stringify(loginDataSend),
+        contentType: 'application/json; charset=UTF-8',
         success: function(response) {
 
             $('#recipedDescriptionModal').modal('hide');
@@ -2854,15 +3732,39 @@ function sedingServerAllRun (loginDataSend)
         }
     });
 }
-/*
-function sedingServerAllRun1  (loginDataSend)
+
+function sendingToServerAllput ()
+{
+    sendDataToServer =
+    {
+        id: idRecipe,
+        desc: descriptionRecipeGlobal,
+        "trigger" : modulinoj1,
+        "action" : modulinoj2,
+        "publish" : publishRecipeGlobal
+    };
+    sedingServerAllRunput(sendDataToServer);
+
+}
+
+
+function sedingServerAllRunput (loginDataSend)
 {
     $.ajax({
-        method: "post",
-        url: "/MyServletJsonJson",
+        method: "put",
+        url: "http://localhost:3000/userRecipes/" + idRecipe,
         data: loginDataSend,
         dataType: "json",
-        success: console.log("la post ha avuto successo n 9")
+        success: function(response) {
+            if(modifyVar == "1")
+            {
+                $('#recipedDescriptionModal').modal('hide');
+
+            }
+            url = "#SuccessRepice";
+            window.location.replace(url);
+
+        }
     });
 }
-    */
+

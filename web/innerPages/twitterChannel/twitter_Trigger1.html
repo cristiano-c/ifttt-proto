@@ -57,12 +57,31 @@
 
 
                         <div>
-                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers"
+                            <a  type="submit" class="btn btn-danger pull-left  animate-if" href="#allTriggers"
+                                ng-if="!modifyButton"
                             >Cancel</a>
+
+                            <a  type="submit" class="btn btn-danger pull-left  animate-if" href="#choseModify"
+                                ng-if="modifyButton"
+                            >Cancel</a>
+
+
                             <a    ng-disabled="!checkedtitle && !checkedSubject" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Twitterfunc()"
+                                class="btn btn-primary pull-right btn_next3  animate-if"  ng-click="trigger1Twitterfunc()"
+                                  ng-if="!modifyButton"
 
                             >Next</a>
+
+                            <a    ng-disabled="!checkedtitle && !checkedSubject" type="submit"
+                                  class="btn btn-primary pull-right btn_next3  animate-if"  ng-click="trigger1Twitterfunc()"
+                                  ng-if="modifyButton"
+
+                            >Submit</a>
+
+
+
+
+
                         </div>
                         <br>
                         <br>
@@ -83,32 +102,73 @@
 </body>
 
 <script>
-    if(iftttLogin == "0")
+    if (setChooseAx == 4)
     {
-        url = "#home";
-        window.location.replace(url);
-        count = 0;
-        flagTriggerDone="0";
+        if (iftttLogin == false)
+        {
+            url = "#home";
+            window.location.replace(url);
+        }
+
     }
     else {
-
-        if (twitterLogin == "1")
-        {
-            if (count == 2) {
-                count++;
-                url1back = "#Trigger1Twitter";
+        if (modifyVar == 1) {
+            if (iftttLogin == false) {
+                url = "#home";
+                window.location.replace(url);
+                modifyCountVar = 0;
             }
             else {
-                if (count < 2) {
+                if (twitterLogin == "1") {
+                    if (modifyCountVar == 2) {
+                        modifyCountVar++;
+                    }
+                    else {
+                        if (modifyCountVar < 2) {
+                            url = "#/index/myRecipes";
+                            window.location.replace(url);
+                        }
+
+                    }
+
+
+                }
+                else {
+                    url = "#home";
+                    window.location.replace(url);
+                    alert("Non sei loggato a google");
+                }
+            }
+        }
+
+        else {
+
+            if (iftttLogin == "0") {
+                url = "#home";
+                window.location.replace(url);
+                count = 0;
+                flagTriggerDone = "0";
+            }
+            else {
+
+                if (twitterLogin == "1") {
+                    if (count == 2) {
+                        count++;
+                        url1back = "#Trigger1Twitter";
+                    }
+                    else {
+                        if (count < 2) {
+                            url = "#allTriggers";
+                            window.location.replace(url);
+                        }
+
+                    }
+                }
+                else {
                     url = "#allTriggers";
                     window.location.replace(url);
                 }
-
             }
-        }
-        else {
-            url = "#allTriggers";
-            window.location.replace(url);
         }
     }
 </script>

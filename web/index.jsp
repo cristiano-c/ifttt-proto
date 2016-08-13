@@ -48,9 +48,11 @@
         <ul class="nav navbar-nav">
 
           <li>
-            <a type="submit" href="#index/myRecipes" ng-if="iftttLogged"
+              <!-- href="#index/myRecipes"  data-ng-click="loadRecipesAndSeeThem()" -->
+              <a type="submit" href="#index/myRecipes"  ng-if="iftttLogged"
                data-target="#loginIFTTTModal">
-              <span  aria-hidden="true"></span>Your recipes</a>
+              <span  aria-hidden="true"></span>Your recipes
+            </a>
           </li>
 
 
@@ -59,8 +61,7 @@
           -->
           <li>
             <a type="submit" href="" ng-if="!iftttLogged" data-toggle="modal"
-               data-target="#loginIFTTTModal" ng-click="routeListener('createRecipe')">
-              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Create a recipe</a>
+               data-target="#loginIFTTTModal" ng-click="routeListener('createRecipe')">Create a recipe <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
           </li>
           <li>
 
@@ -71,6 +72,15 @@
             <!--
           <li><a href="#chooseChannel">Channels</a></li>
             -->
+
+
+
+
+            <li>
+                <a  href="#publicRecipes">
+                    Public recipes <span class="glyphicon glyphicon-share" aria-hidden="true"></span></a>
+            </li>
+
 
 
         </ul>
@@ -102,7 +112,9 @@
   <br>
   {{"twitterLogged: "+ twitterLogged}}
   <!-- DEBUG AREA END -->
+  <!--
   {{"recipe: "+ userRecipes}}
+  -->
   <!-- NOTIFICATIONS WRAPPER BEGIN -->
   <div id="notificationsWrapper" style="margin: auto"></div>
   <!-- NOTIFICATIONS WRAPPER END -->
@@ -151,36 +163,21 @@
 
   <!-- MODAL FORM GOOGLE -- BEGIN -->
   <div class="modal fade" id="loginGoogleModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
-          <h2 class="modal-title"><img src="./images/logos/google-logged-in.png" height="30" width="30"/> Login with Google</h2>
+            <!-- <button id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">Sign in</button> -->
+            <div style="text-align: center">
+                    <h4 class="modal-title"><img src="./images/logos/google-logged-in.png" height="25" width="25"/> Login with Google</h4>
+            </div>
         </div>
-
-        <div class="modal-body">
-          <!-- The form is placed inside the body of modal -->
-          <form class="form-horizontal">
-            <div class="form-group">
-              <label for="inputEmailGoogle" class="col-sm-3 control-label">Google mail <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></label>
-              <div class="col-sm-9">
-                <input type="email" class="form-control" id="inputEmailGoogle" placeholder="Email">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="inputPasswordGoogle" class="col-sm-3 control-label">Password <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span></label>
-              <div class="col-sm-9">
-                <input type="password" class="form-control" id="inputPasswordGoogle" placeholder="Password">
-              </div>
-            </div>
-            <div class="form-group">
-              <div class="col-sm-offset-3 col-sm-9">
-                <button id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">Sign in</button>
-              </div>
-            </div>
-          </form>
+        <div class="modal-body text-center">
+            <a id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">
+            Connect
+            </a>
         </div>
       </div>
     </div>
@@ -252,7 +249,9 @@
 
 
   <!-- Test area BEGIN -->
-    <button ng-click="RequestRecipes()">Request recipes</button>
+  <!--
+  <button ng-click="RequestRecipes()">Request recipes</button>
+  -->
   <!-- Test area END -->
 
   <!-- extra space bottom page -->

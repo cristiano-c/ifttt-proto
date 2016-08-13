@@ -77,10 +77,24 @@
                         <div>
 
 
-                            <a  type="submit" class="btn btn-danger pull-left" href="#allTriggers" >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#allTriggers"
+                                ng-if="!modifyButton"
+                            >Cancel</a>
+                            <a  type="submit" class="btn btn-danger pull-left animate-if" href="#choseModify"
+                                ng-if="modifyButton"
+                            >Cancel</a>
+
+
+
 
                             <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
-                                class="btn btn-primary pull-right btn_next3"  ng-click="trigger1Gcalendar()" >Next</a>
+                                  ng-if="!modifyButton"
+                                class="btn btn-primary pull-right btn_next3 animate-if"  ng-click="trigger1Gcalendar()"  >Next</a>
+
+                            <a   ng-disabled="!checkedtitle && !checkedSubject && !checkedplace" type="submit"
+                                 ng-if="modifyButton"
+                                 class="btn btn-primary pull-right btn_next3 animate-if"  ng-click="trigger1Gcalendar()" >Submit</a>
+
                         </div>
                         <div class="col-md-row" style="padding-top: 7%">
                             <hr>
@@ -100,17 +114,61 @@
 </body>
 
 <script>
-
-
-    if(iftttLogin == false)
+    if (setChooseAx == 4)
     {
-        url = "#home";
-        window.location.replace(url);
-        count = 0;
-        flagTriggerDone="0";
+        if (iftttLogin == false)
+        {
+            url = "#home";
+            window.location.replace(url);
+        }
+
     }
     else
     {
+    if(modifyVar == 1)
+    {
+        if (iftttLogin == false) {
+            url = "#home";
+            window.location.replace(url);
+            modifyCountVar = 0;
+        }
+        else {
+            if (googleLogin == "1")
+            {
+                if (modifyCountVar == 2)
+                {
+                    modifyCountVar++;
+                }
+                else
+                {
+                    if (modifyCountVar < 2)
+                    {
+                        url = "#/index/myRecipes";
+                        window.location.replace(url);
+                    }
+
+                }
+
+
+            }
+            else
+            {
+                url = "#home";
+                window.location.replace(url);
+                alert("Non sei loggato a google");
+            }
+        }
+    }
+
+else
+{
+    if (iftttLogin == false) {
+        url = "#home";
+        window.location.replace(url);
+        count = 0;
+        flagTriggerDone = "0";
+    }
+    else {
         if (googleLogin == "1") {
             if (count == 2) {
                 count++;
@@ -129,6 +187,7 @@
             window.location.replace(url);
         }
     }
+}}
 
 </script>
 </html>

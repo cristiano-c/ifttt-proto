@@ -352,7 +352,7 @@ $(function(){
                     modulinoj1 =
                     {
                         "triggerType": "weather",
-                        "type": "2",
+                        "type": "4",
                         "location": idCity_customWeatherActionControllerTrigger4,
                         "timezone": ptimezone_customWeatherActionControllerTrigger4,
                         "thmax": pthmax_customWeatherActionControllerTrigger4,
@@ -362,8 +362,15 @@ $(function(){
 
 
                     flagTriggerDone = "1";
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
 
                 }
             }

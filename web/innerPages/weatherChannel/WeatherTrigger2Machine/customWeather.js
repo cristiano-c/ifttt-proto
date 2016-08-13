@@ -449,9 +449,15 @@ $(function(){
                         "timezone" : pzone_customWeatherActionControllerTrigger2
                     };
 
-
-                    url = "#createRecipeAction";
-                    window.location.replace(url);
+                    if(modifyVar == "1")
+                    {
+                        sendingToServerAllput();
+                    }
+                    else
+                    {
+                        url = "#createRecipeAction";
+                        window.location.replace(url);
+                    }
 
                 }
 
