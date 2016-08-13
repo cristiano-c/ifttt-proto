@@ -61,8 +61,7 @@
           -->
           <li>
             <a type="submit" href="" ng-if="!iftttLogged" data-toggle="modal"
-               data-target="#loginIFTTTModal" ng-click="routeListener('createRecipe')">
-              <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Create a recipe</a>
+               data-target="#loginIFTTTModal" ng-click="routeListener('createRecipe')">Create a recipe <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span></a>
           </li>
           <li>
 
@@ -74,9 +73,12 @@
           <li><a href="#chooseChannel">Channels</a></li>
             -->
 
+
+
+
             <li>
                 <a  href="#publicRecipes">
-                    <span class="glyphicon glyphicon-share" aria-hidden="true"></span> Public a recipe</a>
+                    Public recipes <span class="glyphicon glyphicon-share" aria-hidden="true"></span></a>
             </li>
 
 
