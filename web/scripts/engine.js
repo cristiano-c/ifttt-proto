@@ -134,6 +134,8 @@ var rootingAutenticationTriggerAction = "";
 
 
 
+
+
 iftttApp.config(['$routeProvider', function($routeProvider){
 
     $routeProvider.when('/', {
@@ -1055,6 +1057,22 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
         $scope.userRecipes = null;
         modifyVar=0;
 
+        /*
+        $scope.elements = [{
+            name: 'one',
+            isCollapsed: true
+        }, {
+            name: 'two',
+            isCollapsed: true
+        }, {
+            name: 'three',
+            isCollapsed: true
+        }];
+
+        */
+        $scope.elements = [];
+
+
 
 
         $http
@@ -1076,38 +1094,339 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         tmp++;
                     });
 
-                    console.log("user recipes: "+JSON.stringify(response.data));
-                    console.log("user scoep: "+JSON.stringify($scope.userRecipes));
+                    /* * * **************/
+
+                    var index = 0;
+                    $scope.userRecipes.forEach(function () {
+
+
+
+
+
+                    //alert("MODIFY RECIPE:\n\n\n"+descriptionRecipeGlobal+"\n\n"+idRecipe+"\n\n"+triggreGlobalVariable+"\n\n"+actionGlobalVariable+"\n\n"+publishRecipeGlobal+"\n\n"+"\n\n"+"\n\n");
 
                     /*
-                    //alert("o.k. :)");
-                    //$scope.userRecipes=[];
-                    $scope.userRecipes = [];
-                    $scope.userRecipes = [];
-                    // Success code here
-                    //For debug
-                    //console.log(JSON.stringify(response));
-                    //alert(JSON.stringify(response));
-                    var index = 0;
-                    var varDemp = [];
-                    response.data.forEach
-                    (
-                        function (x) {
-                            varDemp.push(x);
-                            var pezzoX =
+                     urlActionGlobalVariable = "";
+                     ulrTriggreGlobalVariable = "";
+
+                     */
+
+                    if(triggreGlobalVariable == "gmail")
+                    {
+                        sender_GmailTriggerController = $scope.userRecipes[index].trigger.sender;
+                        subject_GmailTriggerController = $scope.userRecipes[index].trigger.subject;
+                        ulrTriggreGlobalVariable= "gMailTrigger";
+
+                        modulinoj1 =
+                        {
+                            "Action type": "gmail",
+                            //Tn 1
+                            "Sender": sender_GmailTriggerController,
+                            "Subject": subject_GmailTriggerController
+                        };
+
+                    }
+                    else
+                    {
+
+                        if(triggreGlobalVariable == "calendar")
+                        {
+                            if (0 == $scope.userRecipes[index].trigger.eventAction)
                             {
-                                "triggerType": varDemp[index]["trigger[triggerType]"],
-                                "desc": varDemp[index].desc,
-                                "id": varDemp[index].id,
-                                "index": index,
-                                "publish": varDemp[index].publish
-                            };
-                            $scope.userRecipes.push(pezzoX);
-                            $scope.userRecipes.push(x);
-                            index++;
+                                title_Trigger1GcalendarController = $scope.userRecipes[index].trigger.title;
+                                description_Trigger1GcalendarController = $scope.userRecipes[index].trigger.description;
+                                place_Trigger1GcalendarController = $scope.userRecipes[index].trigger.location;
+                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
+                                ulrTriggreGlobalVariable = "Trigger1Gcalendar";
+
+                                modulinoj1 =
+                                {
+                                    "Action type": "calendar",
+
+
+                                    //Tn 2 S0
+                                    "Title": title_Trigger1GcalendarController,
+                                    "Description": description_Trigger1GcalendarController,
+                                    "Location": place_Trigger1GcalendarController
+                                };
+
+
+                            }
+                            else
+                            {
+                                title_Trigger2GcalendarController = $scope.userRecipes[index].trigger.title;
+                                description_Trigger2GcalendarController = $scope.userRecipes[index].trigger.subject;
+                                place_Trigger2GcalendarController =$scope.userRecipes[index].trigger.location;
+                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
+                                ulrTriggreGlobalVariable = "Trigger2Gcalendar";
+
+                                modulinoj1 =
+                                {
+                                    "Trigger type": "calendar",
+
+                                    //Tn 3
+                                    "Title": title_Trigger2GcalendarController,
+                                    "Description": description_Trigger2GcalendarController,
+                                    "Location": place_Trigger2GcalendarController
+                                };
+
+
+                            }
+
                         }
-                    );
-                    */
+                        else
+                        {
+                            if (triggreGlobalVariable == "weather") {
+
+                                if ($scope.userRecipes[index].trigger.type == 1)
+                                {
+                                    idCity_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.location;
+                                    timezone_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.ora;
+                                    ora_customWeatherActionControllerTrigger1 = $scope.userRecipes[index].trigger.timezone;
+                                    subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                    ulrTriggreGlobalVariable = "WeatherTrigger1";
+
+                                    modulinoj1=
+                                    {
+                                        "Trigger type" : "weather",
+
+                                        "location" : idCity_customWeatherActionControllerTrigger1,
+                                        "ora"  : ora_customWeatherActionControllerTrigger1,
+                                        "timezone" : timezone_customWeatherActionControllerTrigger1
+                                    };
+
+
+                                }
+                                else {
+                                    if ($scope.userRecipes[index].trigger.type == 2)
+                                    {
+
+                                        idCity_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.location;
+                                        pweather_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.tempo;
+                                        pperiod_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.period;
+                                        pzone_customWeatherActionControllerTrigger2 = $scope.userRecipes[index].trigger.timezone;
+                                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                        ulrTriggreGlobalVariable = "WeatherTrigger2";
+
+                                        modulinoj1=
+                                        {
+                                            "triggerType" : "weather",
+                                            "type" : "2",
+                                            "location":   idCity_customWeatherActionControllerTrigger2,
+                                            "tempo" : pweather_customWeatherActionControllerTrigger2,
+                                            "period" : pperiod_customWeatherActionControllerTrigger2,
+                                            "timezone" : pzone_customWeatherActionControllerTrigger2
+                                        };
+
+
+                                    }
+                                    else
+                                    {
+                                        if ($scope.userRecipes[index].trigger.type == 3)
+                                        {
+                                            idCity_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.location;
+                                            timezone_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.timezone;
+                                            sunset_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.sunset;
+                                            sunrise_customWeatherActionControllerTrigger3 = $scope.userRecipes[index].trigger.sunrise;
+                                            subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                            ulrTriggreGlobalVariable = "WeatherTrigger3";
+                                            modulinoj1 =
+                                            {
+                                                "triggerType": "weather",
+                                                "type": "3",
+                                                "location": idCity_customWeatherActionControllerTrigger3,
+                                                "timezone": timezone_customWeatherActionControllerTrigger3,
+                                                "sunset": sunset_customWeatherActionControllerTrigger3,
+                                                "sunrise": sunrise_customWeatherActionControllerTrigger3
+
+
+                                            };
+                                        }
+                                        else
+                                        {
+                                            if ($scope.userRecipes[index].trigger.type == 4)
+                                            {
+                                                idCity_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.location;
+                                                ptimezone_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.timezone;
+                                                pthmax_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.thmax;
+                                                pthmin_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.thmin;
+                                                period_customWeatherActionControllerTrigger4 = $scope.userRecipes[index].trigger.period;
+                                                subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                                ulrTriggreGlobalVariable = "WeatherTrigger4";
+                                                modulinoj1 =
+                                                {
+                                                    "triggerType": "weather",
+                                                    "type": "4",
+                                                    "location": idCity_customWeatherActionControllerTrigger4,
+                                                    "timezone": ptimezone_customWeatherActionControllerTrigger4,
+                                                    "thmax": pthmax_customWeatherActionControllerTrigger4,
+                                                    "thmin": pthmin_customWeatherActionControllerTrigger4,
+                                                    "period" : period_customWeatherActionControllerTrigger4
+                                                };
+                                            }
+                                        }
+
+                                    }
+
+                                }
+
+                            }
+                            else
+                            {
+                                if (triggreGlobalVariable == "twitter")
+                                {
+
+                                    if ($scope.userRecipes[index].trigger.type == 0)
+                                    {
+                                        hashtag_text_trigger1TwitterController =    $scope.userRecipes[index].trigger.hashtag_text;
+                                        username_sender_trigger1TwitterController = $scope.userRecipes[index].trigger.username_sender;
+                                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                        ulrTriggreGlobalVariable = "Trigger1Twitter";
+
+                                        modulinoj1 =
+                                        {
+                                            "triggerType" : "twitter",
+                                            "type"      :  false,
+                                            "hashtag_text"  : hashtag_text_trigger1TwitterController,
+                                            "username_sender" : username_sender_trigger1TwitterController
+                                        };
+
+                                    }
+                                    else
+                                    {
+                                        hashtag_text_trigger2TwitterController = $scope.userRecipes[index].trigger.hashtag_text;
+                                        username_sender_trigger2TwitterController = $scope.userRecipes[index].trigger.username_sender;
+                                        subTriggerGlobalVariable = $scope.userRecipes[index].trigger.type;
+                                        ulrTriggreGlobalVariable = "Trigger2Twitter";
+
+                                        modulinoj1 =
+                                        {
+                                            "triggerType" : "twitter",
+                                            "type"      :  true,
+                                            "hashtag_text"  : hashtag_text_trigger2TwitterController,
+                                            "username_sender" : username_sender_trigger2TwitterController
+                                        };
+                                    }
+
+                                }
+
+                            }
+                        }
+                    }
+
+                    if(actionGlobalVariable == "calendar")
+                    {
+                        title_action1GcalendarController = $scope.userRecipes[index].trigger.title;
+                        subjectReceive_action1GcalendarController =  $scope.userRecipes[index].trigger.description;
+                        place_action1GcalendarController =  $scope.userRecipes[index].trigger.place;
+                        yearVector_action1GcalendarController =  $scope.userRecipes[index].trigger.dayVector;
+                        monthVector_action1GcalendarController =  $scope.userRecipes[index].trigger.monthVector;
+                        dayVector_action1GcalendarController = $scope.userRecipes[index].trigger.yearVector;
+                        urlActionGlobalVariable = "action1Gcalendar";
+
+                        modulinoj2 =
+                        {
+                            "actionType": "calendar",
+                            //An 2
+                            "title": title_action1GcalendarController,
+                            "description": subjectReceive_action1GcalendarController,
+                            "location": place_action1GcalendarController,
+                            "dayVector": yearVector_action1GcalendarController,
+                            "monthVector": monthVector_action1GcalendarController,
+                            "yearVector": dayVector_action1GcalendarController
+
+                        };
+
+                    }
+                    else
+                    {
+                        if(actionGlobalVariable == "gmail")
+                        {
+                            body_GmailActionController = $scope.userRecipes[index].trigger.body;
+                            receiver_GmailActionController = $scope.userRecipes[index].trigger.receiver;
+                            sender_GmailActionController = $scope.userRecipes[index].trigger.sender;
+                            subject_GmailActionController =  $scope.userRecipes[index].trigger.subject;
+                            urlActionGlobalVariable = "gMailAction";
+
+                            modulinoj2=
+                            {
+                                "actionType" : "gmail",
+                                "body" : body_GmailActionController,
+                                "receiver" : receiver_GmailActionController,
+                                "sender" : sender_GmailActionController,
+                                "subject" : subject_GmailActionController
+                            };
+
+
+                        }
+                        else
+                        {
+                            if(actionGlobalVariable == "twitter")
+                            {
+                                subject_action1TwitterController = $scope.userRecipes[index].trigger.body;
+                                subActionGlobalVariable = false;
+                                urlActionGlobalVariable = "Action1Twitter";
+
+                                modulinoj2 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  false,
+                                    "body"      :  subject_action1TwitterController,
+                                    "destination" :  "null"
+
+                                };
+
+                            }
+                            else
+                            {
+                                title_action2TwitterController = $scope.userRecipes[index].trigger.destination;
+                                subjec_action2TwitterController = $scope.userRecipes[index].trigger.body;
+                                subActionGlobalVariable = true;
+                                urlActionGlobalVariable = "Action2Twitter";
+
+                                modulinoj2 =
+                                {
+                                    "triggerType" : "twitter",
+                                    "type"      :  true,
+                                    "destination"   :  title_action2TwitterController,
+                                    "body" :  subjec_action2TwitterController
+
+                                };
+
+                            }
+
+
+                        }
+
+                    }
+                    $scope.elements[index] =
+                    {
+                        "action" :   modulinoj1,
+                        "trigger" : modulinoj2,
+                        "index" : index,
+                        "desc" : descriptionRecipeGlobal,
+                        "id"  :idRecipe,
+                        "publish" : publishRecipeGlobal,
+                        isCollapsed: true
+
+                    };
+                        index++;
+                    });
+
+/*  *************/
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                 },
                 function error(response) {
@@ -1208,6 +1527,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
         {
             var data = $scope.userRecipes[index];
 
+
             descriptionRecipeGlobal = $scope.userRecipes[index].desc;
             idRecipe = $scope.userRecipes[index].id;
             triggreGlobalVariable = $scope.userRecipes[index].trigger.triggerType;
@@ -1237,8 +1557,6 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     "subject": subject_GmailTriggerController
                 };
 
-
-
             }
             else
             {
@@ -1249,7 +1567,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     {
                         title_Trigger1GcalendarController = $scope.userRecipes[index].trigger.title;
                         description_Trigger1GcalendarController = $scope.userRecipes[index].trigger.description;
-                        place_Trigger1GcalendarController = $scope.userRecipes[index].trigger.place;
+                        place_Trigger1GcalendarController = $scope.userRecipes[index].trigger.location;
                         subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
                         ulrTriggreGlobalVariable = "Trigger1Gcalendar";
 
@@ -1270,7 +1588,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     {
                         title_Trigger2GcalendarController = $scope.userRecipes[index].trigger.title;
                         description_Trigger2GcalendarController = $scope.userRecipes[index].trigger.subject;
-                        place_Trigger2GcalendarController =$scope.userRecipes[index].trigger.place;
+                        place_Trigger2GcalendarController =$scope.userRecipes[index].trigger.location;
                         subTriggerGlobalVariable = $scope.userRecipes[index].trigger.eventAction;
                         ulrTriggreGlobalVariable = "Trigger2Gcalendar";
 
@@ -1513,9 +1831,6 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                 }
 
             }
-
-
-
 
 
 
