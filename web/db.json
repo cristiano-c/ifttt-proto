@@ -2,43 +2,25 @@
   "userRecipes": [
     {
       "id": 1,
-      "desc": "e",
+      "desc": "wqeqweqweqwe",
       "trigger": {
         "triggerType": "calendar",
         "eventAction": "0",
-        "title": "cavallo",
+        "title": "qweqweqweqwewqe",
         "description": "null",
         "place": "null"
       },
       "action": {
         "actionType": "calendar",
-        "title": "null",
+        "title": "qweqweqweqweq",
         "description": "null",
         "place": "null",
         "dayVector": "null",
         "monthVector": "null",
         "yearVector": "null"
       },
-      "publish": false
-    },
-    {
-      "id": 2,
-      "desc": "cioa",
-      "trigger": {
-        "triggerType": "weather",
-        "type": "3",
-        "location": 3176269,
-        "timezone": "NULL",
-        "sunset": "",
-        "sunrise": "1"
-      },
-      "action": {
-        "triggerType": "twitter",
-        "type": "0",
-        "body": "",
-        "destination": "null"
-      },
-      "publish": true
+      "publish": true,
+      "index": 0
     }
   ],
   "publicRecipes": []
