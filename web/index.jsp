@@ -17,6 +17,8 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/notifyjs/dist/notify.js"></script>
     <script src="scripts/engine.js"></script>
+    <script src="scripts/spin.js"></script>
+    <script src="scripts/jqueryspin.js"></script>
 
 
     <!-- Cascade Style Sheets -->
