@@ -3662,6 +3662,7 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
 
 function sendingToServerAll ()
 {
+    modulinoj1.lastChecked = null;
     sendDataToServer =
     {
         id: null,
@@ -3735,6 +3736,7 @@ function sedingServerAllRun (loginDataSend)
 
 function sendingToServerAllput ()
 {
+    modulinoj1.lastChecked = null;
     sendDataToServer =
     {
         id: idRecipe,

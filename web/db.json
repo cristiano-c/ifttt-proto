@@ -21,6 +21,45 @@
       },
       "publish": true,
       "index": 0
+    },
+    {
+      "id": 2,
+      "desc": "boh",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": "0",
+        "title": "null",
+        "description": "emblema disperazione",
+        "location": "null"
+      },
+      "action": {
+        "triggerType": "twitter",
+        "type": "0",
+        "body": "anathem",
+        "destination": "null"
+      },
+      "publish": false
+    },
+    {
+      "id": 3,
+      "desc": "VOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIRE",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": "1",
+        "title": "null",
+        "description": "",
+        "location": "null",
+        "lastChecked": null
+      },
+      "action": {
+        "actionType": "gmail",
+        "body": "VOGLIO MORIRE",
+        "receiver": "asd@asd.asd",
+        "sender": true,
+        "subject": "VOGLIO MORIRE",
+        "lastChecked": null
+      },
+      "publish": false
     }
   ],
   "publicRecipes": []
