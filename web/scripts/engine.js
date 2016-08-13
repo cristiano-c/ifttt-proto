@@ -3710,8 +3710,8 @@ function sedingServerAllRun (loginDataSend)
     $.ajax({
         method: "post",
         url: "http://localhost:3000/userRecipes",
-        data: loginDataSend,
-        dataType: "json",
+        data: JSON.stringify(loginDataSend),
+        contentType: 'application/json; charset=UTF-8',
         success: function(response) {
 
             $('#recipedDescriptionModal').modal('hide');
