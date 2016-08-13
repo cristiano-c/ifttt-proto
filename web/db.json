@@ -20,6 +20,26 @@
         "yearVector": "null"
       },
       "publish": false
+    },
+    {
+      "id": 2,
+      "desc": "cioa",
+      "trigger": {
+        "triggerType": "weather",
+        "type": "3",
+        "location": 3176269,
+        "timezone": "NULL",
+        "sunset": "",
+        "sunrise": "1"
+      },
+      "action": {
+        "triggerType": "twitter",
+        "type": "0",
+        "body": "",
+        "destination": "null"
+      },
+      "publish": true,
+      "index": 1
     }
   ],
   "publicRecipes": []
