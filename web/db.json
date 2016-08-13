@@ -19,25 +19,8 @@
         "monthVector": "null",
         "yearVector": "null"
       },
-      "publish": false
-    },
-    {
-      "id": 2,
-      "desc": "asdasdsd",
-      "trigger": {
-        "triggerType": "twitter",
-        "type": "0",
-        "hashtag_text": "",
-        "username_sender": "null"
-      },
-      "action": {
-        "actionType": "gmail",
-        "body": "null",
-        "receiver": "asdasd@asd.sad",
-        "sender": "0",
-        "subject": "sad"
-      },
-      "publish": false
+      "publish": true,
+      "index": 0
     }
   ],
   "publicRecipes": []
