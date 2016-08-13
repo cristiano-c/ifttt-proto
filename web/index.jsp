@@ -163,7 +163,7 @@
 
   <!-- MODAL FORM GOOGLE -- BEGIN -->
   <div class="modal fade" id="loginGoogleModal" tabindex="-1" role="dialog" aria-labelledby="Login" aria-hidden="true" style="padding-top: 10%">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -171,12 +171,14 @@
           </button>
             <!-- <button id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">Sign in</button> -->
             <div style="text-align: center">
-                <a id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">
-
-                    <h2 class="modal-title"><img src="./images/logos/google-logged-in.png" height="30" width="30"/> Login with Google</h2></a>
+                    <h4 class="modal-title"><img src="./images/logos/google-logged-in.png" height="25" width="25"/> Login with Google</h4>
             </div>
         </div>
-
+        <div class="modal-body text-center">
+            <a id="google-auth-btn" type="submit" class="btn btn-default" ng-click="requestGoogleAuth()">
+            Connect
+            </a>
+        </div>
       </div>
     </div>
   </div>
