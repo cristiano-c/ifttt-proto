@@ -18,22 +18,22 @@
                                 <h4><!-- data-content="{{f.desc}}" -->
                                     <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" ></span>
                                     N° {{$index + 1}} <em>{{f.desc}}</em>
-                                    <button class="btn btn-warning pull-right">
+                                    <button style="margin-left: 3px" class="btn btn-warning pull-right">
                                     <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button class="btn btn-success pull-right"  class="animate-if" ng-if="!f.flag">
+                                    <button style="margin-left: 3px" class="btn btn-success pull-right"  class="animate-if" ng-if="!f.flag">
                                         <span class="glyphicon glyphicon-share" data-ng-click="shareRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button class="btn btn-danger pull-right" class="animate-if" ng-if="f.flag">
+                                    <button style="margin-left: 3px" class="btn btn-danger pull-right" class="animate-if" ng-if="f.flag">
                                         <span class="glyphicon glyphicon-share-alt" data-ng-click="DoNotshareRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button class="btn btn-success pull-right">
+                                    <button style="margin-left: 3px" class="btn btn-success pull-right">
                                         <span class="glyphicon glyphicon-edit" data-ng-click="modifyRecipe(f.index)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
