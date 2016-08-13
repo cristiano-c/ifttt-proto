@@ -117,8 +117,9 @@
                         > <b>Custom timezone</b></label>
                         <div  ng-if="checktimeZone" class="animate-if">
 
+                            <label>
                         <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
-                               min="-12" max="12" required>
+                               min="-12" max="12" required></label>
 
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
