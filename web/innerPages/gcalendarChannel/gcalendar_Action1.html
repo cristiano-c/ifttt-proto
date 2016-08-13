@@ -21,7 +21,7 @@
                                         ng-model="checkedtitle"
                                         id="idcheckedtitle"
 
-                                > Event name</label>
+                                > <img src="../../images/placeholder.png" height="30" width="30"/> Event name</label>
 
                             <br/>
                             <div  ng-if="checkedtitle" class="animate-if">
@@ -44,7 +44,7 @@
                                         ng-model="checkedSubject"
                                         id="idcheckedSubject"
 
-                                > Event description</label>
+                                > <img src="../../images/placeholder.png" height="30" width="30"/> Event description</label>
                             <br>
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="insert the subject"
@@ -64,7 +64,7 @@
                                         ng-model="checkedplace"
                                         id="idcheckedplace"
 
-                                > Event location</label>
+                                > <img src="../../images/placeholder.png" height="30" width="30"/> Event location</label>
                             <br>
                             <div  ng-if="checkedplace" class="animate-if">
                             <input type="place"  ng-disabled="!checkedplace" class="form-control" id="place" placeholder="insert your place"
@@ -92,7 +92,7 @@
                                     ng-model="checkdata"
                                     name="checkdataname"
 
-                            > <b> Event date</b></label>
+                            > <b> <img src="../../images/placeholder.png" height="30" width="30"/> Event date</b></label>
 
                             <!--
                             <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
@@ -107,7 +107,7 @@
                                         ng-options="option.year  for option in yearVector.availableOptions track by option.id"
                                         ng-model="yearVector.selectedOption"></select>
                                 <br>
-                                <label for="selectMonth">Make a choice for mounth:</label>
+                                <label for="selectMonth">Make a choice for month:</label>
                                 <select name="mySelect" id="selectMonth"
                                         ng-disabled="!checkdata"
                                         ng-options="option.month  for option in monthVector.availableOptions track by option.id"
@@ -136,7 +136,7 @@
                                 ng-model="durationEventCheck"
                                 name="durationEventName"
 
-                        > <b>Event duration</b></label>
+                        > <img src="../../images/placeholder.png" height="30" width="30"/> <b>Event duration</b></label>
 
                         <!--
                         <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
@@ -169,7 +169,7 @@
                                 ng-model="timeZoneCheck"
                                 name="durationEventName"
 
-                        > <b>Custom timezone </b>
+                        > <img src="../../images/placeholder.png" height="30" width="30"/> <b>Custom timezone </b></label>
 
                         <!--
                         <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
