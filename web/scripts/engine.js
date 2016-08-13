@@ -1234,7 +1234,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             //Tn 2 S0
                             "title": title_Trigger1GcalendarController,
                             "description": description_Trigger1GcalendarController,
-                            "place": place_Trigger1GcalendarController
+                            "location": place_Trigger1GcalendarController
                         };
 
 
@@ -1254,7 +1254,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             //Tn 3
                             "title": title_Trigger2GcalendarController,
                             "description": description_Trigger2GcalendarController,
-                            "place": place_Trigger2GcalendarController
+                            "location": place_Trigger2GcalendarController
                         };
 
 
@@ -1417,7 +1417,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     //An 2
                     "title": title_action1GcalendarController,
                     "description": subjectReceive_action1GcalendarController,
-                    "place": place_action1GcalendarController,
+                    "location": place_action1GcalendarController,
                     "dayVector": yearVector_action1GcalendarController,
                     "monthVector": monthVector_action1GcalendarController,
                     "yearVector": dayVector_action1GcalendarController
@@ -2339,7 +2339,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                         //Tn 2 S0
                         "title": title_Trigger1GcalendarController,
                         "description": description_Trigger1GcalendarController,
-                        "place": place_Trigger1GcalendarController
+                        "location": place_Trigger1GcalendarController
                     };
 
 
@@ -2472,7 +2472,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                         //Tn 3
                         "title": title_Trigger2GcalendarController,
                         "description": description_Trigger2GcalendarController,
-                        "place": place_Trigger2GcalendarController
+                        "location": place_Trigger2GcalendarController
                     };
 
                     if(modifyVar == "1")
@@ -2730,7 +2730,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                     //An 2
                     "title": title_action1GcalendarController,
                     "description": subjectReceive_action1GcalendarController,
-                    "place": place_action1GcalendarController,
+                    "location": place_action1GcalendarController,
                     "dayVector": yearVector_action1GcalendarController,
                     "monthVector": monthVector_action1GcalendarController,
                     "yearVector": dayVector_action1GcalendarController
