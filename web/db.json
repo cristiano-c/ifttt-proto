@@ -38,8 +38,7 @@
         "body": "",
         "destination": "null"
       },
-      "publish": true,
-      "index": 1
+      "publish": true
     }
   ],
   "publicRecipes": []
