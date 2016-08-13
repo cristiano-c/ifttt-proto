@@ -16,11 +16,12 @@
                     <form id="gmail-form" role="form" name="form" ng-controller="Trigger1GcalendarController" novalidate>
 
                         <div class="form-group">
+                            <label>
                             <input
                                     type="checkbox"
                                     ng-model="checkedtitle"
 
-                            > <img src="../../images/gcalendarChannel/event-name.png" height="30" width="30"/> <label>Event name</label> <br>
+                            > <img src="../../images/gcalendarChannel/event-name.png" height="30" width="30"/> Event name</label> <br>
                             <div  ng-if="checkedtitle" class="animate-if">
                             <input type="title"  ng-disabled="!checkedtitle" class="form-control" id="title" placeholder="Insert the event name to watch"
                                    ng-model="trigger1GcalendarVar.title"
@@ -35,11 +36,12 @@
 
                         <!--Subject e.mail -->
                         <div class="form-group">
+                            <label>
                             <input
                                     type="checkbox"
                                     ng-model="checkedSubject"
 
-                            > <img src="../../images/gcalendarChannel/event-description.png" height="30" width="30"/> <label>Event description</label>
+                            > <img src="../../images/gcalendarChannel/event-description.png" height="30" width="30"/> Event description</>
 
                             <div  ng-if="checkedSubject" class="animate-if">
                             <textarea class="form-control" rows="5" id="subjectReceive"  placeholder="Insert the event description to watch"
@@ -53,11 +55,12 @@
 
                         <!-- place -->
                         <div class="form-group">
+                            <label>
                             <input
                                     type="checkbox"
                                     ng-model="checkedplace"
 
-                            > <img src="../../images/gcalendarChannel/event-location.png" height="30" width="30"/> <label>Location</label> <br>
+                            > <img src="../../images/gcalendarChannel/event-location.png" height="30" width="30"/> Location</label> <br>
 
                             <div  ng-if="checkedplace" class="animate-if">
 
