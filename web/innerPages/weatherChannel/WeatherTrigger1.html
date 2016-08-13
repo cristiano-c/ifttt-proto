@@ -48,12 +48,13 @@
                     <div class="values">Country : <span id="sys-country">N.A</span>   </div>
                       </div>
                 <br>
+                <label>
                 <input
                         id="checktime"
                         type="checkbox"
                         ng-model="checkadvisetime"
                         ng-change="checkadvisetimefunc(checkadvisetimevar)"
-                > <b>Hour to watch</b>
+                > <b>Hour to watch</b></label>
 
                 <div  ng-if="checkadvisetime" class="animate-if">
                 <form name="timeHour">
