@@ -54,14 +54,17 @@
                 <br>
 
                 <form name="thmax">
+                    <label>
                 <input
                         id="thmaxidcheckbox"
                         type="checkbox"
                         ng-model="checkmodelcheckthmax"
-                > <b> Max temperature</b>
+                > <b> Max temperature</b></label>
                     <div  ng-if="checkmodelcheckthmax" class="animate-if">
+
+                        <label>
                 <input id="thmaxidinput" ng-disabled="!checkmodelcheckthmax" type="number" name="input" ng-model="trigger1input.value1"
-                       min="-70" max="70" required>
+                       min="-70" max="70" required></label>
                 <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="thmax.input.$error.required  && checkmodelcheckthmax">
                             Required!</span>
@@ -72,16 +75,19 @@
                 </form>
 
                 <form name="thmin">
+                    <label>
                 <input
                         id="thminidcheckbox"
                         type="checkbox"
                         ng-model="checkmodelcheckthmin"
 
-                > <b> Min temperature</b>
+                > <b> Min temperature</b></label>
 
                     <div  ng-if="checkmodelcheckthmin" class="animate-if">
+
+                        <label>
                 <input id="thminidinput" ng-disabled="!checkmodelcheckthmin" type="number" name="input" ng-model="trigger1input.value2"
-                       min="-70" max="70" required>
+                       min="-70" max="70" required></label>
 
                 <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="thmin.input.$error.required && checkmodelcheckthmin">
@@ -95,18 +101,21 @@
 
 
                 <form name="periodform">
+                    <label>
                     <input
                             id="periodidcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckperiod"
 
-                    > <b>Periodic</b>
+                    > <b>Periodic</b></label>
 
                     <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
                         every
+
+                        <label>
                     <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
-                           min="0" max="700" required> ms
+                           min="0" max="700" required> ms</label>
 
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="periodform.input.$error.required && checkmodelcheckperiod">
@@ -122,16 +131,18 @@
 
                 <!--   Time zone    --->
                 <form name="timeZone">
+                    <label>
                     <input
                             id="checktimeZonevar"
                             type="checkbox"
                             ng-model="checktimeZone"
 
-                    > <b>Custom timezone</b>
+                    > <b>Custom timezone</b></label>
                     <div  ng-if="checktimeZone" class="animate-if">
 
+                        <label>
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
-                           min="-12" max="12" required>
+                           min="-12" max="12" required></label>
 
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
