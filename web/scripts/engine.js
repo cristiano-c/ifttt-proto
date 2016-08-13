@@ -358,7 +358,6 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             };
             console.log(JSON.stringify(iftttCredentials));
             $('#serverSpinner').spin();
-            setTimeout(function(){ alert("Hello"); }, 4000);
             $http({
                 url: '/MyServlet',
                 method: "POST",
@@ -368,12 +367,10 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
             }).then(function success(response) {
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
-                    alert("ifttt logged");
                     $scope.iftttLogged = true;
                     iftttLogin= true;
                     //$scope.userRecipes = response.data.userRecipesJSON; //x1
                     $('#loginIFTTTModal').modal('hide');
-                    $('#serverSpinner').stop();
                     $("#notificationsWrapper").notify(
                         "Logged with IFTTT Polito",
                         {
@@ -384,7 +381,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     url = "#"+nextPath;
                     window.location.replace(url);
                 } else {
-                    $('#serverSpinner').stop();
+                    $('#serverSpinner').spin(false);
                     $("#notificationsWrapper").notify(
                         "Authentication in IFTTT Polito failed",
                         {
@@ -393,10 +390,11 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                         }
                     );
                 }
+                $('#serverSpinner').spin(false);
                 console.log($scope.iftttLogged);
             }, function error() {
                 $('#loginIFTTTModal').modal('hide');
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
                     {
@@ -429,7 +427,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.iftttLogged = false;
                     iftttLogin =  false;
-                    $('#serverSpinner').stop();
+                    $('#serverSpinner').spin(false);
                     $("#notificationsWrapper").notify(
                         "Logged out from IFTTT Polito",
                         {
@@ -439,7 +437,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                     );
                     window.location.replace('#');
                 } else {
-                    $('#serverSpinner').stop();
+                    $('#serverSpinner').spin(false);
                     $("#notificationsWrapper").notify(
                         "Some problem occurred, please retry",
                         {
@@ -451,7 +449,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
                 console.log($scope.iftttLogged);
             }, function error() {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $('#loginIFTTTModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to IFTTT Polito failed",
@@ -487,7 +485,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.googleLogged = true;
                     googleLogin = "1";
@@ -517,7 +515,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 }
                 console.log($scope.googleLogged);
             }, function error() {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
@@ -547,7 +545,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 url: '/MyServlet',
                 data: requestLogout
             }).then(function success(response) {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.googleLogged = false;
@@ -571,7 +569,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
                 console.log($scope.googleLogged);
             }, function error() {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $('#loginGoogleModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to Google failed",
@@ -605,7 +603,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 dataType: 'application/json'
                 //headers: {'Content-Type': 'application/json'}
             }).then(function success(response) {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 console.log(JSON.stringify(response.data.authenticated) + "locale" + response.data.authenticated.localeCompare("true"));
                 if(response.data.authenticated.localeCompare("true")==0){
                     $scope.twitterLogged = true;
@@ -632,7 +630,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 }
                 console.log($scope.twitterLogged);
             }, function error() {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Server error, retry",
@@ -667,7 +665,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
                 url: '/MyServlet',
                 data: requestLogout
             }).then(function success(response) {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 console.log(response.data.disconnected);
                 if(response.data.disconnected.localeCompare("true")==0){
                     $scope.twitterLogged = false;
@@ -691,7 +689,7 @@ iftttApp.controller('indexController',  ['$scope', '$routeParams', '$window', '$
 
                 console.log($scope.twitterLogged);
             }, function error() {
-                $('#serverSpinner').stop();
+                $('#serverSpinner').spin(false);
                 $('#loginTwitterModal').modal('hide');
                 $("#notificationsWrapper").notify(
                     "Disconnect to Twitter failed",
@@ -1157,13 +1155,13 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     }
                 ).error(function()
                     {
-                        $('#serverSpinner').stop();
+                        $('#serverSpinner').spin(false);
                         // Error code here
                         alert("error");
                     })
                     .success(function ()
                     {
-                        $('#serverSpinner').stop();
+                        $('#serverSpinner').spin(false);
                         $scope.userRecipes[index].publish = true;
                         alert("o.k. true");
                     }
@@ -1192,13 +1190,13 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                 ).error(function()
                 {
-                    $('#serverSpinner').stop();
+                    $('#serverSpinner').spin(false);
                     // Error code here
                     alert("error");
                 })
                     .success(function ()
                     {
-                        $('#serverSpinner').stop();
+                        $('#serverSpinner').spin(false);
                         $scope.userRecipes[index].publish = false;
                         alert("o.k. false");
                     });
@@ -1607,12 +1605,12 @@ iftttApp.controller('createAccountController',  ['$scope',
                         data: loginDataSend,
                         dataType: "json",
                         success: function() {
-                            $('#serverSpinner').stop();
+                            $('#serverSpinner').spin(false);
                             console.log("la post ha avuto successo");
                             window.location.replace('#');
                         },
                         error: function(){
-                            $('#serverSpinner').stop();
+                            $('#serverSpinner').spin(false);
                             //alert("some error occurred");
                             alertVariable="some error occurred";
                             alertFunction();
@@ -2279,7 +2277,7 @@ iftttApp.controller('loginPageController',  ['$scope',
                     dataType: "json",
                     success: function () {
                         console.log("la post ha avuto successo ");
-                        $('#serverSpinner').stop();
+                        $('#serverSpinner').spin(false);
                     },
                     error: $('#serverSpinner').stop()
                 });
@@ -2562,7 +2560,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
                 url: "/MyServlet",
                 data: loginDataSend,
                 dataType: "json",
-                success: function(){ console.log("la post ha avuto successo n 9");$('#serverSpinner').stop();},
+                success: function(){ console.log("la post ha avuto successo n 9");$('#serverSpinner').spin(false);},
                 error: $('#serverSpinner').stop()
             });
         };
@@ -3745,7 +3743,7 @@ function sedingServerAllRun (loginDataSend)
         contentType: 'application/json; charset=UTF-8',
         success: function(response) {
 
-            $('#serverSpinner').stop();
+            $('#serverSpinner').spin(false);
             $('#recipedDescriptionModal').modal('hide');
 
             //console.log("la post ha avuto successo n 9");
@@ -3800,7 +3798,7 @@ function sedingServerAllRunput (loginDataSend)
         data: loginDataSend,
         dataType: "json",
         success: function(response) {
-            $('#serverSpinner').stop();
+            $('#serverSpinner').spin(false);
             if(modifyVar == "1")
             {
                 $('#recipedDescriptionModal').modal('hide');
