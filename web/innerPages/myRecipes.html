@@ -23,12 +23,12 @@
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button style="margin-left: 3px" class="btn btn-primary pull-right animate-if" ng-if="!f.flag">
+                                    <button style="margin-left: 3px" class="btn btn-primary pull-right animate-if" ng-if="!f.publish">
                                         <span class="glyphicon glyphicon-share" data-ng-click="shareRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button style="margin-left: 3px" class="btn btn-danger pull-right animate-if" ng-if="f.flag">
+                                    <button style="margin-left: 3px" class="btn btn-danger pull-right animate-if" ng-if="f.publish">
                                         <span class="glyphicon glyphicon-share-alt" data-ng-click="DoNotshareRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>

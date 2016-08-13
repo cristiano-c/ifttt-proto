@@ -1129,7 +1129,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         method: "put",
                         url: "http://localhost:3000/userRecipes/" + id,
                         data: flagDataSend,
-                        dataType: "json"
+                        contentType: "application/json"
                     }
                 ).error(function()
                     {
@@ -1139,7 +1139,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     .success(function ()
                     {
                         $scope.userRecipes[index].publish = true;
-                        alert("o.k.");
+                        alert("o.k. true");
                     }
                 );
 
@@ -1151,7 +1151,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                 //alert("2");
                var flagDataSend = $scope.userRecipes[index];
-                flagDataSend.flag = false;
+                flagDataSend.publish = false;
                 //$scope.userRecipes[index].publish = false;
                 //alert($scope.userRecipes[index].publish);
                 $http
@@ -1160,7 +1160,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         method: "put",
                         url: "http://localhost:3000/userRecipes/" + id,
                         data: flagDataSend,
-                        dataType: "json"
+                        contentType: "application/json"
                     }
 
                 ).error(function()
@@ -1171,7 +1171,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     .success(function ()
                     {
                         $scope.userRecipes[index].publish = false;
-                        alert("o.k.");
+                        alert("o.k. false");
                     });
 
             };
