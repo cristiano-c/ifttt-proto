@@ -54,7 +54,7 @@
                         type="checkbox"
                         ng-model="checkadvisetime"
                         ng-change="checkadvisetimefunc(checkadvisetimevar)"
-                > <b>Hour to watch</b></label>
+                > <img src="../../images/trigger-icons/watch.png" height="30" width="30"/> <b>Hour to watch</b></label>
 
                 <div  ng-if="checkadvisetime" class="animate-if">
                 <form name="timeHour">
@@ -92,7 +92,7 @@
                             type="checkbox"
                             ng-model="checktimeZone"
                             ng-change="checktimeZonefunc(checktimeZonevar)"
-                    > <b>Custom timezone: </b>
+                    > <img src="../../images/trigger-icons/timezone.png" height="30" width="30"/> <b>Custom timezone: </b>
                 </label>
                     <div  ng-if="checktimeZone" class="animate-if">
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
