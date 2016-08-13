@@ -61,33 +61,39 @@
                 </form>
                 -->
                 <br>
+                <label>
                 <input
                         id="checksunrise"
                         type="checkbox"
                         ng-model="checkadvisesunrise"
                         ng-change="checkadvisesunrisefunc(checkadvisetsunrisevar)"
-                > <b>Sunrise time </b>
+                > <b>Sunrise time </b></label>
                 <br>
+
+                <label>
                 <input
                         id="checksunset"
                         type="checkbox"
                         ng-model="checkadvisesunset"
                         ng-change="checkadvisetsunsetfunc(checkadvisesunsetvar)"
-                > <b>Sunset time </b>
+                > <b>Sunset time </b></label>
                 <br>
 
 
                 <!--   Time zone    --->
                 <form name="timeZone">
+                    <label>
                     <input
                             id="checktimeZonevar"
                             type="checkbox"
                             ng-model="checktimeZone"
                             ng-change="checktimeZonefunc(checktimeZonevar)"
-                    > <b>Custom timezone </b>
+                    > <b>Custom timezone </b></label>
                     <div  ng-if="checktimeZone" class="animate-if">
+
+                        <label>
                     <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
-                           min="-12" max="12" required>
+                           min="-12" max="12" required></label>
 
                     <div role="alert">
                         <span  style="color:#ac2925" class="error" ng-show="timeZone.input.$error.required  && checktimeZone">
