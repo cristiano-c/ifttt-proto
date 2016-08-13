@@ -52,12 +52,13 @@
                 </div>
                 <br>
                 <form name="weather">
+                    <label>
                     <input
                             id="weatheridcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckweather"
 
-                    > <b>Select the weather condition</b>
+                    > <b>Select the weather condition</b></label>
                     <div  ng-if="checkmodelcheckweather" class="animate-if">
                         <form name="myForm">
                         <label for="mySelect">Make a choice:</label>
@@ -76,17 +77,19 @@
 
 
                 <form name="periodform">
+                    <label>
                     <input
                             id="periodidcheckbox"
                             type="checkbox"
                             ng-model="checkmodelcheckperiod"
 
-                    > <b>Periodic checking </b>
+                    > <b>Periodic checking </b></label>
                         <div  ng-if="checkmodelcheckperiod" class="animate-if">
 
                             every
+                            <label>
                         <input id="periodidinput" ng-disabled="!checkmodelcheckperiod" type="number" name="input" ng-model="trigger1input.value4"
-                           min="0" max="700" required> ms
+                           min="0" max="700" required> ms</label>
 
 
                             <div role="alert">
@@ -103,12 +106,13 @@
 
                 <!--   Time zone    --->
                 <form name="timeZone">
+                    <label>
                         <input
                                 id="checktimeZonevar"
                                 type="checkbox"
                                 ng-model="checktimeZone"
 
-                        > <b>Custom timezone</b>
+                        > <b>Custom timezone</b></label>
                         <div  ng-if="checktimeZone" class="animate-if">
 
                         <input id="timezoneid" ng-disabled="!checktimeZone" type="number" name="input" ng-model="trigger1input.value3"
@@ -155,10 +159,8 @@
 
 
 
-
                     <div class="col-md-3">
       </div>
-
         </div>
     </div>
 </div>
