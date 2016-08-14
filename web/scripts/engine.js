@@ -1099,6 +1099,12 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     var index = 0;
                     $scope.userRecipes.forEach(function () {
 
+                        descriptionRecipeGlobal = $scope.userRecipes[index].desc;
+                        idRecipe = $scope.userRecipes[index].id;
+                        triggreGlobalVariable = $scope.userRecipes[index].trigger.triggerType;
+                        actionGlobalVariable = $scope.userRecipes[index].action.actionType;
+                        publishRecipeGlobal = $scope.userRecipes[index].publish;
+
 
 
 
@@ -1399,7 +1405,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         }
 
                     }
-                    $scope.elements[index] =
+                        var dempJson =
                     {
                         "action" :   modulinoj1,
                         "trigger" : modulinoj2,
@@ -1410,6 +1416,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                         isCollapsed: true
 
                     };
+                        $scope.elements.push(dempJson);
                         index++;
                     });
 
