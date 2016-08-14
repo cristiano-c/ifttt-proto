@@ -1372,7 +1372,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                                     "triggerType" : "twitter",
                                     "type"      :  false,
                                     "body"      :  subject_action1TwitterController,
-                                    "destination" :  "null"
+                                    "destination" :  null
 
                                 };
 
@@ -1804,7 +1804,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                             "triggerType" : "twitter",
                             "type"      :  false,
                             "body"      :  subject_action1TwitterController,
-                            "destination" :  "null"
+                            "destination" :  null
 
                         };
 
@@ -1993,7 +1993,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                 }
                 else {
-                    sender = "null";
+                    sender = null;
                 }
 
                 //Second variable
@@ -2012,7 +2012,7 @@ iftttApp.controller('GmailTriggerController', ['$scope', '$rootScope', '$routePa
 
                 }
                 else {
-                    subject = "null";
+                    subject = null;
                 }
 
                 if(flag==true)
@@ -2170,7 +2170,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 }
                 else
                 {
-                    subject = "null";
+                    subject = null;
                 }
 
 
@@ -2195,7 +2195,7 @@ iftttApp.controller('GmailActionController', ['$scope', '$rootScope', '$routePar
                 }
                 else
                 {
-                    body = "null";
+                    body = null;
                 }
 
                 //radio botton
@@ -2635,7 +2635,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
                         }
                     }
                     else {
-                        title = "null";
+                        title = null;
                     }
 
                     //Second variable
@@ -2654,7 +2654,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
                     }
                     else {
-                        subject = "null";
+                        subject = null;
                     }
 
                     //Third variable
@@ -2673,7 +2673,7 @@ iftttApp.controller('Trigger1GcalendarController', ['$scope',
 
                     }
                     else {
-                        place = "null";
+                        place = null;
                     }
 
                     title_Trigger1GcalendarController = title;
@@ -2767,7 +2767,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
 
                     }
                     else {
-                        title = "null";
+                        title = null;
                     }
 
                     //second variable
@@ -2786,7 +2786,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
 
                     }
                     else {
-                        subject = "null";
+                        subject = null;
                     }
 
 
@@ -2806,7 +2806,7 @@ iftttApp.controller('Trigger2GcalendarController', ['$scope',
 
                     }
                     else {
-                        place = "null";
+                        place = null;
                     }
 
                     flagTriggerDone = true;
@@ -2943,7 +2943,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    title = "null";
+                    title = null;
                 }
 
                 //Second variable
@@ -2962,7 +2962,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    subjectReceive = "null";
+                    subjectReceive = null;
                 }
 
                 //Third variable
@@ -2981,7 +2981,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    place = "null";
+                    place = null;
                 }
 
 
@@ -2997,9 +2997,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                         else
                         {
-                            dayVector = "null";
-                            yearVector = "null";
-                            monthVector = "null";
+                            dayVector = null;
+                            yearVector = null;
+                            monthVector = null;
                             flag=0;
                         }
 
@@ -3007,9 +3007,9 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    dayVector = "null";
-                    yearVector = "null";
-                    monthVector = "null";
+                    dayVector = null;
+                    yearVector = null;
+                    monthVector = null;
                     flag=0;
                 }
 
@@ -3025,14 +3025,14 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                     else
                     {
-                        timeZone = "null";
+                        timeZone = null;
                     }
 
 
 
                 }
                 else {
-                    timeZone = "null";
+                    timeZone = null;
                 }
 
 
@@ -3048,8 +3048,8 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                     else
                     {
-                        durationHour = "NULL";
-                        durationMinute = "NULL";
+                        durationHour = null;
+                        durationMinute = null;
 
                     }
 
@@ -3057,8 +3057,8 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
                 }
                 else {
-                    durationHour = "NULL";
-                    durationMinute = "NULL";
+                    durationHour = null;
+                    durationMinute = null;
                 }
 
 
@@ -3500,7 +3500,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
 
                 }
                 else {
-                    title = "null";
+                    title = null;
                 }
 
 
@@ -3520,7 +3520,7 @@ iftttApp.controller('trigger1TwitterController', ['$scope',
 
                 }
                 else {
-                    subject = "null";
+                    subject = null;
                 }
 
                 flagTriggerDone = true;
@@ -3607,7 +3607,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
                 }
                 else {
-                    title = "null";
+                    title = null;
                 }
 
 
@@ -3628,7 +3628,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
                 }
                 else {
-                    subject = "null";
+                    subject = null;
                 }
 
                 flagTriggerDone = true;
@@ -3716,7 +3716,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
                 }
                 else {
-                    subject = "null";
+                    subject = null;
                 }
 
                 flagTriggerDone = false;
@@ -3729,7 +3729,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
                     "triggerType" : "twitter",
                     "type"      :  false,
                     "body"      :  subject_action1TwitterController,
-                    "destination" :  "null"
+                    "destination" :  null
 
                 };
 
@@ -3827,7 +3827,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
                // }
                 /*
                     else {
-                        title = "null";
+                        title = null;
                     }
                     */
 
@@ -3849,7 +3849,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
                     }
                     else {
-                        subject = "null";
+                        subject = null;
                     }
 
 

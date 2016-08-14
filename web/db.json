@@ -60,6 +60,28 @@
         "lastChecked": null
       },
       "publish": false
+    },
+    {
+      "id": 4,
+      "desc": "cangu",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": false,
+        "title": "",
+        "description": null,
+        "location": null,
+        "lastChecked": null
+      },
+      "action": {
+        "actionType": "calendar",
+        "title": "ciao",
+        "description": null,
+        "location": null,
+        "dayVector": null,
+        "monthVector": null,
+        "yearVector": null
+      },
+      "publish": false
     }
   ],
   "publicRecipes": []
