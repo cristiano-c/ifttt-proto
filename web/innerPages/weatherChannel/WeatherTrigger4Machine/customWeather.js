@@ -300,26 +300,26 @@ $(function(){
 
                 }
                 else {
-                    thmax = "NULL";
+                    thmax = null;
                 }
                 if ($('#thminidcheckbox').is(":checked")) {
                     thmin = $('#thminidinput').val();
                 }
                 else {
-                    thmin = "NULL";
+                    thmin = null;
                 }
                 if ($('#checktimeZonevar').is(":checked")) {
                     timezone = $('#timezoneid').val();
                 }
                 else {
-                    timezone = "NULL";
+                    timezone = null;
                 }
 
                 if ($('#periodidcheckbox').is(":checked")) {
                     period = $('#periodidinput').val();
                 }
                 else {
-                    period = "NULL";
+                    period = null;
                 }
 
                 idCity_customWeatherActionControllerTrigger4 =idCity;
@@ -519,9 +519,9 @@ $(function(){
          var loginDataSend =
          {
          "sender:":  idCity,
-         "timezone": "null",
-         "sunset":   "null",
-         "sunrise":  "null"
+         "timezone": null,
+         "sunset":   null,
+         "sunrise":  null
 
          }
          sendingToServer(loginDataSend);

@@ -286,8 +286,8 @@ $(function()
         {
             /*
              sender_customWeatherActionControllerTrigger1 =idCity;
-             timezone_customWeatherActionControllerTrigger1 = "null";
-             ora_customWeatherActionControllerTrigger1 = "null";
+             timezone_customWeatherActionControllerTrigger1 = null;
+             ora_customWeatherActionControllerTrigger1 = null;
              */
             idCity_customWeatherActionControllerTrigger1 = idCity;
             var timezone = $('#timezoneid').val();
@@ -304,14 +304,14 @@ $(function()
                 timezone_customWeatherActionControllerTrigger1 = timezone;
 
             }
-            else timezone_customWeatherActionControllerTrigger1 = "NULL";
+            else timezone_customWeatherActionControllerTrigger1 = null;
            if($('#checktime').is(":checked"))
            {
                timeCheck(htime, mtime);
                ora_customWeatherActionControllerTrigger1 = time;
 
            }
-           else ora_customWeatherActionControllerTrigger1 = "NULL";
+           else ora_customWeatherActionControllerTrigger1 = null;
 
             if(flagTimezoneCheck == "1" &&  flagTimeCheck == "1")
             {

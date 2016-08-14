@@ -323,7 +323,7 @@ $(function(){
                     var pperiod = $('#periodidinput').val();
                     //var pzone = $('#timezoneid').val();
 
-                    sendingToServer(pweather, pperiod, "null" );
+                    sendingToServer(pweather, pperiod, null );
 
                 }
                 else
@@ -335,7 +335,7 @@ $(function(){
                         //var pperiod = $('#periodidinput').val();
                         var pzone = $('#timezoneid').val();
 
-                        sendingToServer(pweather, "null", pzone );
+                        sendingToServer(pweather, null, pzone );
 
                     }
                     else
@@ -348,7 +348,7 @@ $(function(){
                             //var pperiod = $('#periodidinput').val();
                             //var pzone = $('#timezoneid').val();
 
-                            sendingToServer(pweather, "null", "null" );
+                            sendingToServer(pweather, null, null );
 
 
                         }
@@ -361,7 +361,7 @@ $(function(){
                                 var pperiod = $('#periodidinput').val();
                                // var pzone = $('#timezoneid').val();
 
-                                sendingToServer("null", pperiod, "null" );
+                                sendingToServer(null, pperiod, null );
 
 
                             }
@@ -375,7 +375,7 @@ $(function(){
                                    // var pperiod = $('#periodidinput').val();
                                     var pzone = $('#timezoneid').val();
 
-                                    sendingToServer("null", "null", pzone );
+                                    sendingToServer(null, null, pzone );
 
 
                                 }
@@ -386,7 +386,7 @@ $(function(){
                                     //var pperiod = $('#periodidinput').val();
                                     //var pzone = $('#timezoneid').val();
 
-                                    sendingToServer("null", "null", "null" );
+                                    sendingToServer(null, null, null );
 
 
                                 }

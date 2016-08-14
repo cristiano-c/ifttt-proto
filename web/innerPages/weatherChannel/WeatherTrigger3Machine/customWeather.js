@@ -304,7 +304,7 @@ $(function(){
                     timezoneCheck();
                 }
                 else {
-                    timezone_customWeatherActionControllerTrigger3 = "NULL";
+                    timezone_customWeatherActionControllerTrigger3 = null;
                 }
 
                 if (flagTimezoneCheck == 1) {
@@ -415,9 +415,9 @@ $(function(){
          var loginDataSend =
          {
          "sender:":  idCity,
-         "timezone": "null",
-         "sunset":   "null",
-         "sunrise":  "null"
+         "timezone": null,
+         "sunset":   null,
+         "sunrise":  null
 
          }
          sendingToServer(loginDataSend);
