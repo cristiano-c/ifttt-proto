@@ -2,83 +2,81 @@
   "userRecipes": [
     {
       "id": 1,
-      "desc": "wqeqweqweqwe",
+      "desc": "My first recipe description",
       "trigger": {
         "triggerType": "calendar",
-        "eventAction": "0",
-        "title": "qweqweqweqwewqe",
-        "description": "null",
-        "place": "null"
-      },
-      "action": {
-        "actionType": "calendar",
-        "title": "qweqweqweqweq",
-        "description": "null",
-        "place": "null",
-        "dayVector": "null",
-        "monthVector": "null",
-        "yearVector": "null"
-      },
-      "publish": true
-    },
-    {
-      "id": 2,
-      "desc": "boh",
-      "trigger": {
-        "triggerType": "calendar",
-        "eventAction": "0",
-        "title": "null",
-        "description": "emblema disperazione",
-        "location": "null"
+        "eventAction": false,
+        "title": "My Event name",
+        "description": "My Gcalendar description",
+        "location": "My Gcalendar location",
+        "lastChecked": null
       },
       "action": {
         "triggerType": "twitter",
-        "type": "0",
-        "body": "anathem",
-        "destination": "null"
+        "type": false,
+        "body": "My tweet content action",
+        "destination": null
+      },
+      "publish": false
+    },
+    {
+      "id": 2,
+      "desc": "My second recipe si beautiful!",
+      "trigger": {
+        "triggerType": "weather",
+        "type": "3",
+        "location": 1865485,
+        "timezone": "-4",
+        "sunset": "1",
+        "sunrise": "1",
+        "lastChecked": null
+      },
+      "action": {
+        "actionType": "gmail",
+        "body": "Hello, World!",
+        "receiver": "my@email.com",
+        "sender": "0",
+        "subject": "My email subject to action recipe 2"
       },
       "publish": false
     },
     {
       "id": 3,
-      "desc": "VOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIREVOGLIO MORIRE",
+      "desc": "My third recipe is terrific!",
       "trigger": {
         "triggerType": "calendar",
-        "eventAction": "1",
-        "title": "null",
+        "eventAction": true,
+        "title": "Lol",
         "description": "",
-        "location": "null",
+        "location": "XD",
         "lastChecked": null
       },
       "action": {
-        "actionType": "gmail",
-        "body": "VOGLIO MORIRE",
-        "receiver": "asd@asd.asd",
-        "sender": true,
-        "subject": "VOGLIO MORIRE",
-        "lastChecked": null
+        "triggerType": "twitter",
+        "type": true,
+        "destination": "Slenderman",
+        "body": "Eat my egg!"
       },
       "publish": false
     },
     {
       "id": 4,
-      "desc": "cangu",
+      "desc": "Battlefield One INCOMING! ⚔",
       "trigger": {
-        "triggerType": "calendar",
-        "eventAction": false,
-        "title": "",
-        "description": null,
-        "location": null,
+        "triggerType": "twitter",
+        "type": true,
+        "hashtag_text": "Drink this beer! 🍺",
+        "username_sender": "Slenderman",
         "lastChecked": null
       },
       "action": {
         "actionType": "calendar",
-        "title": "ciao",
-        "description": null,
-        "location": null,
-        "dayVector": null,
-        "monthVector": null,
-        "yearVector": null
+        "title": "📸",
+        "description": "LOL",
+        "location": "☠️🏯⛪",
+        "dayVector": "5",
+        "monthVector": "1",
+        "yearVector": "2016"
       },
       "publish": false
     }
