@@ -84,12 +84,19 @@
                                         <button ng-click="f.isCollapsed = !f.isCollapsed">Show the recipe</button>
                                     </div>
                                     <div collapse="f.isCollapsed"><div ng-show="!f.isCollapsed" class="panel-body ">
-                                        <div ng-repeat=" azione in f ">
-                                        <div ng-repeat="(key, data) in azione">
+                                      <!--  <div ng-repeat=" azione in f.action"> -->
+                                        trigger*********************************
+                                        <div ng-repeat="(key, data) in f.trigger">
                                             "{{key}} ---  {{data}}"
-                                        </div></div>
+                                        </div>
+                                        azione**************************************
+                                        <div ng-repeat="(key, data) in f.action">
+                                            "{{key}} ---  {{data}}"
+                                        </div>
+                                        </div>
 
                                     </div>
+
 
                                         <!--
                                             <div ng-repeat=" azione in f ">
@@ -112,7 +119,6 @@
                                         -->
 
 
-                                </h4>
                             </li>
 
                     </ul>
