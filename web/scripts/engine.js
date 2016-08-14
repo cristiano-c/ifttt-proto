@@ -2909,7 +2909,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
             var  yearVector = "";
             var monthVector = "";
             var dayVector = "";
-            var flag = true;
+            var flag = "1";
             var timeZone = "";
             var durationHour = "";
             var durationMinute = "";
@@ -2918,18 +2918,18 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
             /*
 
-            if($scope.googleLogged == true){
-                alert("E' TRUE!!!!");
-            } else {
-                alert("E' FALSE!!!!");
-            }
+             if($scope.googleLogged == true){
+             alert("E' TRUE!!!!");
+             } else {
+             alert("E' FALSE!!!!");
+             }
 
-            if(!$scope.googleLogged == true){
-                alert("E' FALSE!!!!");
-            } else {
-                alert("E' TRUE!!!!");
-            }
-            */
+             if(!$scope.googleLogged == true){
+             alert("E' FALSE!!!!");
+             } else {
+             alert("E' TRUE!!!!");
+             }
+             */
 
             if($scope.googleLogged == true)
             {
@@ -3002,13 +3002,13 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         monthVector = $('#selectMonth').val();
                     }
 
-                        else
-                        {
-                            dayVector = null;
-                            yearVector = null;
-                            monthVector = null;
-                            flag=0;
-                        }
+                    else
+                    {
+                        dayVector = null;
+                        yearVector = null;
+                        monthVector = null;
+                        flag=0;
+                    }
 
 
 
@@ -3088,7 +3088,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                     //An 2
                     "title": title_action1GcalendarController,
                     "description": subjectReceive_action1GcalendarController,
-                    "location": place_action1GcalendarController,
+                    "place": place_action1GcalendarController,
                     "dayVector": yearVector_action1GcalendarController,
                     "monthVector": monthVector_action1GcalendarController,
                     "yearVector": dayVector_action1GcalendarController
@@ -3098,16 +3098,16 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 
 
 
-                if (flag == true)
+                if (flag == "1")
                 {
-                    if (monthVector === true ||
+                    if (monthVector === "1" ||
                         monthVector === "3" ||
                         monthVector === "5" ||
                         monthVector === "7" ||
                         monthVector === "8" ||
                         monthVector === "10" ||
                         monthVector === "12") {
-                        if (dayVector > false && dayVector < "32");
+                        if (dayVector > "0" && dayVector < "32");
                         else {
                             flag = "3";
                             //console.log("Your date is not right plase verify the day");
@@ -3121,7 +3121,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                         monthVector === "9" ||
                         monthVector === "11")
                     {
-                        if (dayVector > false && dayVector < "31");
+                        if (dayVector > "0" && dayVector < "31");
                         else
                         {
                             flag = "3";
@@ -3163,7 +3163,7 @@ iftttApp.controller('action1GcalendarController', ['$scope',
                 }
 
                 if (flag != "3") {
-                    flagTriggerDone = false;
+                    flagTriggerDone = "0";
                     count=7;
 
                     if (modifyVar == 0)
@@ -3470,6 +3470,10 @@ iftttApp.controller('action1GcalendarController', ['$scope',
 //action1GcalendarController
 
     }]);
+
+
+
+
 
 
 
