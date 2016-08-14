@@ -169,7 +169,11 @@
                                 ng-model="timeZoneCheck"
                                 name="durationEventName"
 
+<<<<<<< HEAD
+                        > <b>Custom timezone </b></label>
+=======
                         > <img src="../../images/placeholder.png" height="30" width="30"/> <b>Custom timezone </b></label>
+>>>>>>> origin/master
 
                         <!--
                         <input id="weatheridinput" ng-disabled="!checkmodelcheckweather" type="search" name="input" ng-model="trigger1input.value2"
