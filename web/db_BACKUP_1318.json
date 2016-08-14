@@ -1,0 +1,89 @@
+{
+  "userRecipes": [
+    {
+      "id": 1,
+      "desc": "My first recipe description",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": false,
+        "title": "My Event name",
+        "description": "My Gcalendar description",
+        "location": "My Gcalendar location",
+        "lastChecked": null
+      },
+      "action": {
+        "triggerType": "twitter",
+        "type": false,
+        "body": "My tweet content action",
+        "destination": null
+      },
+<<<<<<< Updated upstream
+      "publish": true
+=======
+      "publish": false
+>>>>>>> Stashed changes
+    },
+    {
+      "id": 2,
+      "desc": "My second recipe si beautiful!",
+      "trigger": {
+        "triggerType": "weather",
+        "type": "3",
+        "location": 1865485,
+        "timezone": "-4",
+        "sunset": "1",
+        "sunrise": "1",
+        "lastChecked": null
+      },
+      "action": {
+        "actionType": "gmail",
+        "body": "Hello, World!",
+        "receiver": "my@email.com",
+        "sender": "0",
+        "subject": "My email subject to action recipe 2"
+      },
+      "publish": false
+    },
+    {
+      "id": 3,
+      "desc": "My third recipe is terrific!",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": true,
+        "title": "Lol",
+        "description": "",
+        "location": "XD",
+        "lastChecked": null
+      },
+      "action": {
+        "triggerType": "twitter",
+        "type": true,
+        "destination": "Slenderman",
+        "body": "Eat my egg!"
+      },
+      "publish": false
+    },
+    {
+      "id": 4,
+      "desc": "Battlefield One INCOMING! ⚔",
+      "trigger": {
+        "triggerType": "twitter",
+        "type": true,
+        "hashtag_text": "Drink this beer! 🍺",
+        "username_sender": "Slenderman",
+        "lastChecked": null
+      },
+      "action": {
+        "actionType": "calendar",
+        "title": "📸",
+        "description": "LOL",
+        "location": "☠️🏯⛪",
+        "dayVector": "5",
+        "monthVector": "1",
+        "yearVector": "2016"
+      },
+      "publish": false
+    }
+  ],
+  "publicRecipes": []
+}
