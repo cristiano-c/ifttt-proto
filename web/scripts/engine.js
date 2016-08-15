@@ -1408,8 +1408,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     }
                         var dempJson =
                     {
-                        "action" :   modulinoj1,
-                        "trigger" : modulinoj2,
+                        "action" :   modulinoj2,
+                        "trigger" : modulinoj1,
                         "index" : index,
                         "desc" : descriptionRecipeGlobal,
                         "id"  :idRecipe,
