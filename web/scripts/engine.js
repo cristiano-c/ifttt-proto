@@ -1051,6 +1051,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
 
 
+    /* Slack Task: TKGM */
     iftttApp.controller('myRecipesController',  ['$scope', '$routeParams', '$window', '$http',
     function ($scope, $routeParams, $window, $http)
     {
@@ -1375,7 +1376,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                                 modulinoj2 =
                                 {
-                                    "triggerType" : "twitter",
+                                    "actionType" : "twitter",
                                     "type"      :  false,
                                     "body"      :  subject_action1TwitterController,
                                     "destination" :  null
@@ -1392,7 +1393,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                                 modulinoj2 =
                                 {
-                                    "triggerType" : "twitter",
+                                    "actionType" : "twitter",
                                     "type"      :  true,
                                     "destination"   :  title_action2TwitterController,
                                     "body" :  subjec_action2TwitterController
@@ -1808,7 +1809,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                         modulinoj2 =
                         {
-                            "triggerType" : "twitter",
+                            "actionType" : "twitter",
                             "type"      :  false,
                             "body"      :  subject_action1TwitterController,
                             "destination" :  null
@@ -1825,7 +1826,7 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
 
                         modulinoj2 =
                         {
-                            "triggerType" : "twitter",
+                            "actionType" : "twitter",
                             "type"      :  true,
                             "destination"   :  title_action2TwitterController,
                             "body" :  subjec_action2TwitterController
@@ -3737,7 +3738,7 @@ iftttApp.controller('action1TwitterController', ['$scope',
 
                 modulinoj2 =
                 {
-                    "triggerType" : "twitter",
+                    "actionType" : "twitter",
                     "type"      :  false,
                     "body"      :  subject_action1TwitterController,
                     "destination" :  null
@@ -3869,7 +3870,7 @@ iftttApp.controller('action2TwitterController', ['$scope',
 
                 modulinoj2 =
                 {
-                    "triggerType" : "twitter",
+                    "actionType" : "twitter",
                     "type"      :  true,
                     "destination"   :  title_action2TwitterController,
                     "body" :  subjec_action2TwitterController
@@ -4020,6 +4021,11 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
 
     }]);
 
+iftttApp.filter('capitalize', function() {
+    return function(input) {
+        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+    }
+});
 
 
 function sendingToServerAll ()
