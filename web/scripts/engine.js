@@ -4028,6 +4028,21 @@ iftttApp.filter('capitalize', function() {
     }
 });
 
+iftttApp.filter('reformat', function() {
+    return function(x) {
+
+        switch (x) {
+            case 'lastChecked': return 'Last checked';
+            case 'hashtag_text': return 'Hashtag text';
+            case 'username_sender': return 'Username sender';
+            case 'eventAction': return 'Event action';
+        }
+
+
+        return x;
+    };
+});
+
 
 function sendingToServerAll ()
 {
