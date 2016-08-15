@@ -12,7 +12,7 @@
         "lastChecked": null
       },
       "action": {
-        "triggerType": "twitter",
+        "actionType": "twitter",
         "type": false,
         "body": "My tweet content action",
         "destination": null
@@ -52,7 +52,7 @@
         "lastChecked": null
       },
       "action": {
-        "triggerType": "twitter",
+        "actionType": "twitter",
         "type": true,
         "destination": "Slenderman",
         "body": "Eat my egg!"
@@ -92,7 +92,7 @@
         "lastChecked": null
       },
       "action": {
-        "triggerType": "twitter",
+        "actionType": "twitter",
         "type": false,
         "body": "This is a tweet done by a little bird! 🐦",
         "destination": null
