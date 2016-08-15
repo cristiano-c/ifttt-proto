@@ -3678,7 +3678,7 @@ iftttApp.controller('trigger2TwitterController', ['$scope',
 
 
 
-            Trigger1GcalendarController
+           // Trigger1GcalendarController (è comparso dal nulla);
         };
         $scope.modifyButton = false;
         if(modifyVar == 1)
