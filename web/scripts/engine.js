@@ -4023,7 +4023,8 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
 
 iftttApp.filter('capitalize', function() {
     return function(input) {
-        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+        console.log(JSON.stringify(input));
+            return input.substring(0,1).toUpperCase()+input.substring(1)
     }
 });
 
