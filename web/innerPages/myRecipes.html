@@ -23,22 +23,9 @@
                                 </h4>
                                     {{f.desc}}
 
-                                    <span collapse="f.isCollapsed"><div ng-show="!f.isCollapsed" class="panel-body ">
-                                      <!--  <div ng-repeat=" azione in f.action"> -->
-                                        trigger*********************************
-                                        <div ng-repeat="(key, data) in f.trigger">
-                                            "{{key}} ---  {{data}}"
-                                        </div>
-                                        azione**************************************
-                                        <div ng-repeat="(key, data) in f.action">
-                                            "{{key}} ---  {{data}}"
-                                        </div>
-                                        </div>
-
-                                    </span>
-
-
                                     </div>
+
+
 
                                     <div class="col-md-4">
                                     <button style="margin-left: 3px" class="btn btn-danger pull-right">
@@ -68,6 +55,7 @@
 
                                     </div>
 
+                                </div>
 
                                     <!--
 
@@ -134,8 +122,20 @@
                                                 </div>
 
                                         -->
+                                <div class="row panel-body" ng-show="!f.isCollapsed">
+                                    <hr>
+                                    <!--  <div ng-repeat=" azione in f.action"> -->
+                                    trigger*********************************
+                                    <div ng-repeat="(key, data) in f.trigger">
+                                        "{{key}} ---  {{data}}"
+                                    </div>
+                                    azione**************************************
+                                    <div ng-repeat="(key, data) in f.action">
+                                        "{{key}} ---  {{data}}"
+                                    </div>
 
                                 </div>
+
                             </li>
 
                     </ul>
