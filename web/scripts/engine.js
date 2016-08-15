@@ -1408,8 +1408,8 @@ iftttApp.controller('doCreatorController',  ['$scope', '$routeParams',
                     }
                         var dempJson =
                     {
-                        "action" :   modulinoj1,
-                        "trigger" : modulinoj2,
+                        "action" :   modulinoj2,
+                        "trigger" : modulinoj1,
                         "index" : index,
                         "desc" : descriptionRecipeGlobal,
                         "id"  :idRecipe,
@@ -4023,8 +4023,24 @@ iftttApp.controller('choseModifyController', ['$scope', '$rootScope', '$routePar
 
 iftttApp.filter('capitalize', function() {
     return function(input) {
-        return (!!input) ? input.charAt(0).toUpperCase() + input.substr(1).toLowerCase() : '';
+        console.log(JSON.stringify(input));
+            return input.substring(0,1).toUpperCase()+input.substring(1)
     }
+});
+
+iftttApp.filter('reformat', function() {
+    return function(x) {
+
+        switch (x) {
+            case 'lastChecked': return 'Last checked';
+            case 'hashtag_text': return 'Hashtag text';
+            case 'username_sender': return 'Username sender';
+            case 'eventAction': return 'Event action';
+        }
+
+
+        return x;
+    };
 });
 
 
