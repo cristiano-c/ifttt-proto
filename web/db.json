@@ -79,6 +79,25 @@
         "yearVector": "2016"
       },
       "publish": false
+    },
+    {
+      "id": 5,
+      "desc": "Welcome to our little ceremony! 🎉\n\nThere is a little mouse under the hood. 🚓 🐭\n\nThe sun is... burning! 🔥 ☀️ 🔥",
+      "trigger": {
+        "triggerType": "calendar",
+        "eventAction": false,
+        "title": "Killed a dragon 🐉",
+        "description": "King George eats an ice cream! 👑 🍧",
+        "location": "On the Moon 🌙",
+        "lastChecked": null
+      },
+      "action": {
+        "triggerType": "twitter",
+        "type": false,
+        "body": "This is a tweet done by a little bird! 🐦",
+        "destination": null
+      },
+      "publish": false
     }
   ],
   "publicRecipes": []

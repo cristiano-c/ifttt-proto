@@ -8,18 +8,42 @@
 
 <div class="container" style="padding-top: 6%">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                 </div>
                   <!--  {{privateprivateuserRecipesVetVet[0].triggerType}} -->
-                <div class="col-md-6">
+                <div class="col-md-8">
                     <ul class="list-group"> <!-- privateprivateuserRecipesVetVet =  userRecipes -->
                         <li class="list-group-item active text-center"><h1><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Your IFTTT Polito recipes</h1></li>
                             <li ng-repeat="f in  elements" class="list-group-item">
+                                <div class="row">
+                                    <div class="col-md-8">
                                 <h4><!-- data-content="{{f.desc}}" -->
                                     <span class="glyphicon glyphicon-file" title="Header" data-placement="bottom" data-toggle="popover" data-trigger="hover" ></span>
                                     N° {{$index + 1}} <em>{{f.desc}}</em>
+                                    Recipe description:
+                                </h4>
+                                    {{f.desc}}
+
+                                    <span collapse="f.isCollapsed"><div ng-show="!f.isCollapsed" class="panel-body ">
+                                      <!--  <div ng-repeat=" azione in f.action"> -->
+                                        trigger*********************************
+                                        <div ng-repeat="(key, data) in f.trigger">
+                                            "{{key}} ---  {{data}}"
+                                        </div>
+                                        azione**************************************
+                                        <div ng-repeat="(key, data) in f.action">
+                                            "{{key}} ---  {{data}}"
+                                        </div>
+                                        </div>
+
+                                    </span>
+
+
+                                    </div>
+
+                                    <div class="col-md-4">
                                     <button style="margin-left: 3px" class="btn btn-danger pull-right">
-                                    <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe(f.index, f.id)"></span>
+                                        <span class="glyphicon glyphicon-trash" data-ng-click="removeRecipe(f.index, f.id)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
@@ -33,10 +57,17 @@
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
 
-                                    <button style="margin-left: 3px" class="btn btn-warning pull-right">
+                                    <button style="margin-left: 3px" class="btn btn-success pull-right">
                                         <span class="glyphicon glyphicon-edit" data-ng-click="modifyRecipe(f.index)"></span>
                                         <!--  <button ng-click="removeRecipe(f.id)">remove</button> -->
                                     </button>
+
+                                    <button style="margin-left: 3px" class="btn btn-info pull-right" ng-click="f.isCollapsed = !f.isCollapsed">
+                                        <span class="glyphicon glyphicon-eye-open"></span>
+                                    </button>
+
+
+                                    </div>
 
 
                                     <!--
@@ -81,22 +112,8 @@
 
 
                                     <!-- Slack Task: TKGM -->
-                                    <div class="panel-heading">
-                                        <button ng-click="f.isCollapsed = !f.isCollapsed">Show the recipe</button>
-                                    </div>
-                                    <div collapse="f.isCollapsed"><div ng-show="!f.isCollapsed" class="panel-body ">
-                                      <!--  <div ng-repeat=" azione in f.action"> -->
-                                        trigger*********************************
-                                        <div ng-repeat="(key, data) in f.trigger">
-                                            "{{key}} ---  {{data}}"
-                                        </div>
-                                        azione**************************************
-                                        <div ng-repeat="(key, data) in f.action">
-                                            "{{key}} ---  {{data}}"
-                                        </div>
-                                        </div>
 
-                                    </div>
+
 
 
                                         <!--
@@ -119,7 +136,7 @@
 
                                         -->
 
-
+                                </div>
                             </li>
 
                     </ul>
